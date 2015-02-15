@@ -2,164 +2,121 @@
 
 Aegisub是可高度定制的软件，因而它有大量的选项供用户选择。这些选项都在选项对话框中，您可以在“查看”菜单里找到。这个页面提供可用选项的说明。
 
-Aegisub stores all its configuration in a plain text file called _config.json_
-which by default is stored in the [[?user|Aegisub_path_specifiers]] directory.
-If you want to reset Aegisub to its default options without reinstalling the
-program, you can just delete config.json and restart Aegisub.
+Aegisub将所有配置都以纯文本的形式储存在 _config.json_ 文件中，它默认位于[[?user|Aegisub_path_specifiers]]目录。
+如果您想恢复默认设置而不想重装Aegisub的话，您只需把config.json删掉并重启Aegisub即可。
 
-## General ##
+## 通用 ##
 
 [[img/preferences-general.png]]{: class="center"}
-**Auto Check for Updates**
-: If enabled, Aegisub will periodically check whether there is a newer version
-available, and alert you if there is.
-Requires a working connection to the internet, naturally.
+**自动检查更新**
+: 如果启用，Aegisub会定期检查是否有新版本可用，如果有就会提醒您。
+当然，这需要您的电脑能接入互联网。
 
-**Show main toolbar**
-: If disabled, Aegisub's main toolbar is hidden.
+**显示主工具栏**
+: 如果禁用，Aegisub的主要工具栏会被隐藏。
 
-**Save UI state in subtitles files**
-: By default, Aegisub saves things like the current scroll position of the subtitles grid and active
-row number in the subtitles file so that it can be automatically restored when you reopen the file.
-However, if you're using source control for your subtitle files you may want to disable this to
-reduce the noise in the changes.
+**在字幕文件中保存用户界面状态**
+: 默认情况下，Aegisub会在字幕文件中保存当前滚动到的位置和所选行的编号，以便您在下次打开字幕文件时可以自动恢复到保存时的状态。不过，如果您对您的字幕文件使用版本控制的话，您可能希望关闭这个功能来减少对更改的干扰。
 
-**Toolbar icon size**
-: The size of icons to use in all of the toolbars in Aegisub. Currently the
-only valid values are 16 and 24.
+**工具栏图标大小**
+: Aegisub所有工具栏的图标的大小。目前有效值仅为16或24。
 
-**Automatically load linked files**
-: Whenever you save a script, Aegisub also stores some information about what
-video, audio and timecodes files you had open while working on it, inside the
-script itself. This option decides what Aegisub does with these files that are
-"linked" to the script when opening it. If set to "ask", Aegisub will ask you
-if you want to load linked files. If set to "never", Aegisub will never load
-linked files, and likewise if set to "always", Aegisub will always try to load
-linked files (and report an error if the file(s) were not found).
+**自动载入链接的文件**
+: 当您保存脚本时，Aegisub同时也在字幕文件里保存了您打开的音视频和时间码文件的信息。
+这个选项决定了Aegisub在打开字幕文件时，如何处理这些与字幕文件所关联的文件。如果设为“询问”，Aegisub会在打开文件时让您选择是否加载链接的文件。如果设为“从不”，Aegisub不会加载链接的文件，同样的如果设为“总是”，Aegisub将尝试载入关联的文件（并会在找不到相关文件时弹出错误报告）。
 
-**Undo levels**
-: The maximum number of changes that can be undone. The higher this value, the
-more memory Aegisub will use.
+**恢复操作的最大数量**
+: 改变撤销的最大数量。这个值越大，Aegisub将占用的内存就越多。
 
-**Recently Used Lists**
-: Maximum number of items to remember for all of the various lists of recently
-used items in Aegisub. The memory impact from increasing these is trivial, but
-larger lists may get unwieldy to use.
+**最近使用过的列表**
+: Aegisub的各种最近使用列表记录的项目的最大值。它对内存几乎没有影响，但太长的列表看起来会不方便。
 
-### Default Styles
+### 默认样式
 
 [[img/preferences-default-styles.png]]{: class="center"}
 
-## Audio ##
+## 音频 ##
 
 [[img/preferences-audio.png]]{: class="center"}
-**Lock scroll on cursor**
-: When enabled, the audio waveform view will automatically scroll to follow the
-playback cursor if it gets too close to either of the edges.
+**锁定光标卷动**
+: 当启用时，当视频播放光标离音频波形视图左右边缘较近时，波形将自动随着光标滚动。
 
-**Snap markers by default**
-: When enabled, Aegisub will default to snapping audio markers to other markers
-in the audio display (such as keyframes and the start or end times of other
-lines) when moving them by clicking or dragging them if they are close enough.
-Snapping can be toggled on or off by holding down shift.
+**默认紧贴标记**
+: 当启用时，如果两个音频视图的标记（例如关键帧，其他行的开始结束时间点）离得足够近的话，Aegisub会在您点击或拖动音频标记时，把它们吸附到音频视图的其他标记上。
+您可以按住shift再拖动来临时开启或关闭吸附功能。
 
-**Default mouse wheel to zoom**
-: When enabled, the mouse wheel will zoom the audio display horizontally by
-default, and scroll the audio display when Ctrl is held down. If disabled, this
-is reversed.
+**默认使用鼠标滚轮缩放**
+: 当启用时，鼠标滚轮默认会用来水平缩放频谱视图，按住Ctrl键时滚动频谱视图。如果禁用则相反。
 
-**Auto-focus on mouse over**
-: If enabled, moving the mouse cursor over the audio waveform will
-automatically give it focus (as opposed to requiring a click).
+**随鼠标移动自动定位**
+: 如果启用，当鼠标光标移动到音频频谱上将会自动激活它（而不需要再单击一下）。
 
-**Play audio when stepping in video**
-: When enabled, frame stepping plays the audio for that frame.
+**在视频步进时播放音频**
+: 当启用时，视频按帧步进时会播放那帧的音频。
 
-**Default timing length**
-: The default length of a new untimed line, in milliseconds.
+**默认计时长度**
+: 新建行的默认持续时间，单位为毫秒。
 
-**Default lead-in length**
-**Default lead-out length**
-: The duration added to the start of a line by the "add lead-in" and "add
-lead-out" functions. Also used in (and set by) the [[timing
-postprocessor|Timing_Post-Processor]].
+**默认提前开始时间长度**
+**默认延后结束时间长度**
+: 使用“开始时间提前”和“结束时间延后”功能所增加的时间长度。同时也可在[[时间后续处理器|Timing_Post-Processor]]里使用和设置。
 
-**Marker drag-start sensitivity**
-: The distance in pixels that a marker must be dragged for it to register as a
-drag. Higher values reduce the chance of accidental changes, at the cost of
-worse responsiveness.
+**标记拖动灵敏度**
+: 能够视为拖动的鼠标移动的像素距离。较高的值可以降低误操作的可能，不过响应能力会降低。
 
-**Left-click-drag moves end marker**
-: When enabled, left clicking will set the start time of the line to the
-clicked point, then set the end time of the line to the point dragged to,
-making it possible to time a line with a single click-drag movement. When
-disabled, left-click-drag always updates only the start time of the line, as
-right-click does with the end time.
+**左键点击拖动动作结束标记**
+: 当启用时，左键单击频谱的某一位置会设置一行的开始时间点，然后拖动到的地方会设为结束时间点，
+使得打一行轴只需简单的单击——拖动就可完成。当禁用时，左键单击并拖动只会设置一行的开始时间，需要再右击来设置结束时间。
 
-**Line boundary thickness**
-: The width, in pixels, of the line start and end markers.
+**边线宽度**
+: 行的开始和结束标记的宽度，单位为像素。
 
-**Maximum snap distance**
-: Maximum distance to snap markers to other markers, in pixels.
+**最大紧贴标记距离**
+: 在这个距离内的标记会自动吸附，单位为像素。
 
-**Show inactive lines**
-: Controls how lines surrounding the currently selected line are displayed in
-the audio waveform. "Don't show" will only display the current line. "Show
-previous" will show the previous line (in the grid, _not_ chronologically) in
-gray in addition to the current line. "Show next and previous" will show the
-lines before and after the current line (in the grid, _not_ chronologically).
-"Show all" will show all lines in gray in addition to the current line.
+**显示非活动行**
+: 控制当前行附近的行将如何显示在音频波形视图上。“不显示”将只会显示当前行。“显示前一个”将用灰色显示除当前行的上一行（是字幕栏里的上一行， _不是_ 按时间顺序）。“显示前一个和下一个”将会用灰色显示当前行的前一行和后一行。“显示全部”将会用灰色显示除当前行之外的所有行。
 
-**Include commented inactive lines**
-: If disabled, commented lines will be skipped over when picking which inactive
-lines to show in the audio display (making "Show previous" into "Show last
-uncommented line before this line", and so on).
+**包括非活动注释行**
+: 如果禁用，注释行将会被跳过，例如“显示前一个”会变成“显示前一个非注释行”。
 
-### Display Visual Options ###
+### 显示/视觉选项 ###
 
-**keyframes**
-: If enabled, lines marking the positions of keyframes in the video will be
-drawn on the audio waveform when in dialogue timing mode (the default).
+**关键帧**
+: 如果启用，视频关键帧将会在默认情况下以线条的形式标记在音频波形视图上。
 
-**Karaoke keyframes**
-: If enabled, lines marking the positions of keyframes in the video will be
-drawn on the audio waveform when in karaoke timing mode.
+**卡拉OK模式关键帧**
+: 如果启用，视频关键帧将会在卡拉OK模式下以线条的形式标记在音频波形视图上。
 
-**Draw cursor time**
-: If enabled, a timestamp showing the time since the start of the file will be
-drawn near the top of the audio waveform cursor.
+**显示光标所在的时间**
+: 如果启用，会在音频波形上方显示出光标所指位置的时间点。
 
-**Video position**
-: If enabled, a line is drawn in the audio display marking the start time of
-the current video frame.
+**显示视频位置**
+: 如果启用，视频当前帧的开始时间会以线条的形式标记在音频波形视图上。
 
-**Waveform style**
-: Selects which of the waveform rendering styles to use
+**波形样式**
+: 选择使用何种波形渲染样式
 
-    Maximum + Average
-    : The waveform is two-tone, indicating both the maximum value of a sample
-        within a pixel's time range, and in a brighter color, the average value
-        of all samples within the time range.
+    最大 + 平均
+    : 波形会是两个通道，其中一个表示一个像素的时间范围内最大的一个音频样本的值，用较亮的颜色表示，和所有音频样本的平均值。
 
-    Maximum
-    : The waveform displays only the maximum value, as previous versions of
-        Aegisub did.
+    最大
+    : 波形只显示最大值，和之前的Aegisub版本一样。
 
-### Audio labels ###
-These options control the appearance of labels drawn in the audio display for
-karaoke syllables.
+### 音频标签 ###
+这些选项控制在音频栏显示的卡拉OK音节的外观。
 
-**Font Face**
-:   The font to use for audio labels.
+**字体**
+:   音频标签所用的字体。
 
-**Font Size**
-:   The font size to use for audio labels.
+**字体大小**
+:   音频标签的字体大小。
 
-## Video ##
+## 视频 ##
 
 [[img/preferences-video.png]]{: class="center"}
-**Show keyframes in slider**
-: When enabled, Aegisub will draw keyframe markers on the video seek slider.
+**在滑动条上显示关键帧**
+: 当启用时，Aegisub会在视频进度条上显示关键帧。
 
 **Seek video to line start on selection change**
 : When enabled, whenever the active line is changed Aegisub will automatically
