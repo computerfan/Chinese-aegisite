@@ -1,8 +1,6 @@
 {::options toc_levels="2,3" /}
 
-Aegisub is highly customizable and hence has a large amount of user-changeable
-options. These are available in the options dialog box, found in the View menu.
-This page is a reference of all the available options.
+Aegisub是可高度定制的软件，因而它有大量的选项供用户选择。这些选项都在选项对话框中，您可以在“查看”菜单里找到。这个页面提供可用选项的说明。
 
 Aegisub stores all its configuration in a plain text file called _config.json_
 which by default is stored in the [[?user|Aegisub_path_specifiers]] directory.
