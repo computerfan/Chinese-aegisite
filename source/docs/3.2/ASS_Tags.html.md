@@ -1,9 +1,6 @@
 {::options toc_levels="2" /}
 
-The following is a list of every tag supported by the Advanced Substation
-Alpha format. This is basically a detailed version of ass-quickref.txt. See
-the [[tutorial|Typesetting_Tutorial]] for an introduction to typesetting,
-using some basic tags.
+下面列出的每个支持ASS格式的标签。这基本上是一个详细的ass-quickref.txt版本。你可以在本教程手册的[[排版教程|Typesetting_Tutorial]]获取关于文本排版的教程，使用一些基本标签。
 
 ## Special characters ##
 
