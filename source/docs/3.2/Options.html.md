@@ -118,82 +118,54 @@ Aegisub将所有配置都以纯文本的形式储存在 _config.json_ 文件中�
 **在滑动条上显示关键帧**
 : 当启用时，Aegisub会在视频进度条上显示关键帧。
 
-**Seek video to line start on selection change**
-: When enabled, whenever the active line is changed Aegisub will automatically
-seek the video to the first frame of the new line. Note that this can by done
-manually by double-clicking on the grid, or by pressing Ctrl-1.
+**选择的行改变后，视频位置变为所选行的开始时间**
+: 当启用时，每当所选的行改变后，Aegisub都会自动将视频播放位置移至所选行的第一帧。
+注意双击行或者按Ctrl+1也可以实现这个功能。
 
-**Always show visual tools**
-: When disabled, the visual typesetting tools are only rendered when the mouse
-is over the video display.
+**只有当鼠标处在视频上时才显示可视化编辑工具**
+: 当启用时，可视化编辑工具只有在光标处在视频上时才会显示。
 
-**Automatically open audio when opening video**
-: When enabled, when you open a video file which also has audio data, Aegisub
-will automatically load the audio.
+**打开视频时自动加载音频**
+: 当启用时，当您打开的视频文件包含音轨，Aegisub将会自动加载音频。
 
-**Default zoom**
-: The default video zoom level. Useful if you have a very big or very small screen.
+**默认缩放**
+: 默认视频缩放级别。当您的屏幕非常大或非常小时很有用。
 
-**Fast jump step in frames**
-: Decides how big "jumps" Aegisub will make when you use the fast seek feature
-(Alt-rightarrow and Alt-leftarrow). Measured in frames.
+**快速步进帧数**
+: 决定当您使用快速步进功能（Alt+左方向键 和 Alt+有方向键）时一步“跳”多远。以帧为单位。
 
-**Screenshot save path**
-: Decides where Aegisub should save screenshots. The default is `?video`, which
-means they are saved to wherever the video is, but you can change it to any
-path you like. [[Aegisub_path_specifiers]] are supported; another option
-directly available in the dropdown is `?script`, which is wherever the script
-is.
+**截图保存路径**
+: 决定Aegisub把截图保存到哪。默认位置是`?video`，就是存到视频文件所在的文件夹，但您可以改成您想要的路径。支持[[Aegisub路径表示符|Aegisub_path_specifiers]]；下拉菜单里另一个可选选项是`?script`，即保存到字幕文件的位置。
 
-### Script resolution ###
+### 脚本分辨率 ###
 
-**Use resolution of first video opened**
-: When enabled, Aegisub will automatically set the script resolution to the
-video resolution if you open a video and the script resolution is not yet set.
-If this is disabled, Aegisub instead sets the script resolution to a
-configurable default.
+**使用第一次打开的视频的分辨率**
+: 当启用时，如果您打开了一个视频，且当前脚本没有设置分辨率，Aegisub将会自动把视频分辨率设为脚本分辨率。如果禁用，Aegisub会将脚本分辨率设为下面指定的默认分辨率。
 
-**Match video resolution on open**
-: Controls what Aegisub will do about script resolution when you open a video.
-If set to "never", Aegisub will do nothing if the script resolution doesn't
-match the video resolution. If set to "ask", Aegisub will ask you if you want
-to change the script resolution to match the video resolution if they don't
-match. If set to "always", Aegisub will always resample the script to
-match the video resolution automatically.
+**在打开时匹配视频分辨率**
+: 设置Aegisub在您打开视频时如何处理脚本分辨率。
+如果设为“从不”，Aegisub在视频和脚本分辨率不同时不会做任何事。如果设为“询问”，Aegisub在视频和脚本分辨率不同时会询问您是否改变脚本分辨率来适应视频。如果设为“使用视频分辨率”，则自动将脚本分辨率直接设为视频分辨率。如果设为“重设分辨率”则会重设脚本的分辨率来匹配视频。
 
-## Interface ##
+## 界面 ##
 
 [[img/preferences-interface.png]]{: class="center"}
 
-**Enable call tips**
-: When enabled, Aegisub will detect when you are writing an [[override
-tag|ASS_Tags]] and display a small box with a brief reference of the syntax of
-the tag in question until you close the tag. This is called a "call tip" and
-the feature may be familiar to users of various programming IDEs.
+**启用提示**
+: 当启用时，Aegisub将自动识别您打的[[特效标签|ASS_Tags]]，并显示一个这个标签的语法提示框，直至您闭合这个标签。这个功能叫做“语法提示”，和一些编程集成开发环境(IDE)的体验相似。
 
-**Overwrite in time boxes**
-: Controls the behavior of all time edit boxes in the program. By default, all
-time edit boxes in Aegisub behave like as if you had pressed the Insert button,
-so every digit you type overwrites what is already there, and you cannot erase
-numbers that are already there, you have to overwrite them. Unticking this box
-disables this behavior and makes the time edit boxes behave just like normal
-text edit boxes (almost).
+**时间框内覆盖写入**
+: 控制这个程序里所有时间编辑框的行为。默认情况下，Aegisub的所有时间编辑框就像您按下Insert键一样，所以您输入的每个数字都会覆盖已经存在的数字，并且无法删除已存在的数字，您只能覆盖它们。取消这个选项来禁用这个功能，并让所有时间编辑框像（大部分）常规文本编辑框一样。
 
-**Enable syntax highlighting**
-: Enables or disables syntax highlighting of override tags in the main edit
-box.
+**启用语法高亮**
+: 启用或禁用主编辑框特效标签的语法高亮功能。
 
-**Path to dictionary files**
-: Decides where Aegisub will look for dictionary files for its spellchecker and
-thesaurus. By default it looks in `?data/dictionaries`, but if you have your
-own dictionaries in the correct format somewhere else, feel free to point
-Aegisub there instead.
+**字典文件路径**
+: 决定Aegisub将在哪里寻找拼写检查和同义词词典文件。默认会在`?data/dictionaries`里找，但如果您在其他目录有自己的词典，您可以随意把它改为其他的目录。
 
-**Font**
-: Decides the font and fontsize used for the subtitle edit box and other edit
-boxes.
+**字体**
+: 决定字幕编辑框和其他编辑框中文字的字体和字体大小。
 
-**Maximum characters per line**
+**每行最大字符数**
 : If the value of the character counter is higher than this number, the
 background will turn red to alert you that you have exceeded the maximum line
 length. The maximum length is not enforced in any other way.
