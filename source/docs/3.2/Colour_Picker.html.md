@@ -1,4 +1,4 @@
-Aegisub introduces a more advanced color picker than the default Windows one. It allows you to enter color values using various color spaces, in both HTML and ASS hex, pick colors from a mini-screenshot and use three different color spectrums for graphically picking colors.
+Aegisub引入了一个Windows自带取色器高端很多的颜色选择器。它允许你使用不同的色彩空间输入颜色值，16进制的HTML和ASS都可以，pick colors from a mini-screenshot and use three different color spectrums for graphically picking colors.
 
 
 ## Overview ##
