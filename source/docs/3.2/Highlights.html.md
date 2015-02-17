@@ -1,28 +1,28 @@
 Aegisub的一些亮点：
 
 简单直观而又强大的字幕编辑界面
-: * With help from such features as spell checking/thesaurus, a translation assistant, call tips for override tags, syntax highlighting and various macros, translating, editing and quality assuring subtitles is now easier than ever.
-  * Made a mistake? Had a system crash? Don't worry, Aegisub saves your .ass with features like multi-level undo/redo, auto saving, backups and emergency recovery saving in case of system or program crashes.
+: * 在例如拼写检查&词典、翻译助手、特效标签提示、句法高亮以及各种自动化功能的帮助下，字幕翻译、编辑和校对等工作比从前会更加轻松。
+  * 误操作了？系统崩溃了？不用担心，Aegisub的多种功能可以帮你拯救你的字幕文件，包括多级的撤销/恢复、自动保存、备份和应急恢复，系统或软件的崩溃根本不惧。
 
 支持各种格式和字符集
-:  * Aegisub doesn't lock you into using any specific format; importing and exporting from and to several different formats (ranging from MPEG-4 Timed Text to MicroDVD) is supported.
-   * Multiple language subtitles? Legacy programs without Unicode support? No problem, Aegisub has full support for both Unicode and most common legacy encodings; both reading and writing.
+:  * Aegisub并不指定必须使用特定的格式，它支持你使用各种格式（包括从TTXT到MicroDVD的格式）来进行导出和导入操作。
+   * 多语言字幕？老软件不支持Unicode？完全没问题，Aegisub对Unicode和常用的老编码方案有着完整的支持，包括打开和保存。
 
 强大的视频模式
-: * Nearly all video formats are supported out of the box, but if that isn't enough, Aegisub can also use your system's DirectShow environment to open any format you can play in Windows Media Player.
-  * Automatic live preview of subtitles updated as you type, showing you exactly what the subtitles will look like in the player.
-  * Full support for variable framerate video and Matroska timecodes. Capable of reading timecodes directly from Matroska files for seamless VFR work.
-  * Problems with anamorphic video? Overscan? Aegisub has the tools to handle it.
+: * Aegisub支持几乎所有视频格式，但这还不够，Aegisub还能调用你系统的DirectShow环境来打开你能用Windows Media Player打开的所有格式。
+  * 在你输入的同时实时更新字幕预览，让你看到在播放器里字幕看起来究竟是什么样的。
+  * 完全支持可变帧率的视频和mkv时间码。能够读取mkv中封装的时间码无缝完成可变帧率工作。
+  * 遇到失真的视频？过扫描问题？Aegisub有专门的工具来解决它。
 
 可视化排版工具
-: * Typesetting on easy mode! No need to manually edit override tags; drag, rotate or clip the subtitles directly on the video frame using your mouse.
-  * Want to re-use typesetting on a video of different resolution or aspect ratio? Can't figure out what color that sign is using? Aegisub has the tools to help you deal with it.
+: * 用简单的方式来排版！不需要手动编辑各个特效标签，可以直接用鼠标在视频帧上拖动、旋转、裁减字幕。
+  * 想要让你的字幕适用不同分辨率或纵横比的视频？不能分辨出视频里的标志使用的到底是哪种颜色？Aegisub包含相关的工具来帮助你解决这些问题。
 
 直观且可定制的音频打轴模式
-: * Time dialogue or karaoke in any way you want with the heavily customizable audio interface; less painful than ever! Use features such as the spectrum analyzer mode or the automatic timing post-processor for even more efficient timing.
-  * Support for nearly every audio format in existence, and DirectShow support for if you manage to find one too obscure for libavcodec.
+: * 通过高度可定制的音频视图来为对话或卡拉OK字幕以你想要的形式来制作时间轴，打轴轻松多了！使用独有的频谱分析模式和时间后续处理器让你打轴更有效率。
+  * 支持几乎所有存在的音频编码，且当libavcodec无法识别时支持使用DirectShow。
 
 完全脚本化的自动化模块
-: * Is all the above not enough? Extend the program with your own macros or export filters using scripting in Lua.
-  * Comes with several ready-made scripts for quick and easy generation of your very own karaoke effects.
+: * 上面的功能还不够满意？你可以使用Lua来编写宏或导出滤镜来扩展程序的功能
+  * Aegisub也提供了许多内置的脚本来方便你更容易的制作自己的卡拉OK字幕效果。
 
