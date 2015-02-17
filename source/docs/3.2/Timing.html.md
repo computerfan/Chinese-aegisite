@@ -1,9 +1,8 @@
 {::options toc_levels="2,3" /}
 
-## The main audio view ##
+## 主音频视图 ##
 
-When your audio file has loaded, Aegisub will transform into something like
-the screenshot below:
+当你加载了音频文件，Aegisub将会出现如下图的界面：
 [[img/audio_display.png]]
 
 You can click and drag just below the audio timeline to change the height of
