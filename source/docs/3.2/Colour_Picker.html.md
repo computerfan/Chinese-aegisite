@@ -1,39 +1,39 @@
-Aegisub引入了一个Windows自带取色器高端很多的颜色选择器。它允许你使用不同的色彩空间输入颜色值，16进制的HTML和ASS都可以，pick colors from a mini-screenshot and use three different color spectrums for graphically picking colors.
+Aegisub引入了一个比Windows自带取色器高端很多的颜色选择器。它允许你使用不同的色彩空间输入颜色值，可以直接输入16进制的HTML和ASS颜色值，也可以从迷你截屏中取色或者使用三种不同的色彩光谱取色。
 
 
-## Overview ##
+## 总览 ##
 
 
 [[img/Colour_picker.png]]{: class="center"}
 
-The color picker has the following components:
+颜色选择器由以下几个部分组成:
 
-* Color spectrum
-* Parametric settings for four color-spaces 
-* HEX input for ASS and HTML formats 
-* Pick-from-screen control, for taking a mini-screenshot and picking a color from it 
-* List of 32 last picked colors 
+* 色彩光谱
+* 四种色彩空间的参数设置
+* 用于ASS 和 HTML的16进制色彩值代码 
+* 从屏幕中一小区块，生成一个迷你截屏，然后从中取色
+* 最近使用的32种颜色
 
-The last used mode of the color spectrum is remembered.
-
-
-## Using the pick-from-screen function ##
+最后一次使用的光谱模式会被记录
 
 
-1. The pick-from-screen control is located to the left of the last-used colors, in the lower part of the window. 
-1. To start using it, click on the "pick color" symbol.
-1. As you drag over the screen, you'll notice that the square box beside the pick color button turns into a magnification of the area the cursor is hovering over. 
-1. When you've found the area you want to grab a color from, click the left mouse button to fixate the magnification.
-1. Now click on the pixel you want to grab a color from in the magnification.
-
-On OS X, you have to drag the pick control to the desired spot due to clicking on it and then clicking on the spot to pick from due to technical limitations.
+## 使用 从屏幕取色 模式 ##
 
 
-## Descriptions of the color spaces ##
+1. 从屏幕取色 控制区在最近使用的颜色左侧，颜色选择器窗口的下端。
+2. 想使用它，先点击*“吸管工具”(可以单击不放开，进行4步时直接松开，也可以单击，再按4中操作)。
+3. 当你把吸管工具在窗口中拖动的时候，你会注意到吸管工具实际上是一个放大镜，放大的结果显示在吸管工具右侧的方框中。
+4. 当你已经把鼠标指针移动到了你想取色的区域，单击鼠标左键使方框中的内容固定下来。
+5. 现在在方框中点击你想要的颜色对应的像素。
 
-Here's a short round-up of the three available color spaces:
+*在OS X中，由于技术限制，你只能使用点按住吸管工具这一种方式进行取色。
 
-* _RGB_ - Red, Green and Blue, the three component colors a computer monitor uses to display images. In RGB mode, you specify the intensity of each of those three components. 
-* _HSL_ - Hue, Saturation and Luminance. Hue is the actual "color of the color", that is, red, green, blue or a mix of those. Saturation is the "greyness" of the color, the lower the saturation, the closer to a shade of grey, the color becomes. Luminance is the lightness, max luminance means pure white, while zero luminance means pure black. 
-* _HSV_ - Hue, Saturation and Value. Hue and Saturation mean the same as in HSL. Value, however, is different from the luminance in HSL. Value is the "non-blackness" of the color, the smaller the value, the closer the color is to pure black.
 
+## 有关色彩空间的描述 ##
+
+三种可用的色彩空间介绍:
+
+* _RGB_ - 红、绿、蓝 ，电脑屏幕使用的三原色显示方式。在RGB模式下，由你指定三种颜色的色彩深度。
+* _HSL_ - 色相(软件中为色调)、饱和度、亮度，色相是真正的“颜色中的颜色”，它们是：红色、绿色、蓝色或者是这些纯色的混合。饱和度是颜色的“灰度”，低饱和度会使颜色接近黑色。亮度，最亮度是纯白色，最高则是纯黑色。
+* _HSV_ - 色相(软件中为色调)、饱和度、明度，前两项和HSL中含义相同。明度，却与亮度有所不同，明度是颜色“不黑的程度”，值越小，颜色越接近纯黑。
+  (译者注:鉴于后两者描述比较抽象，特额外附图下方)
