@@ -383,149 +383,131 @@ programs more responsive while long-running scripts are active.
 dialogue is opened. In that case you will have to enter the
 [[Automation/Manager]] window and determine the cause of the error.
 
-## Advanced Audio ##
+## 高级音频设置 ##
 
 [[img/preferences-advanced-audio.png]]{: class="center"}
 
-**Audio provider**
-: What backend to to use for loading audio. Currently there are only two
-    methods.
+**音频来自**
+: 选择使用何种后台处理方式来载入音频。目前这里只提供两种可选方式。
 
-    _avisynth_ (Windows only)
-    : Uses [Avisynth](http://www.avisynth.org) to load audio. All file types
-        will be loaded with DirectShowSource(), except for AVS files which will
-        be opened with Import().
+    _avisynth_ (仅限Windows)
+    : 使用 [Avisynth](http://www.avisynth.org) 载入音频。
+      所有类型的文件都将会在Avisynth中以DirectShowSource()方式被载入，但*.avs文件会以Import()方式被载入。
+      译者注：如果你懂得写AVS脚本的话，甚至可以变相使用LwlibavAudioSource()等五花八门的方式载入音频文件。
+      但如果你不懂如何写AVS，这个方式一般就不要考虑了。因为DirectShowSource()实在是和人品有关，
+      推荐还是用下面的FFMS2载入音频。
 
     _FFmpegSource_
-    : Uses [FFMS2](http://code.google.com/p/ffmpegsource/) to load audio.
-        Generally more reliable than opening via DirectShowSource, but slower
-        due to that it has to index files first.
+    : 使用 [FFMS2](http://code.google.com/p/ffmpegsource/) 载入音频。
+      通常比使用DirectShowSource()方式载入更加可靠，但是载入的速度也会慢一些。缘于FFMS2需要先索引一遍媒体文件，通常这
+      会花费一些时间，时间长短视文件大小以及电脑性能而异。
 
-    Regardless of this setting, the internal PCM WAV reader will always be
-    tried first for WAV files.
+    值得注意的是，无论这里如何设置，对于WAV文件，PCM WAV Reader都将优先被使用。
 
-**Audio player**
-: What method to use for playing back audio. The options depend on the platform.
+**音频播放器**
+: 使用何种方案来播放音频，选项因平台而异。
 
-    _DirectSound_ (Windows only)
-    : Uses Microsoft DirectSound to play back audio. This is the best
-        tested and most stable audio player.
+    _DirectSound_ (仅限Windows)
+    : 使用“Microsoft DirectSound”来播放音频。这是目前广泛测试而又最稳定可靠的音频播放器。
 
-    _DirectSound-old_ (Windows only)
-    : Aegisub's original implementation of the DirectSound player. If
-        you have audio playback problems when using the DirectSound player this
-        one may work better (but probably won't).
+    _DirectSound-old_ (仅限Windows)
+    : 早期的Aegisub使用的“DirectSound”播放器。
+      如果你在使用上面的播放器时出现了人品问题，也许可以试试这个（祝你好运）。
 
-    _alsa_ (Linux only)
-    : Uses the [Advanced Linux Sound
-        Architecture](http://www.alsa-project.org/) to play back audio. ALSA is
-        the native sound architecture of Linux and is not available on any
-        other systems.
+    _alsa_ (仅限Linux)
+    : 使用[Advanced Linux Sound Architecture](http://www.alsa-project.org/)来播放音频。
+      ALSA是Linux系统的原生音频架构并且它无法在其他任何系统上使用。
 
-    _pulse_ (Linux and other *NIX-like systems)
-    : Plays sound back through a [PulseAudio](http://pulseaudio.org/)
-        sound server. This is the least-tested and least likely to work of the
-        audio players, and is only recommended if your audio setup makes
-        non-pulse players undesirable.
+    _pulse_ (仅限Linux和其他“类UNIX”系统, eg: FreeBSD、OpenBSD)
+    : 通过一个[PulseAudio](http://pulseaudio.org/)声音服务器来播放音频。
+      这是最缺乏测试而又很可能无法正常工作的音频播放器，因此仅推荐那些讨厌non-pulse播放器的人使用。
 
     _portaudio_
-    : Use the [PortAudio](http://www.portaudio.com/) API to play back
-        sound. PortAudio has different playback implementations on different
-        platforms. On most Unices it uses Open Sound System (OSS) for output.
-        It is currently the only Windows audio player which supports
-        selecting the output device.
+    : 调用[PortAudio](http://www.portaudio.com/)的API来播放音频。
+      PortAudio在不同平台上拥有不同的音频播放解决方案。在绝大多数的类UNIX系统上使用Open Sound System (OSS)
+      来输出音频。它也是当今在Windows系统上唯一支持选择输出设备的音频播放器。
 
     _openal_
-    : Uses the [OpenAL](http://www.openal.com/) API to play back audio.
-        This is the recommended player on OS X. It is normally not included in
-        windows builds due to that it adds an extra dependency for little
-        benefit.
+    : 调用[OpenAL](http://www.openal.com/)的API来播放音频。
+      这是在OS X系统上的推荐方案。但OpenAL通常不会随Windows安装自带，因为它会让巨硬觉得不爽。
 
-### Cache ###
+### 缓存 ###
 
-**Cache type**
-: Use RAM unless you have very little of it, then use Hard Disk. The cache is
-not needed and not used when PCM WAV files are opened. If you disable caching,
-audio playback might become very unreliable.
+**缓存类型**
+: 推荐选择内存，如果你的计算机安装内存十分小，那么就选择硬盘吧。
+值得注意的是，打开PCM WAV文件时不需要使用任何缓存！但如果你关闭缓存的话，音频播放可能会变得极不稳定！
 
-**Path**
-**File name**
-: These options determine where the hard disk audio cache will be located. Only
-used if cache is set to hard disk. You shouldn't need to change this unless
-you're low on disk space. For the name, the string expects a printf-style "%i"
-parameter, that will be replaced with a number. "%02i" is used by default.
-Don't change that unless you know what you are doing.
+**缓存路径**
+**缓存文件名**
+: 这些选项决定硬盘上的音频缓存的存储位置。仅缓存类型设置为“硬盘”的情况下生效。
+在硬盘空间充足的情况下切勿更改这些设置。对于缓存文件名来说，它应该满足C语言的输出风格即"%i"形参，
+形参会被一个数字所取代。"%02i"就是默认值。千万不要随意修改这些设定，除非您清楚的知道您在干什么。
 
-### Spectrum ###
+### 频谱模式 ###
 
-**Spectrum quality**
-: Determines the quality of the audio spectrum display. Higher quality settings
-result in larger CPU and RAM use. Each consecutive setting uses a bit more CPU
-than the previous, and double the amount of RAM.  For 48 kHz sample rate audio,
-one minute of audio uses this much memory at the different settings:
+**质量**
+: 设定显示频谱的质量。越高等级质量的设定会导致越高的CPU和内存占用。
+每提高一个等级的设定，CPU占用会略微提高，内存占用则会达到上一等级的两倍。
+对于采样率48KHz、时长1分钟的音频来说，不同等级质量的设定占用的内存如下表。
 
     <table class="table table-bordered table-condensed">
-      <tr><th>0 "regular"</th><td>11 MB</td>
-      <tr><th>1 "better"</th><td>22 MB</td>
-      <tr><th>2 "high"</th><td>44 MB</td>
-      <tr><th>3 "insane"</th><td>88 MB</td>
+      <tr><th>0 "一般质量"</th><td>11 MB</td>
+      <tr><th>1 "较好质量"</th><td>22 MB</td>
+      <tr><th>2 "高质量"</th><td>44 MB</td>
+      <tr><th>3 "极高质量"</th><td>88 MB</td>
     </table>
 
-    The amount of memory used does not depend on the number of channels
-    (Aegisub always works in mono) or the bit-depth (the spectrum is always
-    calculated in 32 bit floating point) of the audio.
+    值得注意的是，内存的占用量和音频的声道数以及位深无关。
+    因为Aegisub一直工作在转换后的单声道模式下，并且频谱也是一直以32位浮点精度计算的。
 
-{::template name="todo"}this is probably wrong{:/}
+{::template name="todo"}以上均属杜撰(=・ω・=){:/}
 
-**Cache memory max**
-: The maximum amount of memory to use for audio spectrum caching. The results
-of the calculations to display the audio spectrum are cached to make scrolling
-through the audio smoother. The amount of spectrum display that can be cached
-in an amount of memory depends on the quality setting above. The default cache
-size of 128 MB results a little less than 6 minutes of audio at 48 kHz in
-quality 1. If you set this smaller than 5 MB, the default of 128 MB will be
-used instead. You probably shouldn't set this to more than 1/4 of your amount
-of physical RAM installed.
+**缓存最大容量**
+: 设定频谱缓存所能占用的最大内存数量。
+已计算好的频谱会被缓存到内存中以保证滚动频谱时不发生卡顿。
+并且能缓存的频谱数量在一定容量的缓存限制下是和频谱的质量设定有关的。
+以48Khz采样率的音频为例，在频谱质量设定为“较好质量”的情况下，默认的128M缓存约能缓存六分钟的频谱。
+但需要注意的是，如果你的缓存设置小于5MB，则Aegisub会自动套用默认的缓存大小（128M）。
+建议最大缓存容量不要超过你电脑安装物理内存的四分之一。（内存壕请无视）
 
-### Avisynth (Windows only) ###
+### Avisynth (仅限Windows) ###
 
-**Avisynth down-mixer**
-: Aegisub can only use mono (single-channel) audio. This option determines
-which Avisynth function to use to convert audio to mono.
+**Avisynth down-mixer（声道混合/提取）**
+: Aegisub仅能使用单声道音频。这个选项设定Avisynth如何将音频转换为单声道。
+ConvertToMomo：将立体声或多声道重新混合成单声道。
+GetLeftChannel：仅提取左声道。
+GetRightChannel：仅提取右声道。
 
-**Force sample rate**
-: Convert all audio opened to the given sample rate. Forcing the sample rate to
-the sample rate used by your sound card (rather than having the audio player do
-it) can potentially improve audio performance and fix playback issues.
+**强制采样率**
+: 强制转换所有已打开音频的采样率为给定值。默认0则不做转换。
+若使用硬件声卡完成这一转换，则可潜在提升音频表现力以及修复一些播放问题。
+（麻麻说软件播放器转换不行。这玄学吗？）
 
 ### FFmpegSource ###
 
-**Audio indexing error handling mode**
-: What to do if an error occurs while indexing an audio track.
+**音频索引错误处理模式**
+: 若索引音频时出现错误，则有下面几种处理模式可选~
 
-    _Ignore_
-    : Ignore the error and continue decoding the file. This mode can let you
-        open some corrupted files, but can cause audio/video desync.
+    _忽略_
+    : 忽略错误并且继续解码文件。这个模式可以让你打开一些受损的媒体文件，但可能导致音画不同步。
 
-    _Clear_
-    : Pretend that the track with the error does not exist in the file.
+    _清除_
+    : 假设媒体文件中不存在这条有错误的音轨。
 
-    _Stop_ (default)
-    : Stop indexing at the point of the error and return all audio data before
-        the error. This is the default due to that corrupted audio packets at
-        the very end of files are fairly common.
+    _停止_ (默认值)
+    : 停止索引文件并且返回错误前的所有音轨数据。这是Aegisub的默认值，因为在音轨末端遭遇到受损的音频数据是很常见的。
+    （笔者表示貌似不常见 QAQ ）
 
-    _Abort_
-    : Refuse to open the file at all.
+    _取消_
+    : 直接取消打开整个媒体文件。
 
-**Always index all audio tracks**
-: If disabled, opening a video file will only index the video tracks, forcing
-you to reindex the file to open audio tracks from the same file.
+**总是索引所有音轨**
+: 一旦禁用，打开视频文件只会索引视频轨道，音轨文件则还需要手动再载入一次。
 
 ### Portaudio ###
 
-**Portaudio device**
-: What output device to use when playing audio through portaudio.
+**Portaudio 设备**
+: 当使用PortAudio输出音频时可在这里选择输出音频的设备。
 
 ## Advanced Video ##
 
