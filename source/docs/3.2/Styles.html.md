@@ -98,13 +98,14 @@ Aegisub的样式管理器工具 (字幕菜单下可找到) 提供了多种多样
     这个数值代表着两个字符之间附加的空像素数;具体是按照脚本像素还是视频像素计算的并没有明确说明(在VSFilter中)。
 
     编码
-    : Controls which codepage is used to map codepoints to glyphs; it has
+    : 这个问题很难讲清楚，很难做到无误的翻译，而且绝大多数情况这个选项不用调整，故下面只附上英文原文。
+    Controls which codepage is used to map codepoints to glyphs; it has
     nothing to do with the actual text encoding of the script. This is only
     meaningful on Windows using VSFilter, where it is used to get some old
     (particularly Japanese) fonts without proper Unicode mappings to render
     properly. On other systems and renderers, Freetype2 provides the proper
     mappings. If you didn't understand a word of the above, pretend this
-    setting doesn't exist, as it is rarely important.
+    setting doesn't exist, as it is rarely important.(如果读完英文也无法理解，就假装它不存在吧)
 
     预览
     : 显示当前样式设置下文本看起来是什么样子的。文本框区域可以输入一些文字用来观看效果，点击颜色可以设置背景颜色。
