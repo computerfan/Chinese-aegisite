@@ -325,7 +325,7 @@ as when editing them.
 : 如果启用自动保存，Aegisub将每隔一段时间自动保存一份当前编辑的字幕文件副本到设定目录下。
 
 **保存间隔（秒）**
-: 设定两次自动保存的间隔时间。How often should Aegisub autosave.
+: 设定两次自动保存的间隔时间。
 
 **保存路径**
 : 设定自动保存的字幕文件副本的存放位置。默认设定为`?user/autosave/`
@@ -335,8 +335,6 @@ as when editing them.
 **每次更改后自动保存**
 : 如果启用此设定，Aegisub将在每次更改后自动保存文件。
 需要注意的是，目前此功能和'编辑'菜单的 '恢复' 功能存在一些冲突问题。
-If enabled, Aegisub will save the file after every change made to it. Note
-that this currently causes some problems with the undo system.
 
 ### 自动备份 ###
 
