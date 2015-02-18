@@ -517,7 +517,7 @@ GetRightChannel：仅提取右声道。
 : 使用何种方式来载入视频。可用选项取决于你安装的Aegisub编译版本和运行Aegisub的系统平台。
 视实际情况可能存在以下选项：
 
-    _avisynth_ (Windows only)
+    _avisynth_ (仅限Windows)
     : 使用[Avisynth](http://www.avisynth.org)来载入视频。
         Avisynth支持载入绝大多数常见格式的媒体以及*.d2v文件（注：d2v文件是DVD VOB媒体文件的索引文件，
         但对*.d2v文件的支持需要正确安装相关Avisynth源滤镜）。
@@ -526,7 +526,7 @@ GetRightChannel：仅提取右声道。
 
     _FFmpegSource_
     : 使用[FFMS2](http://code.google.com/p/ffmpegsource/)来载入视频。
-        如果你看不懂上面在说些什么，那么FFMS2就是你最好的选择。支持绝大多数常见格式并且相对极为可靠。
+        如果你看不懂上面在说些什么，那么FFMS2就是你最好的选择。支持绝大多数常见格式并且通常极为可靠。
         但对于较大的媒体文件可能会花费几分钟的索引时间。
 
 **字幕来自**
@@ -544,29 +544,30 @@ GetRightChannel：仅提取右声道。
         鉴于越来越多的人开始使用libass，如果你在制作复杂的软字幕，那么最好同时用libass和VSFilter检查一下你的字幕渲染。
 
 **强制BT.601**
-: 由于VSFilter的兼容性问题，强制指定所有输入的YUV色彩格式的视频均为BT.601色域。
+: 由于VSFilter的兼容性问题，强制指定所有输入的YUV色彩格式的视频为BT.601色域。
 
-    When VSFilter is used as a DirectShow filter, it always uses the BT.601
-    color matrix for converting the subtitles from RGB to YUV. This means that
-    if the video uses BT.709 (as most HD video and the occasional DVD does),
-    colors which match the video in Aegisub will not match the video in the
-    player. This option makes Aegisub always convert videos to RGB using
-    BT.601, making the colors shown in Aegisub incorrect, but making it so that
-    if the colors match in Aegisub, they will match in the player.
+    当VSFilter被用作DirectShow字幕滤镜时，VSFilter总会将字幕从RGB色彩格式转换为BT.601色域的YUV格式。
+    这意味着如果视频是BT.709色域（实际上绝大多数高清视频和少数DVD就是这种色域），
+    那么你在Aegisub中看到的色彩将和你在播放器中看到的色彩存在偏差。
+    这个选项能强制Aegisub将所有载入的YUV色彩格式视频以BT.601色域转换为RGB色彩格式，
+    虽然这可能导致不正确的的色彩显示，但能保证你在Aegisub中看到的效果和在播放器中看到的效果相同。
 
-    To make things more exciting, VSFilter will use the *correct* color space
-    when used as the internal subtitle renderer in MPC-HC, so enabling this
-    option will result in *mismatched* colors in that case. As the ISR is
-    currently broken in many ways (e.g. it is impossible to accurately position
-    subtitles with it), we recommend not worrying about it for now.
+    更有趣的是，当作为MPC-HC的内置字幕渲染器时，VSFilter就会使用“正确的”色域，
+    在这种情况下，结果却会产生与视频色域“不匹配的”色彩。
+    这是因为ISR目前打破了很多老规矩（例如：目前不可能用它精准的定位字幕），我们建议目前不必为这事担心。
 
-    This comparison may make this clearer:
+    也许下面的图片对比能帮助你理解的更清楚。
 
     [[img/bt601.png]]
 
-    Aegisub now writes what colorspace should be used for RGB -> YUV
-    conversions to the subtitle file, so hopefully this mess will be resolved
-    by renderer improvements sometime in the future.
+    Aegisub现已在生成的字幕文件中注明了应该使用何种色域来进行RGB -> YUV转换，
+    希望以后能依靠字幕渲染器的改进来解决这个烂摊子。
+    
+    译者注：VSFilter渲染顺序为： RGB渲染字幕 -> 转换YUV -> 覆盖字幕到视频。
+    Aegisub的视频载入后会转换为RGB，字幕是Overlay到视频上的。
+    笔者对“强制BT.601”这块翻译的也不是很确信，欢迎菊苣前来纠正！
+    附上原文地址，For Original Manual, Please refer to “Force BT.601” Section.
+    http://docs.aegisub.org/3.2/Options/#advanced-video
 
 ### Avisynth ###
 
