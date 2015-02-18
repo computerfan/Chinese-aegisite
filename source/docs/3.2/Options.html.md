@@ -526,30 +526,25 @@ GetRightChannel：仅提取右声道。
 
     _FFmpegSource_
     : 使用[FFMS2](http://code.google.com/p/ffmpegsource/)来载入视频。
-        如果你看不懂上面在说些什么，那么FFMS2就是你最好的选择。支持绝大多数常见格式并且相对较为可靠。
+        如果你看不懂上面在说些什么，那么FFMS2就是你最好的选择。支持绝大多数常见格式并且相对极为可靠。
         但对于较大的媒体文件可能会花费几分钟的索引时间。
 
-**Subtitles provider**
-: Decides what backend Aegisub uses to render subtitles on the video.
-    If you install additional CSRI renderers such as VSFilterMod or
-    xy-VSFilter (by placing the dlls in the CSRI directory within Aegisub's
-    directory), they will be listed here along with the default ones.
+**字幕来自**
+: 选择使用何种方式来渲染字幕。
+    如果你自行安装了其他的CSRI字幕渲染器，例如 VSFilterMod 或 xy-VSFilter，则它们都会自动出现在可选列表中。
+    （安装这两种渲染器只需要把其对应的DLL文件放入Aegisub安装目录下的CSRI目录内即可）
 
-    *CSRI/vsfilter_textsub* (Windows only)
-    : Use VSFilter 2.40 to render subtitles. This is the standard subtitle
-        renderer which defines the ASS format used by Aegisub.
+    *CSRI/vsfilter_textsub* (仅限Windows)
+    : 使用VSFilter 2.40来渲染字幕。这是Aegisub针对ASS格式字幕使用的标准渲染器。 
 
     _libass_
-    : Use [libass](http://code.google.com/p/libass/) to render subtitles.
-        libass is far faster than VSFilter and (somewhat) cross-platform, but
-        unfortunately still has some rendering differences from VSFilter and
-        font-related issues on Windows. If you are doing complex typesetting
-        that will be [[softsubbed|Attaching_subtitles_to_video#softsubbing]] it
-        is a good idea to check your work with both VSFilter and libass, as an
-        increasing number of users are using libass.
+    : 使用[libass](http://code.google.com/p/libass/)来渲染字幕。
+        libass渲染速度远快于VSFilter，并且libass一定程度上可以跨平台使用。
+        它和VSFilter的渲染方式有些不同，并且很不幸的是，在Windows平台上有一些已知的字体渲染BUG。
+        鉴于越来越多的人开始使用libass，如果你在制作复杂的软字幕，那么最好同时用libass和VSFilter检查一下你的字幕渲染。
 
-**Force BT.601**
-: Pretend all YUV videos are BT.601, for VSFilter compatibility.
+**强制BT.601**
+: 由于VSFilter的兼容性问题，强制指定所有输入的YUV色彩格式的视频均为BT.601色域。
 
     When VSFilter is used as a DirectShow filter, it always uses the BT.601
     color matrix for converting the subtitles from RGB to YUV. This means that
