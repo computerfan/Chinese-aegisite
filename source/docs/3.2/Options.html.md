@@ -446,9 +446,9 @@ dialogue is opened. In that case you will have to enter the
 ### 频谱模式 ###
 
 **质量**
-: 设定显示频谱的质量。越高等级质量的设定会导致越高的CPU和内存占用。
+: 设定显示频谱的质量。越高质量等级的设定会导致越高的CPU和内存占用。
 每提高一个等级的设定，CPU占用会略微提高，内存占用则会达到上一等级的两倍。
-对于采样率48KHz、时长1分钟的音频来说，不同等级质量的设定占用的内存如下表。
+对于采样率48KHz、时长1分钟的音频来说，不同质量等级的设定占用的内存如下表。
 
     <table class="table table-bordered table-condensed">
       <tr><th>0 "一般质量"</th><td>11 MB</td>
@@ -509,28 +509,25 @@ GetRightChannel：仅提取右声道。
 **Portaudio 设备**
 : 当使用PortAudio输出音频时可在这里选择输出音频的设备。
 
-## Advanced Video ##
+## 高级视频设置 ##
 
 [[img/preferences-advanced-video.png]]{: class="center"}
 
-**Video provider**
-: Decides what method Aegisub should use to load video. What options you have
-    available here depends on how your copy of Aegisub was compiled and what
-    operating system you are running under. The following alternatives exist:
+**视频来自**
+: 使用何种方式来载入视频。可用选项取决于你安装的Aegisub编译版本和运行Aegisub的系统平台。
+视实际情况可能存在以下选项：
 
     _avisynth_ (Windows only)
-    : Uses [Avisynth](http://www.avisynth.org) to load video. Versatile,
-        supports loading almost all common formats as well as .d2v files
-        (indexed DVD VOBs) if the correct plugin is supplied. Note that Aegisub
-        can install its own avisynth.dll instead of using your system
-        installation if so desired. Requires Video for Windows decoders for AVI
-        files for best performance. Uses DirectShow for most formats, so it
-        isn't recommended for anything but AVI, d2v and opening Avisynth
-        scripts.
+    : 使用[Avisynth](http://www.avisynth.org)来载入视频。
+        Avisynth支持载入绝大多数常见格式的媒体以及*.d2v文件（注：d2v文件是DVD VOB媒体文件的索引文件，
+        但对*.d2v文件的支持需要正确安装相关Avisynth源滤镜）。
+        需要注意的是Aegisub可以使用其自己独立的Avisynth.dll，而不使用你安装的Avisynth。
+        若使用Avisynth载入视讯，则只推荐载入*.avi *.d2v *.avs文件以获(fang)得(zhi)最(ren)佳(pin)体(wen)验(ti)。
 
     _FFmpegSource_
-    : Uses [FFMS2](http://code.google.com/p/ffmpegsource/) to load video.
-        Generally the most reliable option.
+    : 使用[FFMS2](http://code.google.com/p/ffmpegsource/)来载入视频。
+        如果你看不懂上面在说些什么，那么FFMS2就是你最好的选择。支持绝大多数常见格式并且相对较为可靠。
+        但对于较大的媒体文件可能会花费几分钟的索引时间。
 
 **Subtitles provider**
 : Decides what backend Aegisub uses to render subtitles on the video.
