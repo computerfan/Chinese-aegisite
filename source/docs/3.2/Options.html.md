@@ -315,39 +315,38 @@ To add a new hotkey, select the context you want to add the hotkey to, then
 click the New button. Enter the [[command name|Commands]], then set the hotkey
 as when editing them.
 
-## Backup ##
+## 备份 ##
 
 [[img/preferences-backup.png]]{: class="center"}
 
-### Automatic Save ###
+### 自动保存 ###
 
-**Enable**
-: If enabled, Aegisub will periodically save a copy of the script you are
-working on to the autosave path.
+**启用**
+: 如果启用自动保存，Aegisub将每隔一段时间自动保存一份当前编辑的字幕文件副本到设定目录下。
 
-**Interval in seconds**
-: How often should Aegisub autosave.
+**保存间隔（秒）**
+: 设定两次自动保存的间隔时间。How often should Aegisub autosave.
 
-**Path**
-: Decides where to save autosaved copies of scripts you are working on. By
-default set to `autosave` in your Aegisub `?user` directory (see the
-[[Aegisub_path_specifiers]] page for details).
+**保存路径**
+: 设定自动保存的字幕文件副本的存放位置。默认设定为`?user/autosave/`
+对于Windows 7系统。实际的默认路径为 `%UserProfile%\AppData\Roaming\Aegisub\autosave`
+（对于其他系统，请参考[[Aegisub_path_specifiers]] ）
 
-**Autosave after every change**
-: If enabled, Aegisub will save the file after every change made to it. Note
+**每次更改后自动保存**
+: 如果启用此设定，Aegisub将在每次更改后自动保存文件。
+需要注意的是，目前此功能和'编辑'菜单的 '恢复' 功能存在一些冲突问题。
+If enabled, Aegisub will save the file after every change made to it. Note
 that this currently causes some problems with the undo system.
 
-### Automatic Backup ###
+### 自动备份 ###
 
-**Enable**
-: If enabled, Aegisub will save a backup copy of each script you open,
-immediately on opening it. By default, it is saved to `?user/autoback/`, but
-this can be changed (see below).
+**启用**
+: 如果启用自动备份，Aegisub每打开一个字幕文件，都会为其自动备份一个副本到设定目录下。
 
-**Path**
-: Decides where to save automatic backup copies of scripts. By default set to
-`autoback` in your Aegisub `?user` directory.
-
+**保存路径**
+: 设定自动备份的字幕文件副本的存放位置。默认设定为`?user/autoback/`
+对于Windows 7系统。实际的默认路径为 `%UserProfile%\AppData\Roaming\Aegisub\autoback`
+（对于其他系统，请参考[[Aegisub_path_specifiers]] ）
 
 ## Automation ##
 
@@ -564,34 +563,30 @@ GetRightChannel：仅提取右声道。
     希望以后能依靠字幕渲染器的改进来解决这个烂摊子。
     
     译者注：VSFilter渲染顺序为： RGB渲染字幕 -> 转换YUV -> 覆盖字幕到视频。
-    Aegisub的视频载入后会转换为RGB，字幕是Overlay到视频上的。
-    笔者对“强制BT.601”这块翻译的也不是很确信，欢迎菊苣前来纠正！
+    Aegisub中视频载入后会被转换为RGB，字幕是Overlay到视频上的。
+    笔者对“强制BT.601”这块的翻译也不是很自信，欢迎菊苣前来指正！
     附上原文地址，For Original Manual, Please refer to “Force BT.601” Section.
     http://docs.aegisub.org/3.2/Options/#advanced-video
 
 ### Avisynth ###
 
-**Allow pre-2.56a Avisynth**
-: Support using ancient versions of Avisynth that a few people refuse to
-upgrade past for various bad reasons.
+**允许pre-2.56a Avisynth（允许使用旧版本的Avisynth）**
+: 支持使用2.56a前的老版本的Avisynth，因为总有些人的信仰难以动摇。
 
-**Avisynth memory limit**
-: Frame cache memory limit for Avisynth. Raising this generally does not
-improve performance and should be done only if you're opening overcomplicated
-Avisynth scripts directly.
+**Avisynth 内存限额**
+: 设定Avisynth能够使用最大RAM缓存。
+通常增加缓存大小并不能加快处理速度，除非你直接载入了非常复杂的AVS脚本。
 
 ### FFmpegSource ###
 
-**Debug log verbosity**
-: Set ffmpeg/libav's verbosity level. Only has an effect when you have a
-debugger attached to Aegisub.
+**Debug日志的详细级别**
+: 设定ffmpeg/libav的日志详细级别。此选项仅在你对Aegisub启用调试器时才有设定价值。
 
-**Decoding threads**
-: Maximum number of threads to use to decode video, or -1 to choose
-automatically. Setting this to 1 can fix some decoding issues at the cost of
-performance. There is rarely any reason to set it to a value other than 1 or
--1.
+**解码线程**
+: 设定用于解码视频的最多线程数，-1 意味着自动选择。
+如果你在解码视频时碰到了意外问题，将其设置为 1 也许能解决一些解码问题。但这也会牺牲一定的解码速度。
+通常不推荐 -1 和 1 以外的设定值。
 
-**Enable unsafe seeking**
-: Disable some of FFMS2's sanity checks when seeking in video. Makes it
-possible to open some files which FFMS2 cannot seek frame-accurately in.
+**允许可能不安全的定位**
+: 启用此选项会禁用一些FFMS2对于媒体文件的完整性检查。
+在某些情况下有可能借此打开一些FFMS2原本因帧定位问题而无法打开的媒体文件。但通常不建议开启。
