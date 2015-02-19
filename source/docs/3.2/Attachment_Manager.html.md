@@ -5,16 +5,12 @@
 ## 概览  ##
 [[img/Attachment_list.png]]{: class="center"}
 
-The entire dialogue is fairly self-explanatory. The two "Attach ..." buttons
-add attachments, "Extract" extracts existing attachments into separate files,
-and "Delete" deletes attachments from the subtitles file.
+窗口的按钮功能不言自明。两个“附加 ...” 按钮用来添加附件，“提取”用来提取已有的附件到单独的文件，“删除”会从字幕文件中删除附件。
 
-## Limitations and downsides  ##
+## 局限性和缺点  ##
 
-### Supported formats  ###
-The SSA format specification only allows certain filetypes to be attached. For
-fonts, only .ttf is allowed. For pictures, .bmp, .gif, .ico, .jpg and .wmf are
-allowed (note the absence of .png). None of the SSA commands which _use_ the
+### 支持的格式  ###
+SSA 格式只支持把一些特定的文件格式转化为附件。字体方面，只有.ttf得到了支持。图片方面.bmp, .gif, .ico, .jpg and .wmf得到了支持(并不支持.png)。 None of the SSA commands which _use_ the
 images are implemented in anything but SubStation Alpha, so it is very unlikely
 that attaching pictures is actually a useful thing to do.
 
