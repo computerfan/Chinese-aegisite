@@ -1,10 +1,8 @@
 {::options toc_levels="2,3" /}
 
-Aegisub isn't a video (or media) player, but it still supports loading and
-working with video in various ways. This page is a reference of how Aegisub's
-loading and handling of video works; for a gentler introduction on how to just
-get things to display properly you may want to read the
-[[Typesetting_Tutorial]] or [[Visual_Typesetting]] pages.
+Aegisub不是一个视频（或媒体）播放器，但它依然支持载入多种视频文件。
+这一篇就是关于Aegisub是如何载入和处理视频文件的，如果你只是想做一个安静的美男子（萌妹子），
+建议您还是直接参考[[Typesetting_Tutorial]] 或 [[Visual_Typesetting]] .
 
 ## Opening video ##
 
