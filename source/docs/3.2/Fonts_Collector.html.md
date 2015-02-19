@@ -1,26 +1,12 @@
-The fonts collector is an automated tool that finds all fonts used in the
-current script, scans your system's fonts folder(s) and copies all the
-relevant fonts to a destination of your choosing. The dialog box looks like
-so:
+字体收集器是一个自动化工具，它可以收集目前脚本中的所有字体，扫描系统的字体文件夹，并复制字体文件到你所选择的指定目录下。对话框看起来是这个样子：
 
 [[img/fonts_collector.png]]{: class="center"}
 
-The collector can perform any of the following actions:
+字体收集器有以下功能：
 
-* **Check fonts for availability** - Checks the fonts folder(s) to see if
-  you have all the fonts used in the current script, and that all fonts
-  contain all of the required glyphs. Do note that for technical reasons, the
-  collector can't detect or collect fonts that aren't actually installed (like
-  for example fonts temporarily loaded by a Matroska splitter or a font
-  viewing program).
-* **Copy fonts to folder** - Copies all the fonts used on the current script
-  to the given folder.
-* **Copy fonts to subtitle file's folder** - Copies all the fonts used on the
-  current script to the folder containing the subtitle file. This is
-  equivalent to using the above option with the destination set to ?script.
-* **Copy fonts to zipped archive** - Copies all the fonts used on the
-  current script to a compressed .ZIP archive.
+* **检查已使用的字体** - 检查字体文件夹，显示该脚本使用字体的有关情况，比如字体是否兼容某些符号或者字形，是否具有粗体等信息。注意Aegisub只能检测安装到系统中的字体 (Matroska容器中的字体用于无法进行上述步骤)。
+* **复制字体到文件夹** - 复制当前脚本所使用的全部字体到指定目录下。
+* **复制字体至字幕所在文件夹** - 复制当前脚本使用的所有字体到字幕文件所在目录。相当于使用选项中的 ?script目录。
+* **复制字体至压缩文件** - 复制当前脚本使用的所有字体到.zip压缩文件。
 
-The fonts collector will output diagnostic information about its doings in
-the lower half of the window.
-
+字体收集器的下半个窗口显示的是检测过程中的诊断信息。
