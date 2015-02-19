@@ -1,12 +1,8 @@
 {::options toc_levels="2,3" /}
 
-The attachment manager allows you to attach fonts and/or pictures to your
-script (by encoding them as text). This is occasionally useful for sharing
-fonts between everyone who is working on a script without having to send the
-fonts as separate files. However, it is quite limited and is prone to causing
-problems.
+附件管理器允许你把字体或者图片附在字幕脚本文件中(通过将它们编码为文本)。有时候用于多人共同工作的脚本上，这样生成的字幕文件和字体是一个整体，免去了小伙伴之间单独传输字体文件的麻烦。然而它的功能有限并且容易引起问题。
 
-## Overview  ##
+## 概览  ##
 [[img/Attachment_list.png]]{: class="center"}
 
 The entire dialogue is fairly self-explanatory. The two "Attach ..." buttons
