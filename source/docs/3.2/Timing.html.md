@@ -5,69 +5,44 @@
 当你加载了音频文件，Aegisub将会出现如下图的界面：
 [[img/audio_display.png]]
 
-You can click and drag just below the audio timeline to change the height of
-the audio waveform/spectrum display.
+你可以按住并拖动该视图底部来改变音频波形/频谱显示的高度。
 
-Green and red buttons are toggle buttons. A green background indicates that
-the option is turned on, while a red background indicates that the option is
-turned off. The buttons and controls are as follows (many of these have
-[[keyboard shortcuts|Keyboard_shortcuts]] associated with them by default):
+右边那几个能按下去的是切换按钮。按下去表示启用。按钮和控制按键的功能如下（许多默认都有[[快捷键|Keyboard_shortcuts]]）：
 
-1. Go to previous line, discarding any unsaved changes (previous syllable
-  when in [[karaoke mode|Audio#karaokemode]])
-1. Go to next line, discarding any unsaved changes (next syllable when in
-  karaoke mode)
-1. Play selected area of the audio waveform
-1. Play currently selected line
-1. Pause playback
-1. Play 500ms before selection start
-1. Play 500ms after selection end
-1. Play first 500ms of selection
-1. Play last 500ms of selection
-1. Play from selection start to end of file (or until pause is pressed)
-1. Add lead-in (how much is determined by the [[audio lead in
-  setting|Options#audio]])
-1. Add lead-out (exactly like the above, but the setting is called [[audio
-  lead out|Options#audio]], logically enough)
-1. Commit (save) changes
-1. Scroll view to selection/go to selection
-1. Toggle auto-commit (if enabled, all timing changes are committed
-  instantly rather than waiting for the user to press commit)
-1. Toggle auto next line on commit (if this is enabled, Aegisub will
-  automatically select the next line when the current line is committed by
-  the user. Auto-commits do not trigger this, for obvious reasons)
-1. Toggle auto-scrolling (will center waveform on the currently selected
-  line automatically when enabled)
-1. Toggle spectrum analyzer mode (see below)
-1. Toggle Medusa-style timing shortcuts
-1. Toggle karaoke mode
-1. Audio display zoom (horizontal)
-1. Audio display zoom (vertical)
-1. Audio volume
-1. Toggle linking of vertical audio zoom slider with volume slider
+1. 移到上一行，放弃未提交的更改（在[[卡拉OK模式|Audio#karaokemode]]时为上一音节）
+1. 移到下一行，放弃未提交的更改（在[[卡拉OK模式|Audio#karaokemode]]时为下一音节）
+1. 播放所选波形的音频
+1. 播放当前行
+1. 停止播放
+1. 播放所选部分前500ms
+1. 播放所选部分后500ms
+1. 播放所选部分头500ms
+1. 播放所选部分末500ms
+1. 播放所选部分至音频结束（或直到按下停止键）
+1. 开始时间提前（提前多少取决于[[提前开始时间选项|Options#section-2]]）
+1. 结束时间延后（和上一个意思差不多，取决于[[延后结束时间选项|Options#section-2]]）
+1. 提交（保存）更改
+1. 将视图移至所选行的位置
+1. 打开或关闭自动提交功能（如果打开，所有对时间轴的更改会立即提交而不再需要手动点提交）
+1. 打开或关闭提交后自动转至下一行功能（如果打开，Aegisub将会在你手动提交后自动选择下一行。自动提交显然是不会触发这个机能的）
+1. 打开或关闭自动卷动功能（如果打开，波形会自动移至当前所选行）
+1. 打开或关闭频谱分析模式（看下面的内容）
+1. 切换Medusa热键模式
+1. 切换卡拉OK模式
+1. 波形水平缩放
+1. 波形垂直缩放
+1. 音频音量
+1. 开启或关闭同时调节垂直缩放与音量
 
-## Basic audio timing ##
-When you click on a line in the subtitles grid, Aegisub will highlight it in
-the audio display and, if you have auto-scrolling enabled, scroll the audio
-display so it's centered on the line (during normal timing, it's usually a good
-idea to disable auto-scrolling). You'll notice various vertical lines in the
-audio display; the pink ones indicate keyframes in the video if you have it
-loaded (see the [[Working with video|Video]] section), the white broken line
-indicates the currently visible video frame, and the thick red and orange ones
-are the line start and end markers (respectively) for the current line. To
-(re-)define the start and end times of the line, you can either left-click to
-set the start time and right-click to set the end time, or just drag-and-drop
-the line boundaries.  Press the _play_ button (keyboard shortcut _s_ by
-default) to listen to the selection, or the various other playing buttons to
-listen to parts of the selection or the audio surrounding it. When you are
-satisfied with the timing, press commit to save the line and move onto the next
-one. Then repeat once for every line; it's as simple as that.
+## 基本音频打轴 ##
+当你在字幕栏中选中一行时，Aegisub将会在音频视图里高亮那行，如果你打开了自动卷动功能，音频视图会将所选行移至视图中间（一般打轴时不建议开启自动卷动）。你会注意到音频视图里会有各种竖线；粉色表示加载的视频（参阅[[使用视频|Video]]部分）的关键帧，白色分割线表示当前视频帧的位置,粗的红线和蓝线分别表示行的开始和结束，你可以左击或右击来设置开始或结束时间，或者拖动那些竖线。按 _播放_ 按钮（默认快捷键为 _s_ ）来听所选部分，或用其他不同的播放按钮来播放周围不同的音频。当你对这行时间轴满意后，按提交按钮来保存并移至下一行，然后每行都这样操作一遍，就是这么简单。
 
-Holding shift will make line boundaries snap to other lines and keyframes (or disable snapping if you've set the option to snap by default).
-Holding ctrl will let you drag multiple overlapping boundaries at once.
-For example, if you have two lines already snapped to each other but want to shift the transition between the lines back a little, you can select both lines in the grid, then hold ctrl and drag the boundary between them to change both the end time of the first line and the start time of the second line.
+按住shift键可使行边线紧贴其他行边线和关键帧线（或者在设置里可以关闭紧贴功能）。
+按住ctrl可以一次移动两行重叠的线。
+例如，当两行时间轴挨在了一起，不过你想让两行变换的时间靠后一些，那么你就按住ctrl再移动两行间的那条线，这样就能同时改变第一行的结束时间和第二行的开始时间。
 
 Holding alt will make you drag all selected lines (both start and end times).
+按住alt可以平移所有选择的行（同时移动开始和结束时间）。
 
 ### Timing protips ###
 If you want to finish timing your movie or episode within any reasonable
