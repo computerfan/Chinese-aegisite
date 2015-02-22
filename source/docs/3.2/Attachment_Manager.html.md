@@ -10,27 +10,16 @@
 ## 局限性和缺点  ##
 
 ### 支持的格式  ###
-SSA 格式只支持把一些特定的文件格式转化为附件。字体方面，只有.ttf得到了支持。图片方面.bmp, .gif, .ico, .jpg and .wmf得到了支持(并不支持.png)。 None of the SSA commands which _use_ the
-images are implemented in anything but SubStation Alpha, so it is very unlikely
-that attaching pictures is actually a useful thing to do.
+SSA 格式只支持把一些特定的文件格式转化为附件。字体方面，只有.ttf得到了支持。图片方面.bmp, .gif, .ico, .jpg and .wmf得到了支持(并不支持.png)。SSA只有这一种方式添加附件，这个方法是很有用的。
+### 兼容性问题  ###
+许多 SSA/ASS 编辑器会忽略或直接剔除附件。
+原始的SubStation Alpha (v4.08) 会兼容得很好，但对于SSA文件。Sabbu(字幕软件) 会无法识别，同时会在你保存文件的时候剔除附件。大多数的其他字幕编辑器程序或忽略附件或崩溃。
 
-### Compatibility issues  ###
-Many SSA/ASS editors ignore or strip attachments. The original SubStation Alpha
-(v4.08) will work fine, but only for real SSA files. Sabbu will complain about
-unrecognized fields, and strip the attachments if you save the file. Most other
-editors either ignore the attachments or crash when encountering them.
+一个值得注意的例外是mkvmerge，它会将附件文件在混流的过程中转化成Matroska附件。如果你再从MKV文件中提取字幕流，附件会被从字幕脚本中剔除，但是MKV文件中仍然存储着附件。
 
-A notable exception is mkvmerge, which will convert the attached files to
-Matroska attachments on muxing. If you demux the script again, the attachments
-will be stripped from the script, but they're still there as MKV attachments.
+### 大小  ###
+不幸的是，存储二进制数据为文本 (顺带一提，是UUEncoding的变种) 不是十分有效率的。带附件的文件比起单独的文件会占用更多的空间。
 
-### Size  ###
-Unfortunately, storing binary data as text (in this case, a variant of
-UUEncoding) is not very efficient. The attached files will take considerably
-more space as script attachments than they do as separate files.
-
-### Speed ###
-Aegisub's undo system makes a complete copy of the loaded file on every change.
-Normally this is very fast, but attachments can significantly slow this down
-due to the large size.
-
+### 速度 ###
+Aegisub 的 撤销系统会记录对当前读取文件进行的每一个操作。
+通常情况下撤销操作的速度是比较快的，但是有关附件的撤销操作会极大地拖慢这个速度(由于较大的文件体积)。
