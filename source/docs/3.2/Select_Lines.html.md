@@ -1,79 +1,62 @@
 {::options toc_levels="2,3" /}
 
-The **select lines** tool is useful for finding and selecting all lines in the
-script that matches certain criteria. This can be useful from a number of
-things ranging from deleting all comment lines to finding all lines said by a
-certain actor. The tool can be found in the _Subtitles_ menu -> _Select lines_.
+ **选择多行** 是一个很有用的工具，主要用于在字幕文件中按照你的标准过滤和选择你想要的字幕行。有了这项功能，从 删除所有的注释行 到 找到一个说话人的所有话 都成为可能。这项工具能在 _字幕_ 菜单 -> _选择多行_ 中找到。
 
 [[img/Select_lines.png]]{: class="center"}
 
-### Match ###
-These controls what criteria will be used for selecting the lines.
+### 匹配 ###
+用以控制选择行的匹配标准。
 
-Match
-: Select all lines that match the criteria.
+匹配项
+: 选择所有符合匹配标准的行。
 
-Doesn't match
-: Select all lines that *don't* match the criteria.
+不匹配
+: 选择所有 *不符合* 匹配标准的行。
 
-Match case
-: Controls case sensitivity, i.e. if the tool should care about the difference
-between lower and upper case or not.
+区分大小写
+: 控制匹配的灵敏度，比如区分大小写功能。
 
-Exact match
-: Matches the lines that matches the given string _exactly_.
+精确匹配
+: 按照所给字符串 _精确_ 匹配行(不能多不能少)。
 
-Contains
-: Matches the lines that _contains_ the given string.
+包含
+: 匹配 _包含_ 所给字符串的行。
 
-Regular Expression match
-: Treats the string as a [regular
-expression](http://en.wikipedia.org/wiki/Regular_expression) or "regex", and
-matches if said expression matches. For a regular expressions tutorial, try
-reading the [perlretut manual page](http://perldoc.perl.org/perlretut.html) or
-googling. For a reference of the exact syntax supported by Aegisub, see the
-[wxWidgets regular expressions reference
-page](http://www.wxwidgets.org/manuals/stable/wx_wxresyn.html).
+正则表达式匹配
+: 把这个字符串看作 [正则表达式](英文介绍http://en.wikipedia.org/wiki/Regular_expression)，按照正则表达式规则进行匹配。若想了解一些常规表达可以看 [perlretut手册页](http://perldoc.perl.org/perlretut.html) 或者谷歌。对于中文用户推荐这篇[教程](http://www.jb51.net/tools/zhengze.html)。想确切知道Aegisub支持的表达式，请看[wxWidgets 正则表达式](http://www.wxwidgets.org/manuals/stable/wx_wxresyn.html)。
 {: class="horizontal-wide"}
 
-### In field ###
-This option controls what field of each line will be used for the matching
-mentioned above. Possible alternatives are:
+### 在下列栏中搜索 ###
+这个选项用来控制筛选条件应用的区域，这些区域分为:
 
-Text
-: The body text of the line
+文本
+: 行中的文本主体
 
-Style
-: The line's style name
+样式
+: 样式名称
 
-Actor
-: The actor field
+说话人
+: 说话人区域
 
-Effect
-: The effect field
+特效
+: 特效区域
 {: class="horizontal-narrow"}
 
-### Match dialogues/comments ###
-Here you can choose if you want to select from comment lines, dialogue lines,
-or both.
+### 匹配对话/注释 ###
+在这里你可以选择是在对话行中筛选还是在注释行中筛选，或者两者皆可。
 
-### Action ###
-Decides what the tool should do with the lines that matches the given criteria.
-You can choose between:
+### 动作 ###
+决定用哪种工具处理符合筛选标准的行，有以下几种方式：
 
-Set selection
-: Your current selection will be discarded and all lines in the script matching
-the criteria will be selected instead.
+设为所选
+: 你当前的选择会被无视，取而代之的是符合筛选标准的行被选中。
 
-Add to selection
-: Adds all lines in the script that matches the criteria to your current
-selection.
+加入所选
+: 把符合筛选标准的行加到你当前所选的行中。
 
-Subtract from selection
-: Deselects all currently selected lines that match the criteria.
+移出所选
+: 把符合筛选标准的行从你当前所选的行中移除。
 
-Intersect with selection
-: Does the inverse of subtract from selection. That is to say, all lines in the
-current selection that matches the criteria are kept selected, but everything
-else is deselected.
+选中与所选之交集
+: 在当前选中的行中使用筛选标准，留下符合筛选条件的行被选中，即交集。
 {: class="horizontal-wide"}
