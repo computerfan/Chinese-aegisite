@@ -3,58 +3,38 @@
 ## 总览  ##
 [[img/styling_assistant.png]]{: class="center"}
 
-As seen from the image above, the assistant is composed of the following:
+从上图我们能看到，样式助手由以下区域组成:
 
-* Current line field 
-* Styles available field 
-* Set style window 
-* Keys field 
-* Seek video to line start time checkbox
-* Play audio button
-* Play video button
+* 当前行区域
+* 可用样式区域
+* 套用样式区域
+* 按键区域
+* 视频跳至开始复选框
+* 播放音频按钮
+* 播放视频按钮
 
-The Current line field displays the line in the subtitles for which the
-style will be set. The text in it cannot be edited.
+当前行区域显示的是字幕中将要被套用样式的行。其中的内容无法被编辑。
 
-Styles available field displays the styles available in the script. The
-styles have to be imported through the Styles Manager or created with its
-help. The styles can then be set for the selected line in the subtitles by
-clicking on the desired style.
 
-The set style window is the main aspect of the Styling Assistant. Through
-it, styles can be applied to the line in the subtitles easily and without
-much work. It support autocomplete, so it helps to select the desired
-style after some characters are written in the window.
+可用样式区域显示的是脚本中可用的样式。这些样式必须是样式管理器中含有的。点击样式即可将其应用于所选行。
 
-The Keys fields displays the keyboard shortcuts that are used for work with
-the assistant.
+套用样式区域是样式助手中的主要部分。通过它向一些行应用样式会很简单，不费事。由于它支持自动完成，你只需要输入样式名称的前几个字母，就能找到想要的样式。
 
-If the Seek video to line start time checkbox is checked and video is
-loaded, the video will seek to the beginning of each line which is
-displayed for styling.
+按键区域显示的是样式助手可以使用的键盘快捷键。
 
-The play audio and video buttons play the audio or video for the current
-line, to aid in determining what character is saying the line.
+如果视频跳至开始复选框被选中，同时读取了视频，那么使用样式助手的时候视频会自动跳回当前处理行的开始时间。
 
-## The autocomplete function  ##
+播放音频和播放视频按钮会播放当前处理行对应的音频或视频，以帮助确认哪个说话人在这行的时间说话。
+
+## 自动完成功能  ##
 [[img/Styling_autocomplete.png]]{: class="center"}
 
-This window displays how the autocomplete function works. The characters
-that were typed are on the white background and the rest of the name is
-displayed as being selected. The selected part is what autocomplete sets as
-the style that matches with the typed characters.
+这个窗口显示了自动完成功能是如何工作的。在白色背景区域打字，样式名称剩余的部分就会以被选中的形式显示出来。被选中形式的部分就是自动完成功能匹配的样式。
 
 [[img/Styling_invalid.png]]{: class="center"}
 
-This image shows the response to a name that doesn't exist. The background
-of the window is colored red to show that no style on the list of selected
-styles matches the entered text.
+这张图片展示了样式助手对一个不存在的样式名称的反应。背景色为红色，用来警示并不存在和输入的字符匹配的样式。
 
 
-## How to use  ##
-Usage is simple. Select the first line you want to style and open the
-assistant. Then you look at text, video and/or audio to determine who is
-speaking it and type first few letters of style name, after which
-autocomplete should kick in. Hit enter to go to next line and proceed until
-you're finished. The other way is to double click on a style in the Styles
-available list and the style will be applied to the selected line.
+## 如何使用  ##
+用法很简单。选择你想要应用样式的行，打开样式助手。然后查看文本，视频，音频，以确定是你想应用样式对应的说话人，输入样式名称的前几个字符，自动完成样式名称。敲击回车提交，然后进入下一行，重复操作直到完成。另一种方式是采用鼠标左键双击可用样式，然后该样式会被应用于该行。
