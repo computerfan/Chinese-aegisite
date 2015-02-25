@@ -1,8 +1,6 @@
-The Styling assistant is a powerful tool for subtitles that have multiple
-styles, such as cases when several actors have their own style, or for some
-other reason you have many different styles for dialog lines.
+样式助手对于处理多样式字幕文件是一个有用的工具，例如碰到几个说话人都拥有各自的样式的时候，或者其他一个字幕中含有很多样式的情况。
 
-## Overview  ##
+## 总览  ##
 [[img/styling_assistant.png]]{: class="center"}
 
 As seen from the image above, the assistant is composed of the following:
