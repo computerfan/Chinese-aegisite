@@ -41,86 +41,39 @@
 按住ctrl可以一次移动两行重叠的线。
 例如，当两行时间轴挨在了一起，不过你想让两行变换的时间靠后一些，那么你就按住ctrl再移动两行间的那条线，这样就能同时改变第一行的结束时间和第二行的开始时间。
 
-Holding alt will make you drag all selected lines (both start and end times).
 按住alt可以平移所有选择的行（同时移动开始和结束时间）。
 
-### Timing protips ###
-If you want to finish timing your movie or episode within any reasonable
-amount of time, there's some things you should note:
+### 打轴提示 ###
+如果你因某些原因需要在一段时间内完成视频或片段的打轴任务，那么你需要注意下面这些提示：
 
-* Use keyboard shortcuts! They speed up your work by several orders of
-  magnitude.
-* You don't need to have video displayed while timing. If you think you do,
-  there's a good change you're doing something wrong. Scene-timing, i.e.
-  syncing line start/ends to scene changes, can be done later. Either
-  manually, or with the [[timing postprocessor|Timing_Post-Processor]].
-* Use "go to next line on commit".
-* Experiment with different timing styles when you're new and stick to one
-  that suits you. Then practice. Lots.
-* Aegisub heavily relies on the concept of "focus", and doing things in a
-  way that require you to switch back and forth between video/audio/subtitle
-  edit box a lot will cost you a lot of time. Do it in several "passes"
-  instead.
-* The spectrum analyzer mode looks weird at first, but usually makes it lot
-  easier to "see" where lines start and end, especially when there is
-  background noise.
-* With practice, it's often faster and easier to time something from scratch
-  than fix bad timing, due to that fixing bad timing requires spending a small
-  amount of time thinking about each line.
-* If you want to delete all timing data and start over, a simple way is to use
-  the [[shift times dialog|Shift_Times]] to shift all lines backwards by
-  9:59:59.99.
+* 使用键盘快捷键！这可以让你的工作效率翻数倍。
+* 在打轴时你不需要打开视频预览（译者注：仅当使用音轨打轴时）。如果你认为一定要看视频才能打轴，那么很可能是你理解有误。像一些配合视频场景打轴的情况，即让行的开始结束时间和场景的改变相同步，可以放到之后再手动或使用[[时间后续处理器|Timing_Post-Processor]]处理。
+* 打开“提交后自动转至下一行”。
+* 尝试不同的打轴方案直到找到一个适合你的方案，然后多加练习。
+* Aegisub很大程度上依赖于“焦点”概念，并且在工作时需要在视频、音频、字幕编辑框直接来回切换焦点，这会浪费不少时间。Do it in several "passes" instead.
+* 频谱分析模式一开始看起来怪怪的，但更容易看出一句话的开始和结束位置，尤其是当有噪音时。
+* 如果你要练习打轴的话，通常制作一个新的时间轴比修复有问题的时间轴要更快更容易，原因在于修复错误的轴需要你花一些时间来思考每一行的问题。
+* 如果你想删除所有时间轴数据从头开始，有个简单的方法就是使用[[平移时间窗口|Shift_Times]]来把所有行向后平移9:59:59.99。
 
-One common timing style (preferred by the author of this page) goes something
-like the following: Turn on "go to next line on commit" but disable
-auto-committing, auto-scrolling and Medusa timing shortcuts. Keep the four main
-fingers of your left hand on s/d/f/g. You won't be using the thumb so do
-whatever you want with it. Keep your right hand on the mouse. Now select (by
-left- and right-clicking) an area in the waveform that seems likely to contain
-a line of speech matching the current subtitle line, and hit _s_ to play it
-back.  While it's playing, adjust the start time if necessary. When the
-playback marker has passed the end time mark, adjust the end time as well. If
-greater accuracy is needed, play the last 500ms of the selection by pressing
-_d_, 500ms before the selection start by pressing _q_, 500ms after the
-selection end by pressing _w_, or the first 500ms of the selection by pressing
-_e_. As you grow more experienced, you won't be using anything else than _s_
-very much, except maybe _d_ and _q_. When you're satisfied with the timing, hit
-_g_ to commit changes and go on to the next line. Scroll the audio display
-forward by pressing _f_. If you need to scroll it backwards, use _a_. To go to
-next or previous line without committing changes, use _z_ and _x_.
+一个常见的打轴方案（本文原作者的首选方案）就像下面这样：打开“提交后自动转至下一行”，并关闭自动提交所有更改、自动卷动以及Medusa热键模式。保持你的左手除大拇指外的四指放在s、d、f、g键上。你的大拇指不需要做任何事。将你的右手放在鼠标上。在波形上（通过鼠标左击和右击）选择一段可能包含当前行文字的音频，然后按 _s_ 键来播放它。在播放的同时，如果需要可以调整开始时间。当播放进度标记到达行的结束位置时，同时调整结束时间。如果需要更准确的时间轴，可以按 _d_ 来播放选区的最后500毫秒音频，按 _q_ 来播放开始前的500毫秒音频，按 _w_ 播放选区结束后的500毫秒音频，或按 _e_ 播放选区开始的500毫秒音频。当你有了一些经验后，你可能只需要 _s_ 键，也许还会用到 _d_ 和 _q_。当你对这行的轴满意时，按 _g_ 键来提交更改并移至下一行。向前滚动音频视图可以按 _f_。如果需要向后滚动可以按 _a_。移至下一行或上一行而不提交更改，可以用 _z_ 和 _x_ 键。
 
-This style has the advantage that you never need to move your hands at all.
-With some training, it can also be very fast; audio timing 350-400 lines of
-dialog to a 25-minute episode can easily be done in less than 40 minutes,
-and less verbose scripts can sometimes be done faster than real time.
+这个方案的优点是你不再需要移动你的手。经过训练，速度通常可以变得非常快；给一个25分钟有着350-400句对话的一集视频打轴可以很轻松地在40分钟之内完成，一些比较简单的剧情会更快。
 
-Of course, this style may not feel comfortable for all people; you should
-experiment with other timing styles before deciding which one is best for
-you.
+当然，这个方案不一定所有人都觉得舒服，你应该在找到最适合你的方案前尝试其他的打轴姿势。
 
-### The spectrum analyzer mode ###
+### 频谱分析模式 ###
 [[img/spectrum.png]]
 
-When you press the spectrum analyzer button, the waveform does no longer
-show amplitude (signal strength) on the vertical axis - instead it shows
-frequency. The higher up, the higher the frequency. The colors instead
-indicate amplitude, with black/dark blue being silence and white being the
-strongest sound. This may seem confusing, but since the frequency window is
-set to fit human voices rather well, it can make it easy to tell where a
-line (or a word in karaoke mode) starts and ends when there's a lot of
-background noise (or music) that makes it hard to tell from the normal
-waveform. It can be especially useful when timing karaoke. Play around with
-it for a little while, and you'll understand how it works.
+当你按下频谱分析模式按钮时，波形的纵轴不再显示振幅（信号强度）——取而代之的是频率。音调越高频率就越高，同时颜色变为代表振幅，黑色或深蓝为寂静，白色为最大音量。这看起来有些晕，但频率视图非常适合人声，它能比普通波形更容易在背景充斥大量噪音（或音乐）时，告诉你一行（或卡拉OK模式的一个字）的开始和结束时间点。在制作卡拉OK时间轴时特别有用。使用一会儿它你就知道它是如何工作的了。
 
-Note that in spectrum analyzer mode, the "vertical zoom" slider is redefined
-to control color intensity instead, since the colors indicate signal
-strength.
+注意在频谱分析模式时，由于颜色代表了信号强度，“垂直缩放”滑块的功能被重新定义为控制颜色的强度。
 
 Because calculating the spectrum data is very CPU intensive, it in initially
 set to be in a medium quality. You can increase the quality of the spectrum
 in the [[audio options|Audio#options]]. This is mostly important when you built
 Aegisub yourself and did not use FFTW3; FFTW3 is fast enough that the default
 quality is bumped up a bit.
+因计算频谱数据是非常耗费CPU的，所以默认频谱质量设为了一般质量。你可以在[[音频选项|Options#section-11]]里改变频谱质量。如果你自己编译Aegisub且没有使用FFTW3，那么这很重要，FFTW3很快，能使默认质量提高一些。
 
-## Karaoke timing ##
+## 卡拉OK计时 ##
 {::template name="todo"}here be dragons{:/}
