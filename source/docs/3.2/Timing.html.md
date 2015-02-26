@@ -68,11 +68,6 @@
 
 注意在频谱分析模式时，由于颜色代表了信号强度，“垂直缩放”滑块的功能被重新定义为控制颜色的强度。
 
-Because calculating the spectrum data is very CPU intensive, it in initially
-set to be in a medium quality. You can increase the quality of the spectrum
-in the [[audio options|Audio#options]]. This is mostly important when you built
-Aegisub yourself and did not use FFTW3; FFTW3 is fast enough that the default
-quality is bumped up a bit.
 因计算频谱数据是非常耗费CPU的，所以默认频谱质量设为了一般质量。你可以在[[音频选项|Options#section-11]]里改变频谱质量。如果你自己编译Aegisub且没有使用FFTW3，那么这很重要，FFTW3很快，能使默认质量提高一些。
 
 ## 卡拉OK计时 ##
