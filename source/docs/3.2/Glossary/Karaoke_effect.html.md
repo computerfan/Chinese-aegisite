@@ -1,8 +1,8 @@
-**Karaoke** is (amateur) singing along to a song, usually a version of the song with the main vocals removed. When singing karaoke the lyrics to the song are usually presented on a TV screen and highlighted as they are to be sung.
+**卡拉OK**就是（业余爱好者）跟着唱一首歌，通常是只有伴奏的版本。当唱卡拉OK时歌词通常会显示在电视屏幕上，并且会把高亮唱过的部分。
 
-In subtitling however, karaoke usually refers to those lyrics themselves. The **karaoke effect**  refers to the way they are highlighted.
+而在字幕制作中，卡拉OK通常是指那些歌词本身。**卡拉OK特效**是指它们被高亮的方式。
 
-So, a karaoke effect is a visual effect synchronised with a song, used to help singing karaoke.
+所以，卡拉OK特效是帮助唱卡拉OK的，同步于歌曲的可视化特效。
 
-Reality has it that karaoke effects in the fan subtitling community today are used more for "eye candy" and showoff than the real purpose of karaoke subtitles, assisting the viewer sing along to the song.
+事实上卡拉OK特效在如今的字幕圈里，更多是使观众们一饱眼福或是展示自己的技术，而不再是仅用于卡拉OK字幕本身的目的——协助观看者唱一首歌。
 
