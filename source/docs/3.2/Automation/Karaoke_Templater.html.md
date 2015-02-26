@@ -1,7 +1,4 @@
-**Karaoke Templater** is an [[Automation]] script that ships with Aegisub. Its
-primary purpose is to help creating [[karaoke effects|Glossary/Karaoke_effect]]
-with a specially designed template language. Karaoke Templater is already
-installed and ready to use along with Aegisub.
+**卡拉OK模版执行器**是一个Aegisub自带的[[自动化|Automation]]脚本。它的主要目的是帮助你使用特别设计的模版语言来制作[[卡拉OK特效|Glossary/Karaoke_effect]]。卡拉OK模版执行器已随Aegisub安装并可以使用。
 
 ## Tutorials: Introducing Karaoke Templater  ##
 * [[A simple example|Automation/Karaoke_Templater/Tutorial_1]]
