@@ -3,6 +3,7 @@ combo. It allows you to paste any given field(s) of one or more lines to the
 corresponding fields of other lines, without affecting the other fields. It can
 be found under the _Edit_ menu -> _Paste lines over_, or by right-clicking on
 the subtitles grid.
+**选择性粘贴**工具是传统的Ctrl+c、Ctrl+v组合键的“智能”变型。
 
 To use it, first copy one or more lines with the familiar copy function
 (right-click -> copy, or Ctrl-c). Then select the line(s) you want to paste to,
