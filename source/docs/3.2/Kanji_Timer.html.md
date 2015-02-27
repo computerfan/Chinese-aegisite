@@ -1,6 +1,6 @@
-The kanji timer makes it easy to copy timed karaoke from one set of already karaoke timed lines to another set of yet untimed lines. Primarily intended for adding karaoke to Japanese songs.
+汉字计时器使得把打好K值的时间轴快速赋予到一条未打K值的时间轴非常方便。它多用于日文歌曲的卡拉OK时间轴制作。(常用于快速对应日文和罗马音)
 
-Here is a video demonstration of the kanji timer in action: [Download demonstration video](http://www.animereactor.dk/aegisub/demovids/kanji-timer.avi) (XviD MP3 AVI, 5 min 20 sec, 12 MB)
+这里有个汉字计时器的实际操作演示视频: [下载演示视频](http://www.animereactor.dk/aegisub/demovids/kanji-timer.avi) (XviD MP3 AVI, 5 min 20 sec, 12 MB)
 
 
 ## Before you start ##
