@@ -3,36 +3,36 @@
 这里有个汉字计时器的实际操作演示视频: [下载演示视频](http://www.animereactor.dk/aegisub/demovids/kanji-timer.avi) (XviD MP3 AVI, 5 min 20 sec, 12 MB)
 
 
-## Before you start ##
+## 在你操作前 ##
 
-The kanji timer attempts to pair syllables in one (timed) input line with a given style with syllables in a corresponding (untimed) line with another style. In other words, the timed input lines should all have same style ("romaji" for example) and the untimed ones another ("kanji" for example). Having more timed source lines than untimed destination ones or vice versa can confuse the tool, but it's usually possible to un-confuse it, see below. In order to correctly pair source lines with destination ones, both sets must be in the same order in the grid. For example, this works:
+汉字计时器会尝试把打好K值的行(由用户指定样式的行)中的音节和未打K值的行(另一个指定样式的行)中的音节配对。换句话说，打好K值的行应该具有统一的一个样式(例如"romaji")未打K值的行应该具有统一的另一个样式(例如"kanji")。 打K的行比未打K的行多是不行的，反过来也一样。下面会展示几种汉字计时器正常工作的情况，我们应该尽量保证行与行之间是这样:
 
-    Timed line 1
-    Untimed line 1
-    Timed line 2
-    Untimed line 2
+    已打K的行 1
+    未打K的行 1
+    已打K的行 2
+    未打K的行 2
 
-And so does this:
+或者这样:
 
-    Timed line 1
-    Timed line 2
-    Untimed line 1
-    Untimed line 2
+    已打K的行 1
+    已打K的行 2
+    未打K的行 1
+    未打K的行 2
 
-But this does **not** (pairs lines wrong):
+这样则 **不行** (配对错误):
 
-    Timed line 1
-    Timed line 2
-    Untimed line 2
-    Untimed line 1
+    已打K的行 1
+    已打K的行 2
+    未打K的行 2
+    未打K的行 1
 
-## Using the kanji timer ##
+## 使用汉字计时器 ##
 
-The kanji timer dialog looks like this:
+汉字计时器对话框看起来是这样:
 
 [[img/Kanji_timer.png]]{: class="center"}
 
-The first thing you need to do is to select which styles are used for the timed input lines and the untimed output lines respectively. This is done in the upper right corner of the dialog; the top dropdown is the source style and the bottom one is the destination. When you've done this, click the start button.
+你应该做的第一件事就是分别选择用于输入(获取)时间和输出(设置)时间的两个样式。你可以在对话框的右上角调整；上方的下拉菜单用于选择源(从中获取时间)样式，下方的下拉菜单用于选择目标样式(应用时间于)。当你选择完这两项，点击开始按钮。
 
 Now, you'll see the first syllable of the first source line highlighted in the source text field, and a suggestion for the destination syllable highlighted in the destination field. What you do now is "group" each source syllable with one or more kanji (or other syllables) in the destination. This is done using the following keyboard shortcuts:
 
