@@ -34,32 +34,32 @@
 
 你应该做的第一件事就是分别选择用于输入(获取)时间和输出(设置)时间的两个样式。你可以在对话框的右上角调整；上方的下拉菜单用于选择源(从中获取时间)样式，下方的下拉菜单用于选择目标样式(应用时间于)。当你选择完这两项，点击开始按钮。
 
-Now, you'll see the first syllable of the first source line highlighted in the source text field, and a suggestion for the destination syllable highlighted in the destination field. What you do now is "group" each source syllable with one or more kanji (or other syllables) in the destination. This is done using the following keyboard shortcuts:
+现在，你会看见源行的第一个音节变为高亮，同时目标行中建议对应的音节也会高亮。你现在做的就是把源行中的每一个音节和目标行中的一个或多个汉字(或其他音节)对应起来。完成这些工作需要使用下面的快捷键:
 
-Enter
-: Accept the highlighted grouping (and go to next line if all syllables are grouped).
+回车
+: 接受当前的高亮对应关系 (如果该行处理完，则进入下一行)。
 
-Right arrow
-: Increase the destination highlight length.
+右箭头
+: 增加目标高亮音节长度
 
-Left arrow
-: Decrease the destination highlight length.
+左箭头
+: 缩短目标高亮音节长度
 
-Up arrow
-: Increase the source highlight length.
+上箭头
+: 增加源高亮音节长度
 
-Down arrow
-: Decrease the source highlight length.
+下箭头
+: 缩短源高亮音节长度
 
-Backspace
-: Un-groups (or unlinks) the last accepted syllable and lets you try to group it again (useful if you make a mistake).
+退格
+: 撤销上一步对应或接受动作，以便重新对应 (犯错时很有用)。
 {: .dl-horizontal}
 
-## Things to note ##
+## 需要注意的事情 ##
 
-* Don't use the mouse to change the highlights; it confuses the tool a lot. Use the keyboard shortcuts instead, they're much faster.
-* The destination line can already be k-timed, but if it is, the kanji timer will overwrite those timings.
-* Empty syllables will be copied alone, or will be combined with the surrounding syllables if those are to be combined.
-* Any ASS override tags appearing before each \k will be copied directly without modification, but tags after each \k is currently not copied at all.
-* If you have more source than destination lines or vice versa, you can use the "Skip source line" or "Skip destination line" to make sure the pairing of source/destination lines is correctly done.
+* 不要用鼠标去改变高亮的范围;这会让工具出错。你应该使用键盘，这样又快又不易出错。
+* 目标行可以是打过K的，不过应用汉字计时器后，K值会被覆写。
+* 空白音节会被单独复制，或者和周围的音节连在一起。
+* 任何在\k前的ASS特效标签都会被直接复制，但\k后的标签目前不能复制。
+* 如果你的源行多于目标行，或者反过来，你可以使用"跳过源行" 或 "跳过目标行" 来保证 源/目标行之间的对应能够正确完成。
 
