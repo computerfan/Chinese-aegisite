@@ -1,18 +1,18 @@
 {::options toc_levels="2" /}
 
 The following is a list of every tag supported by the Advanced Substation Alpha format. This is basically a detailed version of ass-quickref.txt. See the tutorial for an introduction to typesetting, using some basic tags. 
-下面列出的每个支持ASS格式的标签。这基本上是一个详细的ass-quickref.txt版本。你可以在本教程手册的[[排版教程|Typesetting_Tutorial]]获取关于文本排版的教程，使用一些基本标签。
+下面列出的每个支持ASS格式的标签。这基本上算是ass-quickref.txt的一个详细版本。你可以在本教程手册的[[排版教程|Typesetting_Tutorial]]获取关于使用一些基本标签来排版文本的教程。
 
 ## 特殊符号 ##
 
 The following tags are written in the middle of the text, and not inside
 override blocks (i.e. not between { and }).
-下面的标签是写在文本中间的，而不是在Tag区内部（即不是{和}之间。)
+下面的标签是写在文本区里的，而不是在特效标签区里（即不是{和}之间。)
 
-{::template name="tag_def_box" title="Soft line break" id="\n"}\n{:/}
+{::template name="tag_def_box" title="软换行（软空格）" id="\n"}\n{:/}
 Insert a forced line break, but only when in wrapping mode 2. (See
 [[the \q tag|ASS_Tags#wrapstyle]]). Note that this is a lowercase n.
-插入一个强制换行，但是只在换行方式2下生效。（查看\q标签）注意这是一个小写的n。
+插入一个强制换行符，但是只在换行方式2下生效（参阅[[\q标签|ASS_Tags#wrapstyle]]）。注意这是一个小写的n。
 
 In all other wrapping modes, this is replaced by a regular space. This is
 rarely (if ever) actually useful. If you're not sure whether you want this or
@@ -28,14 +28,14 @@ uppercase N.
 Insert a non-breaking "hard" space. The line will never break automatically
 right before or after a hard space, and hard spaces are not folded when they
 appear at the start or end of a displayed line.
-插入一个不换行的“硬性”空格。句子永远不会自动的在一个硬空格前面或者后面正好换行，并且当硬空格出现在一行的开头或者结束的地方时，他们不会收起来。
+插入一个不换行的“硬性”空格。句子永远不会自动的在一个硬空格前面或者后面正好换行，并且当硬空格出现在一行的开头或者结束的地方时，它们也起空格的作用。
 
 ## 特效标签 ##
 Override tags must appear within override blocks, which begin with { and end
 with }. Any unrecognized text within override blocks is silently ignored, so
 they are also commonly used for inline comments. Mixing comments and override
 tags in the same override block is not recommended.
-Override 标签必须出现在override区里，也就是开始于{ 而且结束于}。Ov区里面不被识别的文本会被自动忽略，所以它们也经常用于内联注释。
+特效标签必须出现在特效标签区里，也就是开始于{ 而且结束于}。特效标签区里面不被识别的文本会被自动忽略，所以它们也经常用于内联注释，不推荐在一个特效标签区中同时出现特效标签和注释。
 
 Tags fall into two general categories: those which set a property of the line
 itself, and those which modifiy only the text following them. `\pos`, `\move`,
