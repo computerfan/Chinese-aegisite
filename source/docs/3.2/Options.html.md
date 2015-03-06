@@ -166,53 +166,39 @@ Aegisub将所有配置都以纯文本的形式储存在 _config.json_ 文件中�
 : 决定字幕编辑框和其他编辑框中文字的字体和字体大小。
 
 **每行最大字符数**
-: If the value of the character counter is higher than this number, the
-background will turn red to alert you that you have exceeded the maximum line
-length. The maximum length is not enforced in any other way.
+: 如果字符计数器的数值高于这个数字，它的背景色会变为红色来提醒你已超过最大行的长度。行的长度并不会受到限制。
 
-**Characters Per Second Warning Threshold**
-**Characters Per Second Error Threshold**
-: The thresholds at which the background CPS column begins to be colored and when the error color is
-reached.
+**每秒字符数警告阈值**
+**每秒字符数报错阈值**
+: 字/秒栏的背景颜色的开始出现警告颜色，和变为错误颜色的阈值。
 
-**Ignore whitespace**
-: If enabled, whitespace will not be included in the character count.
+**忽略空格**
+: 如果启用，空格不会计入字符数。（译者注：全角空格启用后也会计入字符数。）
 
-**Ignore punctuation**
-: If enabled, punctuation will not be included in the character count.
+**忽略标点符号**
+: 如果启用，标点符号格不会计入字符数。
 
-**Focus grid on click**
-: When enabled, the subtitles grid acts as its own area of the program and it
-can have focus, just like the audio or the video can, and while it does you can
-use the arrow keys/mouse wheel to scroll around it etc. On the other hand, if
-you disable this option, the focus will stay where it was before whenever you
-click in the grid. This means you can't use keyboard shortcuts in the grid
-anymore, but on the other hand it means you can click in the grid to go to a
-line without losing the audio focus and so on. Use at your own discretion.
+**单击激活编辑框**
+: 当启用时，字幕栏将变成程序独立的一个区域，并且可以像音频或视频框一样被激活，激活后就可以用方向键或鼠标滚轮来滚动字幕栏等等。相反，如果你禁用这个选项，焦点就会留在你之前点击过的栏。这意味着你不能在字幕栏使用键盘快捷键，但另一方面也意味着你可以用鼠标点到另一行而不会失去音频框的焦点（译者注：就是说你在字幕栏选取新的一行后，依然可以用qwert这些音频框的快捷键来播放相应音频）。自己根据情况来选择的吧。
 
-**Highlight visible subtitles**
-: When enabled, all subtitle lines that are currently visible in the video
-frame (or at least _should_ be visible; Aegisub does not account for alpha and
-such trickery in this case; it cares only about the timing of the line) will be
-highlighted in the grid with a special background color (see the "Line in frame
-background" option below).
+**突出可见字幕**
+: 当启用时，所有当前视频帧可见的（或只是 _应该_ 可见的；Aegisub不能分辨像透明这样的情况，它只看时间轴）字幕行会在字幕栏里以特殊的背景色（参阅下面的“在当前帧显示的行背景色”选项）高亮出来。
 
-**Hide overrides symbol**
-: The character that will be shown instead of override blocks if tag hiding is
-active. Note that despite the name, this can be more than one character if you
-so desire.
+**隐藏特效标签**
+: 当隐藏标签开启时，将会代替特效标签区显示的字符。注意尽管只是符号，但如果你愿意的话，你可以使用不止一个字符。
 
-**Font**
+**字体**
 : Decides the font and font size of all text in the grid.
+决定字幕栏显示的字体和字体大小。
 
-### Colors ###
+### 颜色 ###
 
 [[img/preferences-colours.png]]{: class="center"}
 
-#### Audio Display ####
+#### 音频播放 ####
 
-**Play cursor**
-: The color of the playback cursor.
+**播放游标**
+: 播放光标的颜色。
 
 **Line boundary start**
 **Line boundary end**
@@ -222,13 +208,13 @@ so desire.
 **Syllable boundary**
 : The color of a syllable boundary line in karaoke mode.
 
-### Color Schemes ###
+### 音频配色方案 ###
 Controls the color scheme used for the waveform/spectrum and some of the UI
 elements. Aegisub currently does not have a UI for editing the color schemes or
 creating new ones, but if you're feeling adventurous they can be found in
 config.json.
 
-#### Syntax Highlighting ####
+#### 语法高亮 ####
 
 **Normal**
 : The color of normal text.
@@ -257,7 +243,7 @@ config.json.
 **Karaoke templates**
 : Color for karaoke templater blocks on template lines.
 
-#### Subtitle Grid ####
+#### 字幕栏 ####
 
 **Standard foreground**
 **Standard background**
@@ -285,14 +271,13 @@ respectively.
 **Lines**
 : The color of the grid lines and fixed columns/headers.
 
-## Hotkeys ##
+## 热键 ##
 
 [[img/preferences-hotkeys.png]]{: class="center"}
 
-This page lists all hotkeys currently set in Aegisub, and allows you to add,
-remove or change them.
+此页面列出当前Aegisub设置的所有热键（译者注：即快捷键），并允许你添加，删除或更改。
 
-### Hotkey Contexts ###
+### 热键组 ###
 Aegisub supports setting different hotkeys depending on what part of the
 program has focus.
 
@@ -306,7 +291,7 @@ typing in edit boxes.
 
 All other hotkey contexts should be self-explanatory.
 
-### Setting hotkeys ###
+### 设置热键 ###
 To modify a hotkey, first click on the row to select it, then click on the
 hotkey field in the row, then press the key(s) that should trigger the command.
 Accept the new hotkey by clicking on another row.
@@ -314,6 +299,8 @@ Accept the new hotkey by clicking on another row.
 To add a new hotkey, select the context you want to add the hotkey to, then
 click the New button. Enter the [[command name|Commands]], then set the hotkey
 as when editing them.
+
+**译者注：由于一个Bug，3.x版本添加热键时需切换为英文界面再添加，这个Bug会在3.3版时被修复。**
 
 ## 备份 ##
 
@@ -346,36 +333,38 @@ as when editing them.
 对于Windows 7系统。实际的默认路径为 `%UserProfile%\AppData\Roaming\Aegisub\autoback`
 （对于其他系统，请参考[[Aegisub_path_specifiers]] ）
 
-## Automation ##
+## 自动化 ##
 
 [[img/preferences-automation.png]]{: class="center"}
 
-**Base path**
+**跟路径**
 : A base directory where you put non-autoloaded automation scripts. Used only
 for saving paths to script files in the subtitles.
 
-**Include path**
+**包含(include)路径**
 : List of directories where include files and modules are searched for.
 Directories are separated with a pipe character, `|`.
 
-**Auto-load path**
+**自动载入路径**
 : List of directories that are searched for scripts on startup, which are then
 automatically loaded. Directories are separated with a pipe character, `|`.
 
 
-**Trace level**
+**跟踪等级**
 : When a script sends a message to the debug console it can also specify a
 trace level. If the trace level of a message is lower than the value given
 here, the message is not logged. The names given to the levels are only
 suggestions and they don't have any effect on the execution of the script.
 (i.e. a "Fatal" level message will not cause the script to terminate.)
 
-**Thread priority**
+**线程优先级**
+译者注：3.x版没这个选项。
+
 : Priority given to the script execution thread. If you're on a
 single-core/single-CPU system having this on lower than normal will make other
 programs more responsive while long-running scripts are active.
 
-**Autoreload on Export**
+**自动重新载入导出**
 : Automatically reloads the specified sets of scripts when the [[Exporting]]
 dialogue is opened. In that case you will have to enter the
 [[Automation/Manager]] window and determine the cause of the error.
