@@ -45,6 +45,8 @@ once in a line, and where in the line they appear is unimportant. In addition,
 some of them are mutally exclusive: `\pos` and `\move`; `\clip` and `\iclip`;
 `\fad` and `\fade`. The result of inluding multiple instances of these tags or
 mutally exclusive tags will vary between renderers and is not recommended.
+标签基本分为两类：一种是定义整行的属性，另一种就是仅修饰跟在它后面的文本。`\pos`, `\move`,
+`\clip`, `\iclip`, `\org`, `\fade` 和 `\fad` 这些是第一类的，其他剩下的就是第二类了。
 
 Tags in the second category modify all text after the tag until the end of the
 line or until the property is re-overridden by another tag.
