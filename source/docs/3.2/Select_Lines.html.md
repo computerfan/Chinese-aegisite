@@ -23,7 +23,7 @@
 : 匹配 _包含_ 所给字符串的行。
 
 正则表达式匹配
-: 把这个字符串看作 [正则表达式](英文介绍http://en.wikipedia.org/wiki/Regular_expression)，按照正则表达式规则进行匹配。若想了解一些常规表达可以看 [perlretut手册页](http://perldoc.perl.org/perlretut.html) 或者谷歌。对于中文用户推荐这篇[教程](http://www.jb51.net/tools/zhengze.html)。想确切知道Aegisub支持的表达式，请看[wxWidgets 正则表达式](http://www.wxwidgets.org/manuals/stable/wx_wxresyn.html)。
+: 把这个字符串看作 [正则表达式](http://en.wikipedia.org/wiki/Regular_expression)（英文介绍），按照正则表达式规则进行匹配。若想了解一些常规表达可以看 [perlretut手册页](http://perldoc.perl.org/perlretut.html) 或者谷歌。对于中文用户推荐这篇[教程](http://www.jb51.net/tools/zhengze.html)。想确切知道Aegisub支持的表达式，请看[wxWidgets 正则表达式](http://www.wxwidgets.org/manuals/stable/wx_wxresyn.html)。
 {: class="horizontal-wide"}
 
 ### 在下列栏中搜索 ###
