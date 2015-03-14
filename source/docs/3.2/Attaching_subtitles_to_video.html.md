@@ -56,32 +56,21 @@ AVI格式的文件对于软字幕的支持很弱，如果你想使用软字幕�
 情况多种多样，你可以参考下面的建议。这些是基于制作数字格式视频的目的，播放设备为电脑。
 
 
-如果你想让这个文件在大范围的播放设备上都能播放，不论是电脑系统还是便携游戏机一类，你应该使用硬字幕。
+如果你想让这个文件在大范围的播放设备上都能播放，不论是电脑系统还是便携游戏机/手机一类，你应该使用硬字幕。
 
-If your audience will be running on a platform where your subtitle format is
-well-supported, softsubs are a good idea.
+如果你的观众使用的播放平台和软字幕兼容比较好或者和你制作字幕环境一致，那么软字幕是一个好选择。
 
-If you want to have multiple subtitle languages or if some of your viewers may
-not want to have subtitles enabled at all, softsubs are your only option.
+如果你想要单文件多国语字幕，或者观众想控制字幕的有无，这点只有软字幕能做到。
 
-If you want to speed up your release process, use softsubs. They are faster to
-fix if an error is found, and allow you to release as soon as the subtitles are
-done, rather than waiting a few hours for the video to be encoded.
+如果你想加速你的发布进程，使用软字幕。修复软字幕中的错误也是很简单快速的，字幕完成就意味着可以发片了，比起压制硬字幕省了很多时间。
 
-## Hardsubbing with Avisynth ##
-Many people use the Avisynth package to add filters to their video to clean up
-defects, or otherwise manipulate the video image before encoding it. It is a
-very flexible tool, and can be also used to add subtitles directly to the video
-stream, allowing an easy and scriptable method to hardsub a video.
 
-If you are unfamiliar with Avisynth, it is recommended that you look into it,
-as it has lots of nice features and a large community contributing video
-filters, allowing easy video fixes for any source. This tutorial assumes you
-have some basic knowledge of Avisynth.
+## 用Avisynth内嵌字幕 ##
+许多人用Avisynth向视频添加滤镜效果来清除或者修复一些片源的缺点，或者改变视频的尺寸。它是个很灵活的工具，它也可以用来把字幕直接加到视频流中，使用简单的脚本化方法，为视频内嵌字幕。
 
-To allow adding subtitles to the video stream, you have two options: you can
-use VSFilter (included with Aegisub, in the "csri" folder), or you can use
-[AssRender](http://srsfckn.biz/assrender/), which uses libass. The following
+如果你对Avisynth不熟悉，建议先去熟悉一下下，因为它具有很多极佳的特性，和大量的视频滤镜，支持所有格式视频的简单处理。下面的说明会建立在你具有基础的Avisynth知识基础上。
+
+在视频流中加入字幕，你有两个选项：使用VSFilter (Aegisub含有,在 "csri" 目录下)，或者使用 [AssRender] (http://srsfckn.biz/assrender/)，它调用的是libass。 The following
 instructions assume that you are using VSFilter.
 
 To just add subtitles, you will want to make a simple AVS file containing the
