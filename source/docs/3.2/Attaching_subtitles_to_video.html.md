@@ -14,22 +14,13 @@
 许多播放设备和电脑平台无法显示软字幕文件使用的某些特殊字体和样式，但是使用硬字幕就没有这些问题，样式都被完美地保留。并且，在任何设备上播放都能保证是相同效果，不像软字幕那样，受播放设备环境不同的影响。
 
 ### 硬字幕的缺点 ###
-Despite what some may call numerous advantages for hardsubbing, there are
-several distinct disadvantages that should be evaluated before making a
-decision.
+尽管硬字幕有着许多优点，但是同时也存在着许多缺点，在抉择使用硬/软字幕前应该纳入考虑范围。
+把字幕变为硬字幕需要把字幕文件和视频一同进行重编码，把字幕图像融入到视频图像中。由于有损视频编码的本质，此举会造成一定视频质量的损失。
 
-The method of hardsubbing requires that the source video is re-encoded so the
-subtitles can be written on the image. This, by the nature of lossy video
-encoding, causes a reduction in video quality.
 
-Subtitles add a sharp contrast in a video image due to their nature. This will
-cause compression artifacts along the edges of the encoded subtitle, and
-blurring of the subtitle. This effect is especially evident at lower bitrates.
+字幕在编码时会鲜明地凸显出来，这是由字幕的性质决定的。这会导致字幕边缘的图像质量有损失，同时字幕也会比软字幕模糊，在低码率时尤为明显。
 
-Under typical circumstances, the inclusion of the subtitles will cause an
-increase in the bitrate needed for the video to keep the same quality. This, of
-course, means an increased filesize, or lower quality at the same size. The
-increase in bitrate necessary is typically around 3 to 10%.
+在典型情况下，为了需要保持相同的视频质量，内嵌字幕会引起视频码率的升高。这就意味着文件体积的增加，如果保持相同体积则会有损画质。一般情况下内嵌字幕带来的文件体积变化范围在 3 到 10%之间。
 
 Changing the subtitles requires a re-encode of the video source, which can add
 a lot of time and extra work to the release process.
