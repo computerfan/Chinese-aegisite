@@ -9,7 +9,7 @@
 ### 硬字幕的优势 ###
 硬字幕对播放设备的要求比较低。因为字幕已经成为视频的一部分，在相同视频参数条件下，播放有字幕视频和无字幕视频消耗的资源是差不多的。你也可以制作应用软字幕难以保存和渲染的特效，对拥有复杂特效的字幕文件进行实时渲染需要消耗大量的CPU运算资源。甚至有些网络字幕组发布的内挂字幕的动漫视频文件中，OP/ED部分由于带有复杂特效而使用了硬字幕 。
 
-一些人喜欢硬字幕，因为这样脚本几乎无法被人盗走，因为压制时视频的图像和字幕同时被编码到一起，字幕无法像软字幕一样单独提取出来。然而，由于存在着高大上的被设计用来提取内嵌硬字幕的软件，硬字幕的防盗功能显得不是那么强势了。
+一些人喜欢硬字幕，因为这样脚本无法被人盗走，因为压制时视频的图像和字幕同时被编码到一起，字幕无法像软字幕一样单独提取出来。然而，由于存在着高大上的被设计用来提取内嵌硬字幕的软件，硬字幕的防盗功能显得不是那么强势了。
 
 许多播放设备和电脑平台无法显示软字幕文件使用的某些特殊字体和样式，但是使用硬字幕就没有这些问题，样式都被完美地保留。并且，在任何设备上播放都能保证是相同效果，不像软字幕那样，受播放设备环境不同的影响。
 
@@ -41,24 +41,14 @@
 ### 软字幕的缺点 ###
 软字幕增加了播放视频时处理的复杂度。播放设备不得不在播放对应视频前渲染出对应字幕图形，结果就是，低性能的设备无法同步播放甚至无法播放视频。
 
-Since the subtitles are bundled as straight text they are very easy to extract
-and use. This makes things easier on bootleggers or other script stealers. Note
-that grabbing subtitles from a hardsub is very easy currently, so this argument
-doesn't hold much weight.
+因为软字幕是独立的文件或者和视频文件封装在一起，它们更容易被提取和使(盗)用。这就使得盗用者更容易完成工作。注意目前从硬字幕视频文件中抓取硬字幕也是很容易的，所以硬字幕十分防盗的说法也是站不住脚的。
 
-The playback device is responsible for rendering the subtitles on screen. As a
-result, they might not look the same as the subtitler intended. In some cases,
-the playback device might not support the subtitle format, or might have bugs
-with it.
 
-The AVI file format is not reliable for supporting softsubs, if you plan to use
-it. Please note that Matroska (MKV) is very well supported by computers, so
-this isn't a major negative.
+播放设备负责渲染字幕到屏幕上。作为结果，它们看起来和字幕作者制作的看起来可能不太一样。某些情况下，播放设备可能不支持字幕格式，或者是支持的同时存在BUG。
 
-Subtitles with effects added (usually for karaoke) take up a lot of processing
-time, and may cause playback issues if the device cannot handle the processing
-requirements. A solution for this is to hardsub the complex parts such as
-opening and ending karaoke, and softsub the normal dialog.
+AVI格式的文件对于软字幕的支持很弱，如果你想使用软字幕，最佳情况是在电脑上使用MKV格式进行封装。
+
+拥有特效的字幕文件(多为卡拉OK特效)会占用很多的处理时间，如果播放设备不够给力还会出现播放问题。解决方式之一就是内嵌这一部分的字幕(OP/ED)，常规对话采用软字幕。
 
 ## What method do I choose? ##
 The method you should choose depends greatly on your audience. Will they have
