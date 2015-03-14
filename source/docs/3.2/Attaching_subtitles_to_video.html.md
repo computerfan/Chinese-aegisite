@@ -70,14 +70,9 @@ AVI格式的文件对于软字幕的支持很弱，如果你想使用软字幕�
 
 如果你对Avisynth不熟悉，建议先去熟悉一下下，因为它具有很多极佳的特性，和大量的视频滤镜，支持所有格式视频的简单处理。下面的说明会建立在你具有基础的Avisynth知识基础上。
 
-在视频流中加入字幕，你有两个选项：使用VSFilter (Aegisub含有,在 "csri" 目录下)，或者使用 [AssRender] (http://srsfckn.biz/assrender/)，它调用的是libass。 The following
-instructions assume that you are using VSFilter.
+在视频流中加入字幕，你有两个选项：使用VSFilter (Aegisub自带,在 "csri" 目录下)，或者使用 [AssRender] (http://srsfckn.biz/assrender/)，它调用的是libass。 下面的介绍假定你使用VSFilter
 
-To just add subtitles, you will want to make a simple AVS file containing the
-script lines you need. Simply create a plain-text file in notepad (or your
-favourite text editor) and save it with the .avs extension (beware that Windows
-might be hiding your extension, and you might actually be making a .avs.txt
-file). Here is an example:
+如果仅仅想加字幕，你写的AVS文件只要包含简单的几行。使用记事本(其它你喜欢的文本编辑器都行)建立一个纯文本文件，以 .avs 后缀保存(注意Windows有时候会隐藏拓展名，所以你有可能建立了一个 .avs.txt 文件)。下面是个例子:
 
     LoadPlugin("c:\program files\aegisub\csri\vsfilter.dll")
     AVISource("c:\projects\project1\video\mycoolvideo.avi")
