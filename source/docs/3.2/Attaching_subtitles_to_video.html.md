@@ -22,39 +22,24 @@
 
 在典型情况下，为了需要保持相同的视频质量，内嵌字幕会引起视频码率的升高。这就意味着文件体积的增加，如果保持相同体积则会有损画质。一般情况下内嵌字幕带来的文件体积变化范围在 3 到 10%之间。
 
-Changing the subtitles requires a re-encode of the video source, which can add
-a lot of time and extra work to the release process.
+内嵌字幕需要对原视频进行重编码，这使得视频的发布过程中又增加了额外的时间消耗。
 
-## Softsubbing ##
-Softsubbing is a method that keeps subtitles seperate from the video and relies
-on the playback device to combine the two when the video is being played. This
-method can be best compared to subtitles on most DVDs. The subtitling can be
-turned on or off as needed, and multiple languages can be supported with just
-one combined media file. Unlike with a DVD though, digital softsubs are
-actually text (DVD subtitles are pictures) which adds many nice features at the
-cost of complexity.
+## 软字幕 ##
+软字幕能保持视频和字幕文件是分开的，在播放视频时播放设备会把两者联系起来。这种方法可以在大多DVD上见到。字幕的有无可以控制，一个视频对应多语言字幕也可以得到支持。和DVD字幕不同的是，数字软字幕文件本质上是文本文件，而DVD字幕本质上是图片（或者说图层），前者在复杂度较高时有着更好的特性。
 
-### Advantages of Softsubbing ###
-Softsubs are much clearer on display. Since they are not part of the video
-image, video compression does not affect them, and with a good subtitle
-renderer, they are sharp and crisp - a huge benefit to readability.
+### 软字幕的优点 ###
+软字幕在播放时显示的更为清晰。因为播放时它并非作为视频图像的一部分，所以视频的压缩不会影响字幕质量，配合着好的字幕渲染器，软字幕看起来锐利清晰——这是判断可读性最重要的指标。
 
-Softsubs can be smaller. Since the subtitle is just a text file, it can take up
-less room because it isn't hogging video bitrate. This allows for an encoder to
-either make a smaller file with the same video quality, or a same-sized file
-with higher video quality.
+软字幕体积可以更小。因为它就是一个文本文件，它占用的空间更小，因为它不必占用视频的码率。这一点允许编码时生成更小的相同画质的视频文件，或者同体积画质更高的视频文件。
 
-People with vision problems have an opportunity to adjust how the subtitles look on-screen.
+有着视觉问题的人们可以调节字幕在屏幕上看起来是什么样子。
 
-Without a huge impact on size, multiple languages can be supported in one video file.
+由于对视频体积没有显著影响，在一个视频文件中多封装多国语字幕是可行的。
 
-If you find a subtitling mistake in a file, you can fix it without having to
-re-encode the video - saving a lot of time.
+如果你在字幕中发现了错误，你直接修正字幕文件就可以，而不用像内嵌字幕一样重编码视频，这会节省大量的时间
 
-### Disadvantages of Softsubbing ###
-Softsubs add processing complexity to the video. The playback device has to
-render and overlay the text before displaying the video, as a result, this
-means that low-powered devices will not be able to play the video.
+### 软字幕的缺点 ###
+软字幕增加了播放视频时处理的复杂度。播放设备不得不在播放对应视频前渲染出对应字幕图形，结果就是，低性能的设备无法同步播放甚至无法播放视频。
 
 Since the subtitles are bundled as straight text they are very easy to extract
 and use. This makes things easier on bootleggers or other script stealers. Note
