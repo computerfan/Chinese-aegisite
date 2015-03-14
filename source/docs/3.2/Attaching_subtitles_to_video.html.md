@@ -9,9 +9,7 @@
 ### 硬字幕的优势 ###
 硬字幕对播放设备的要求比较低。因为字幕已经成为视频的一部分，在相同视频参数条件下，播放有字幕视频和无字幕视频消耗的资源是差不多的。你也可以制作应用软字幕难以保存和渲染的特效，对拥有复杂特效的字幕文件进行实时渲染需要消耗大量的CPU运算资源。甚至有些网络字幕组发布的内挂字幕的动漫视频文件中，OP/ED部分由于带有复杂特效而使用了硬字幕 。
 
-一些人喜欢硬字幕，因为这样脚本几乎无法被人盗走，因为压制时视频的图像和字幕同时被编码到一起，字幕无法像软字幕一样单独提取出来However, the presence of very good subtitle extractors designed for
-the purpose of extracting this embedded text removes much of the argument that
-hardsubs prevent script stealing.
+一些人喜欢硬字幕，因为这样脚本几乎无法被人盗走，因为压制时视频的图像和字幕同时被编码到一起，字幕无法像软字幕一样单独提取出来。然而，由于存在着高大上的被设计用来提取内嵌硬字幕的软件，硬字幕的防盗功能显得不是那么强势了。
 
 Many playback devices and computer platforms cannot display the special fonts
 and formattings that softsubs contain, but this problem is removed with
