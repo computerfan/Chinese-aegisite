@@ -11,13 +11,9 @@
 
 一些人喜欢硬字幕，因为这样脚本几乎无法被人盗走，因为压制时视频的图像和字幕同时被编码到一起，字幕无法像软字幕一样单独提取出来。然而，由于存在着高大上的被设计用来提取内嵌硬字幕的软件，硬字幕的防盗功能显得不是那么强势了。
 
-Many playback devices and computer platforms cannot display the special fonts
-and formattings that softsubs contain, but this problem is removed with
-hardsubs, where the style is preserved. Also, these stylings will show back
-exactly the same on any device, unlike softsubs which depend on the playback
-device to properly intrepret and display the stylings.
+许多播放设备和电脑平台无法显示软字幕文件使用的某些特殊字体和样式，但是使用硬字幕就没有这些问题，样式都被完美地保留。并且，在任何设备上播放都能保证是相同效果，不像软字幕那样，受播放设备环境不同的影响。
 
-### Disadvantages of Hardsubbing ###
+### 硬字幕的缺点 ###
 Despite what some may call numerous advantages for hardsubbing, there are
 several distinct disadvantages that should be evaluated before making a
 decision.
