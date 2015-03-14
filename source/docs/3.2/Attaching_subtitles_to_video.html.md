@@ -20,7 +20,7 @@
 
 字幕在编码时会鲜明地凸显出来，这是由字幕的性质决定的。这会导致字幕边缘的图像质量有损失，同时字幕也会比软字幕模糊，在低码率时尤为明显。
 
-在典型情况下，为了需要保持相同的视频质量，内嵌字幕会引起视频码率的升高。这就意味着文件体积的增加，如果保持相同体积则会有损画质。一般情况下内嵌字幕带来的文件体积变化范围在 3 到 10%之间。
+在典型情况下，为了需要保持相同的视频质量，内嵌字幕会引起视频码率的升高。这就意味着文件体积的增加，如果保持相同体积则会有损画质。一般情况下内嵌字幕带来的文件体积变化范围在 3% 到 10%之间。
 
 内嵌字幕需要对原视频进行重编码，这使得视频的发布过程中又增加了额外的时间消耗。
 
@@ -41,7 +41,7 @@
 ### 软字幕的缺点 ###
 软字幕增加了播放视频时处理的复杂度。播放设备不得不在播放对应视频前渲染出对应字幕图形，结果就是，低性能的设备无法同步播放甚至无法播放视频。
 
-因为软字幕是独立的文件或者和视频文件封装在一起，它们更容易被提取和使(盗)用。这就使得盗用者更容易完成工作。注意目前从硬字幕视频文件中抓取硬字幕也是很容易的，所以硬字幕十分防盗的说法也是站不住脚的。
+因为软字幕是和视频文件封装在一起，它们更容易被提取和使(盗)用。这就使得盗用者更容易完成工作。注意目前从硬字幕视频文件中抓取硬字幕也是很容易的，所以硬字幕十分防盗的说法也是站不住脚的。
 
 
 播放设备负责渲染字幕到屏幕上。作为结果，它们看起来和字幕作者制作的看起来可能不太一样。某些情况下，播放设备可能不支持字幕格式，或者是支持的同时存在BUG。
@@ -50,19 +50,13 @@ AVI格式的文件对于软字幕的支持很弱，如果你想使用软字幕�
 
 拥有特效的字幕文件(多为卡拉OK特效)会占用很多的处理时间，如果播放设备不够给力还会出现播放问题。解决方式之一就是内嵌这一部分的字幕(OP/ED)，常规对话采用软字幕。
 
-## What method do I choose? ##
-The method you should choose depends greatly on your audience. Will they have
-relatively new and powerful playback devices? Will they possibly be able to
-install something to play back softsubs if they don't have it? Is your
-destination a digital format (Matroska, DVD, etc.) or will you be printing to
-tape?
+## 我应该选择哪种方式 ##
+按照你的观众来选择字幕的类型。他们是否拥有足够性能的播放设备？他们是否愿意安装软字幕需要的字体或其他环境？你的目的是制作成什么格式，DVD还是MKV？或者说你想刻成影带？
 
-While every situation will be different, you can use some of the following
-suggestions to guide you. These are based on making a digital format for
-playback on a computer system.
+情况多种多样，你可以参考下面的建议。这些是基于制作数字格式视频的目的，播放设备为电脑。
 
-If you want your file playable on the largest range of computers, operating
-systems, and small plastic toys,you will want to hardsub.
+
+如果你想让这个文件在大范围的播放设备上都能播放，不论是电脑系统还是便携游戏机一类，你应该使用硬字幕。
 
 If your audience will be running on a platform where your subtitle format is
 well-supported, softsubs are a good idea.
