@@ -79,37 +79,23 @@ AVI格式的文件对于软字幕的支持很弱，如果你想使用软字幕�
     TextSub("c:\projects\project1\subs\mainsubtitles.ass")
     TextSub("c:\projects\project1\subs\endkaraoke.ass")
 
-The above script will take an AVI file (mycoolvideo.avi), and then draw the
-contents of two subtitle files on the video. You can then encode this video in
-any program that supports AVS, such as [VirtualDub](http://www.virtualdub.org)
-or x264. To do so, just open the .avs file in the program, and follow the
-normal encoding procedure for it.
+上面的脚本以 AVI 文件为例 (mycoolvideo.avi)，挂载两个字幕到视频。你可以在任何一个支持AVS的程序中对视频进行编码，例如 [VirtualDub](http://www.virtualdub.org) 或者 x264。在相应的程序中打开 .avs 文件，正常进行编码即可。
 
-Keep in mind that, due to a bug in VSFilter, the path to the subtitle files
-MUST be absolute.
 
-## Hardsubbing with VirtualDub ##
-If you're already familiar with VirtualDub filters, and don't intend to do any
-other video processing, you should note that it's possible to use VSFilter as a
-VirtualDub filter as well. Just rename the .dll to .vdf and copy it to the
-VirtualDub plugins folder. The filter will then be available as "TextSub".
+切记，由于VSFilter的BUG， 挂载字幕时一定要写绝对路径。
 
-**Warning**: VirtualDub comes with a TextSub of its own, that is called
-"TextSub 2.23". This is a very old version that, amongst many other issues,
-cannot parse UTF-8 (the default Aegisub encoding) files properly. This will
-result in any non-ASCII characters being rendered as gibberish. NEVER USE THIS
-FILTER.
+## 用 VirtualDub 内嵌字幕 ##
+如果你已经对 VirtualDub 滤镜很熟悉，并且不打算对视频做其他处理，你应该注意到无法把VSFilter作为一个VirtualDub滤镜使用。重命名VSFilter.dll 为 VSFilter.vdf 然后把它复制到VirtualDub的plugins目录下。就可以使用"TextSub"了。
 
-## Softsubbing ##
-Softsubbing a video can be done in several ways. On Windows using a DirectShow
-player, such as Media Player Classic, ZoomPlayer or even Windows Media Player,
-you need VSFilter installed to view the subtitles. If you use MPlayer, you need
-libass and FontConfig compiled to correctly view all the formatting.
+**警告**: VirtualDub其实自带了一个TextSub，名为"TextSub 2.23"。这个版本太老旧了，甚至无法正确处理UTF-8编码 (Aegisub文件的默认编码)文件。结果就是它把非ASCII字符全部渲染成乱码。永远也不要使用这个滤镜！
 
-### Variant 1: softsubs inside the video container ###
-Matroska Video (MKV) is currently the best container for this method (MP4, OGM
-and even AVI can technically contain softsubs, but none supports font
-attachments, and all of them has various other issues). Using a muxer that
+## 软字幕 ##
+软字幕处理有多种方法。在Win平台使用DirectShow播放器，例如MPC, ZoomPlayer甚至是Windows Media Player，你需要安装VSFilter来观看字幕。如果你使用MPlayer，你需要libass和FontConfig才能看到完整的字幕样式。 
+
+
+### 变形 1:软字幕封装在容器中 ###
+Matroska Video (MKV) 目前是最好的容器(MP4, OGM
+甚至AVI技术上支持内封字幕，但是都不支持字体调用，并且都有其它的缺陷). 使用混流器Using a muxer that
 supports attachments (i.e. [mkvmerge
 GUI](http://www.bunkus.org/videotools/mkvtoolnix/)), you simply add your
 subtitle files to the Matroska file as separate tracks (just like you add audio
