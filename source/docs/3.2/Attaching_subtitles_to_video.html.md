@@ -1,26 +1,15 @@
 {::options toc_levels="2,3" /}
 
-In digital encoding, there are two main ways of including subtitles in a video:
-softsubbing and hardsubbing. Both methods has unique advantages and
-disadvantages, along with various arguments both for and against each method.
+在数字化编码中，有两种方式可以把字幕融入到视频文件中:
+软字幕和硬字幕。两种方法都有其独特的优缺点，有关两种方式优劣的讨论也未曾停止过。
 
-## Hardsubbing ##
-Hardsubbing is a method that "burns in" subtitles into the actual video portion
-of a movie. Digital hardsubs are much like subtitled VHS tapes; the subtitles
-cannot be turned off.
+## 硬字幕 ##
+硬字幕是一种把字幕 "烧录" 在视频部分中的方法。数字硬字幕更像是VHS录像带；字幕是不能被关闭的。
 
-### Advantages of Hardsubbing ###
-Hardsubbing is usually much less demanding on the playback device. Since the
-text is already part of the video, it will only take as much processing as the
-unsubtitled video would. You are also often able to make special effects that
-would be difficult to replicate in a soft subtitle format, because of the large
-amount of CPU usage required to renderer them. Even in softsubbed anime
-fansubs, the opening and closing karaoke are often hardsubbed because of the
-special effects used.
+### 硬字幕的优势 ###
+硬字幕对播放设备的要求比较低。因为字幕已经成为视频的一部分，在相同视频参数条件下，播放有字幕视频和无字幕视频消耗的资源是差不多的。你也可以制作应用软字幕难以保存和渲染的特效，对拥有复杂特效的字幕文件进行实时渲染需要消耗大量的CPU运算资源。甚至有些网络字幕组发布的内挂字幕的动漫视频文件中，OP/ED部分由于带有复杂特效而使用了硬字幕 。
 
-Some people argue that with hardsubs, scripts are harder to steal, since the
-text is embedded in the image - thieves cannot simply extract subtitles as in a
-softsub. However, the presence of very good subtitle extractors designed for
+一些人喜欢硬字幕，因为这样脚本几乎无法被人盗走，因为压制时视频的图像和字幕同时被编码到一起，字幕无法像软字幕一样单独提取出来However, the presence of very good subtitle extractors designed for
 the purpose of extracting this embedded text removes much of the argument that
 hardsubs prevent script stealing.
 
