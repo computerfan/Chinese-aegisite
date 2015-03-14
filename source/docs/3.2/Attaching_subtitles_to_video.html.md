@@ -95,14 +95,8 @@ AVI格式的文件对于软字幕的支持很弱，如果你想使用软字幕�
 
 ### 变形 1:软字幕封装在容器中 ###
 Matroska Video (MKV) 目前是最好的容器(MP4, OGM
-甚至AVI技术上支持内封字幕，但是都不支持字体调用，并且都有其它的缺陷). 使用混流器Using a muxer that
-supports attachments (i.e. [mkvmerge
-GUI](http://www.bunkus.org/videotools/mkvtoolnix/)), you simply add your
-subtitle files to the Matroska file as separate tracks (just like you add audio
-and video tracks), and any fonts as attachments (make sure they have the MIME
-type application/x-truetype-font). The fonts will then be installed temporarily
-by Haali Media Splitter (on Windows) or MPlayer (on *nix and MacOS X) during
-playback.
+甚至AVI技术上支持内封字幕，但是都不支持字体调用，并且都有其它的缺陷). 使用支持封装的混流器 (例如 [mkvmerge
+GUI](http://www.bunkus.org/videotools/mkvtoolnix/))，你可以简单地把字幕文件以轨道形式封装到 Matroska 文件中 (就像是音轨和视频轨)，字体可以作为附件添加 (确保字体含有 MIME字形 application/x-truetype-font)。播放时字体会被临时安装，当你使用 Haali 分离器 (Windows) 或者 MPlayer (在 *nix 和 MacOS X) 。
 
 ### Variant 2: distributing script files ###
 This method works best when you want to encode the video in an AVI wrapper. You
