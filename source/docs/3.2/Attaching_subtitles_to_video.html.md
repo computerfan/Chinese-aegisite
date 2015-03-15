@@ -93,15 +93,10 @@ AVI格式的文件对于软字幕的支持很弱，如果你想使用软字幕�
 软字幕处理有多种方法。在Win平台使用DirectShow播放器，例如MPC, ZoomPlayer甚至是Windows Media Player，你需要安装VSFilter来观看字幕。如果你使用MPlayer，你需要libass和FontConfig才能看到完整的字幕样式。 
 
 
-### 变形 1:软字幕封装在容器中 ###
+### 变形 1:内挂字幕 ###
 Matroska Video (MKV) 目前是最好的容器(MP4, OGM
 甚至AVI技术上支持内封字幕，但是都不支持字体调用，并且都有其它的缺陷). 使用支持封装的混流器 (例如 [mkvmerge
 GUI](http://www.bunkus.org/videotools/mkvtoolnix/))，你可以简单地把字幕文件以轨道形式封装到 Matroska 文件中 (就像是音轨和视频轨)，字体可以作为附件添加 (确保字体含有 MIME字形 application/x-truetype-font)。播放时字体会被临时安装，当你使用 Haali 分离器 (Windows) 或者 MPlayer (在 *nix 和 MacOS X) 。
 
-### Variant 2: distributing script files ###
-This method works best when you want to encode the video in an AVI wrapper. You
-simply send the raw subtitle files along with the video. The viewer then needs
-to load them in a player that supports external subtitles. When using this
-method, you either need to make sure you use fonts that everyone can be
-expected to have installed, or distribute a separate ZIP archive with the
-fonts. For obvious reasons, this method isn't recommended.
+### 变形 2: 外挂字幕 ###
+这种方式在你想制作AVI封装文件时最有用。你只要把字幕文件和视频一起发送即可。观看者需要在支持外挂字幕的播放器中挂载字幕。使用这个方法，你需要确保你使用的字体人人都已经安装，不然就再附上一份字体打包ZIP文件。由于一些明显的原因，这个方法不推荐。
