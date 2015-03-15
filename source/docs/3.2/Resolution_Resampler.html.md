@@ -1,4 +1,4 @@
-The Resolution Resampler is a built-in tool designed to change the [[resolution
+重设分辨率is a built-in tool designed to change the [[resolution
 of the script|Script_Resolution]] while transforming all affected tags so it
 ends up looking the same. It can also offset all margins (and absolute
 positions) by a specific value. Uses include merging two scripts with different
