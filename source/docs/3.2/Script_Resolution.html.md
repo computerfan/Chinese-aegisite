@@ -1,71 +1,69 @@
-ASS subtitle files are, to some extent, video independant and can be used with video files other than the one they were created with.
-This is achieved by using a virtual video resolution which controls how font sizes and coordinates are interpreted, which is commonly known as the "script resolution".
-Unfortunately, due to some bugs in the reference implementation of the subtitle format (VSFilter), rendering subtitles whose script resolution is not equal to the actual video resolution works poorly.
+ASS字幕文件，在某种程度上可以独立于视频文件使用。
+这就需要使用虚拟视频分辨率来控制字体大小和坐标，这个分辨率这就是"脚本分辨率"。
+不幸的是，由于VSFilter的一些BUG，渲染和视频分辨率不同的字幕脚本时这是不可靠的。
 
-Because the behavior of mismatched script and video resolutions can be confusing, we recommend keeping them the same when doing any complex styling.
-If you are releasing a single subtitles file with multiple videos of different resolutions, the [[Resolution Resampler]] can be used to convert a single file to each video resolution.
-However, if you're just creating simple styled subtitles, you normally should not have to worry about this.
+由于脚本分辨率和视频分辨率匹配不佳会导致意料之外的问题，所以我们建议做复杂样式字幕时，脚本分辨率和视频分辨率保持统一。
+如果你要发布一个字幕文件，同时对应多个分辨率的片源， [[重设分辨率]] 可以被用来转化脚本分辨率以适配每一个视频。但是，如果你制作的字幕文件样式并不复杂，你便不用担心这个问题。
 
 ----------------------
 
-There are several categories of things which are affected by the script resolution:
+下面几类设置会被脚本分辨率影响:
 
-Absolute coordinates (margins, `\pos`, `\move`, `\clip`, vector drawings): all absolute coordinates are in script resolution pixels and work sensibly.
+绝对坐标 (边距, `\pos`, `\move`, `\clip`, 矢量绘图代码): 所有的绝对坐标都按照脚本分辨率像素计算。
 
-Font sizes: the font size in ASS is the *line height* in script resolution pixels.
-Note that this is not the normal definition of font size, and that it does not use the width at all.
-As a result, the script resolution can not be used to adjust the aspect ratio of the subtitles for anamorphic video.
 
-Border sizes, shadow distance and blur strength: these can be in either script resolution or video resolution pixels.
-Which is used is controlled by the ScaledBorderAndShadow field in the header: if yes, script resolution is used, if no, video resolution is used.
-Scaling them relative to the script resolution should always be enabled.
+字号：ASS中的字体大小按照脚本分辨率的 *行高度* 像素值进行计算。
+注意这个定义和一般的字号定义是不同的，并且和宽度没有半毛钱关系。
+结果就是，面对一个变形视频时，脚本分辨率无法被用来调整字幕的横纵比。
 
-### Changing the script resolution
+边框大小，阴影距离，模糊强度：这些都会受到脚本分辨率和视频分辨率像素数值的影响。
+这几项在文件头部(脚本配置)中 比例缩放边框和阴影 区域可以控制。如果打√，则会使用脚本分辨率，反之则使用视频分辨率。
+建议勾选。
 
-The script resolution can be changed either by simply changing the value in the [[Properties]] dialog, or by resampling the script to a new resolution with the [[Resolution Resampler]] tool.
-Which to do depends on why you need to change the resolution.
-If you currently have an unstyled subtitle script which was set to the wrong resolution for whatever reason, change it in the [[Properties]] dialog.
-If the script has already been styled and you now want to use it with a video of a different resolution, use the [[Resolution Resampler]].
+### 更改脚本分辨率
+
+脚本分辨率可以简单地在 [[脚本配置]] 对话框中修改，或者使用 [[重设分辨率]] 工具。
+用哪个取决于你缘何修改脚本分辨率。
+如果你目前有一个未设置样式的字幕脚本，这个脚本因为某些原因分辨率设置错误，这种情况下使用 [[脚本配置]] 进行修改。
+如果脚本已经具有样式，并且你现在想做的就是把这个脚本匹配到另外一个分辨率的视频上，这时候就应该使用 [[重设分辨率]]。
 
 ### YCbCr Matrix
 
-You can ignore this entirely unless you are creating subtitles which need to exactly match a color in the video (such as if you are masking a portion of the screen with a vector drawing).
+你可以把这部分整体忽略，除非你需要把脚本中的颜色精确地和视频中的颜色进行匹配 (例如：你使用矢量图遮挡原字幕，还想保证绘图颜色和背景色一致，以免产生违和感)。
 
-Colors in ASS are specified as BGR values, but videos are normally stored in YCbCr, and there are several possible conversions between the two.
-In some situations the subtitle renderer needs to know which color matrix was used by Aegisub to be able to correctly match Aegisub's rendering of the subtitles.
-This is normally automatically set correctly by recent versions of Aegisub, but you may need to manually adjust it if working with scripts created by pre-3.1 versions.
+在 ASS 中，颜色的16进制代码是按照BGR值，但是视频所采用的色彩空间一般都是YCbCr，这两种色彩空间之间有几种转换方法。
+在某些环境下，字幕渲染器需要知道Aegisub使用了哪一种色彩空间，这样才能和在Aegisub中编辑字幕时显示颜色保持一致。
+最近版本的Aegisub都会自动正确设置，但是如果你手头的脚本是用3.1以前的版本创建的，你需要手动调整。
 
-### Automatic resolution change
+### 自动改变分辨率
 
-When opening a video which has a different resolution from the script's resolution, by default Aegisub will ask you what to do.
+当打开一个和当前脚本分辨率不同的视频时，默认情况下Aegisub会询问你想进行什么操作。
 
-If the video and the script have the same aspect ratio, you'll get the following dialog:
+如果你的视频和脚本的横纵比一样，你会看到下面的对话框：
 
 [[img/resolution-mismatch.png]]{: class="center"}
 
-"Resample script" will resample the subtitles to the new video's resolution as if you had used the [[Resolution Resampler]], and is normally what you want if you're updating pre-existing subtitles for the video you just opened.
+"重设脚本分辨率" 按照 [[重设分辨率]] 一样的方式重设脚本分辨率，如果你刷新一下字幕，你会发现看起来一切都是那么正常。
 
-"Set to video resolution" will simply set the script resolution to the video's resolution.
-This is the correct thing to do only if the subtitles actually match the video you just opened already, but someone previously changed the script resolution to an incorrect value.
+"直接设为视频分辨率" 会简单地直接把脚本分辨率设成视频分辨率。
+如果这个脚本事实上原来匹配这个分辨率的视频，但被某人改坏了，这样做是正确的。
 
-Cancel or hitting ESC will leave the script resolution at its current value.
-You want to do this if you are opening a lower-resolution work raw after the subtitles have already been styled for the final video resolution.
+取消或者按ESC不会更改脚本分辨率，还是原来的值。
+如果你在打开一个低分辨率的打轴用视频，而脚本中的样式已经和最终将要发布的视频匹配，就按这个方法做。
 
 ----------------------
 
-If the video's aspect ratio is different from the script's, you'll get the following dialog:
+如果视频的横纵比和脚本的不符，见下面的对话框(脚本分辨率)：
 
 [[img/resolution-mismatch-ar.png]]{: class="center"}
 
-There are a few common scnarios where the aspect ratio will have changed:
+有几种常见的情况，这些情况下横纵比会被改变：
 
-* The new video is anamorphic while the script was created with a pre-stretched video (or vice versa).
-  This typially happens with DVDs, where a 720x480 image is stretched to either 640x480 or 853x480 on playback.
-  In this case you want to stretch the subtitles to the new aspect ratio, as the stretching will be canceled out by the anamorphic rendering.
+* 新视频是变形分辨率，而字幕脚本是在非变形分辨率的视频下制作的(或者反过来)。
+  这种情况典型地发生在DVD影像中，一个实际分辨率720x480的影像在播放时被拉伸到640x480 或853x480。
+  这时就需要把字幕也拉伸到一个新的横纵比，因为在变形视频上渲染字幕时会产生变形。
 
-* The original video contained only the content area and the new video has added black borders on either the top and bottom or left and right.
-  Alternatively, the original video was a pan-and-scan version, while the new video contains the full image.
-  Select "add borders" for this case.
+* 原视频只含有内容部分而新视频有黑边。                               
+  可选地，原视频是扫描(非完整)(pan-and-scan)版本，而新视频含有完整图像。这种情况下，选择"适应视频"(增加黑边)
 
-* Either the original video was black-bordered and the new video is not, or the new video is a pan-and-scan.
-  Select "remove borders".
+* 无论是原视频有黑边还是新视频没有黑边，抑或新视频是pan-and-scan版本。都选择"铺满视频"(remove borders)。
