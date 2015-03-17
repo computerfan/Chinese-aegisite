@@ -1,42 +1,30 @@
-重设分辨率is a built-in tool designed to change the [[resolution
-of the script|Script_Resolution]] while transforming all affected tags so it
-ends up looking the same. It can also offset all margins (and absolute
-positions) by a specific value. Uses include merging two scripts with different
-resolutions, converting a script for a 4:3 video to its 16:9 equivalent, and
-converting between 1:1 and anamorphic pixel formats.
+重设分辨率是一个Aegisub自带的工具，用来修改 [[脚本分辨率|Script_Resolution]] 同时修改所有与脚本分辨率相关的特效标签，所以应用过后看起来的效果能保持一致。它能根据分辨率修正所有边距的偏移量(甚至绝对位置)。它的用途包括：合并两个不同分辨率的脚本文件；对一个脚本进行4:3到16:9的比例适配；也能在像素宽高比1:1和变形像素比例之间进行转化。
 
-## Overview
+## 总览
 [[img/resolution_resampler.png]]{: class="center"}
 
-There are three main parts to the resolution resampler: the source
-resolution, destination resolution, and what to do if the source and
-destination have different aspect ratios.
+重设分辨率工具有三个主要部分：原分辨率，重设分辨率(目标分辨率)，若原分辨率和重设分辨率不同做的调整。
 
-By default, the source resolution is set to the current script properties and the destination resolution is set to the video's properties, which is normally what you want.
-Changing the source settings is typically only useful to repair previous incorrect resampling or scripts typeset incorrectly.
+默认情况下，原分辨率为当前脚本属性中的脚本分辨率，重设分辨率一般都设为视频分辨率，一般情况下这个分辨率就是你想要的。
+更改原分辨率设置只对修复明显的分辨率错误或者排版方面错误有用。
 
-If you're resampling from SD to HD resolutions, you probably want to convert the YCbCr matrix from TV.601 to TV.709, and vice-versa when converting from HD to SD.
+如果你想把SD改为HD分辨率，你可能会同时需要把YCbCr matrix(色彩空间)从TV.601改成TV.709，反之则需要从TV.709改成TV.601。
 
-If the new resolution and old resolution don't have the same aspect ratio, you have four options:
+如果新旧分辨率的横纵比不同，你有以下四种选择：
 
-1. Stretch the subtitles to the new AR.
-   This is intended for when one or both of the resolutions is anamorphic, and actually represent the same picture.
-1. Automatically add the required margins to center the old video within the new video.
-   Use this if your new video has black borders or shows more of the picture than the old one.
-1. Automatically remove the required margins to center the old video within the new video.
-   Use this if the source video has black borders and your new video does not.
-1. Manually set the margins to offset all lines by.
-   Note that margins are added *before* rescaling, not after.
+1. 拉伸字幕到新的横纵比。
+   这种选择是针对原分辨率和重设分辨率都是变形的情况，会保持字幕图像的一致性。
+2. 自动增加边距来保证字幕匹配。
+   当新视频有黑边或者比旧视频显示的内容更多时，选用这个方法。
+3. 自动减小边距来保证字幕匹配。
+   当旧视频有黑边而新视频没有时，选用这个方法。
+4. 用户自定义所有行的边距。
+   注意边距是在重设尺寸 *之前* 被增加，而不是之后。
 
-## Examples
+## 例子
 
-### 4:3 SD to 16:9 HD
-For example, if you have subtitles typeset to a 640x480 video, and want to
-apply the same subtitles to a 1280x720 video (which is widescreen, therefore
-either showing more video on the left and right margins or with black
-borders), you'd set the resampler to the settings shown in the
-screenshot above.
+### 4:3 SD 转为 16:9 HD
+举个例子，如果你已经在640x480分辨率下为视频排版字幕，想要把这个字幕文件和1280x720的视频适配起来，你可以使用上图中的重设分辨率工具。
 
-### Anamorphic 720x480 to 640x480
-For this, you'd set source resolution to 720x480, destination resolution
-to 640x480, and select the "Stretch" aspect ratio handling
+### 变形分辨率 720x480 转为 640x480
+对于这种情况，你应该把原分辨率设置为720x480，重设分辨率设为640x480，选择 "拉伸"。
