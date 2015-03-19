@@ -1,1 +1,1 @@
-In computer programs, a **macro** is a (usually relatively small) snippet of program code that can easily be added to the program, to add a new function or such, intended to automate some aspect of using the program.
+在计算机程序中，所谓的**宏**就是（通常比较小的）一段可以轻易地添加到程序中的命令代码，可以用来添加新功能等，从而使用程序来自动完成某些工作。
