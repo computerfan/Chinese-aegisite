@@ -1,15 +1,13 @@
 {::options toc_levels="2..6" /}
 
-Aegisub includes several macros. Here's a line-up of them.
+这里列出了Aegisub自带了几个宏。
 
-## Apply karaoke template  ##
-This is the macro incantation of Karaoke Templater. See the page on
-[[Karaoke_Templater]] for how to use this.
+## 应用卡拉OK模版 ##
+这个是卡拉OK脚本执行器的宏，用法请参见[[卡拉OK脚本执行器|Karaoke_Templater]]。
 
-This macro is only available when there is at least one template line in the
-subtitle file.
+这个宏只有在字幕文件中至少有一行模版行时才可用。
 
-## Make full-width  ##
+## 转换为全角字符  ##
 Converts all ASCII characters to Japanese "full-width" variations of them.
 
 This can be useful if you need to typeset a sign translation vertically,
