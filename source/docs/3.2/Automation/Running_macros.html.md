@@ -1,21 +1,11 @@
-[[Automation]] [[macros|Glossary/Macro]] appear as options in the Automation
-menu.
+[[自动化|Automation]]的[[宏|Glossary/Macro]]是以选项的形式出现在自动化菜单中的。
 
 [[img/automation_menu.png]]
 
-The first option in the Automation menu, before the separator, always opens
-the [[Automation/Manager]] window.
+通常可以使用自动化菜单中的，在分隔线前的第一个选项来打开[[自动化脚本管理器|Automation/Manager]]窗口。
 
-Below the separator is a list of all macros loaded. In the example above
-seven macros are loaded. The third, [[Karaoke_Templater]] is unavailable
-though, because the macro has determined it can't be run on the subtitles.
-In this case, because the subtitle file has no karaoke templates. Other
-macros might be unavailable for other reasons. The fourth has had a hotkey
-set in the [[preferences dialog|Options#hotkeys]]
+分隔线以下是所有已加载宏的列表。在上面示例图中共加载了七个宏。第三个，[[卡拉OK模版执行器|Karaoke_Templater]]是不可用状态，因为这个宏不能在当前的字幕文件里运行，这是因为当前字幕文件中没有卡拉OK模版行。其它的宏也可能因其他一些原因而不可用。第四个宏在[[选项对话框|Options#hotkeys]]中设置了快捷键。
 
-To run a macro, just select it from the Automation menu. Some macros might
-ask you for more information, and some work only on the selected subtitle
-lines. Always remember to read the documentation that came with macros you
-downloaded from the Internet.
+如果想运行一个宏，只需在自动化菜单中点击一个即可。一些宏可能还会找你要一些参数信息，还有些只会作用于所选的字幕行。当你从网上下到一个宏之后，一定要记得看一下附带的说明。
 
 {::template name="automation_navbox" /}
