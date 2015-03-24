@@ -1,18 +1,18 @@
-The translation assistant is a valuable tool for translating subtitles from one language to the other. It allows you to translate in the most efficient possible manner, by letting you type the translated text without having to worry about selecting the original, or forgetting what was written in it. It also parses ASS override tags, and will skip over them.
+翻译助手在翻译字幕时是一个实用的工具。它允许你以尽可能快的方式进行翻译，不用担心对原文误操作，不用担心忘记单词拼法。它还会自动辨别 ASS 特效标签，在翻译时跳过它们。
 
 
-## Overview  ##
+## 总览  ##
 
 
 [[img/Translation_Assistant.png]]{: class="center"}
 
-The assistant window is simple: it shows you the original raw line, and a box where you can type the translation. There is also a list of hotkeys specific to this window, and a checkbox to enable previewing, if you have the corresponding video set up. Having this option enabled will automatically jump to the current line when you change it.
+翻译助手窗口很简洁:上面显示着原文文本，下面的文本框是你键入翻译的地方。更下面列出了一些热键，一个复选框以便你选择是否查看预览，如果你视频设置正确。打勾的结果就是会视频会自动跳转到当前行对应时间。
 
 
-## How to use  ##
+## 如何使用  ##
 
 
-Using the assistant is very easy. First, start it by clicking its icon in the toolbar or going to Subtitles->Translation Assistant. It will start at the currently selected line. The original line will have the text that you have to translate highlighted in blue. Simply type the translation to it, and hit enter. If there are override tags in the line, you may have to translate more than one block per line.
+使用翻译助手很简单。首先，在工具条点击字幕->翻译助手。这样会从当前选择的行开始处理。原始行中的单词会自动被蓝色高亮处理。键入翻译文本，敲击回车。如果原文本中含有特效标签，你可能不得不在每翻译出一个空格。
 
-In the above screenshot, supposing that you are translating to Portuguese, you would first type "Clima" (Portuguese for Weather) and hit enter. It would then highlight "_______". Since I don't want to translate that, I just hit Insert in the keyboard, and it will copy the text over. So I hit enter, and it will ask for the last bit, "Temperature", so I enter "Temperatura" and hit enter again. Then it will jump to the next line, where I will repeat the process. If I make a mistake, I can use Page Up and Page Down keys to move to the next or previous block/line.
 
+在上方的截图中，假设你在把英文翻译成葡萄牙语，你先键入"Clima"(葡萄牙语中的Weather)然后敲击回车。然后"_______"会被高亮。因为我不想翻译它，所以我直接按了键盘上的Insert键，助手会把文本保留。再次敲击回车，把"Temperature"翻译成"Temperatura"，敲击回车。然后就会跳到下一行，重复上述过程，如果中间某个步骤出错，可以使用Page Up 和 Page Down按键来回在行之间移动。
