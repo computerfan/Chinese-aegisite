@@ -1,80 +1,63 @@
-The **shift times** tool is a batch processor for timestamps; it adjusts the
-start/end timestamps of many subtitle lines at once in various ways. It is
-located under _Timing_ -> _Shift Times_.
+**平移时间** 工具用来批量处理时间轴；它可以以不同的方式调整行的开始/结束时间。你可以在 _计时_ -> _平移时间_ 中使用。
 
-It looks like this:
+它看起来是这个样子:
 
 [[img/shift_times.png]]{: class="center"}
 
-The left part of the window contain the options.
+窗口的左侧包含几个选项。
 
-### Shift by ###
+### 平移方式 ###
 
-These controls decide in which direction and by how much each timestamp will
-be modified.
+这里可以决定平移的方向和数值。
 
-Time
-: How much you want to adjust each timestamp, in
-hours:minutes:seconds.centiseconds.
+时间:
+你想对目标行的时间进行多大数值的时间调整，以 小时:分钟:秒.厘秒 为单位。
 
-Frames
-: If you have video loaded, you can specify the adjustment time as a
-number of frames instead. Note that shifting by zero frames will snap
-the timestamps to the frame times without doing any shifting.
+帧: 如果你已经读取了视频，你可以选择以帧的方式调整时间。注意填写数值为0会把时间标记设定为帧时间，不会产生平移效果。
 
-Forward or Backward
-: Controls in which direction the timestamps are adjusted.
+提前或延后:
+控制平移时间的方向。
 {: .horizontal-wide}
 
-### Affect ###
+### 应用于 ###
 
-These controls decide what lines will be processed.
+控制对什么样的行进行平移。
 
-All rows
-: Applies the time shifting to all lines in the script.
+所有行:
+对字幕脚本中的所有行进行平移。
 
-Selected rows
-: Applies the time shifting only to the selected lines.
+所选行:
+只对选择的行进行平移。
 
-Selection onward
-: Applies the time shifting to the first selected line and all lines
-below it (in the grid).
+所选行及其后续:
+对所选的行和该行后面的所有行进行平移。(在字幕栏)
 {: .horizontal-wide}
 
-### Times ###
+### 时间 ###
 
-These controls decide what timestamps will be processed.
+这里控制着工具对哪些时间标记进行处理。
 
-Start and End times
-: Both start and end times of the affected lines will be modified by
-the given amount.
+开始和结束时间:
+被选择行的开始和结束时间都会被按照给定值进行平移。
 
-Start times only
-: Only the start times of the affected lines will be modified. Note
-that this makes the lines longer (if you shift backwards) or shorter
-(if you shift forwards) and can even make them have a duration of zero.
+仅开始时间:
+只影响被选择行的开始时间。注意，这个操作会延长行的持续时间(如果你选择提前时间)或削减持续时间 (如果你选择延后时间)，甚至可以把行的持续时间变为0。
 
-End times only
-: Only the end times of the affected lines will be modified. Note that
-this makes the lines longer (if you shift forwards) or shorter (if you
-shift backwards) and can even make them have a duration of zero.
+
+仅结束时间:
+只影响被选择行的结束时间。注意，这个操作会延长行的持续时间(如果你选择延后时间)或削减持续时间 (如果你选择提前时间)，也可以把行的持续时间变为0。
+
 {: .horizontal-wide}
 
-Note that if a line is shifted so that its start or end time stamp would be
-negative, that timestamp is zeroed instead. This can be used to clear all
-timings from an entire script, by shifting backwards by longer than the
-latest timestamp in the script.
+注意，如果行的时间被提前平移过度，开始时间或者结束时间会变成0。这个方式被用来清除一个脚本中所有行的时间轴信息，平移过度的条件是，平移的提前量大于最后一行的结束时间。
 
-### Load from history ###
+### 从历史打开 ###
 
-This is a history of all time shiftings you have done since last time you
-cleared the shift history (with the clear button). The format is a number of
-fields separated by commas. The fields are:
+这是你进行时间平移的所有记录(从你上一次清除这些记录开始)，可以用"清除"按钮清除。格式分为以下几个部分，中间用逗号分隔:
 
-* Filename of the script (e.g. "example.ass")
-* Shift amount and direction (e.g. "0:00:05.00 forward")
-* What times were affected, "s" for start, "e" for end, "s+e" for both
-  What rows were affected; "sel start-end" for selections, "all" for all
-  rows (e.g. "sel 1-40")
+* 字幕脚本文件名 (例如 "例子.ass")
+* 平移量和方向 (例如 "0:00:05.00 提前")
+* 作用于什么时间标记，"开始"，"结束"，"开始+结束"。
+* 那些行被处理了; "所选SS-EE"表示应用于编号SS-EE(数字)之间的行，"所有"表示所有行都被处理 (例如. "所选 1-40")
 
-To load the settings from a history entry simply double-click it.
+想要从历史中读取设置，双击即可。
