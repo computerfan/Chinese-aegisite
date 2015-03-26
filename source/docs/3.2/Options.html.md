@@ -431,8 +431,8 @@ dialogue is opened. In that case you will have to enter the
 
 译者注：对于缓存文件命名，个人翻译的也不是很到位，不理解的看下面原文吧，要是原文也看不懂= =。那就不要改这个了2333
  
- “ For the name, the string expects a printf-style "%i" parameter, that will be replaced with a number. "%02i" is used by 
- default. Don't change that unless you know what you are doing. ”
+ “ For the name, the string expects a printf-style "%i" parameter, that will be replaced with a number. "%02i" is used 
+ by default. Don't change that unless you know what you are doing. ”
 
 
 ### 频谱模式 ###
@@ -562,15 +562,16 @@ dialogue is opened. In that case you will have to enter the
     Aegisub中视频载入后会被转换为RGB，字幕是Overlay到视频上的。
     笔者对“强制BT.601”这块的翻译也不是很自信，欢迎菊苣前来指正！
     附上原文
+
     **Force BT.601**
 Pretend all YUV videos are BT.601, for VSFilter compatibility.
-	When VSFilter is used as a DirectShow filter, it always uses the BT.601 color matrix for converting the subtitles 
+When VSFilter is used as a DirectShow filter, it always uses the BT.601 color matrix for converting the subtitles 
 from RGB to YUV. This means that if the video uses BT.709 (as most HD video and the occasional DVD does), colors 
 which match the video in Aegisub will not match the video in the player. This option makes Aegisub always convert 
 videos to RGB using BT.601, making the colors shown in Aegisub incorrect, but making it so that if the colors match 
 in Aegisub, they will match in the player.
 
-	To make things more exciting, VSFilter will use the correct color space when used as the internal subtitle renderer 
+To make things more exciting, VSFilter will use the correct color space when used as the internal subtitle renderer 
 in MPC-HC, so enabling this option will result in mismatched colors in that case. As the ISR is currently broken in 
 many ways (e.g. it is impossible to accurately position subtitles with it), we recommend not worrying about it for now.
 
