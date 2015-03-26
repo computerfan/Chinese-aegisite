@@ -374,18 +374,18 @@ dialogue is opened. In that case you will have to enter the
 [[img/preferences-advanced-audio.png]]{: class="center"}
 
 **音频来自**
-: 选择使用何种后台处理方式来载入音频。目前这里只提供两种可选方式。
+: 选择使用何种后台处理方式来载入音频。目前提供两种可选方式。
 
     _avisynth_ (仅限Windows)
     : 使用 [Avisynth](http://www.avisynth.org) 载入音频。
-      所有类型的文件都将会在Avisynth中以DirectShowSource()方式被载入，但*.avs文件会以Import()方式被载入。
-      译者注：如果你懂得写AVS脚本的话，甚至可以变相使用LwlibavAudioSource()等五花八门的方式载入音频文件。
-      但如果你不懂如何写AVS，这个方式一般就不要考虑了。因为DirectShowSource()实在是和人品有关，
+      所有类型的文件都将会在Avisynth脚本中以DirectShowSource()方式被载入，但*.avs脚本文件会以Import()方式被载入。
+      译者注：如果你懂得编写AVS脚本的话，甚至可以使用LwlibavAudioSource()等五花八门的方式载入音频文件。
+      但如果你不懂如何写AVS，这个方式就不要考虑了。因为DirectShowSource()这种“高级”滤镜实在是和人品有关，
       推荐还是用下面的FFMS2载入音频。
 
     _FFmpegSource_
     : 使用 [FFMS2](http://code.google.com/p/ffmpegsource/) 载入音频。
-      通常比使用DirectShowSource()方式载入更加可靠，但是载入的速度也会慢一些。缘于FFMS2需要先索引一遍媒体文件，通常这
+      比使用DirectShowSource()方式载入更加可靠，但是载入速度相对会慢一些。缘于FFMS2需要先索引一遍媒体文件，通常这
       会花费一些时间，时间长短视文件大小以及电脑性能而异。
 
     值得注意的是，无论这里如何设置，对于WAV文件，PCM WAV Reader都将优先被使用。
@@ -415,7 +415,7 @@ dialogue is opened. In that case you will have to enter the
 
     _openal_
     : 调用[OpenAL](http://www.openal.com/)的API来播放音频。
-      这是在OS X系统上的推荐方案。但OpenAL通常不会随Windows安装自带，因为它会让巨硬觉得不爽。
+      这是在OS X系统上的推荐方案。但OpenAL通常不会随Windows安装时自带，因为它会让巨硬觉得不爽。
 
 ### 缓存 ###
 
@@ -428,6 +428,10 @@ dialogue is opened. In that case you will have to enter the
 : 这些选项决定硬盘上的音频缓存的存储位置。仅缓存类型设置为“硬盘”的情况下生效。
 在硬盘空间充足的情况下切勿更改这些设置。对于缓存文件名来说，它应该满足C语言的输出风格即"%i"形参，
 形参会被一个数字所取代。"%02i"就是默认值。千万不要随意修改这些设定，除非您清楚的知道您在干什么。
+
+译者注：对于缓存文件命名，个人翻译的也不是很到位，不理解的看下面原文吧，要是原文也看不懂= =。那就不要改这个了2333
+ “ For the name, the string expects a printf-style "%i" parameter, that will be replaced with a number. "%02i" is used by default. Don't change that unless you know what you are doing. ”
+
 
 ### 频谱模式 ###
 
@@ -449,25 +453,26 @@ dialogue is opened. In that case you will have to enter the
 {::template name="todo"}以上均属杜撰(=・ω・=){:/}
 
 **缓存最大容量**
-: 设定频谱缓存所能占用的最大内存数量。
-已计算好的频谱会被缓存到内存中以保证滚动频谱时不发生卡顿。
-并且能缓存的频谱数量在一定容量的缓存限制下是和频谱的质量设定有关的。
+: 设定频谱缓存所占用的最大内存数量。
+已计算好的频谱会被缓存到内存中，以保证滚动频谱时不发生卡顿。
+并且能缓存的频谱长度，在一定量的缓存限制下，是与频谱的质量等级设定有关的。
 以48Khz采样率的音频为例，在频谱质量设定为“较好质量”的情况下，默认的128M缓存约能缓存六分钟的频谱。
 但需要注意的是，如果你的缓存设置小于5MB，则Aegisub会自动套用默认的缓存大小（128M）。
-建议最大缓存容量不要超过你电脑安装物理内存的四分之一。（内存壕请无视）
+建议最大缓存容量不要超过你电脑安装物理内存的四分之一。
+（当然也不要超过32位程序所能使用的3GB内存上限，如果你使用的是64位Aegisub，请无视这条。但不推荐使用64位Aegisub，BUG很多）
 
 ### Avisynth (仅限Windows) ###
 
 **Avisynth down-mixer（声道混合/提取）**
 : Aegisub仅能使用单声道音频。这个选项设定Avisynth如何将音频转换为单声道。
-ConvertToMomo：将立体声或多声道重新混合成单声道。
-GetLeftChannel：仅提取左声道。
-GetRightChannel：仅提取右声道。
+	ConvertToMomo：将立体声或多声道重新混合成单声道。
+	GetLeftChannel：仅提取左声道。
+	GetRightChannel：仅提取右声道。
 
 **强制采样率**
-: 强制转换所有已打开音频的采样率为给定值。默认0则不做转换。
+: 强制转换所有被打开的音频采样率为给定值。默认0则不做转换。
 若使用硬件声卡完成这一转换，则可潜在提升音频表现力以及修复一些播放问题。
-（麻麻说软件播放器转换不行。这玄学吗？）
+	（原作者说软件播放器转换不行。这玄学吗？）
 
 ### FFmpegSource ###
 
@@ -481,7 +486,7 @@ GetRightChannel：仅提取右声道。
     : 假设媒体文件中不存在这条有错误的音轨。
 
     _停止_ (默认值)
-    : 停止索引文件并且返回错误前的所有音轨数据。这是Aegisub的默认值，因为在音轨末端遭遇到受损的音频数据是很常见的。
+    : 停止索引文件并且返回错误发生前的所有正常音轨数据。这是Aegisub的默认值，因为在音轨末端遭遇到受损的音频数据是很常见的。
     （笔者表示貌似不常见 QAQ ）
 
     _取消_
@@ -500,20 +505,22 @@ GetRightChannel：仅提取右声道。
 [[img/preferences-advanced-video.png]]{: class="center"}
 
 **视频来自**
-: 使用何种方式来载入视频。可用选项取决于你安装的Aegisub编译版本和运行Aegisub的系统平台。
+: 使用何种方式来载入视频。可用选项取决于你安装的Aegisub版本和运行Aegisub的平台。
 视实际情况可能存在以下选项：
 
     _avisynth_ (仅限Windows)
     : 使用[Avisynth](http://www.avisynth.org)来载入视频。
         Avisynth支持载入绝大多数常见格式的媒体以及*.d2v文件（注：d2v文件是DVD VOB媒体文件的索引文件，
-        但对*.d2v文件的支持需要正确安装相关Avisynth源滤镜）。
-        需要注意的是Aegisub可以使用其自己独立的Avisynth.dll，而不使用你安装的Avisynth。
-        若使用Avisynth载入视讯，则只推荐载入*.avi *.d2v *.avs文件以获(fang)得(zhi)最(ren)佳(pin)体(wen)验(ti)。
+        但对*.d2v文件的支持需要正确安装相关Avisynth源滤镜，即DGSource）。
+        需要注意的是Aegisub可以使用独立于系统安装的Avisynth。
+        最后提醒一句：若使用Avisynth载入视讯，则只推荐载入*.avi *.d2v *.avs文件以获(fang)得(zhi)最(ren)佳(pin)体(wen)验(ti)。
+        当然，如果你会编写AVS脚本，就当上面是一堆废话吧~(=・ω・=)
+        同样的，如果你不明觉厉的话，请下移目光↓
 
     _FFmpegSource_
     : 使用[FFMS2](http://code.google.com/p/ffmpegsource/)来载入视频。
-        如果你看不懂上面在说些什么，那么FFMS2就是你最好的选择。支持绝大多数常见格式并且通常极为可靠。
-        但对于较大的媒体文件可能会花费几分钟的索引时间。
+        如果你看不懂上面在说些什么，那么FFMS2就是你最好的选择。它支持绝大多数常见视频格式并且通常极为可靠。
+        但对于较大的媒体文件可能会花费几十秒乃至几分钟的索引时间。
 
 **字幕来自**
 : 选择使用何种方式来渲染字幕。
@@ -521,16 +528,16 @@ GetRightChannel：仅提取右声道。
     （安装这两种渲染器只需要把其对应的DLL文件放入Aegisub安装目录下的CSRI目录内即可）
 
     *CSRI/vsfilter_textsub* (仅限Windows)
-    : 使用VSFilter 2.40来渲染字幕。这是Aegisub针对ASS格式字幕使用的标准渲染器。 
+    : 使用VSFilter 2.40来渲染字幕。这是Aegisub针对ASS格式字幕文件使用的标准渲染器。 
 
     _libass_
     : 使用[libass](http://code.google.com/p/libass/)来渲染字幕。
         libass渲染速度远快于VSFilter，并且libass一定程度上可以跨平台使用。
-        它和VSFilter的渲染方式有些不同，并且很不幸的是，在Windows平台上有一些已知的字体渲染BUG。
-        鉴于越来越多的人开始使用libass，如果你在制作复杂的软字幕，那么最好同时用libass和VSFilter检查一下你的字幕渲染。
+        它和VSFilter的渲染方式有些不同，但不幸的是，libass在Windows平台上有一些已知的字体渲染BUG。
+        鉴于越来越多的人开始使用libass，如果你在制作复杂的软字幕，那么最好同时用libass和VSFilter检查一下你的字幕渲染情况。
 
 **强制BT.601**
-: 由于VSFilter的兼容性问题，强制指定所有输入的YUV色彩格式的视频为BT.601色域。
+: 由于VSFilter的兼容性问题，强制指定所有YUV色彩格式输入的的视频为BT.601色域。
 
     当VSFilter被用作DirectShow字幕滤镜时，VSFilter总会将字幕从RGB色彩格式转换为BT.601色域的YUV格式。
     这意味着如果视频是BT.709色域（实际上绝大多数高清视频和少数DVD就是这种色域），
@@ -552,17 +559,23 @@ GetRightChannel：仅提取右声道。
     译者注：VSFilter渲染顺序为： RGB渲染字幕 -> 转换YUV -> 覆盖字幕到视频。
     Aegisub中视频载入后会被转换为RGB，字幕是Overlay到视频上的。
     笔者对“强制BT.601”这块的翻译也不是很自信，欢迎菊苣前来指正！
-    附上原文地址，For Original Manual, Please refer to “Force BT.601” Section.
-    http://docs.aegisub.org/3.2/Options/#advanced-video
+    附上原文
+    **Force BT.601**
+Pretend all YUV videos are BT.601, for VSFilter compatibility.
+	When VSFilter is used as a DirectShow filter, it always uses the BT.601 color matrix for converting the subtitles from RGB to YUV. This means that if the video uses BT.709 (as most HD video and the occasional DVD does), colors which match the video in Aegisub will not match the video in the player. This option makes Aegisub always convert videos to RGB using BT.601, making the colors shown in Aegisub incorrect, but making it so that if the colors match in Aegisub, they will match in the player.
+
+	To make things more exciting, VSFilter will use the correct color space when used as the internal subtitle renderer in MPC-HC, so enabling this option will result in mismatched colors in that case. As the ISR is currently broken in many ways (e.g. it is impossible to accurately position subtitles with it), we recommend not worrying about it for now.
 
 ### Avisynth ###
 
 **允许pre-2.56a Avisynth（允许使用旧版本的Avisynth）**
-: 支持使用2.56a前的老版本的Avisynth，因为总有些人的信仰难以动摇。
+: 支持使用2.56a前的老版本的Avisynth，因为有些人的信仰难以动摇。
 
 **Avisynth 内存限额**
-: 设定Avisynth能够使用最大RAM缓存。
-通常增加缓存大小并不能加快处理速度，除非你直接载入了非常复杂的AVS脚本。
+: 设定Avisynth能够使用最大内存。
+通常增加内存缓存大小并不能加快处理速度，除非你直接载入了非常复杂的AVS脚本。
+	（例如：载入了一个带有EP降噪滤镜或是Contra sharp滤镜的AVS脚本，
+	在没有足够内存加速处理的情况下，会非常卡，建议载入的AVS脚本不要过于复杂。）
 
 ### FFmpegSource ###
 
