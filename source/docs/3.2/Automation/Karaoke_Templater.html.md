@@ -1,3 +1,7 @@
+---
+title: 卡拉OK模版执行器
+---
+
 **卡拉OK模版执行器**是一个Aegisub自带的[[自动化|Automation]]脚本。它的主要目的是帮助你使用特别设计的模版语言来制作[[卡拉OK特效|Glossary/Karaoke_effect]]。卡拉OK模版执行器已随Aegisub安装并可以使用。
 
 ## 教程：卡拉OK模版执行器介绍  ##

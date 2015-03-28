@@ -1,3 +1,7 @@
+---
+title: 教程
+---
+
 {::options toc_levels="2,3" /}
 
 下面的教程可供学习Aegisub（全英文）：

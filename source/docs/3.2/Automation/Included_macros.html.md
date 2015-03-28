@@ -1,4 +1,7 @@
-- @title = "附带的宏 - Aegisub 手册"
+---
+title: 附带的宏
+---
+
 {::options toc_levels="2..6" /}
 
 这里列出了Aegisub自带了几个宏。

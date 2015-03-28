@@ -1,6 +1,10 @@
+---
+title: 主页
+---
+
 欢迎来到Aegisub手册。要获得关于这个程序的更多信息，请参阅我们的[[关于|About]]页面，或浏览左边栏的文章。
 
-关于开发Aegisub和编译Aegisub的文章位于[Bug跟踪器](http://devel.aegisub.org)上。
+关于开发Aegisub和编译Aegisub的文章位于[Bug跟踪系统](http://devel.aegisub.org)上。
 
 ## 开始
 
@@ -10,7 +14,7 @@
 
 * [[为一个已翻译的脚本打轴|Audio]]
 * [[使用可视化工具进行简单的排版|Tutorials#visualtypesetting]]
-* [[把你做好的字幕放到视频上|Attaching_subtitles_to_video]] （来观看或发布）
+* [[把你做好的字幕附到视频上|Attaching_subtitles_to_video]] （来观看或发布）
 
 ^
 

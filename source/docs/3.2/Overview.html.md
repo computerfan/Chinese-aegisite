@@ -1,3 +1,7 @@
+---
+title: 概述
+---
+
 [[img/Main-window-overview.png]]
 
 这张截图展示的是打开所有面板的Aegisub主窗口：

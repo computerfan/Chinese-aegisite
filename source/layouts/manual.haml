@@ -1,5 +1,6 @@
 - @nav_group = '手册'
-- page_name = current_page.url.gsub(/^.*\/([^\/]+)\/$/, '\1').gsub('_', ' ')
+- page_name = current_page.data.title || current_page.url.gsub(/^.*\/([^\/]+)\/$/, '\1').gsub('_', ' ')
+- page_title = page_name
 - @title = "#{page_name} - Aegisub 手册"
 - @canonical = current_page.url.gsub(/3.\d/, '3.2')
 - wrap_layout :layout do
@@ -14,7 +15,7 @@
             %li{class: current_url == url ? 'active' : nil}
               = link_to page[:name], url
     .span9#manual-body
-      %h1.page-header= wiki_page_name current_page
+      %h1.page-header= page_title
       = yield
       .ds-thread
       :javascript

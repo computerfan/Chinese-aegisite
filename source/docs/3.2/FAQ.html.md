@@ -1,3 +1,7 @@
+---
+title: FAQ
+---
+
 {::options toc_levels="2,3" /}
 
 Aegisub常见问题解答 —— 不一定适合其他地方。

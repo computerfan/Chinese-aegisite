@@ -1,3 +1,7 @@
+---
+title: 支持
+---
+
 {::options toc_levels="2,3" /}
 
 您想要支持Aegisub吗？很好，这很容易！

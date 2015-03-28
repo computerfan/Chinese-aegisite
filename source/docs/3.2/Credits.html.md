@@ -1,3 +1,7 @@
+---
+title: 贡献
+---
+
 {::options toc_levels="2" /}
 
 Aegisub最初是由Rodrigo Braz Monteiro与有显著贡献的Niels Martin Hansen编写的。
@@ -43,7 +47,7 @@ Aegisub最初是由Rodrigo Braz Monteiro与有显著贡献的Niels Martin Hansen
 ## 手册 ##
 * 3.x:
   * **Thomas Goyne (Plorkyeran)**
-  * **Vmoe字幕组的电脑迷、domo、奶茶** - 手册中文翻译
+  * **Vmoe字幕组的电脑迷、domo、Evalyn、奶茶** - 手册中文翻译
 
 * 2.x:
   * **Karl Blomster** (TheFluff)

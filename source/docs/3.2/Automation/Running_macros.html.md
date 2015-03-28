@@ -1,3 +1,7 @@
+---
+title: 运行宏
+---
+
 [[自动化|Automation]]的[[宏|Glossary/Macro]]是以选项的形式出现在自动化菜单中的。
 
 [[img/automation_menu.png]]
