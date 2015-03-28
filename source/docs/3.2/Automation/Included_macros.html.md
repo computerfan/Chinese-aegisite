@@ -1,3 +1,4 @@
+- @title = "附带的宏 - Aegisub 手册"
 {::options toc_levels="2..6" /}
 
 这里列出了Aegisub自带了几个宏。
@@ -8,30 +9,24 @@
 这个宏只有在字幕文件中至少有一行模版行时才可用。
 
 ## 转换为全角字符  ##
-Converts all ASCII characters to Japanese "full-width" variations of them.
+将所有ASCII半角字符转为日文的全角字符。
 
-This can be useful if you need to typeset a sign translation vertically,
-such that the letters are "stacked".
+当你想把竖向排版一些翻译的字母“叠”起来时，可能会有用。
 
-This macro modifies all lines that are currently selected in the subtitles
-grid.
+这个宏会修改在字幕栏中当前选择的所有行。
 
 {::template name="examplebox"}
-Here's a typeset sign:
+这有一个有排版的文本：
 
     {\fn@DFPGothic-EB\fs26\shad0\fe128\bord3\3c&H25485A&\c&HDEEBF1&\pos(456,184)\frz-90}Sign text
 
-Notice that it uses an "@-font", a variation that exists of every CJK font
-that has "fullwidth" characters rotated 90 degrees from the baseline.
-Fullwidth characters include not just these fullwidth variations of the
-Latin alphabet but also Japanese kana and kanji, hanzi, hanja and various
-punctuation characters.
+注意这里使用了“@字体”，这是所有CJK字体都有的一种字形，它可以使所有全角字符从基线旋转90度。全角字符不只包括拉丁字母的全角变化版本，日语的假名和日文的汉字、中文的汉字、韩语的汉字以及各种标点符号。
 
-Now after running this macro on the line:
+现在运行了这个宏后：
 
     {\fn@DFPGothic-EB\fs26\shad0\fe128\bord3\3c&H25485A&\c&HDEEBF1&\pos(456,184)\frz-90}Ｓｉｇｎ ｔｅｘｔ
 
-This is what it looks before and after running the macro:
+这是运行宏前后对比：
 
 [[img/StackedSign1.png]] [[img/StackedSign2.png]]
 {:/}
