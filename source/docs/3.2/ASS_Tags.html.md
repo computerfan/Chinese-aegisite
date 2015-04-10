@@ -46,17 +46,20 @@ some of them are mutally exclusive: `\pos` and `\move`; `\clip` and `\iclip`;
 `\fad` and `\fade`. The result of inluding multiple instances of these tags or
 mutally exclusive tags will vary between renderers and is not recommended.
 标签基本分为两类：一种是定义整行的属性，另一种就是仅修饰跟在它后面的文本。`\pos`, `\move`,
-`\clip`, `\iclip`, `\org`, `\fade` 和 `\fad` 这些是第一类的，其他剩下的就是第二类了。
+`\clip`, `\iclip`, `\org`, `\fade` 和 `\fad` 这些是第一类的，其他剩下的就是第二类了。第一类标签在一行中应当至多出现一次，并且在一行中，它们的出现是不重要的。另外，他们当中的某些是互斥的，比如：`\pos` 和 `\move`； `\clip` 和 `\iclip`；`\fad` 和 `\fade`。根据诸多实例，包含多个标签或者互斥标签会根据渲染器的不同而产生各种奇葩的效果，所以不推荐这么做。
 
 Tags in the second category modify all text after the tag until the end of the
 line or until the property is re-overridden by another tag.
+第二类标签会修饰后面的所有文本，直到这一行结束或者属性被其他标签重写。
 
 Override tags always follow the same form: They start with a backslash \
 character, then a name, and after the name the parameter to the tag. If the
 parameter is omitted, the default value from the line's style is used.
+特效标签通常遵循相同的形式：它们开始于反斜杠\，然后是特效名称，再后面就是标签的参数。如果参数为空，那么就会使用这一行样式的默认值。
 
 Some tags are "complex" and take more than one parameter. In these cases,
 parameters are put inside parentheses with commas between the parameters.
+有一些标签比较“复杂”并且需要多个参数。在这种情况下，参数们就会被放到一个小括号里并且用逗号分隔开。
 
 **Note on typography:**  
 On this page, everything written in _italics_ with `<` angle brackets `>`
