@@ -62,15 +62,18 @@ parameters are put inside parentheses with commas between the parameters.
 有一些标签比较“复杂”并且需要多个参数。在这种情况下，参数们就会被放到一个小括号里并且用逗号分隔开。
 
 **Note on typography:**  
+**关于排面：**
 On this page, everything written in _italics_ with `<` angle brackets `>`
 around it is a parameter and you must enter a value instead of it. The angle
 brackets are not part of the value you should enter. Use the examples as a
 guide to how the tags should be entered. In general, the same rules apply to
 all tags in how they look.
+在这一页，所有在`<`尖括号`<`中的_斜体_文字都是需要你用数值来取代它的参数。尖括号不需要输入，直接输入数值即可。下面的例子将引导你来了解这些标签应当如何输入。通常情况下，在它们的外观上，相同的规则应用于所有的标签。（译者注：这里的规则指的应该就是数值要写在标签的后面）
 
 {::template name="tag_def_box" title="Italics" id="\i"}\i1<br>\i0{:/}
 Switch _italics_ text on or off. Use `\i1` to enable italics for the following
 text and `\i0` to disable italics again.
+打开或关闭_斜体_选项。利用`\i1`对后面的文本应用斜体，并且可以用`\i0`使后面的文本取消斜体。
 
 {::template name="tag_def_box" title="Bold" id="\b"}
 \b1  
@@ -79,6 +82,7 @@ text and `\i0` to disable italics again.
 {:/}
 Switch **boldface** text on or off. Use `\b1` to enable boldface for the
 following text and `\b0` to disable boldface again.
+打开或关闭**粗体**选项。利用`\b1`对后面的文本应用加粗，并且可以用`\b0`使后面的文本取消加粗。
 
 The <code>\b<i>&lt;weight&gt;</i></code> form allows you to specify an
 explicit weight to use. Note that most fonts only support one or two weights
