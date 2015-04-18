@@ -1,40 +1,48 @@
 {::options toc_levels="2" /}
 
 The following is a list of every tag supported by the Advanced Substation Alpha format. This is basically a detailed version of ass-quickref.txt. See the tutorial for an introduction to typesetting, using some basic tags. 
+
 下面列出所有ASS格式支持的标签。这基本上算是ass-quickref.txt的一个详细版本。你可以在本教程手册的[[排版教程|Typesetting_Tutorial]]获取关于使用一些基本标签来排版文本的教程。
 
 ## 特殊符号 ##
 
 The following tags are written in the middle of the text, and not inside
 override blocks (i.e. not between { and }).
+
 下面的标签是写在文本区里的，而不是在特效标签区里（即不是{和}之间。)
 
 {::template name="tag_def_box" title="软换行（软空格）" id="\n"}\n{:/}
 Insert a forced line break, but only when in wrapping mode 2. (See
 [[the \q tag|ASS_Tags#wrapstyle]]). Note that this is a lowercase n.
+
 插入一个强制换行符，但是只在换行方式2下生效（参阅[[\q标签|ASS_Tags#wrapstyle]]）。注意这是一个小写的n。
 
 In all other wrapping modes, this is replaced by a regular space. This is
 rarely (if ever) actually useful. If you're not sure whether you want this or
 \N, you probably want \N.
+
 在所有其他的换行方式下，它就代表一个普通的空格。这个真的不常用（即使用过）。如果你不确定你想要效果的是\n还是\N，那么十有八九是\N。
 
 {::template name="tag_def_box" title="硬换行符" id="\N"}\N{:/}
 Insert a forced line break, regardless of wrapping mode. Note that this is an
 uppercase N.
+
 不管是什么换行方式，都强行插入一个换行符。注意这是一个大写的N。
 
 {::template name="tag_def_box" title="硬空格" id="\h"}\h{:/}
 Insert a non-breaking "hard" space. The line will never break automatically
 right before or after a hard space, and hard spaces are not folded when they
 appear at the start or end of a displayed line.
+
 插入一个不换行的“硬性”空格。句子永远不会自动的在一个硬空格前面或者后面正好换行，并且当硬空格出现在一行的开头或者结束的地方时，它们也起空格的作用。
 
 ## 特效标签 ##
+
 Override tags must appear within override blocks, which begin with { and end
 with }. Any unrecognized text within override blocks is silently ignored, so
 they are also commonly used for inline comments. Mixing comments and override
 tags in the same override block is not recommended.
+
 特效标签必须出现在特效标签区里，也就是开始于{ 而且结束于}。特效标签区里面不被识别的文本会被自动忽略，所以它们也经常用于内联注释，不推荐在一个特效标签区中同时出现特效标签和注释。
 
 Tags fall into two general categories: those which set a property of the line
@@ -45,34 +53,41 @@ once in a line, and where in the line they appear is unimportant. In addition,
 some of them are mutally exclusive: `\pos` and `\move`; `\clip` and `\iclip`;
 `\fad` and `\fade`. The result of inluding multiple instances of these tags or
 mutally exclusive tags will vary between renderers and is not recommended.
-标签基本分为两类：一种是定义整行的属性，另一种就是仅修饰跟在它后面的文本。`\pos`, `\move`,
-`\clip`, `\iclip`, `\org`, `\fade` 和 `\fad` 这些是第一类的，其他剩下的就是第二类了。第一类标签在一行中应当至多出现一次，并且在一行中，它们的出现是不重要的。另外，他们当中的某些是互斥的，比如：`\pos` 和 `\move`； `\clip` 和 `\iclip`；`\fad` 和 `\fade`。根据诸多实例，包含多个标签或者互斥标签会根据渲染器的不同而产生各种奇葩的效果，所以不推荐这么做。
+
+标签基本分为两类：一种是定义整行的属性，另一种就是仅修饰跟在它后面的文本。`\pos`, `\move`, `\clip`, `\iclip`, `\org`, `\fade` 和 `\fad` 这些是第一类的，其他剩下的就是第二类了。第一类标签在一行中应当至多出现一次，并且在一行中，它们的出现是不重要的。另外，他们当中的某些是互斥的，比如：`\pos` 和 `\move`； `\clip` 和 `\iclip`；`\fad` 和 `\fade`。根据诸多实例，包含多个标签或者互斥标签会根据渲染器的不同而产生各种奇葩的效果，所以不推荐这么做。
 
 Tags in the second category modify all text after the tag until the end of the
 line or until the property is re-overridden by another tag.
+
 第二类标签会修饰后面的所有文本，直到这一行结束或者属性被其他标签重写。
 
 Override tags always follow the same form: They start with a backslash \
 character, then a name, and after the name the parameter to the tag. If the
 parameter is omitted, the default value from the line's style is used.
+
 特效标签通常遵循相同的形式：它们开始于反斜杠\，然后是特效名称，再后面就是标签的参数。如果参数为空，那么就会使用这一行样式的默认值。
 
 Some tags are "complex" and take more than one parameter. In these cases,
 parameters are put inside parentheses with commas between the parameters.
+
 有一些标签比较“复杂”并且需要多个参数。在这种情况下，参数们就会被放到一个小括号里并且用逗号分隔开。
 
 **Note on typography:**  
+
 **关于排面：**
+
 On this page, everything written in _italics_ with `<` angle brackets `>`
 around it is a parameter and you must enter a value instead of it. The angle
 brackets are not part of the value you should enter. Use the examples as a
 guide to how the tags should be entered. In general, the same rules apply to
 all tags in how they look.
+
 在这一页，所有在`<`尖括号`<`中的_斜体_文字都是需要你用数值来取代它的参数。尖括号不需要输入，直接输入数值即可。下面的例子将引导你来了解这些标签应当如何输入。通常情况下，在它们的外观上，相同的规则应用于所有的标签。（译者注：这里的规则指的应该就是数值要写在标签的后面）
 
 {::template name="tag_def_box" title="Italics" id="\i"}\i1<br>\i0{:/}
 Switch _italics_ text on or off. Use `\i1` to enable italics for the following
 text and `\i0` to disable italics again.
+
 打开或关闭_斜体_选项。利用`\i1`对后面的文本应用斜体，并且可以用`\i0`使后面的文本取消斜体。
 
 {::template name="tag_def_box" title="Bold" id="\b"}
@@ -82,6 +97,7 @@ text and `\i0` to disable italics again.
 {:/}
 Switch **boldface** text on or off. Use `\b1` to enable boldface for the
 following text and `\b0` to disable boldface again.
+
 打开或关闭**粗体**选项。利用`\b1`对后面的文本应用加粗，并且可以用`\b0`使后面的文本取消加粗。
 
 The <code>\b<i>&lt;weight&gt;</i></code> form allows you to specify an
