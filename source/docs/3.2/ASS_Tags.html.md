@@ -82,7 +82,7 @@ brackets are not part of the value you should enter. Use the examples as a
 guide to how the tags should be entered. In general, the same rules apply to
 all tags in how they look.
 
-在这一页，所有在`<`尖括号`<`中的_斜体_文字都是需要你用数值来取代它的参数。尖括号不需要输入，直接输入数值即可。下面的例子将引导你来了解这些标签应当如何输入。通常情况下，在它们的外观上，相同的规则应用于所有的标签。（译者注：这里的规则指的应该就是数值要写在标签的后面）
+在这一页，所有在`<`尖括号`>`中的_斜体_文字都是需要你用数值来取代它的参数。尖括号不需要输入，直接输入数值即可。下面的例子将引导你来了解这些标签应当如何输入。通常情况下，在它们的外观上，相同的规则应用于所有的标签。（译者注：这里的规则指的应该就是数值要写在标签的后面）
 
 {::template name="tag_def_box" title="Italics" id="\i"}\i1<br>\i0{:/}
 Switch _italics_ text on or off. Use `\i1` to enable italics for the following
@@ -105,10 +105,13 @@ explicit weight to use. Note that most fonts only support one or two weights
 so you rarely need to use this. Font weights are multiples of 100, such that
 100 is the lowest, 400 is "normal", 700 is "bold" and 900 is the heaviest.
 
+这个 <code>\b<i>&lt;weight&gt;</i></code> 形式允许你具体使用一个厚度值。提醒一下，大多数字体仅支持厚度值为1或2，所以你几乎不会用到这个功能。字体的厚度值都是100的倍数，例如：100是最细，400是“普通”，700是“黑体（偏粗）”，900是最粗。
+
 {::template name="examplebox"}
 <pre>I am {\b1}not[\b0} amused.</pre>
 
 The word "not" is written in boldface.
+其中“not”就是用的粗体。
 {:/}
 
 {::template name="examplebox"}
@@ -117,15 +120,21 @@ The word "not" is written in boldface.
 The words are written with increasingly greater weight. Note that most fonts
 do not have more than one or two different weights and you will only be able
 to see "not bold" and "bold" in that case.
+
+这些单词是逐渐加粗的。注意，大部分字体没有超过一到两个不同的厚度值，所以那种情况下你只能看到“未加粗”和“加粗”两种效果。
 {:/}
 
 {::template name="tag_def_box" title="Underline" id="\u"}\u1<br>\u0{:/}
 Switch <u>underlined</u> text on or off. Use `\u1` to enable underlining for
 the following text and `\u0` to disable underlining again.
 
+打开或关闭<u>下划线</u>选项。利用`\u1`对后面的文本应用下划线，并且可以用`\u0`使后面的文本取消下划线。
+
 {::template name="tag_def_box" title="Strikeout" id="\s"}\s1<br>\s0{:/}
 Switch <s>striked out</s> text on or off. Use `\s1` to enable strikeout for
 the following text and `\s0` to disable strikeout again.
+
+打开或关闭<s>删除线</s>选项。利用`\s1`对后面的文本应用删除线，并且可以用`\s0`使后面的文本取消删除线。
 
 {::template name="tag_def_box" title="Border size" id="\bord"}\bord<i>&lt;size&gt;</i>{:/}
 Change the width of the border around the text. Set the size to 0 (zero) to
