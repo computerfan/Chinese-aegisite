@@ -188,6 +188,7 @@ versions:
     %p 阅读 <a href="../changelog/#{data.version.current}/">更新日志</a> 了解更新内容。
 
     - dl_root = 'http://ftp.aegisub.org/pub/archives/releases/'
+    - dl_github = 'https://github.com/Aegisub/Aegisub/releases/download/'
     %table.table.table-bordered.table-condensed
       %tr
         %th 平台
@@ -197,37 +198,37 @@ versions:
 
       %tr
         %td Windows 32位
-        %td <a href="#{dl_root}windows/Aegisub-#{data.version.current}-32.exe">完整版</a>
+        %td <a href="#{dl_github}v#{data.version.current}/Aegisub-#{data.version.current}-32.exe">完整版</a>
         %td <a href="#{dl_root}windows/Aegisub-#{data.version.current}-32.exe.md5">MD5</a> | <a href="#{dl_root}windows/Aegisub-#{data.version.current}-32.exe.sha">SHA</a>
         %td 19MB
 
       %tr
         %td Windows 32位
-        %td <a href="#{dl_root}windows/Aegisub-#{data.version.current}-portable-32.exe">便携版</a>
+        %td <a href="#{dl_github}v#{data.version.current}/aegisub-#{data.version.current}-portable-32.exe">便携版</a>
         %td <a href="#{dl_root}windows/Aegisub-#{data.version.current}-portable-32.exe.md5">MD5</a> | <a href="#{dl_root}windows/Aegisub-#{data.version.current}-portable-32.exe.sha">SHA</a>
         %td 14MB
 
       %tr
         %td Windows 64位
-        %td <a href="#{dl_root}windows/Aegisub-#{data.version.current}-64.exe">完整版</a>
+        %td <a href="#{dl_github}v#{data.version.current}/Aegisub-#{data.version.current}-64.exe">完整版</a>
         %td <a href="#{dl_root}windows/Aegisub-#{data.version.current}-64.exe.md5">MD5</a> | <a href="#{dl_root}windows/Aegisub-#{data.version.current}-64.exe.sha">SHA</a>
         %td 20MB
 
       %tr
         %td Windows 64位
-        %td <a href="#{dl_root}windows/Aegisub-#{data.version.current}-portable-64.exe">便携版</a>
+        %td <a href="#{dl_github}v#{data.version.current}/aegisub-#{data.version.current}-portable-64.exe">便携版</a>
         %td <a href="#{dl_root}windows/Aegisub-#{data.version.current}-portable-64.exe.md5">MD5</a> | <a href="#{dl_root}windows/Aegisub-#{data.version.current}-portable-64.exe.sha">SHA</a>
         %td 15MB
 
       %tr
         %td OS X 10.7+
-        %td <a href="#{dl_root}osx/Aegisub-#{data.version.current}.dmg">完整版</a>
+        %td <a href="#{dl_github}v#{data.version.current}/Aegisub-#{data.version.current}.dmg">完整版</a>
         %td <a href="#{dl_root}osx/Aegisub-#{data.version.current}.dmg.md5">MD5</a> | <a href="#{dl_root}osx/Aegisub-#{data.version.current}.dmg.sha">SHA</a>
         %td 22MB
 
       %tr
         %td All
-        %td <a href="#{dl_root}source/aegisub-#{data.version.current}.tar.xz">源代码</a>
+        %td <a href="#{dl_github}v#{data.version.current}/aegisub-#{data.version.current}.tar.xz">源代码</a>
         %td <a href="#{dl_root}source/aegisub-#{data.version.current}.tar.xz.md5">MD5</a> | <a href="#{dl_root}source/aegisub-#{data.version.current}.tar.xz.sha">SHA</a>
         %td 5MB
 
