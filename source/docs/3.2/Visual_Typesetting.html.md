@@ -1,170 +1,110 @@
 {::options toc_levels="2,3" /}
 
-{::template name="todo"}Screenshots need to be updated{:/}
+{::template name="todo"}截屏图片待更新{:/}
 
-**A video tutorial for this feature is available at [[the tutorials
-section|Tutorials]].**
+**关于这个功能，你能在 [[视频教程|Tutorials]]中找到。**
 
-## Overview  ##
+## 总览  ##
 [[img/video_display.png]]{: class="center"}
 
-### Play ###
-Play the video and, starting at the currently displayed frame. See
-[[Video#playingvideo]] for comments on playing video in Aegisub.
+### 播放 ###
+播放视频, 从当前帧开始。查看
+[[使用视频#playingvideo]] 来获取Aegisub中有关的信息。
 
-### Play line ###
-Play the video starting at the first frame of the currently active line,
-stopping at the end of the line.
+### 播放当前行 ###
+从当前活动行的开始帧播放视频，到该行结束帧停止。
 
-### Video autoseek ###
-Toggles automatic seeking of the video to the first frame of a line whenever
-a new line is selected.
+### 自动定位视频至行开始帧 ###
+当选择新一行时，视频自动定位到该行的开始帧。
 
-### Frame time and number ###
-Displays the current frame number and the start time of the frame. If the
-currently displayed frame is a keyframe, this box has a green background.
+### 帧时间和编号 ###
+显示当前帧数和当前帧对应的开始时间。如果当前播放的帧是关键帧，这个框区的背景色就是绿色的。
 
-Note that it is normal for the "Set start of selected subtitles to
-current video frame" (Ctrl-3) and "Set end of selected subtitles to current
-video frame" (Ctrl-4) to set the time to something different than what is
-displayed here, as setting times to exactly the frame's time tends to result
-in rounding errors.
+注意，有些情况下使用 "将当前视频帧设为所选字幕的开始时间" (Ctrl-3) 和 "将当前视频帧设为所选字幕的结束时间" (Ctrl-4) 得到的结果会与预期显示的不同，这是因为一些近似取整的错误导致的。（译者注：主要发生在预览视频为60FPS或15FPS时，所谓的逐帧对不准现象，可以手动调节时间解决）
 
 {::template name="todo"}Is the main toolbar actually documented anywhere?{:/}
 
-### Subs relative time ###
-Displays the time to the start and end time of the active subtitle line.
-This is mostly useful for override tags which take relative times, such as
-[[\t|ASS_Tags#animatedtransform]] and [[\fad|ASS_Tags#fade]].
+### 字幕相对时间 ###
+显示当前视频帧相对于当前活动行开始时间的时间（偏移量），或相对于活动行结束时间。
+当你使用含有相对时间参数的特效标签时，这两个时间十分有价值，如 [[\t|ASS_Tags#animatedtransform]] 和 [[\fad|ASS_Tags#fade]]。
 
-### Zoom ###
-Displays and allows changing the current video zoom.
+### 缩放 ###
+缩放当前视频的显示大小。
 
-### Video position slider ###
-Used to seek the video. Holding shift while dragging the thumb snaps to
-keyframes. By default, left/right seek forward/backward one frame;
-alt-left/right seek forward/backward 10 frames; shift-left/right seek
-forward/backwards one keyframe. The slider can be focused without
-accidentally seeking by right-clicking it or pressing Ctrl-Space. If the
-slider already has focus, Ctrl-Space will return keyboard focus to the
-control that last had it.
+### 视频位置滑块 ###
+用来定位视频位置。按住Shift的同时拖动滑块会自动吸附关键帧。默认情况下←→键可以逐帧定位视频;
+Alt-left/right可以一次性调整10帧;Shift-left/right可以跳到前后的关键帧。激活视频滑块可以用右键单击它或者按Ctrl-Space。如果视频滑块已经被激活，按Ctrl-Space可以回到之间的活动部分。
 
-## Video context menu ##
-You can right click to bring a context menu with other options:
+## 视频背景菜单 ##
+你可以右键单击视频部分打开一个背景菜单，它有以下选项:
 
 [[img/Visual_menu.png]]{: class="center"}
 
-Save PNG snapshot
-: Saves a PNG snapshot of the current frame to the path specified in
-the [[options]]. This snapshot will be in the real video size, and
-WON'T be affected by zooming or aspect ratio overriding.
+保存PNG截图
+: 把当前帧保存为一张 PNG 屏幕截图，保存路径在 [[选项]] 中可以调节。截图分辨率和视频分辨率相同，不会受缩放或其它因素影响。
 
-Copy image to clipboard
-: Same as above, but copies the frame to the clipboard, instead of
-saving as a PNG. You can then paste it in any image editing software.
+复制图像至剪贴板
+: 与上面功能相同，只是把这张图片复制到剪切板，而不是存储成PNG文件，你可以把它粘贴到其他编辑软件里。
 
-Save PNG snapshot (no subtitles)
-: Same as the previous option, but subtitles won't be visible in the
-image.
+保存PNG截图 (不带字幕)
+: 和之前的功能相同，不过图片中字幕是不可见的。
 
-Copy image to clipboard (no subtitles)
-: Same as above, but copying to clipboard.
+复制图像至剪贴板 (不带字幕)
+: 和上面的功能相同，但是只把它复制到剪切板。
 
-Copy coordinates to clipboard
-: Copies the current mouse coordinates to clipboard, e.g. "230,152"
+复制坐标到剪切板
+: 复制目前鼠标所在的坐标到剪切板, 例如"230,152"
 
-## Tool Descriptions  ##
-There are currently seven different visual typesetting tools: crosshair,
-drag, rotate on z axis, rotate on xy axes, scale, rectangular clip and
-vector clip.
+## 左边栏工具描述  ##
+目前有七种不同的可视化排版工具可供使用: 十字工具（标准模式定位工具）,
+拖放字幕, 绕z轴旋转字幕,绕xy轴旋转字幕,缩放工具（沿X轴或Y轴的缩放工具）,矩形裁剪工具和矢量裁剪工具。
 
-### Crosshair  ###
+### 十字工具  ###
 
-This is the standard mode. Hovering the mouse over the video will show the
-script coordinates under the cursor, as well as a crosshair indicating the
-exact point that you are looking at. Holding down shift will make it instead
-show the distance from the bottom-right corner. Double clicking a point will
-position the current line (using the [[\pos tag|ASS_Tags#setposition]]) on
-that position.  If alt is held down while double-clicking, all other selected
-lines will be shifted by the same distance as the active line, including lines
-not visible on the current frame.
+这是标准模式，点击工具后在视频区域移动光标，光标会变为十字，十字附近会显示出光标所在点相对视频的坐标。默认情况下这个坐标是相对于左上角，按下Shift后这个坐标是相对于右下角计算。双击点会把该点的坐标以 [[\pos 标签|ASS_Tags#setposition]] 的形式写入到当前行中。如果按下Alt同时双击，当前所有选择的行都会和被移动的行移动相同的距离(包括当前帧不可见的行)。(译者注:用于批量调整已有pos行的重定位，不会造成相对移动)
 
 [[img/Visual_crosshair.png]]{: class="center"}
 
-### Drag  ###
+### 拖动工具  ###
 
-The drag tool has two modes. You can toggle between them by clicking the button
-on the auxiliary visual typesetting bar.
+拖动工具有两种模式。你可以使用辅助工具条在两种模式之间切换。
+
 
 [[img/Visual_drag.png]]{: class="center"}
 
-On the positioning mode, you can simply click-and-drag subtitles across the
-video surface by dragging their anchor (the square). They will be positioned
-where you release them with the [[\pos|ASS_Tags#setposition]] command.
+在定位模式下，你可以简单地在视频表面点击-拖动字幕（通过“锚”，即那个方块）。你松开按键时的 [[\pos|ASS_Tags#setposition]] 参数会被写入到行中。
 
-On the movement mode, there is another anchor, the end-of-movement anchor,
-which is represented by a circle. There will be an arrow pointing from the
-start-of-movement to the end-of-movement anchor. In order to set the times
-where the movement will start or end, move the corresponding anchor on the time
-where you want the subtitle to be at that anchor. For example, if you want
-movement to start at 5000 milliseconds after the start of the line, seek the
-video to 5000 milliseconds after the start of the line, and drag the start
-anchor there. The same goes for the end-of-movement anchor.
+在移动模式下，会有另一个圆形的“锚”，它用来定位移动终点的坐标。设置好移动的起点终点后，会有一条箭头线从起点指向终点。为了更好地控制时间，建议起点按照移动的起始帧定位，终点按照移动的终止帧定位。举个例子，如果你想让一行字幕从行开始5000毫秒后开始移动，就先把视频调节到相对该行5000毫秒的时候，定起点，确定完成移动的时间，调节视频到结束时间，定终点。
 
-If your line has an origin point specified, you will see a third anchor,
-represented by a triangle, connected to the square anchor by a dotted line. You
-can also drag this to affect the origin position. This same anchor will be
-visible in the two rotation tools.
+如果你的行已经定了原点，你会看见第三个三角形的“锚”，和方形锚之间以虚线连接。你可以拖动它来改变原点的定位，在选择其他的旋转工具时，锚也是可见的。
 
-If shift is held down while dragging an anchor, the drag will be limited to
-only altering the X or Y coordinate of the anchor (whichever would be changed
-more).
+如果按住Shift进行拖动操作，则只能进行X或者Y坐标的变化 (变化谁取决于哪个变化量大)。
 
-Multiple anchors can be selected at once by holding down ctrl and clicking on
-the anchors which you want to add or remove from the selection. All selected
-anchors are moved when one is dragged.
+按下Ctrl同时点选锚可以进行批量操作。
 
-Double-clicking on a spot with no anchors will move the active anchor to that
-position, similarly to double-clicking in the crosshair tool. If alt is held
-down, all other selected anchors are shifted relative to the active anchor.
+双击没有锚的部分会把当前活动锚移动到该点，和十字工具相似。如果按住 Alt 同时进行操作，已选择的行的锚定位会相对于活动行进行。（不会相对移动）
 
-### Rotate on Z axis  ###
+### 沿Z轴旋转  ###
 
-On this mode, you will see a circle centered around the subtitle's pivot
-(either it's position, or the origin point, if defined). The circle is
-surrounded by 6 arcs that help mark and measure angles.
+在此模式下，你会看见一个圆圈（以字幕中心为圆心）和字幕底边线，圆圈被6个弧度包围，用以辅助旋转和计算角度。
 
 [[img/Visual_rotate_1.png]]{: class="center"}
 
-There are two functionalities in this mode. You can either drag the origin
-point (the triangle at the center of the circle) to move it (and insert a
-[[\org|ASS_Tags#rotationorigin]] tag, if none exists), or you can click and
-drag anywhere else to rotate the line.
+这个工具提供了两种可调节功能。你可以定位旋转中心（原点），相当于使用 [[\org|ASS_Tags#rotationorigin]] 标签)，或者你随意点击来确定旋转的角度。
 
-You will notice that there is a line connecting the center of the circle to the
-mouse cursor. When you click and drag, the subtitle line rotate following that
-line, that is, you must rotate the cursor around the center to rotate the line.
-Just release the mouse to finish positioning. You can also use the ctrl key to
-limit the rotation to increments of 30 degrees.
+你会注意到圆心和光标有一条连线，当你按住鼠标左键的同时拖动时，可以看到字幕旋转的实际效果。旋转角度合适时松开鼠标。按住Ctrl同时进行旋转会以30°为单位角度增量进行。
 
-If the origin is far from the center, you will see a little helper line
-indicating where the center of the subtitles will be positioned as you rotate
-it.
+如果原点距离字幕中心较远，你会看见字幕下方有一条辅助线，它也会随着角度变化重新定位。
 
-If multiple lines are selected, all selected lines are set to the new rotation
-(and not rotated relative to each other as in the drag and crosshair tools).
+如果已选多行，所有的行都会被加入旋转标签(但是不会像十字工具或者拖动工具那样相对旋转)。
+
 
 [[img/Visual_rotate_2.png]]{: class="center"}
 
-### Rotate on XY axes  ###
-This mode is somewhat similar to the previous mode, although there are a few
-important differences. Since this rotates on the two screen axes, the rotation
-is three-dimensional, and therefore harder to visualize.
+### 沿XY轴旋转 ###
+这个模式和上面的模式相似，尽管有很多要点不同。因为这个旋转同时定位两个轴的旋转角，所以看起来是3D的，因此也更难准确使用。
 
-In order to make this easier, there is a grid representing the plane in which
-the subtitles lie, and you rotate that grid. There are also three arrows
-pointing from the center, indicating the direction and orientation of the three
-axes.
+为了使它更容易用，字幕所在平面会显示为一个网状辅助平面。从原点有三条射线，指明XYZ轴正方向。
 
 [[img/Visual_rotate_xy.png]]{: class="center"}
 
