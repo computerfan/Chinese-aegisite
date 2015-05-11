@@ -22,7 +22,6 @@
 
 注意，有些情况下使用 "将当前视频帧设为所选字幕的开始时间" (Ctrl-3) 和 "将当前视频帧设为所选字幕的结束时间" (Ctrl-4) 得到的结果会与预期显示的不同，这是因为一些近似取整的错误导致的。（译者注：主要发生在预览视频为60FPS或15FPS时，所谓的逐帧对不准现象，可以手动调节时间解决）
 
-{::template name="todo"}Is the main toolbar actually documented anywhere?{:/}
 
 ### 字幕相对时间 ###
 显示当前视频帧相对于当前活动行开始时间的时间（偏移量），或相对于活动行结束时间。
@@ -108,74 +107,48 @@ Alt-left/right可以一次性调整10帧;Shift-left/right可以跳到前后的�
 
 [[img/Visual_rotate_xy.png]]{: class="center"}
 
-To use this tool, simply hold the mouse button anywhere on the screen and move
-it. As you move it left and right, it will rotate the line on the Y axis, and
-as you move it up and down, it will rotate the line on the X axis.
+使用这个工具时，你只需要按住鼠标按键，在视频区域移动光标。当你左右方向移动时，字幕会沿着Y轴旋转，上下移动时会沿着X轴旋转。
 
-If you hold down the shift key while rotating, the rotation will be limited to
-only one of the two axes - whichever has the greatest movement. If you hold
-down the ctrl key, rotation will happen in steps of 30 degrees.
+如果你在旋转的过程中同时按住Shift，则只沿着两轴中的一条旋转，按住Ctrl进行操作时会以30°为单位进行旋转。
 
-If multiple lines are selected, all selected lines are set to the new rotation
-(and not rotated relative to each other as in the drag and crosshair tools).
+如果已选多行，所有的行都会被加入旋转标签(但是不会像十字工具或者拖动工具那样相对旋转)。
 
-As with the Z rotation tool, you can also drag the origin anchor here.
+和Z轴旋转工具一样，你也可以拖动原点的“锚“。
 
-### Scale  ###
-This is the simplest tool, and allows you to scale subtitles on the X and Y
-axes. It will show one bar for each axis, showing not only the 100% size, but
-also the current scale.
+
+### 缩放工具  ###
+这是所有工具里用起来最简单的，它允许你按X和Y轴方向缩放字幕的大小。每个轴向都有一个指示条，显示着 100%尺寸和当前尺寸。
 
 [[img/Visual_scale.png]]{: class="center"}
 
-To use this tool, simply hold down the mouse button and drag the mouse up and
-down (to scale on the Y axis) or left and right (to scale on the X axis). You
-can hold down the shift key to limit scaling to the axis where the biggest
-change happened, and ctrl to limit it to increments of 25%.
+使用这个工具，只需要按住鼠标左键同时拖动，上下拖动会改变Y轴的缩放，左右拖动会改变X轴的缩放。按住Shift的同时操作只会改变单独一个轴的缩放量，取决于哪个方向移动得较大，按住Ctrl操作会把单位缩放量限制在25%。
 
-### Rectangular clip  ###
-The rectangular clip tool allows you to clip the subtitles so that nothing
-OUTSIDE an axis-aligned rectangle can be displayed (in essence, the
-`\clip(x1,y1,x2,y2)` tag).
+
+###  矩形裁剪  ###
+矩形裁剪工具允许你裁剪字幕的显示范围，字幕处在矩形外的部分不会被显示出来(相当于通过图形使用`\clip(x1,y1,x2,y2)` 标签)。（译者注：当你使用iclip时，矩形内的部分不会显示）
 
 [[img/Visual_clip.png]]{: class="center"}
 
-There are two ways to use this tool. You can either click and grab one of the
-four vertices of the rectangle, to resize an already-existing clip, or you can
-click-and-drag in empty space to create a new rectangle from scratch. The areas
-that will be invisible will be darkened.
+使用这个工具有两种方式。你可以点击拖动矩形四角中的一个，来调节已存在的矩形，也可以点击视频的空白处点击拖动，来创建一个新的矩形，字幕中看不见的区域是暗颜色的。
 
-### Vectorial clip  ###
-Similarly to the last tool, the vectorial clip tool allows you to draw an area,
-so that nothing outside it will be rendered. The difference, however, is that
-this area can have any arbitrary shape defined by a path of lines and bézier
-curves.
+### 矢量裁剪  ###
+和上面的工具相似，不过这个工具可以绘制矢量区域，区域外部的字幕不会被渲染。不同点在于，这个工具可以通过贝塞尔曲线的形式拟合各种图形。
 
 [[img/Visual_vector_clip.png]]{: class="center"}
 
-This mode has 8 sub-tools:
+这个模式下含有8个子工具:
 
 [[img/Visual_vector_toolbar.png]]{: class="center"}
 
-1. Drag - Allows you to drag a control point
-1. Insert line - Allows you to insert a straight line from the last point to
-    the current mouse position by clicking the point.
-1. Insert bézier bicubic curve - The same as above, but it instead inserts a
-    bicubic curve. You can then use the two control points to adjust the shape
-    of the curve.
-1. Convert between line and curve - Click on a line segment or bicubic curve
-    to convert it to the other type.
-1. Split curve - Click on a line segment or bicubic curve to split it in
-    two, at the marked point.
-1. Remove point - Click on a point to delete it.
-1. Freehand shape - Click and drag with the mouse over the video and move
-    the mouse to draw a freehand shape composed of line segments. This shape
-    will automatically be closed, with the last point connecting to the first.
-1. Freehand smooth shape - Same as above, but the shape will be smoothed
-    with bicubic curves.
+1.拖动，允许你拖动控制点
+2.插入线段，允许你插入一条从最后一个点出发，到鼠标位置结束（点击）的一条线段。
+3.插入一条贝塞尔曲线段，和上面的相同，但是它会多出两个控制点，用来调节曲线形状。
+4.在直线和曲线间转化，在线段或三次曲线上点击使它们之间相互转化。
+5.分割曲线，在线段或三次曲线上点击，使它们在点击处分为两段
+6.移除控制点，点击删除控制点
+7.徒手绘制图形（直线），在视频上点击并用鼠标拖动，绘制手绘图形，该图形会自动闭合，由初始点连接到终点，由直线段围成。
+8.徒手绘制图形（平滑曲线）和7的功能相似，不过图形由曲线段围成。
 
-As with the drag tool, multiple control points can be selected at one by
-ctrl-clicking on the anchors to be added or removed from the selection. By
-default all control points are selected; to deselect them all click on a
-blank spot when in Drag mode. Multiple control points can be selected at once
-by clicking and dragging in move mode to perform a box selection.
+
+和拖动工具一样，利用Ctrl也可以进行多点选择。默认情况下所有控制点都是选中状态；想要整体去除选中，可以在拖动模式下点击空白处。多控制点可以一次性被选中，你需要在移动模式下点击拖动鼠标，进行框选。
+
