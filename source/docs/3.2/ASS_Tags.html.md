@@ -84,13 +84,13 @@ all tags in how they look.
 
 在这一页，所有在`<`尖括号`>`中的 _斜体_ 文字都是需要你用数值来取代它的参数。尖括号不需要输入，直接输入数值即可。下面的例子将引导你来了解这些标签应当如何输入。通常情况下，在它们的外观上，相同的规则应用于所有的标签。（译者注：这里的规则指的应该就是数值要写在标签的后面）
 
-{::template name="tag_def_box" title="Italics" id="\i"}\i1<br>\i0{:/}
+{::template name="tag_def_box" title="斜体" id="\i"}\i1<br>\i0{:/}
 Switch _italics_ text on or off. Use `\i1` to enable italics for the following
 text and `\i0` to disable italics again.
 
 打开或关闭 _斜体_ 选项。利用`\i1`对后面的文本应用斜体，并且可以用`\i0`使后面的文本取消斜体。
 
-{::template name="tag_def_box" title="Bold" id="\b"}
+{::template name="tag_def_box" title="粗体" id="\b"}
 \b1  
 \b0  
 \b<i>&lt;weight&gt;</i>
@@ -124,26 +124,30 @@ to see "not bold" and "bold" in that case.
 这些单词是逐渐加粗的。注意，大部分字体没有超过一到两个不同的厚度值，所以那种情况下你只能看到“未加粗”和“加粗”两种效果。
 {:/}
 
-{::template name="tag_def_box" title="Underline" id="\u"}\u1<br>\u0{:/}
+{::template name="tag_def_box" title="下划线" id="\u"}\u1<br>\u0{:/}
 Switch <u>underlined</u> text on or off. Use `\u1` to enable underlining for
 the following text and `\u0` to disable underlining again.
 
 打开或关闭 <u>下划线</u> 选项。利用`\u1`对后面的文本应用下划线，并且可以用`\u0`使后面的文本取消下划线。
 
-{::template name="tag_def_box" title="Strikeout" id="\s"}\s1<br>\s0{:/}
+{::template name="tag_def_box" title="删除线" id="\s"}\s1<br>\s0{:/}
 Switch <s>striked out</s> text on or off. Use `\s1` to enable strikeout for
 the following text and `\s0` to disable strikeout again.
 
 打开或关闭 <s>删除线</s> 选项。利用`\s1`对后面的文本应用删除线，并且可以用`\s0`使后面的文本取消删除线。
 
-{::template name="tag_def_box" title="Border size" id="\bord"}\bord<i>&lt;size&gt;</i>{:/}
+{::template name="tag_def_box" title="边框大小" id="\bord"}\bord<i>&lt;size&gt;</i>{:/}
 Change the width of the border around the text. Set the size to 0 (zero) to
 disable the border entirely.
+
+改变文本周围边框的宽度。把size设为0可以使边框完全消失。
 
 If "scale border and shadow" (see [[script properties|Properties]]) is
 enabled, the value is given in script resolution pixels, otherwise it is given
 in video resolution pixels (which means the border thickness will vary
 depending on the resolution of the video on which the subtitles are rendered.)
+
+
 
 The value is not limited to whole integer pixels and can have decimal places.
 Border width cannot be negative.
