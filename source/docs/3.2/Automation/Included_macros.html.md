@@ -79,74 +79,59 @@ fade-in, fade-out and other transition effects, if you want every
 syllable-highlight to be fully visible.
 {:/}
 
-## Clean tags  ##
-This macro does various cleaning up on the override tags in all selected
-lines.
+## 整理特效标签  ##
+这个宏会用不同方式整理所选行的特效标签。
 
-* Combines adjacent override blocks (i.e { ... }) except if both of the
-  block contains \k tags each then they will be left as is
-* Push any \k tags in override blocks to the front (e.g. from {\frz90\k40}
-  to {\k40\frz90}). Special care will be taken for multiple \k tags within
-  one block to preserve the ordering
-* Move line-wide tags (i.e. tags whose effects affect the whole line -- \a
-  \an \org \pos \move \fade \fad) to the beginning of the lines
-* Remove all but first line-wide tags of the same class (note: \pos and
-  \move are from the same class -- only first of them works in a line,
-  therefore the script will find the first \move or \pos and retain whic of
-  the two comes first and remove others. The same are done for \fad and
-  \fade)
-* Remove spaces in comma-separated parameters (e.g. \pos(200 , 200) becomes
-  \pos(200,200))
+* 合并相邻的特效标签区（即 { … }），如果相邻的两个标签区都有\k标签，则不会合并
+* 将\k标签移动到特效标签区的前面（例如将{\frz90\k40}
+  转为 {\k40\frz90}）。同时会保持一个区中多个\k标签的顺序
+* 移动行标签（即会影响整个行的特效标签—— \a
+  \an \org \pos \move \fade \fad）至行首
+* 移除第一个以外的行标签（注意：\pos和\move是同一类标签——一行中只有第一个是有效的，因此这个脚本会找出所有的\move或\pos并留下靠前的一个并会删除其他的。同样的也适用于\fad和\fade标签）。
+* 移除参数中用来分隔逗号的空格（例如 \pos(200 , 200) 改为  \pos(200,200)）
 
-This macro is also available as an export filter.
+这个宏也可用作导出滤镜。
 
 The main intended function of this macro is to make
 [[karaskel.lua|Automation/Lua/Modules/karaskel.lua]] split karaoke lines more
 sensibly into syllable structures, see the example.
+这个宏主要功能是为了让[[karaskel.lua|Automation/Lua/Modules/karaskel.lua]]能够更聪明地将卡拉OK行分割为音节结构，请看如下的例子。
 
-This macro modifies all selected lines in the grid, re-writing all tag
-blocks in them.
+这个宏会修改所有字幕栏中所选行，重写这些行里的所有标签区。
 
 {::template name="examplebox"}
-Original line:
+原字幕行
 
     {\r\frz90\k80}Test {\r\fry180\k60}me
 
-Karaskel creates these syllable structures:
+Karaskel会创建这些音节结构：
 
 
 * 0 = {\r\frz90}
 * 1 = Test {\r\fry180}
 * 2 = me
 
-After running _Clean Tags_ on the line:
+该行执行 _整理特效标签_ 后：
 
     {\k80\r\frz90}Test {\k60\r\fry180}me
 
-Now karaskel creates these syllable structures:
+现在Karaskel会创建这些音节结构：
 
 
 * 0 = 
 * 1 = {\r\frz90}Test
 * 2 = {\r\fry180}me
 
-The cleaned up version is generally what you'd want since it places the
-override tags inside the syllables they affect.
+它会把特效标签放到处理过的音节上，所以整理后的版本通常是你想要的。
 {:/}
 
-## Add Edgeblur ##
-Add [[`\be1`|ASS_Tags#bluredges]] to all selected lines. Lightly blurring the
-edges of all dialogue lines can noticeably improve compressibility when
-[[hardsubbing|Attaching_subtitles_to_video]] (especially when using older
-codecs such as XviD), but edgeblur cannot be set in the style due to format
-limitations.
+## 添加边角模糊 ##
+向所选行插入`[[\be1|ASS_Tags#bluredges]]`标签。轻微模糊所有字幕行的边缘可以显著提高[[内嵌字幕|Attaching_subtitles_to_video]]的压缩率（尤其是使用像XviD这些旧的编码时），但由于字幕格式的限制，边缘模糊无法通过样式来调整。
 
-## Strip tags ##
-Remove all ASS override blocks and the tags within from the selected lines.
+## 删除特效标签 ##
+移除所选行中所有ASS特效标签区和它里面的标签。
 
-## Select Overlaps ##
-Select all lines which begin while another line is still active. This can be
-useful for catching timing errors, or for setting an alternate style for these
-lines, which improves readability.
+## 选择重叠行（Select Overlaps） ##
+选择所有在时间上和其他行的时间轴有重叠的行。这个脚本在查找时间轴错误，或者想为这些重叠的行设置一个新样式来提高可读性时会有些帮助。
 
 {::template name="automation_navbox" /}
