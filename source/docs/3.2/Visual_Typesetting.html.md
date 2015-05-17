@@ -1,6 +1,8 @@
-{::options toc_levels="2,3" /}
+---
+title: 可视化排版
+---
 
-{::template name="todo"}截屏图片待更新{:/}
+{::options toc_levels="2,3" /}
 
 **关于这个功能，你能在 [[视频教程|Tutorials]]中找到。**
 
