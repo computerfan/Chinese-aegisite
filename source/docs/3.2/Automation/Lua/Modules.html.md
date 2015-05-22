@@ -1,48 +1,45 @@
 {::options toc_levels="2,3" /}
 
-A number of Lua modules are included with Aegisub.
-Some of these, such as [[karaskel.lua]] implement subtitle-specific functionality, while others such as [[re]] fill holes in the Lua standard library.
+Aegisub内置了许多lua模块。
+一些模块例如 [[karaskel.lua]] 用来实现字幕特效功能，而其他的模块例如 [[re]] 则补充了Lua标准库缺少的部分内容。
 
-## Using modules ##
-Simply write `modulename = require 'aegisub.modulename'` at the top level of a script.
-For example, to include the [[re]] modules, `re = require 'aegisub.re'`.
+## 使用模块 ##
+在脚本顶部添加`modulename = require 'aegisub.modulename'` 格式的代码即可。
+例如，想要包含 [[re]] 模块，就添加一句:`re = require 'aegisub.re'`.
 
-Note that if you look at older scripts you will probably see several other methods for including modules, such as `include`.
-These have been deprecated in favor of following the modern lua module style introduced with Lua 5.2.
+注意，当你查看一些旧的脚本时，你可能会看见几种不同的包含方法，例如 `include`。
+这些是旧版本lua中的写法，已经弃用，建议使用本写法，即Lua 5.2写法。
 
-To use modules in [[Karaoke Templater|Automation/Karaoke_Templater]], place the require statement in a [[code once|Automation/Karaoke_Templater/Code_lines_and_blocks#classesofcodelines]] line.
-Note that `karaskel.lua`, `utils.lua` and `unicode.lua` do not have to be `require`d in [[Karaoke Templater|Automation/Karaoke_Templater]], as they are automatically imported.
+想使用 [[Karaoke Templater|Automation/Karaoke_Templater]]中的模块，你需要在 [[code once|Automation/Karaoke_Templater/Code_lines_and_blocks#classesofcodelines]] 行中作声明。
+注意`karaskel.lua`, `utils.lua` 和 `unicode.lua` 不必在 [[Karaoke Templater|Automation/Karaoke_Templater]] 中声明'需要'，它们已经自动被导入了。
 
-## Modules reference ##
+## 模块目录 ##
 
 [[util]]
-: An assorted collection of various utility functions which don't fit into any coherent categories, especially for handling colours.
+: 一套常用功能的集合，不符合其他任何明确的分类，在处理颜色方面较为有用。
 
 [[karaskel.lua]]
-: The karaoke skeleton is a collection of functions mainly intended to do
-text layout of timed karaoke for creating advanced karaoke effects, as well
-as a number of other helper functions.
+: 卡拉OK纲要 是为了对打好K值的文本进行高级卡拉OK特效处理而准备的函数集合，它也含有许多帮助函数。
 
 [[unicode]]
-: All data passed in and out of Aegisub through the Automation 4 Lua interface are encoded in UTF-8, but Lua doesn't natively provide support for this.
-Several helper functions are provided here.
+: Aegisub传入传出的所有数据通过Automation 4 Lua 接口时都是UTF-8编码，但是Lua 本身不支持这个编码，所以有了这个模块。它也含有些帮助函数。
 
 [[cleantags.lua]]
-: A function to clean up ASS tags in a line.
+: 一个用来清除行内特效标签的函数。
 
 [[clipboard]]
-: Functions for copying and pasting text.
+: 用于复制粘贴文本的函数。
 
 [[re]]
-: Bindings for ICU regular expressions via [boost.regex](http://www.boost.org/doc/libs/1_53_0/libs/regex/doc/html/index.html), which has full Unicode support and more features than Lua's built in regular expression.
+: 绑定了 ICU(Unicode国际化组件) 正则表达式 [boost.regex](http://www.boost.org/doc/libs/1_53_0/libs/regex/doc/html/index.html), 对Unicode有完整支持，并且有更多Lua内建正则表达式没有的特性。
 
 [lpeg](http://www.inf.puc-rio.br/~roberto/lpeg/)
-: PEG library for writing parsers.
+: PEG 库，用来写解析。
 
 [luabins](https://github.com/agladysh/luabins)
-: A serialization library for saving tables to extradata or config files
+: 一个用来保存表到额外数据或者配置文件的序列化库。
 
 [lfs](http://keplerproject.github.io/luafilesystem/)
-: Some assorted filesystem functionality not supported by the Lua standard library.
+: 一些Lua标准库不支持的的文件系统功能。
 
 {::template name="automation_navbox" /}
