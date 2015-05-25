@@ -578,9 +578,10 @@ dialogue is opened. In that case you will have to enter the
     这个设定只是以BT.601的规范对视频进行了YUV -> RGB转换，最终字幕渲染完成后再RGB -> YUV正好还原到了Pretend BT.601的视频。
     此时的“Pretend BT.601”其实就是真正的BT.709。
     如此便保证了你在Aeg娘里设定的字幕匹配色在播放器里也是匹配的。
-    
 
-    **Force BT.601**
+Original Text For Reference：
+
+**Force BT.601**
 Pretend all YUV videos are BT.601, for VSFilter compatibility.
 When VSFilter is used as a DirectShow filter, it always uses the BT.601 color matrix for converting the subtitles 
 from RGB to YUV. This means that if the video uses BT.709 (as most HD video and the occasional DVD does), colors 
