@@ -1,77 +1,56 @@
 {::options toc_levels="2,3" /}
 
-This page describes various technical details about how Karaoke Templater
-(_kara-templater_) works and will try to explain why various things work as
-they do and why some things can't and won't work.
+本页描述了许多有关 卡拉OK模板应用器(Karaoke Templater)
+(_kara-templater_) 的工作方式，并且会解释为什么许多东西起作用，而另一些不起作用。
 
-Most of this is technical details you don't need to know to use kara-templater,
-but if you see some behaviour you don't understand this page might explain it.
+大多数的细节你在卡拉OK模板应用器中是不需要用到的，但是如果你在某些脚本中看到了你不理解的行为，那么本页面可能会解释它。
 
-## Concepts  ##
-These are some terms and concepts used throughout the description. The names
-are close to or the same as those used in the actual script.
+## 概念  ##
+有些术语和概念在本页全篇中都有使用。这些名称和脚本中使用的相似或者完全相同。（译者注：在使用时需要保留英文，故翻译内容保留重要英文）
 
 **`tenv`**
-: The **t**emplate **env**ironment, or [[code execution
-environment|Automation/Karaoke_Templater/Code_execution_environment]].
+:  **t**emplate **env**ironment(模板环境)的缩写, 或者 [[代码执行环境|Automation/Karaoke_Templater/Code_execution_environment]]。
 
 **`varctx`**
-: The inline **var**iable **c**on**t**e**x**t, the storage for the actual
-values of the [[inline
-variables|Automation/Karaoke_Templater/Inline_variables]].
+:  **var**iable **c**on**t**e**x**t(内联变量环境), [[内联变量|Automation/Karaoke_Templater/Inline_variables]]存储在的实际区域。
 
 **`template`**
-: The basic "execution unit" of kara-templater, a template is essentially a
-mini-program compiled and executed by kara-templater.
+: 卡拉OK模板应用器(kara-templater)中最基本的 "执行单元(execution unit)" , 事实上一个模板就是一个迷你程序，这个程序由 卡拉OK模板应用器 编译并执行。
 
 **`code template`**
-: A template that runs a chunk of Lua code but doesn't produce output.
-(Declared with the _code_ keyword.)
+: 以Lua代码块方式行使功能的模板，但是一般情况下不会直接输出字幕对象。(用 _code_ 关键字声明)
 
 **`output template`**
-: A template that produces output lines from some karaoke data input. (Declared
-with the _template_ keyword.)
+: 会产生字幕行(字幕对象)的一类模板，一般以打好K值的行作为输入。(用 _template_ 关键字声明)
 
 **`code line`**
-: A line in the subtitle that defines a code template.
+: 字幕文件中的一行，该行定义了一个code模板(code templates)。
 
 **`template line`**
-: A line in the subtitle file that defines an output template, or part of one.
+: 字幕文件中的一行，该行定义了一个输出模板(output template), 或者整个输出模板中的一部分。
 (One _line_ class output template can span multiple template lines.)
 
-**`class`**
-: A class is a kind of template. There's four basic classes, _once_, _line_,
-_syl_ and _furi_, the first only available for code templates.
+**`class(类)`**
+: 一个类指的是一种类型的模板。有四种基本的模板类, _once_, _line_,
+_syl_ and _furi_, 第一个类只对code模板有用。
 
-**`modifier`**
-: Modifiers affect how and when templates are executed.
+**`modifier(修饰语)`**
+: 修饰语会影响模板作用的方式和作用的时间。
 
-**`template text** or just **text`**
-: The "text" part of a template, either the Lua code in a code template or the
-template code in output templates. _line_ class output templates also have a
-_pre-line text_.
+**`template text** 或 **text`**
+:  模板的"文本" 部分，可以是code模板中的 Lua 代码，或者是输出模板中的代码。 _line_ 类输出模板还有一个_pre-line text_。
 
-## Startup  ##
-The first thing kara-templater does is simply use
-[[karaskel|Automation/Lua/Modules/karaskel.lua]] to collect some basic
-information on the subtitle file. It always passes `true` for
-_generate_furigana_ in the `karaskel.collect_head` function, meaning that
-[[furigana|Furigana_karaoke]] styles are always generated, unless they already
-exist.
+## 启动  ##
+卡拉OK模板应用器(后文均简称模板应用器)做的第一件事是使用 [[卡拉OK框架(karaske)l|Automation/Lua/Modules/karaskel.lua]] 来收集一些基础的字幕文件信息。这个过程中总是会伴随着传递 `真(true)`值给 _generate_furigana_ (生成假名标注)，它属于`karaskel.collect_head` 函数，这意味着 [[假名标注(furigana)|Furigana_karaoke]] 的样式会被生成，除非它们早就存在。
 
-It then collects all template lines in the file.
+然后模板应用器会收集文件中的所有模板行(template line)信息。
 
-### Collecting, parsing and compiling templates  ###
-Every line in the file is visited and checked for being a template line, i.e.
-be a comment and have the first word in the Effect field be _code_ or
-_template_.
+### 收集，解析并编译模板  ###
+文件中的每一行都会被检查是否是一行模板，例如，被打上注释并且特效栏(Effect field)填写着 _code_ 或者 _template_ 的行会被作为模板行。
 
-The details aren't important here, but every modifier name found in the Effect
-field either sets a flag in the template or a value corresponding to the
-parameter given to the modifier.
+细节在这里并不重要。你要知道的是 特效栏关键字后的修饰语会作为一个参数起作用。
 
-When a named _line_ class template lines is encountered, first it's checked if
-there is already a _line_ class template with that name. If there isn't one, a
+当遇到一个 _line_ 类的模板行时，模板应用器首先会检查是否有其他和这行具有一样模板名称的行。如果没有 If there isn't one, a
 new one is created with that name and initialised with the given modifiers. If
 there is already one with that name, _the text of the template line is appended
 to the current text of the template_ and modifiers present in the new template
