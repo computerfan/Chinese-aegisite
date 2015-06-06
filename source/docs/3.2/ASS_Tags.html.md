@@ -97,19 +97,19 @@ text and `\i0` to disable italics again.
 {::template name="tag_def_box" title="粗体" id="\b"}
 \b1  
 \b0  
-\b<i>&lt;weight&gt;</i>
+\b<i>&lt;厚度&gt;</i>
 {:/}
 Switch **boldface** text on or off. Use `\b1` to enable boldface for the
 following text and `\b0` to disable boldface again.
 
 打开或关闭 **粗体** 选项。利用`\b1`对后面的文本应用加粗，并且可以用`\b0`使后面的文本取消加粗。
 
-The <code>\b<i>&lt;weight&gt;</i></code> form allows you to specify an
+The <code>\b<i>&lt;厚度&gt;</i></code> form allows you to specify an
 explicit weight to use. Note that most fonts only support one or two weights
 so you rarely need to use this. Font weights are multiples of 100, such that
 100 is the lowest, 400 is "normal", 700 is "bold" and 900 is the heaviest.
 
-这个 <code>\b<i>&lt;weight&gt;</i></code> 形式允许你具体使用一个厚度值。提醒一下，大多数字体仅支持厚度值为1或2，所以你几乎不会用到这个功能。字体的厚度值都是100的倍数，例如：100是最细，400是“普通”，700是“黑体（偏粗）”，900是最粗。
+这个 <code>\b<i>&lt;厚度&gt;</i></code> 形式允许你具体使用一个厚度值。提醒一下，大多数字体仅支持厚度值为1或2，所以你几乎不会用到这个功能。字体的厚度值都是100的倍数，例如：100是最细，400是“普通”，700是“黑体（偏粗）”，900是最粗。
 
 {::template name="examplebox"}
 <pre>I am {\b1}not[\b0} amused.</pre>
@@ -140,7 +140,7 @@ the following text and `\s0` to disable strikeout again.
 
 打开或关闭 <s>删除线</s> 选项。利用`\s1`对后面的文本应用删除线，并且可以用`\s0`使后面的文本取消删除线。
 
-{::template name="tag_def_box" title="边框大小" id="\bord"}\bord<i>&lt;size&gt;</i>{:/}
+{::template name="tag_def_box" title="边框大小" id="\bord"}\bord<i>&lt;大小&gt;</i>{:/}
 Change the width of the border around the text. Set the size to 0 (zero) to
 disable the border entirely.
 
@@ -151,41 +151,53 @@ enabled, the value is given in script resolution pixels, otherwise it is given
 in video resolution pixels (which means the border thickness will vary
 depending on the resolution of the video on which the subtitles are rendered.)
 
-
+如果“比例缩放边框和阴影”(详见 [[script properties|脚本配置]])是选中的，边框宽度值取决于脚本的分辨率，否则由视频的分辨率决定（也就是说边框的厚度会自适应使用该字幕的视频。）
 
 The value is not limited to whole integer pixels and can have decimal places.
 Border width cannot be negative.
 
+厚度值不局限于整数像素点，它也可以用小数。但是边框厚度不能是负数。
+
 {::template name="examplebox"}
 <pre>\bord0</pre>
 
-Disable border entirely.
+Disable border entirely. 完全隐藏边框。
 {:/}
 {::template name="examplebox"}
 <pre>bord3.7</pre>
 
-Set the border width to 3.7 pixels
+Set the border width to 3.7 pixels  设置边框厚度为3.7个像素
 {:/}
 
-{::template name="tag_def_box" title="Border size (extended)" id="\xbord"}
-\xbord<i>&lt;size&gt;</i>  
-\ybord<i>&lt;size&gt;</i>
+{::template name="tag_def_box" title="边框大小 (补充)" id="\xbord"}
+\xbord<i>&lt;大小&gt;</i>  
+\ybord<i>&lt;大小&gt;</i>
 {:/}
 Use the `\xbord` `\ybord` tags to set the border size in X and Y direction
 separately. This can be useful for correcting the border size for anamorphic
 rendering of subtitles.
 
+用`\xbord` `\ybord`标签来分别设置X方向和Y方向上的厚度值。这个可以用来修正渲染时失真的字幕。
+
 Note that if you use `\bord` after `\xbord` or `\ybord` on a line, it will
 override both of them.
+
+注意，如果你在同一行中先用`\bord`后用`\xbord`或者`\ybord`，它就会忽略后面的标签。
 
 You can set the border width to 0 (zero) in one of the directions to entirely
 disable border in that direction.
 
-{::template name="tag_def_box" title="Shadow distance" id="\shad"}\shad<i>&lt;depth&gt;</i>{:/}
+你可以把某个方向上的边框厚度设为0使这个方向的边框完全消失。
+
+{::template name="tag_def_box" title="阴影距离" id="\shad"}\shad<i>&lt;深度&gt;</i>{:/}
 Set the distance from the text to position the shadow. Set the depth to 0
 (zero) to disable shadow entirely. Works similar to [[\bord|ASS_Tags#bordersize]].
 
+设置字幕与阴影间的距离。设置深度为0使阴影完全消失。其他方面和边框厚度[[\bord|ASS_Tags#bordersize]]的设置相似
+
 The shadow distance can not be negative with this tag.
+
+阴影距离也不能设置为负数值
 
 {::template name="tag_def_box" title="Shadow distance (extended)" id="\xshad"}
 \xshad<i>&lt;depth&gt;</i>  
