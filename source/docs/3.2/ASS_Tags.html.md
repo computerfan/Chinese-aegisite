@@ -193,31 +193,37 @@ disable border in that direction.
 Set the distance from the text to position the shadow. Set the depth to 0
 (zero) to disable shadow entirely. Works similar to [[\bord|ASS_Tags#bordersize]].
 
-设置字幕与阴影间的距离。设置深度为0使阴影完全消失。其他方面和边框厚度[[\bord|ASS_Tags#bordersize]]的设置相似
+设置字幕与阴影间的距离。设置深度为0使阴影完全消失。其他方面和边框厚度[[\bord|ASS_Tags#bordersize]]的设置相似。
 
 The shadow distance can not be negative with this tag.
 
-阴影距离也不能设置为负数值
+阴影距离也不能设置为负数值。
 
-{::template name="tag_def_box" title="Shadow distance (extended)" id="\xshad"}
-\xshad<i>&lt;depth&gt;</i>  
-\yshad<i>&lt;depth&gt;</i>
+{::template name="tag_def_box" title="阴影距离(补充)" id="\xshad"}
+\xshad<i>&lt;深度&gt;</i>  
+\yshad<i>&lt;深度&gt;</i>
 {:/}
 Set the distance from the text to position the shadow at, with X and Y
 position set separately. Shadow is only disabled if both X and Y distance is
 0.
 
+分别设置阴影在X方向和Y方向与文字位置的。阴影只会在X和Y方向上均为0才会消失。
+
 Note that unlike \shad, you can set the distance negative with these tags to
 position the shadow to the top or left of the text.
 
-{::template name="tag_def_box" title="Blur edges" id="\be"}
+注意它和\shad不一样，你可以设置深度值为负数让阴影显示在文字的上方或者左方。
+
+{::template name="tag_def_box" title="边框模糊" id="\be"}
 \be0  
 \be1  
-\be<i>&lt;strength&gt;</i>
+\be<i>&lt;强度&gt;</i>
 {:/}
 Enable or disable a subtle softening-effect for the edges of the text. The
 effect isn't always very visible, but it can in some cases make the text look
 better. It is usually more visible at smaller text sizes.
+
+
 
 Be aware that this tag blurs the _edges_ of the text, not everything. This
 means that if the text has a border (set with [[\bord|ASS_Tags#borderwidth]]) the
