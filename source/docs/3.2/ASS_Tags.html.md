@@ -151,7 +151,7 @@ enabled, the value is given in script resolution pixels, otherwise it is given
 in video resolution pixels (which means the border thickness will vary
 depending on the resolution of the video on which the subtitles are rendered.)
 
-如果“比例缩放边框和阴影”(详见 [[script properties|脚本配置]])是选中的，边框宽度值取决于脚本的分辨率，否则由视频的分辨率决定（也就是说边框的厚度会自适应使用该字幕的视频。）
+如果“比例缩放边框和阴影”(详见 [[脚本配置|Properties]])是选中的，边框宽度值取决于脚本的分辨率，否则由视频的分辨率决定（也就是说边框的厚度会自适应使用该字幕的视频。）
 
 The value is not limited to whole integer pixels and can have decimal places.
 Border width cannot be negative.
@@ -223,24 +223,30 @@ Enable or disable a subtle softening-effect for the edges of the text. The
 effect isn't always very visible, but it can in some cases make the text look
 better. It is usually more visible at smaller text sizes.
 
-
+应用或取消一个文本边缘柔化的效果。这个效果并不总是很清晰，但是有些时候会让文本看起来更舒服。这个效果在文本比较小的时候会比较明显。
 
 Be aware that this tag blurs the _edges_ of the text, not everything. This
 means that if the text has a border (set with [[\bord|ASS_Tags#borderwidth]]) the
 border will be blurred, but if there is no border, the main text will be
 blurred instead.
 
+注意这个标签只会模糊文本的 _边框_ ，不是整体。也就是说，如果文本有边框 (边框设置详见 [[\bord|ASS_Tags#borderwidth]]) 那么边框将会被模糊，但是如果没有边框，那么文本整体就会被模糊。
+
 In the extended version, _strength_ is the number of times to apply the
 regular effect. Note that at high values the effect de-generates into
 nothingness, and generally isn't very useful. For strong blurs, `\blur` is
 generally more useful as a result. The _strength_ must be an integer number.
 
-{::template name="tag_def_box" title="Blur edges (Gaussian kernel)" id="\blur"}\blur<i>&lt;strength&gt;</i>{:/}
+在新的版本里， _强度_ 是循环叠加效果的次数。注意数值给的比较大的时候就会把边框整个糊掉，并且通常情况下并没有什么卵用。对于高强度模糊，`\blur`通常结果更有用。 _强度_ 必须是一个整数。
+
+{::template name="tag_def_box" title="边缘模糊 (高斯函数)" id="\blur"}\blur<i>&lt;强度&gt;</i>{:/}
 In general, this has the same function as the [[`\be`|ASS_Tags#bluredges]] tag, but
 uses a more advanced algorithm that looks better at high strengths. Unlike
 `\be`, the _strength_ can be non-integer here. Set _strength_ to 0 (zero) to
 disable the effect. Be careful, setting _strength_ too high can take a lot of
 CPU time to render.
+
+
 
 Be aware that this tag blurs the _edges_ of the text, not everything. This
 means that if the text has a border (set with [[`\bord`|ASS_Tags#borderwidth]]) the
