@@ -1,147 +1,98 @@
-Welcome to the first tutorial in using Karaoke Templater to create [[karaoke
-effects|Glossary/Karaoke_effect]]. We'll start out with something simple and
-then continue on to more advanced effects throughout the series.
+欢迎来到这里！这是有关卡拉OK模板执行器的第一篇教程，它可以帮助你创作 [[卡拉OK特效|Glossary/Karaoke_effect]]。在一系列教程里，我们由简单到复杂来进行教学。
 
-## Finding Karaoke Templater  ##
+## 找到卡拉OK模板执行器(Karaoke Templater)  ##
 
-You can run Karaoke Templater in two different ways. For now we'll just
-concentrate on one of them.
+你可以用两种方式运行卡拉OK模板应用器。我们主要讲解其中一种。
 
-Look under the Automation menu in Aegisub.
+在Aegisub中的自动化菜单下找到卡拉OK模板应用器。
 
 [[img/Automation-menu-kara-templater-gray.png]]
 
-You should see the option called _Apply karaoke template_, though it will be
-unavailable. This is what you'll select to use the "templates" we'll be writing
-throughout these tutorials. Right now it's unavailable because you haven't
-entered any templates. We'll get to that in a moment.
+你可以看见一个叫做 _应用卡拉OK模板_，现在它应该是灰色的不可用状态。点击它可以应用写好的卡拉OK模板，然而现在它是不可用的，因为你还没有写好模板，跟随着教程，你会写出自己的卡拉OK模板。
 
-If you don't have the _Apply karaoke template_ option, your Aegisub
-installation is either incomplete or damaged. You need to repair your
-installation in that case, to be able to use Karaoke Templater.
+如果你没有这个选项，你的Aegisub可能没有安装完整，或者损坏了。你需要修复安装才能使用卡拉OK模板执行器。
 
-But there is something else to make sure of first.
+但是还有其他的东西需要确认。
 
-## Getting timed karaoke  ##
+## 获取打好K值的行  ##
 
-Karaoke Templater can do many things for you, but it can't guess the lyrics for
-your song, or how they're synchronised with the music. You'll have to time the
-lyrics yourself, or get someone else to do it. You can learn how to time
-karaoke at the [[Karaoke_Timing_Tutorial]].
+卡拉OK模板执行能做许多事，但是它没办法猜到歌曲的歌词，或者歌词和音乐的同步信息。你不得不亲自给歌词制作卡拉OK时间。你可以在 [[Karaoke_Timing_Tutorial]] 中找到给个词制作卡拉OK时间（K值）。
 
-We'll call song lyrics with basic karaoke timing (\k timing), but no other
-special effects, for _timed karaoke_. When an effect has been applied to the
-karaoke we'll call it _styled karaoke_.
+我们把含有基础的含有卡拉OK时间信息的歌词称为K值歌词(\k timing)，但它们不含有特效，对于 _k值歌词_ 。当它被应用了卡拉OK特效后，我们称它 _styled karaoke_ 。
 
-If you don't have any song to work with here are two lines from a song. You
-can select them in your browser, select _Edit_→_Copy_, then go to Aegisub and
-select _Edit_→_Paste_, to get them into Aegisub.
+如果你还没开始这项工作，但是收集了歌词，你需要在歌词所在的窗口点击 _编辑_→_复制_，然后到Aegisub中点击 _编辑_→_粘贴_，这样就把歌词导入了Aegisub。
 
     Dialogue: 0,0:00:01.85,0:00:09.06,Default,,0000,0000,0000,,{\k97}shi{\k41}ta{\k0} {\k20}no{\k10} {\k30}u{\k80}e{\k53} {\k23}a{\k21}ma{\k39}ku{\k7}  {\k24}to{\k24}ke{\k31}ru{\k0} {\k37}wa{\k23}ta{\k92}gu{\k69}mo
     Dialogue: 0,0:00:09.28,0:00:16.21,Default,,0000,0000,0000,,{\k79}ki{\k61}su{\k0} {\k9}o{\k0} {\k37}shi{\k98}te{\k40}  {\k23}ku{\k25}ro{\k40}i{\k0} {\k28}tsu{\k19}ba{\k51}sa{\k0} {\k11}no{\k0} {\k34}shi{\k138}ta
 
-Either way you have some karaoke timed lyrics now, so we can start.
+如果你已经给歌词打好K值，那么我们可以开始下一步了。
 
-### Load a video  ###
+### 读取视频  ###
 
-You don't need to load any audio, but it can be a good idea to have some video
-open. If you don't have any video files ready you can use, select _Video_→_Use
-dummy video_ and just say OK. It's not a very interesting video you will get,
-but it will show you how the subtitles and the effect we're creating will look.
+你不必读取任何的音频，但是读取视频是个好主意。如果你没有可用的视频，可以使用 _视频_→_使用空白视频_ 。这不是个有趣的视频，但在它上面可以预览你的字幕。
 
-## Writing a _k-replacer_ style template  ##
+## 编写一个 _K值替换_ 模板  ##
 
-Now we have everything else set up it's time to make the actual template.
-First, here's how to add it. The explanation of what every part means will
-follow.
+目前，我们有了除了确切的模板以外的一切，现在我们来编写它。
+首先，介绍如何添加一行模板。你做的每一步的意义后面都有相应的解释。
 
-1. Select the very first subtitle line in the file.
-1. Select _Subtitles_→_Insert Lines_→_Before Current_ to get a new line before it. This will become our karaoke template line. It doesn't _need_ to be first, but it usually makes it easier to keep track of for yourself.
-1. Make sure the newly created line has the same _style_ as your timed karaoke.
-1. Click the _Comment_ check box for the new line. It should change colour in the subtitle grid.
-1. Find the _Effect_ field, it's to the right of the _Style_ and _Actor_ fields. Put the text "`template line`" into it. (Without the quotes!) Press the _Enter_ key on your keyboard to save the Effect field.
-1. Finally, enter this text for the main text of your template line. Finish off with _Enter_ again. `{\r\t($start,$mid,\fscy120)\t($mid,$end,\fscy100)}`
+1. 选中字幕文件中的第一行。
+2. 选择 _字幕_→_插入行_→_当前行之前_ 来建立一个新行。这一行将会是我们的"卡拉OK模板行"。它 _不需要_ 作为文件中的第一行，但是写在文件的开头有助于你自己保持清晰的思路。
+3. 确认新建的行样式与你想要应用模板的行(打好K值的行)有相同的 _样式_ 。
+4. 把这行的 _注释_ 打上勾。你在字幕栏会看到这行颜色改变。
+5. 找到 _特效_ 栏，它位于 _样式和说话人_ 栏的右侧。在里面键入 "`template line`" 。(别打上引号!) 敲 _回车_ 来保存特效栏内容。
+6. 最后，键入文本作为模板行的内容，再次按 _回车_ 保存。例如 `{\r\t($start,$mid,\fscy120)\t($mid,$end,\fscy100)}`
 
-{::template name="todo"}Insert a screenshot of how it should look after the steps.{:/}
+{::template name="todo"}插入一张截屏来展示做完这几步后看起来是什么样子。{:/}
 
-Now look at the _Automation_ menu again. If you made the template line
-correctly, _Apply karaoke template_ will now be available. If it isn't review
-the steps above again.
+现在再看看 _自动化_ 菜单。如果你正确地编写了模板， _应用卡拉OK模板_ 看起来是可用的。如果还是灰色的，请按上述步骤检查。
 
-Select _Apply karaoke templates_ and watch Karaoke Templater do its work.
+点击 _应用卡拉OK模板_ 来观察卡拉OK模板执行器如何工作。
 
-{::template name="todo"}Another screenshot, this time after applying templates.{:/}
+{::template name="todo"}另一张截图，展示应用完模板的效果.{:/}
 
-If you have a video open you can view the effect right now, inside Aegisub.
+如果你已经读取了视频，那么现在应该能在Aegisub里预览到效果了。
 
-Also notice how the template line was left in place, and the timed karaoke was
-changed to comment lines and had _karaoke_ filled into their Effect fields.
-Karaoke Templater preserves your timed karaoke in the styled karaoke so you
-won't lose it. But it also has another function...
+注意到模板行还在它原来的位置，打好K值的行变成了注释行，这些行的特效栏会被填写上 _karaoke_ 。
+卡拉OK模板执行器会保留原来的行，所以你不必担心丢失它们。但是它还有另外的功能。
 
-## Extending the effect a bit  ##
+## 有关特效的拓展内容  ##
 
-Continuing right on from above, now try doing this:
+如果上面这些读懂了，也做成功了，那就看看下面:
 
-1. Change the text of the template line to: `{\r\k$kdur\t($start,$end,\1c&H00FF00&)\t($start,$mid,\fscy120)\t($mid,$end,\fscy100)}`
-1. Apply templates again
+1. 把模板行的文本改成: `{\r\k$kdur\t($start,$end,\1c&H00FF00&)\t($start,$mid,\fscy120)\t($mid,$end,\fscy100)}`
+2. 再次应用模板
 
-{::template name="todo"}More screenshot{:/}
+{::template name="todo"}再添加一张截图{:/}
 
-Karaoke Templater re-used the commented out timed karaoke and changed the
-styled karaoke to match the new effect instead. You can also try changing the
-commented out timed karaoke and apply templates again.
+卡拉OK模板执行器重新利用了打好K值的行，并且赋予它们特效。你也可以尝试改变被注释的打好K的行，然后重新应用模板。
 
-Like this, you can work gradually on your effect and preview it as you go.
+像这样，你可以逐渐制作出理想的特效，并且随之预览它。
 
-## So what does it all mean?  ##
+## 所以这意味着什么?  ##
 
-To finish off this first part of the tutorial, here's what each part means.
-This is not the full explanation of everything, but it should be plenty for
-now.
+学习每部分的教程有何意义？下面的解释虽然没能涵盖所有的事情，但是对现在的你来说应该是足够了。
 
- *  _Template lines_ are lines in the subtitle file marked in a special way.
-     They must always be Comment lines, and the first word in their Effect
-     field must be `template`.
- *  There are several kinds of template lines. We only used one in this
-    tutorial, this template line type, or _template class_, is called a _line
-    template_. Yes, it might be a bit confusing. It's called this because it
-    creates one line of styled karaoke from one line of timed karaoke. The
-    second word in the Effect field of a template line tells what template
-    class it is.  For line templates, this is `line`.
- *  So, the `template line` text in the Effect field means this is a
-    _template line_ of _line class_.
+ *  _模板行_ 是字幕文件中以特殊方式标记出来的行。
+     它们总是以注释行的形式出现，并且在它们的特效栏文本中，第一个单词必须是 `template`。
+ *  存在着几种类别的模板行。在这篇教程中我们只展示了其中一种的用法，这种模板行类型( _template class_ )，被称作 _行模板(line
+    template)_ 。是的，这可能有点令人迷惑。它之所以叫这个名字是因为它使用一行打好K的行，对应生成一个结果行(结果行包含原来行的所有音节)。特效栏的第二个单词声明了这个模板的类型为 `line(行)`。(译者注：如果你使用 `syl` 替换掉 `line`，那么生成的结果行数目与原行含有的\k数目，即音节数相同，起到拆行为音节的效果)
+ *  所以，`template line` 意味着这是一个 _行类型_ 的 _模板行_ 。
 ^
- *  A template only does something to timed karaoke lines that have the same
-    Style as the template line.
+ *  模板行只会对具有相同样式的打好K的行生效。
 ^
- *  Styled karaoke produced by Karaoke Templater all has `fx` in the Effect
-    field. This is used as a reminder for Karaoke Templater that this line
-    should be replaced, if templates are applied once again.
+ *  卡拉OK模板执行器执行模板后，结果行的特效栏将会带有 `fx` 。这两个字母用来提醒卡拉OK模板执行器，下一次应用模板时，这行应当被替换(事实上是被移除)。
 ^
- *  The main text for a template line is called the _template text_. In
-    _line_ templates, every \k tag is replaced with the template text.
- *  Template text can use several _variables_. These are short words that
-    start with a dollar-sign, like `$start`, `$end`, `$mid` and `$kdur`.
-    Variables are replaced with the information they store for every syllable
-    that's replaced.
-     *  `$start` gets replaced with the start time of the syllable. This is
-        in milliseconds from the start of the line, ie. a time code suitable
-        for putting into the \t, \move and \fade tags.
-     *  Similarly, `$end` is the end time of the syllable, also in
-        milliseconds.
-     *  A bit more special is `$mid`, this is the _midway time_ of the
-        syllable, the time right in the middle of `$start` and `$end`. Here, we
-        used it to grow each syllable taller the first half of its duration,
-        and back to normal height for the second half. Also in milliseconds.
-     *  The `$kdur` variable, however is in centiseconds. This is the
-        original time from the \k tag, and is almost only useful for putting
-        back into a \k tag, like we did here.
+ *  模板行中的主文本被称为 _模板内容_ 。在 _line_ 类模板中，每个 \k 标签会被模板内容匹配替换一次。
+ *  模板内容中可以使用几种 _变量_ 。这些变量是短小的单词，有着美元标志＄比如 `$start`, `$end`, `$mid` 和 `$kdur`。
+    变量在应用模板时会被具体音节的属性值(位置时间信息等)替换。
+     *  `$start` 会被音节的开始时间替换掉。它以毫秒为单位，相对于行的开始时间计算，可以用来配合具有时间参数的特效标签例如 \t, \move 和 \fade 等。
+     *  相似地，`$end` 是音节相对于行开始时间的结束时间，以毫秒为单位。
+     *  稍微有些特殊的是 `$mid`，它是音节的 _中间时间_ ，处于 `$start` 和 `$end` 中间。在上面的示例模板中，我们让音节在前半时间变高(事实上，我们总是使音节在前半段产生这种变化)。
+        并在后半段时间恢复到原来的大小。它也是以毫秒为单位的。
+     *  `$kdur` 变量，它比较特殊，因为是以厘秒为单位。它等同于 \k 标签后面的数字，使用它的目的几乎都是把 \k标签 放回到行中，就像我们上面的模板中写的。
 
-With this knowledge, you should already be able to create lots of effects. You
-may also want to refer to the page on [[ASS override tags|ASS_Tags]].
+知道了这些，你应该已经可以创作许多特效啦。配合着 [[ASS特效标签|ASS_Tags]] ，发挥想象，会有更丰富的效果。
 
-You can also [[continue to the next
-tutorial|Automation/Karaoke_Templater/Tutorial_2]], where we'll look at how to
-do math with variables to get more variation.
+你也可以 [[继续下一篇教程|Automation/Karaoke_Templater/Tutorial_2]]，在那里你可以了解如何对变量做一些数学上的调整，来获取一些变型。
 
