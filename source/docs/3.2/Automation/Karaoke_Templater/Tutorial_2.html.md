@@ -1,41 +1,42 @@
-In [[the previous tutorial|Automation/Karaoke_Templater/Tutorial_1]] we saw how to use the basic features of Karaoke Templater to make simple karaoke effects. We'll continue where we left off here, by expanding on the basics from last tutorial.
+在 [[前一篇教程|Automation/Karaoke_Templater/Tutorial_1]] 中，我们了解了如何使用卡拉OK模板执行器的基本特性，并且能创作简单的卡拉OK效果。 本篇中，我们将继续走下去，拓展一些知识。
 
-{::template name="todo"}make and insert screenshots{:/}
-
-
-## Preparations  ##
-
-As before, you'll still need some timed karaoke and a video to preview the effects. I won't go into further details with that here.
+{::template name="todo"}制作并插入截屏{:/}
 
 
-## Adding a fadeout  ##
+## 准备 ##
 
-To recap, here's the effect from the end of last tutorial:
+就像前篇一样，准备好打好K值的行和用来预览效果的视频。在此不赘述有关细节。
+
+
+## 添加淡出  ##
+
+回忆一下，这是上一篇教程给出的示例模板:
 
     {\r\k$kdur\t($start,$end,\1c&H00FF00&)\t($start,$mid,\fscy120)\t($mid,$end,\fscy100)}
 
-We'll add a fadeout effect to this now, having each syllable fade out _after_ it has been sung, not while. We'll have to do a little maths to make this: Start the fadeout at `$end` and have it continue until `$end+200`, ie. have it fade out for 200 milliseconds after the syllable.
+我们现在需要给它加入一个淡出效果，在每个音节唱完 _之后_ 淡出，不是立即。我们需要进行一小点数学计算来做到这点: 在 `$end` 时开始淡出， 在 `$end+200` 时结束淡出。这个效果相当于每个音节唱完后 200 毫秒，这个音节完全消失。
 
-Change the template to this:
+对模板做如下修改:
 
     {\r\k$kdur\t($start,$end,\1c&H00FF00&)\t($start,$mid,\fscy120)\t($mid,$end,\fscy100)\t($end,!$end+200!,\alpha&HFF&)}
 
-Then try applying templates again. You should see the old effect happen as usual, but this time afterwards, each syllable fades out.
+然后试试再次应用模板。你会看到在上一个模板的基础上，产生了淡出效果。
 
-The magic in this is the exclamation marks here: `!$end+200!`
+魔法就在于两个感叹号之间: `!$end+200!`
 
-When you have a pair of exclamation marks like that, everything in between them is treated as an _expression_ (actually a very small Lua program, but don't worry about that yet.) Here we use an expression to take the end-time of the syllable and add 200 to it, getting a new number. The end result is that the <tt>\t</tt> fadeout effect lasts from `$end` and until 200 milliseconds later.
+当你写了一对感叹号"!"(注意：一定要是半角)，它们之间的内容将会被作为 _表达式_ 处理(事实上是个小小的 Lua 程序，但是别担心这个)。我们利用这个表达式在结束时间上加上200毫秒，获得一个新的数字。结果就是带有 <tt>\t</tt> 参数的淡出效果由 `$end` 持续到之后的 200 毫秒。
 
 
-## Tweaking the grow/shrink effect  ##
+## 改变 伸长/收缩特效  ##
 
-Maybe you think the growing-shrinking effect looks a bit odd, switching right in the middle. It might look better if it was at the maximum height earlier, and used more time shrinking back to normal. Well, that can be changed:
+也许你觉得只是伸长/收缩以中间时间作为分界有些不合适。你也许觉得达到最大高度早于中间时间，剩余的时间用于变回原样比较合适。我们就做如下修改:
 
     {\r\k$kdur\t($start,$end,\1c&H00FF00&)\t($start,!$start+$dur*0.3!,\fscy120)\t(!$start+$dur*0.3!,$end,\fscy100)}
 
-With this, the growing-part will only take the first three-tenths of the syllable duration, and the shrinking the rest. We used one new variable here, `$dur`. This is the duration of the syllable in milliseconds, just like `$kdur` is the duration in centiseconds. (We could actually just as well just have used `$kdur` here, and then multiplied by 3 instead of 0.3.)
+使用这个模板，伸长特效只占用十分之三的音节持续时间，余下十分之七用来收缩。我们使用了一个新的变量 `$dur`。它是音节的持续时间，以毫秒为单位 时值上等同于`$kdur` 。(事实上前者的数值是后者的10倍，可以视情况进行代换)
 
-Note that I removed the fadeout from here, it's just to make the line shorter and easier to read. You can add it back if you want.
+注意我从中移除了淡出特效，这是为了让你看到的更短更易理解。你也可以尝试把它加进来。
 
-Hopefully this tutorial has given you some more ideas of what you can do. In [[the next one|Automation/Karaoke_Templater/Tutorial_3]] we'll add another layer to the effect by using multiple templates!
+希望这篇教程能给你一些点子。在 [[下一篇|Automation/Karaoke_Templater/Tutorial_3]] 教程中，我们将会添加另一层东西到字幕上，这就是多模板的应用。
+
 
