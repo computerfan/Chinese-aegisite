@@ -1,3 +1,6 @@
+暂时未翻译，欲了解常用函数请先移步到几年菊苣的帖子：
+http://tcax.org/forum.php?mod=viewthread&tid=1131
+
 The Lua code in code blocks and on code lines is run in a separate global
 environment such that it won't accidentally disturb the main script
 function.
