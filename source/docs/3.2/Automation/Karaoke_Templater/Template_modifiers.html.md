@@ -1,42 +1,42 @@
-Template lines and code lines can take a number of modifiers.
+template行和code行都可以带上几种修饰语
 
-This is a space-separated list of words in the Effect field following the `template` or `code` keyword.
+在修饰语和模板行类型中间请留一个半角空格，即在`template` 或 `code` 后面添加空格后再添加修饰语。
 
-While modifiers can be combined to some extent, not all are compatible, and not all work on both code lines and for templates.
+修饰语在一定程度上而不是所有情况下都是兼容的，它不是对所有的 code行和 template行都有效。
 
-There is a special set of modifiers that declare the class of the template line or code line.
-
-
-## Class declaring modifiers  ##
+有一套修饰语用来声明 template行或 code行的类型。
 
 
-Both template lines and code lines can be produced without having a class modifier. Having one is still recommended for clarity, however.
+## 声明类的修饰语  ##
 
-A template line without a class modifier is implicitly given the `syl` modifier.
 
-A code line without a class modifier is implicitly given the `once` modifier.
+模板行(template line)和代码行(code line)都可以在没有声明类的修饰语的情况下起作用。不过为了避免混淆还是推荐声明一下。
+
+在没有声明类的修饰语的情况下，template行默认使用 `syl` 修饰语。
+
+在没有声明类的修饰语的情况下， code行默认使用once修饰语。
 
 
 ### once  ###
 
 
-This class modifier is only valid for code lines.
+这个声明类的修饰语只对 code行有效。
 
-Code lines with the `once` modifier are run exactly once during Karaoke Templater execution, and are always run before any other code lines or templates. They are run in the order they are declared.
+带有 `once` 修饰语的 code行在一次卡拉OK执行器的执行过程中只运行一次，一般都先于其它的code行或者模板行。它们是按声明的顺序执行的。
 
-"code once" lines are primarily intended to declare functions for use in templates.
+"code once" 行基本用来声明模板中使用的函数。
 
 {{Examplebox|
     Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>code once</u>,function setlayer(newlayer) line.layer = newlayer; return ""; end
 
-This example declares a new function that changes the Layer field in the output line.
+这个例子声明了一个新的函数，它用来控制输出行的 层次(Layer) 信息。
 }}
 
 
 ### line _[name]_  ###
 
 
-This class modifier is valid for both code lines and template lines.
+这个声明类的修饰语对 code行和 template行都有效。
 
 When used on template lines it takes an optional parameter naming the line template the template line participates in. The template name must not match any template modifier names.
 
