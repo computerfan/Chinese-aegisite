@@ -9,7 +9,7 @@ title: 支持
 ### 反馈 ###
 
 您可以向我们反馈——通过评论、批评或是提供意见等形式。也随时欢迎报告Bug或表达增添新功能的愿望。您可以来看看我们的
-[论坛](http://forums.aegisub.org) 和 [Bug跟踪器](http://devel.aegisub.org/)，或者在[IRC
+[论坛](http://forums.aegisub.org) 和 [Bug跟踪系统](http://devel.aegisub.org/)，或者在[IRC
 频道](irc://irc.rizon.net/aegisub)交流探讨。
 
 ### 把这个词告诉您的朋友 ###

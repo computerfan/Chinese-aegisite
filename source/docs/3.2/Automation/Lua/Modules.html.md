@@ -1,3 +1,7 @@
+---
+title: Lua模块
+---
+
 {::options toc_levels="2,3" /}
 
 Aegisub内置了许多lua模块。

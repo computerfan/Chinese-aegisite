@@ -1,8 +1,12 @@
-The Automation 4 Lua include file `utils.lua` contains various support functions to aid writing Lua scripts.
-There is no general theme for the file.
+---
+title: util
+---
 
-## Usage ##
-Import this module with `util = require 'aegisub.util'`{:.language-lua}.
+Automation 4 Lua include的文件 `utils.lua` 包括了多种不同的辅助函数来帮助你写Lua脚本。
+这个文件并没有统一的主题。
+
+## 用法 ##
+使用 `util = require 'aegisub.util'`{:.language-lua} 来导入这个模块。
 
 ## Table functions  ##
 Duplicating tables in various ways is a common task.

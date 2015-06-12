@@ -41,7 +41,7 @@ title: 概述
 * [[选择多行|Select_Lines]]
 * [[样式管理器|Styles]]
 * [[颜色选择器|Colour_Picker]]
-* [[Styling_Assistant]]
+* [[样式助手|Styling_Assistant]]
 * [[重设分辨率|Resolution_Resampler]]
 * [[字体收集器|Fonts_Collector]]
 * [[平移时间|Shift_Times]]
