@@ -4,14 +4,13 @@ title: 贡献
 
 {::options toc_levels="2" /}
 
-Aegisub最初是由Rodrigo Braz Monteiro与有显著贡献的Niels Martin Hansen编写的。
-至2008年由Monteiro领导开发，Hansen至2010，以及从2011年开始由Thomas Goyne领导。
+Aegisub最初是由Rodrigo Braz Monteiro所编写的，Niels Martin Hansen也为此做出了卓著的贡献。软件的开发工作在2008年及以前由Monteiro所领导，之后由Hansen接任至2010年底，自2011年起由Thomas Goyne担任。
 
-## 程序 ##
+## 主体程序 ##
 * 主要程序员：
   * **Rodrigo Braz Monteiro** (ArchMage ZeratuL) - 首席开发者，视频系统，音频系统，字幕 I/O，工具
   * **Niels Martin Hansen** (jfs) - 自动化，自动化 Lua，音频系统，工具
-  * **Thomas Goyne (Plorkyeran)** - 从3.0起的首席开发者
+  * **Thomas Goyne (Plorkyeran)** - 从版本3.0起的首席开发者
 
 * 职员贡献者：
   * **Karl Blomster** (TheFluff) - 常规代码，FFmpegSource视频提供者
@@ -41,20 +40,20 @@ Aegisub最初是由Rodrigo Braz Monteiro与有显著贡献的Niels Martin Hansen
   * **Fredrik Mellbin** (Myrsloik)
   * **Rodrigo Braz Monteiro** (ArchMage ZeratuL)
 
-* 之前的版本:
+* 早期版本:
   * movax
 
-## 手册 ##
+## 手册编写 ##
 * 3.x:
   * **Thomas Goyne (Plorkyeran)**
-  * **Vmoe字幕组的电脑迷、domo、Evalyn、奶茶** - 手册中文翻译
+  * **Vmoe字幕组的电脑迷、domo、Evalyn、奶茶、逆转の时空** - 手册中文翻译
 
 * 2.x:
   * **Karl Blomster** (TheFluff)
   * **Niels Martin Hansen** (jfs)
   * **Rodrigo Braz Monteiro** (ArchMage ZeratuL)
 
-* 之前的版本:
+* 早期版本:
   * Motoko-chan
   * Kobi
   * movax
@@ -68,7 +67,7 @@ Aegisub最初是由Rodrigo Braz Monteiro与有显著贡献的Niels Martin Hansen
   * **Marcello Bastéa-Forte**: Wiki文档
   * **Rodrigo Braz Monteiro** (ArchMage ZeratuL): 域名管理
 
-* 之前:
+* 先前:
   * **David Lamparter** (equinox): 2.00 - 2.1.2 版本 SVN 信息库
   * BerliOS: 1.10 版本 SVN 信息库
   * Mentar: 1.09 及之前版本 SVN 信息库
@@ -96,7 +95,7 @@ Aegisub最初是由Rodrigo Braz Monteiro与有显著贡献的Niels Martin Hansen
   * oblisk: 韩语
   * mulrich: 丹麦语
 
-## 额外的感谢 ##
+## 额外致谢 ##
 * [Combined Community Codec Pack](http://www.cccp-project.net)的工作人员
 * Gabest for VSFilter
 * squid_80 for the x64 builds of Avisynth and CSRI-enabled VSFilter
@@ -106,7 +105,7 @@ Aegisub最初是由Rodrigo Braz Monteiro与有显著贡献的Niels Martin Hansen
 * Alpha testers: b0nk, Bot1, deathbygirl, DoGfOoD, grimlock, Jagobah, Jcubed, Kintaro, Kobi, kodachrome, maxx-, mASSIVe, Maya, Mentar, movax, msb, neo2sonic, nich, nwa, omgifos, SOzuken, TheFluff, thrash_sensei, Vincent, zegnat
 
 ## 关于 ##
-Aegisub包括来自以下的其他项目的部分：
+Aegisub包含了来自以下项目的部分内容：
 
 * Avisynth 2.5 - Copyright (c) Ben Rudiak-Gould et al
 * FFMS2 - Copyright (c) Fredrik Mellbin
