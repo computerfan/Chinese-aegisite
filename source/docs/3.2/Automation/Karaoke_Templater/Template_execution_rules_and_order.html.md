@@ -44,7 +44,7 @@ _syl_ and _furi_, 第一个类只对code模板有用。
 :  模板的"文本" 部分，可以是code模板中的 Lua 代码，或者是输出模板中的模板代码。 _line_ 类输出模板还有一个 _pre-line text_ 。
 
 ## 启动(Start-up)  ##
-卡拉OK模板执行器(后文均简称模板应用器)做的第一件事是使用 [[卡拉OK框架(karaskel)|Automation/Lua/Modules/karaskel.lua]] 来收集一些基础的字幕文件信息。这个过程中总是会伴随着传递 `真(true)`值给 _generate_furigana_ (生成假名标注)，它属于`karaskel.收集_head` 函数，这意味着 [[假名标注(furigana)|Furigana_karaoke]] 的样式会被生成，除非它们早就存在。
+卡拉OK模板执行器(后文均简称模板应用器)做的第一件事是使用 [[卡拉OK框架(karaskel)|Automation/Lua/Modules/karaskel.lua]] 来收集一些基础的字幕文件信息。这个过程中总是会伴随着传递 `真(true)`值给 _generate_furigana_ (生成假名标注)，它属于`karaskel.collect_head` 函数，这意味着 [[假名标注(furigana)|Furigana_karaoke]] 的样式会被生成，除非它们早就存在。
 
 然后模板应用器会收集文件中的所有模板行(template line)信息。
 
@@ -130,7 +130,8 @@ _syl_ and _furi_, 第一个类只对code模板有用。
 ## 应用 _syl_ 和 _furi_ 类模板  ##
 {::template name="todo"} 待编写(原文如此){:/}
 
-## 过程描述(这部分内容的具体代码可以在Aegisub安装目录下的automation/autoload/kara-templater.lua中读到)  ##
+## 过程描述 ##
+(这部分内容的具体代码可以在Aegisub安装目录下的automation/autoload/kara-templater.lua中读到)  
 <pre>卡拉OK模板执行器执行的主要过程:
 1. 收集头部信息
    1. 找到所有的头部信息，基本有播放分辨率（X/Y）。
