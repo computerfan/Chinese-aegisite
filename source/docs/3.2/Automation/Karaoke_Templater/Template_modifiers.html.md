@@ -38,120 +38,120 @@ template行和code行都可以带上几种修饰语
 
 这个声明类的修饰语对 code行和 template行都有效。
 
-When used on template lines it takes an optional parameter naming the line template the template line participates in. The template name must not match any template modifier names.
+需要注意的是，具有相同模板名称的两个模板行在应用时会被拼接到一起，这个名称可以自定义，但不能与现有的修饰语相同。
 
-Anonymous line templates (with no template name given) can not have pre-line template text.
+无名称模板不能含有行前内容。(can not have pre-line template text)
 
-Code lines can not be named, they must be anonymous.
+Code行不能被命名。
 
-Named line template lines append to the template text in the order they appear. The appending of template text happens at template parse time, not at execution time.
+已命名模板行的顺序合并是在卡拉OK模板执行器解析模板时发生的，而不是在模板执行时。
 
 {{Examplebox|
     Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>code line</u>,fxgroup.funky = line.actor == "funky"
 
-This code line is run once per input line. It enables/disables an effect group named "funky" depending on the Actor field of the input line.
+这个 code 行对每个输入行运行一次。它开启/关闭一个特效群，依靠输入行的说话人信息进行判断。
 }}
 {{Examplebox|
     Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template line</u>,{\r\t($start,$end,\bord0)}
 
-This template line declares an anonymous line template. The effect produced will transform the border of each syllable to zero during the syllable's duration.
+这个模板行声明了一个无名称的行类模板。效果是在音节的持续时间内边框粗度由默认值变成0。
 }}
 {{Examplebox|
     Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template line jumper</u>,{\r\t($start,$mid,\frz-0.1)\t($mid,$end,\frz0}
 
-This template line appends to a line template named "jumper"  or creates it if it doesn't exist. Together with the pre-line template example given below, this will produce a "jumping" effect for the syllables.
+这个模板行声明了一个名称为"jumper"的行类模板，配合下面给出的行前(pre-line)模板，能产生 "跳跃" 的特效。
 }}
 
 
 ### pre-line _[name]_  ###
 
 
-This class modifier is only valid for template lines.
+这个类型的修饰语只对行类模板有效。
 
-The `pre-line` modifier takes an optional parameter naming the line template the template line participates in. The template name must not match any template modifier names.
+ `pre-line` 修饰语后可以添加模板名称，具有相同模板名称的模板会一起被应用。这个模板名称不能与现有的任何修饰语相同。
 
-Anonymous line templates with only pre-line text leave the original input line text alone and just prepends the template text to the line.
+无名称模板如果只有 pre-line 修饰语，那么模板执行后输入行会被保留，同时生成的新行前加入了模板行的内容。
 
-Named pre-line template lines append to the pre-line template text in the order they appear. The appending of template text happens at template parse time, not at execution time.
+有名称的 pre-line 模板行会按顺序把模板内容叠加。最后合成的一个模板再进行应用，所以这些模板内容是在解析模板时进行的，而不是执行时。
 
 {{Examplebox|
     Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template pre-line</u>,{\be1}
 
-This template line declares an anonymous line template, that will prepend <tt>{\be1}</tt> to all matching lines.
+这个模板行声明了一个无名称的行类模板，这个模板会给每个匹配到的行添加 <tt>{\be1}</tt> 标签。
 }}
 {{Examplebox|
     Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template pre-line jumper</u>,{\org(-10000,$y)}
 
-This template line appends to the pre-line template text of a line template named "jumper", or creates it if it doesn't exist. Together with the line template example given above, this will produce a "jumping" effect for the syllables.
+这个模板行会和名称为 "jumper" 的模板进行合成，如果不存在这样的模板行，它会自己创建。和上面的模板一起使用，会使每个音节产生 "跳跃" 效果。
 }}
 
 
 ### syl  ###
 
 
-This class modifier is valid for both code lines and template lines.
+这个修饰语对 code行和 template行都可用。
 
-Syl templates can not be named.
+Syl(音节)类的模板不能被命名。
 
 {{Examplebox|
     Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template syl</u>,{\pos($x,$y)}
 
-This template line declares a syl template that simply positions the syllable text.
+这个模板行声明了一个 syl 类模板，它的作用是拆分音节后保持音节字符原来的位置。
 }}
 
 
 ### furi  ###
 
 
-This class modifier is valid for both code lines and template lines.
+这个类型的修饰语对 code行 和 template行都有效。
 
-Furi templates can not be named.
+Furi(假名标注)类模板不能被命名。
 
 {{Examplebox|
     Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template furi</u>,{\pos($x,$y)}
 
-This template line declares a furi template that simply positions the syllable text. It's not needed to do anything further to get correct furigana formatting.
+这个模板行声明了一个furi 类模板，它用来简单地修改音节字符的位置。你需要做的只是在输入行中写出标准的假名标注格式。
 }}
 
 
 ### syl furi  ###
 
 
-It's possible to combine the `syl` and `furi` class modifiers. This results in two identical templates being generated from the template line, one syl template and one furi template.
+同时使用 `syl` 和 `furi` 类修饰语是可行的。它会生成两个不同的行，这两个行分别由 syl 类模板和 furi 类模板生成。
 
-This is the only possible combination of class modifiers, they are otherwise exclusive.
+这是同时使用多类修饰语的唯一可能性，换句话说是独有的用法。
 
 
-## Other modifiers  ##
+## 其它修饰语  ##
 
 
 
 ### all  ###
 
 
-Apply template to all styles, not just the one of the template line.
+把模板应用到所有的样式上，而不只是和模板行样式相同的行。
 
-Applicable for both code lines and templates, and for all classes.
+对 code行和 template行都可用。
 
 {{Examplebox|
     Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template syl all</u>,{\pos($x,$y)}
 
-This template will be applied to every single syllable in the entire subtitle file, regardless of the style of the line they are on.
+这个模板会被应用于字幕文件中多有单独的音节，无视样式。
 }}
 
 
 ### char  ###
 
 
-Make the template work per-character instead of per-syllable. This changes application order semantics in a significant way, see [[Template execution and order|Automation/Karaoke_Templater/Template_execution_rules_and_order]] for details.
+使模板的工作对象变为每个字符，而不是每个音节。它会以值得注意的方式改变应用顺序，查看 [[模板执行和执行顺序|Automation/Karaoke_Templater/Template_execution_rules_and_order]] 来获取相信信息。
 
-While this will work on code lines, it is generally not useful, see the discussion on execution order.
+它用于 code行时，一般没什么意义，在上面的链接中可以了解到。
 
 {{Examplebox|
     Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template syl char</u>,{\pos($x,$y)}
     Comment: 1,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template syl char</u>,{\pos($x,$y)\bord0}
 
-Every single character on the line will be positioned separately. For each syllable, each template will apply for all characters in one go, and not be applied interleaved.
+行中每个单独字符都会被分别定位。对于每个音节 For each syllable, each template will apply for all characters in one go, and not be applied interleaved.
 
 For example, if there are two syllables, "ab" and "cd", and the above two templates are applied to them, the result will be 8 lines with the following text, in this order:
 
