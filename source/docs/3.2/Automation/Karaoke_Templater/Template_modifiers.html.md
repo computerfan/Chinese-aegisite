@@ -151,9 +151,9 @@ Furi(假名标注)类模板不能被命名。
     Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template syl char</u>,{\pos($x,$y)}
     Comment: 1,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template syl char</u>,{\pos($x,$y)\bord0}
 
-行中每个单独字符都会被分别定位。对于每个音节 For each syllable, each template will apply for all characters in one go, and not be applied interleaved.
+行中每个单独字符都会被分别定位。对于每个音节，每个模板对其中字符的应用也是一气呵成的，而不是被交错应用。
 
-For example, if there are two syllables, "ab" and "cd", and the above two templates are applied to them, the result will be 8 lines with the following text, in this order:
+举个例子，如果行里有两个音节，"ab" 和 "cd"，上面给出的两个模板被应用于这两个音节，产生的结果会有8行:
 
     {\pos($x,$y)}a
     {\pos($x,$y)}b
@@ -169,103 +169,108 @@ For example, if there are two syllables, "ab" and "cd", and the above two templa
 ### fx _name_  ###
 
 
-Make template only apply to syllables that have the named [[inline-fx|Karaoke_inline-fx]]. Specifying an inline-fx name is required; the name may also overlap with template modifier names though this is not recommended.
+使模板只应用于含有内联特效 [[(inline-fx)|Karaoke_inline-fx]] 的音节。指定内联特效名称是必要的；内联特效名称也不建议和修饰语重复。
 
 {{Examplebox|
     Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template syl fx drop</u>,{\move($x,$y,$x,!$y+30!,$start,$end)}
 
-With this template, all syllables that have the inline-fx "drop" will get an additional line produced, where the syllables moves down 30 pixels during its duration.
+使用这个模板，所有含有内联特效 "drop" 的音节会被模板处理，效果是音节会在持续时间向下移动30像素。
 
-All other template lines that don't have _fx_ specified will still be applied as usual to those syllables as well.
+其它的不含有内联特效的模板会照常被应用。
 }}
 
 
 ### fxgroup _name_  ###
 
 
-Declare template to be in the named effect group. Specifying an effect group name is required; the name may also overlap with template modifier names and Lua reserved words, though this is not recommended.
+声明这个模板属于一个有名称的特效组。指定特效组名称是必要的；该名称不建议和修饰语重复，也不建议和Lua保留词重复。
 
-{{Examplebox|There is an example of _fxgroup_ on the [[Code execution environment|Automation/Karaoke_Templater/Code_execution_environment#conditionaltemplateswithfxgroup]] page.}}
+{{Examplebox|有一个 _fxgroup_ 的例子，见 [[代码执行环境Code execution environment|Automation/Karaoke_Templater/Code_execution_environment#conditionaltemplateswithfxgroup]] }}
 
 
 ### keeptags  ###
 
 
-Specify that the original tags must be kept in the syllable after application.
+使原始的标签在应用完模板后得到保留。
 
-This has no effect when combined with `char` or `multi`.
+这个修饰语在 `char` 或 `multi`下没有效果。
 
 {{Examplebox|
     template line <u>keeptags</u>: {\r\t($start,!$start+1!,\frx40)\t(!$start+1!,$end,\frx0)}
     karaoke: {\k21}hi{\k10}gu{\k23}ra{\k22}shi {\k38}ga {\k37\1c&H0000FF&}na{\k37}ku
 
-The syllables "tip" back over a bit during highlight. One of them ("na") is coloured differently by putting an override tag in the timed karaoke line, but the following syllables don't get it because of the customary `\r` at the start of the template.
+音节 "沿X轴翻转"，并在高亮的时间内翻转回去。其中的一个音节 ("na") 和其它音节颜色不同。后面的音节不会受影响，因为存在 `\r` 标签。
 
-The _notags_ modifier ensures that the special colour of the special syllable gets carried over to the output.
+ _notags_ 修饰语能确保应用模板后不再含有特殊音节的特殊颜色。
 }}
 
 
 ### multi  ###
 
 
-Make the template apply per-highlight in [[multi-highlight|Furigana_karaoke]] timed karaoke. This changes application order semantics in a significant way, see [[Template execution and order|Automation/Karaoke_Templater/Template_execution_rules_and_order]] for details.
+使模板对每个高亮应用一次 [[多次高亮|Furigana_karaoke]] 。它以值得注意的方式会改变模板执行顺序，详见 [[模板执行顺序|Automation/Karaoke_Templater/Template_execution_rules_and_order]] 。
 
-While this will work on code lines, it is generally not useful, see the discussion on execution order.
+当它被用于 code行时，基本没什么卵用，具体可以参照执行顺序。
 
 {{Examplebox|
     template syl <u>multi</u>: {\an5\pos($scenter,$smiddle)\1a&HFF&\t($start,$end,\bord5\3a&HFF&)}
     karaoke: {\k33}風<u>{\k36}#</u>{\k89}の{\k46}花<u>{\k28}#</u>{\k57}よ
 
-The timed karaoke line uses basic multi-highlight markup, the <tt>#</tt> syllables, to create multi-highlight syllables. Such, the 風 (ka-ze) and 花 (ha-na) kanji each get stored as a single syllable that gets two highlights each, and the <tt>#</tt> characters aren't displayed at all in the applied effect. (They will still display if you try to play the timed karaoke line without applying any templates.)
+打好K的时间轴使用了多次高亮(multi-highlight)标记， <tt>#</tt> 音节被用来创建多次高亮音节。比如，風 (ka-ze) 和 花 (ha-na) 日文汉字实际上都对应两个音节，在这种情况下它们被存储成一个音节，但是会有两次高亮， <tt>#</tt> 字符在应用模板后不会显示 (当然，在应用模板前还是存在的.....)
 
-The template uses the _multi_ modifier to signal that it wants to use multi-highlights instead of just one highlight/application per displayed syllable. The effect is a kind of simple "exploding border", but it explodes twice on both the 風 and 花 kanji. If the _multi_ modifier wasn't there, it would only explode once on each.
+模板使用 _multi_ 修饰语来标识它会使一个音节多次高亮。这个效果是一种简单的 "边框扩张"，但是在唱到 風 和 花 时，会产生两次这个效果。如果没有 _multi_ 修饰语的话，一个汉字只会产生一次效果。
 }}
 
 
 ### noblank  ###
 
 
-Specify that the template will not be applied to syllables considered "blank". A syllable is considered blank if its tag-stripped text consists only of a combination of ASCII whitespace characters and ideographic fullwidth space characters, or is completely empty. A syllable is also considered empty if its duration is zero.
+说明该模板不会对被认为是"空"的音节起作用。一个音节在几种情况下会被认为是空，去掉音节前的标签后：
+1.剩下的是ASCII的空格
+2.剩下全角空格
+3.真正是空的
+特殊情况
+4.音节的持续时间是0 (\k0)
 
-> _See the _notext_ modifier below for an example._
+> _查看 _notext_ 修饰语的例子_
 
 
 ### notext  ###
 
 
-Specify that the original text will not be appended to the output line.
+说明原文本在应用模板后不会在输出行中被显示。
 
-This is intended for use primarily with templates that output drawing tags and similar.
+这个修饰语一般用来达到清除文本同时输出图形一类的目的。
 
-Not applicable for code lines.
+code行不可用。
 
 {{Examplebox|
     code once: sword_shape = "m 0 0 l 5 -5 l 5 -30 l 10 -30 l 10 -32 l 2 -32 l 2 -40 l -2 -40 l -2 -32 l -10 -32 l -10 -30 l -5 -30 l -5 -5 "
     template syl notext noblank: {\an5\move($scenter,!$smiddle-30!,$scenter,$smiddle,!$start-20!,$start)\p2}!sword_shape!
 
-The first code line defines a vector drawing shape for convenience, so it doesn't clutter up the actual template lines later on. The drawing is of a small simple sword pointing downwards. The effect itself is these small swords dropping down onto the syllables, by a move.
+第一个 code行为了方便定义了一个矢量绘图。这个图形是一个简单的剑尖朝下的剑形。这个效果是使用\move标签使剑的图形向下落到音节上。
 
-The template uses the _notext_ modifier to avoid getting the original syllable text shown, because it's being replaced with a vector drawing here. Also the _noblank_ modifier is used to avoid producing anything for "invisible" syllables, eg. we don't want a sword dropping down on a lone timed space, that just looks dumb.
+这个模板使用了 _notext_ 修饰语来防止生成的行中带有原文本，因为生成的行中我们只需要剑的形状，使用模板只是为了使用音节的时间和定位信息。_noblank_ 修饰语会保证剑形不会落空到 "不可见的" 音节上。如果那个不可见的音节恰好是个长时间的空格，不加 _noblank_ 修饰，那效果看起来会比较悲剧。
 }}
 
 
 ### repeat _n_, loop _n_  ###
 
 
-Specify that the template will be applied the given number of times. Specifying the number of loops is required. The number of loops must be a constant integer number, it can not be a variable or otherwise calculated dynamically.
+模板会按照给定数值多次执行。需要给定数字。循环次数必须是正整数，不可是变量或者算式。
 
-`repeat` and `loop` are synonymous.
+`repeat` 和 `loop` 是等价的。
 
-Note that the execution order of looped line templates and looped syl/furi templates is different. See [[Template execution and order|Automation/Karaoke_Templater/Template_execution_rules_and_order]] for details.
+注意 loop 修饰的行模板和 loop 修饰的 音节/假名标记(syl/furi)模板执行顺序不同。详见 [[模板执行顺序|Automation/Karaoke_Templater/Template_execution_rules_and_order]] 。
 
 {{Examplebox|
-    template syl <u>loop 4</u>: {\move($x,$y,!$x+math.random(-30,30)!,!$y+math.random(-30,30)!,$start,$end)\alpha&Hc0&\t($start,$end,\alpha&HFF&)}
+    template syl <u>loop 4</u>: {\move($x,$y,!$x+math.random(-30,30)!,!$y+math.random(-30,30)!,$start,$end)\alpha&HC0&\t($start,$end,\alpha&HFF&)}
 
-The _loop_ modifier is used to created 4 copies of the syllable for each time this template is run. Each of those move in a random direction, up to 30 pixels away in X and Y direction. They also fade out.
+其中 _loop_ 修饰语用于创建4个音节的副本。这四个副本每个都沿随机方向移动，在X/Y方向上最大范围30像素，带有淡出。
 
-The starting alpha for each copy, `&Hc0` is chosen as 256 - (256 / 4), 4 being the number of loops made. This way, the opacity for each copy adds up to exactly 256. (Technically it should be 255, but that can't be achieved with an even number of loops.)
+每个音节副本的初始透明度都是 `&HC0`，因为C0(HEX)=256-(256/4)=192，4由循环数确定。这样每个副本的不透明度实际上叠加到了256。 (更科学的数字应该是255，但是靠偶数次循环实现不了)
 }}
-> _Also see the examples on the [[Code execution environment|Automation/Karaoke_Templater/Code_execution_environment#loopingtemplates]] page for more advanced usage._
+> _可以在 [[代码执行环境|Automation/Karaoke_Templater/Code_execution_environment#loopingtemplates]] 页面看到更多高级用法。_
 
 {::template name="automation_navbox" /}
 
