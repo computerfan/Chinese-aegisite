@@ -17,7 +17,7 @@ title: 自动化
 * 也许还有一些未发现的用途
 
 ## 使用自动化
-Aegisub内置了一些自动化脚本，可以直接使用。其中包括高级的 **[[Karaoke_Templater]]** 脚本和 **[[几个宏操作(collection of macros)|Included_macros]]** 来简化一些编辑任务。
+Aegisub内置了一些自动化脚本，可以直接使用。其中包括高级的卡拉OK模板执行器 **[[Karaoke_Templater]]** 脚本和 **[[几个宏操作(collection of macros)|Included_macros]]** 来简化一些编辑任务。
 
 Aegisub通常是一次加载多个脚本。您能从**[[自动化脚本管理器|Automation/Manager]]** 中看到加载了哪些脚本，或者加载、移除更多的脚本。
 
