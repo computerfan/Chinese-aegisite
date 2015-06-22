@@ -1,104 +1,63 @@
 {::options toc_levels="2,3" /}
 
-The timing postprocessor is a highly useful tool for automatically correcting
-timing in various ways.
+时间后续处理器是很有用的工具，它可以以各种方式被用于自动修正时间。
 
-## Overview  ##
-As shown in the screenshot, there are three functions:
+## 总览  ##
+正如截图所示，该工具具有三个功能:
 
-* Add lead-in and/or lead-out 
-* Make lines that start close to each other continuous by extending or
-    contracting their start and/or end times
-* Snapping line starts/ends to video keyframes (only available if a video is
-    loaded)
+* 提前开始/延后结束 
+* 使相邻字幕行连续，通过延后或者提前它们的开始和(或)结束时间
+* 使行的开始/结束时间紧贴关键帧(只有在读取了视频的情况下才有效)
 
 [[img/Dialog_timing_processor.png]]{: class="center"}
 
-The processing gets applied in the order it is displayed in the dialogue box.
-That is to say, first lead-in/outs are added, then a check for adjascent lines
-is performed and lines that are closer than the given threshold are made
-continuous, and lastly, line start/ends get snapped to keyframes.
+同时选择多项时的处理顺序就像对话框中由上到下的顺序一样。
+这就是说，首先，提前开始/延后结束操作完成，随之会检查相邻行(依照给定的阈值判断是否相邻)并实施连接相邻行操作，最后使行的开始/结束时间紧贴关键帧。
 
-## Apply to styles  ##
-This field determines which styles will get processed - check all you want to
-process. This is useful for only processing dialogue lines while leaving signs
-and/or karaoke alone.
+## 应用到样式  ##
+这个区域决定了哪些样式会被处理——勾选所有你想要处理的样式。这样你可以排除掉一些非对话内容比如标记或者卡拉OK。
 
-## Options  ##
-Check "Affect Selection Only" to restrict the operation to the selected lines.
-If this is left unchecked, all lines in the file whose style match the selected
-ones will be affected.
+## 选项  ##
+勾选 "仅应用于所选" 来限定工具作用范围为选择的行。
+如果未勾选，文件中所有匹配样式的行都会被影响。
 
-## Lead-in/Lead-out  ##
-This function extends the start/end times of the line, a procedure known as
-adding lead-in and lead-out. The postprocessor will add the given time (in
-milliseconds) to each line start and end, respectively. You can add both
-lead-in and lead-out, only one, or none, by checking and unchecking the boxes
-as appropriate. Adding lead-in or out will never make lines overlap if they do
-not already overlap.
+## 提前开始/延后结束  ##
+这个功能用来延伸行的开始/结束时间，也就是提前开始时间和延后结束时间。工具会把给定时间(毫秒)分别地应用到每行的开始和结束时间上。你可以同时选择提前开始和延后结束，仅选择一个，或者都不选。提前开始/延后结束永远也不会使行的时间重叠，除非在处理前就存在重叠状况。
 
-## Make adjacent subtitles continuous  ##
-This function will check if any two lines' starts and ends are closer in time
-than the given threshold (in milliseconds). If they are, one or both will get
-their start and/or end time moved so that they are continuous (i.e. one appears
-directly following the next, without any subtitle-less frames in between).
+## 使相邻字幕行连续  ##
+这个功能会检查任何两行的开始和结束时间相差是否小于给定的阈值。如果足够小，一行或者多行的开始和(或)结束时间就会被修改成连续，即一行消失，另一行在下一帧出新，在视觉上是连续的，中间没有留空字幕的帧。
 
-The _Bias_ slider determines how the lines are extended. Sliding it all the way
-to the right will extend the end time of the first line all the way to the
-start time of the second, without touching the second line at all. Sliding it
-all the way to the left will instead make the start time of the second line
-extend backwards to the end of the first line, without touching the first line
-at all. Putting it in the middle will extend the end time of the first line and
-the start time of the second equally, so that they meet in the middle. Anything
-in between will makes the lines "meet" where the slider is, so to speak. For
-example, if the threshold was 1000, and the slider was 3/4ths of the way to the
-right (roughly as shown in the screenshot), the end time of the first line
-would get extended by 750 ms, and the start time of the second extended
-backwards with 250 ms.
+ _偏重_ 滑块决定了行的时间是如何被延伸的。 滑块滑到最右情况下应用本功能，第一行的结束时间会完全贴近第二行的开始时间，对第二行没有任何动作。 滑块滑到最左情况下应用本功能，第二行的开始时间会完全贴近第一行的结束时间，对第一行没有任何动作。 把滑块拉到中间位置，第一行的结束时间会延后，第二行的开始时间会提前相同的量，所以最终是在两个时间中间点构成连续。
+ 滑块的作用就是控制两个时间 "相遇" 的位置。
+ 举个例子，如果阈值设定为1000，滑块滑到 3/4 位置(粗略看起来就像上面的截屏一样)，第一行的结束时间会被延后 750 ms，第二行的开始时间会被提前 250 ms。
 
-Note that when using *Make adjacent subtitles continuous* to eliminate
-overlaps, you probably do not want to enable adding lead-in or out, as that is
-applied before the overlap elimination.
+注意，当你使用 *使相邻字幕行连续* 来消除重叠的时候，你也许不想(不应该)开启 提前开始/延后结束，因为它的应用在消除重叠之前。
 
-## Keyframe snapping  ##
-The keyframe snapping function is a kind of automatic scenetimer. It is
-probably the most useful of the three, but will only work if there is a video
-or keyframe loaded, because of its dependency on keyframes. See the [[keyframes
-section of the working with video page|Video#keyframes]].
+## 紧贴关键帧  ##
+紧贴关键帧功能是一类自动化场景定时功能。它可能是三项功能中最有用的，不过只有在读取了视频或者关键帧后才有用。有关 [[关键帧|Video#keyframes]]。
 
-The keyframe snapping function will look at how close the start and end of
-lines are to the nearest keyframe, and if they are closer than the given
-threshold, it will get extended or shortened to the keyframe.
+紧贴关键帧功能会计算行的开始/结束时间和最近关键帧的时间差，如果时间差小于给定的阈值，时间就会被延长或缩短到关键帧所在时间。
 
-There are four thresholds to consider:
+有四项阈值是你要考虑的：
+(以下有关时间点的描述均以向左向右进行*)
 
-*Starts before*
-: If the line starts less than this many milliseconds (inclusive) _before_ a
-    keyframe, its start time will get moved forward so that the line starts on
-    the keyframe.
+*开始前阈*
+: 如果该行 _先于_ 距它最近关键帧开始，二者时间差(毫秒)小于等于这个值时，行开始时间会向右移到关键帧时间。
 
-*Starts after*
-: If the line starts less than this many milliseconds (inclusive) _after_ a
-    keyframe, its start time will get moved backward so that the line starts on
-    the keyframe.
+*开始后阈*
+: 如果该行 _晚于_ 距它最近关键帧开始，二者时间差(毫秒)小于等于这个值时，行开始时间会向左移到关键帧时间。
 
-*Ends before*
-: If the line ends less than this many milliseconds (inclusive) _before_ a
-    keyframe, its end time will get moved forward so that the line ends on the
-    frame before the keyframe.
+*结束前阈*
+: 如果该行 _早于_ 距它最近关键帧结束，二者时间差(毫秒)小于等于这个值时，行结束时间会向右移到关键帧时间。
 
-*Ends after*
-: if the line ends less than this many milliseconds (inclusive) _after_ a
-    keyframe, its end time will get moved backward so that the line ends on the
-    frame before the keyframe.
+*结束后阈*
+: 如果该行 _晚于_ 距它最近关键帧结束，二者时间差(毫秒)小于等于这个值时，行结束时间会向左移到关键帧时间。
 
-When using this feature, remember your lead-in/out times! Your *Starts before*
-and *Ends after* thresholds should normally be at least as long as your lead-in
-and lead-out, or lines which were initially scene-timed may be turned into
-bleeds.
 
-Another thing you can do with the keyframe snapping feature is using it to
-correct one-frame bleeds really, really fast. If your script is full of them,
-just set all the thresholds to 50, disable the lead-in/out adding and the
-adjacent line snapping, choose your dialogue style, and hit Apply. Problem
-solved.
+当使用这个功能时，记住你的"提前开始/延后结束"值！你的 *开始前阈* 和 *结束后阈* 值正常情况下应该至少和这两个值一样大，不然一开始按照场景定时时所做的工作可能白做。
+
+紧贴关键帧功能还可以用来进行逐帧时间轴的修正，十分快速。如果你的字幕脚本中的时间轴全都是逐帧的，直接把阈值设置为50，关闭 提前开始/延后结束 和 使相邻字幕行连续，选好你要应用的样式点击应用，问题立刻解决。
+
+
+
+*forward和backward直译为向前向后会产生歧义，为方便理解，采用直观的左右来表示时间的前后。
