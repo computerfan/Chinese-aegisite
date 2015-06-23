@@ -1,71 +1,42 @@
-To help you with quality assurance of your subtitle scripts, Aegisub
-features a complete spell checker. It uses the Hunspell library, which is
-based on OpenOffice.org's MySpell, which means it's at least as good as one
-you'd find in a sophisticated word processing program. It can be found in
-the _Subtitles_ menu -> _Spell Checker_. It also spell-checks as you type
-and can to some degree be controlled from the subtitle edit box's
-right-click menu (see [[editing subtitles|Editing_Subtitles]]).
+为了确保字幕脚本的质量，Aegisub特意准备了一个完整的拼写检查器。它使用的是基于OpenOffice.org MySpell的Hunspell库，这意味着，Aegisub的拼写检查不会比一些复杂的(使用Hunspell的)文本工具中的拼写检查功能弱。你可以在 _字幕_ 菜单 -> _拼写检查器_ 找到它。在你在字幕编辑框键入文本的时候，它实际上也在起作用，右键点击有更多的选项(见 [[编辑字幕|Editing_Subtitles]])。
 
-### The spell checker dialog ###
+### 拼写检查对话框 ###
 [[img/spell_checker.png]]{: class="center"}
 
-The spell checker dialog will go through all misspelled words it can find in
-your script. The area in the lower left of the box displays suggestions to
-replace the misspelled word with; to the right there are a number of
-buttons:
+拼写检查对话框会把整个字幕脚本中所有可能拼写错误的单词都收集起来。左下方的区域显示的是针对错误拼写的修正建议；右侧有几个按钮:
 
-Skip Comments
-: Skip over commented lines when looking for misspelled words. Useful
-when your comments are mostly things like karaoke scripts or the
-original script which you're translating to a new language.
+忽略注释
+: 跳过注释行的检查。如果你的注释行内容是卡拉OK脚本或者未翻译的原文一类的东西，勾选上此项将会很有用。
 
-Ignore UPPERCASE words
-: Skip over words written in all caps. Useful if your subtitles have a sea of
-made-up acronyms and you don't feel like spending the time adding them all to
-the dictionary.
+忽略 大写的 单词
+: 跳过大写单词的检查。如果你的文本中含有大量冷门的单词缩写，你还不想浪费时间把它们加入到字典中，勾选此项将会很有用。
 
-Replace
-: Replaces the found misspelled word with the chosen replacement. Note
-that the list box can be double-clicked to do this as well.
+替换
+: 把找到的拼写错误的单词替换为选择的。注意，双击左键也是一样的效果。
 
-Replace All
-: Replaces _all instances_ of the found misspelled word _in the entire
-script_ with the chosen replacement.
+全部替换
+: 替换 _在整个脚本中_ 出现拼写错误的 _所有实例_  为指定选择。
 
-Ignore
-: Ignore _this instance_ of the misspelled word, but continue to stop
-on other places where this misspelling occurs.
+忽略
+: 忽略 _本实例_ 中这个单词的拼写错误，但下一实例出现相同的错误时依然提示。
 
-Ignore All
-: Ignore _all instances_ of this word for this spell-checking session,
-but continue to check for it in the future.
+忽略全部
+: 在本次的拼写检查中 忽略 _所有实例_ 中这个单词的拼写错误，下一次启动拼写检查仍然会提示。
 
-Add to dictionary
-: Add the found word to the dictionary so it will not be detected as
-misspelled again.
+添加至词典
+: 把可能拼写错误的单词加入到词典中，从此以后这个单词不再会被当成错误拼写。
 
-Remove from dictionary
-: Remove the word currently in the **Replace with** field from the dictionary.
-Can only remove words which were added with the **Add to dictionary** function
-and not words in the standard dictionary.
+从词典移除
+: 把当前出现在 **替换为** 区域的单词从词典中移除。只能移除之前由 **添加至词典** 添加的单词，对标准词典没有影响。
 {: class="dl-horizontal"}
 
-At the bottom of the dialog box there is a dropdown box to choose the spell
-checker language.
+在对话框底部的下拉框可以选择检查语言。
 
-### Dictionaries ###
-The Windows version of Aegisub comes with a US English dictionary.
-Installers for many other languages are available [on our
-website](http://www.aegisub.org/downloads/#dictionaries). If we don't
-supply a dictionary for your language, check [Mozilla's set of
-dictionaries](https://wiki.mozilla.org/L10n:Dictionaries), or simply
-Google for "hunspell <i>&lt;language&gt;</i> dictionary". We welcome
-submissions of additional dictionaries to package - it can sometimes be hard
-for us to find dictionaries for languages which none of the developers speak.
+### 词典 ###
+Windows 版本的Aegisub内置了US English词典。
+其他语言的词典可以在 [我们的网站](http://www.aegisub.org/downloads/#dictionaries)找到。如果不支持你想要的语言，检查 [Mozilla's set of
+dictionaries](https://wiki.mozilla.org/L10n:Dictionaries)，或者Google "hunspell <i>&lt;language&gt;</i> dictionary"。我们欢迎以各种方式提交扩充词典——如果没有开发者使用这种语言，找到这种语言的词典是很困难的。
 
-The OS X version of Aegisub includes all of the dictionaries we have.
+OS X 版本的Aegisub内置了我们所有已有的词典。
 
-On Linux your distribution's package manager should have hunspell
-dictionaries. You may need to set the [[dictionary
-path|Options#interface]] to the location where they are installed; one
-common location is `/usr/share/hunspell`.
+在 Linux 下，你的分布式包管理器应该有hunspell词典。你可能需要设置 [[词典路径|Options#interface]] 为它们的安装位置；其中一个公共路径是 `/usr/share/hunspell`。
