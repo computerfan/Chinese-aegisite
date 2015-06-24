@@ -208,7 +208,7 @@ Furi(假名标注)类模板不能被命名。
 ### multi  ###
 
 
-使模板对每个高亮应用一次 [[多次高亮|Furigana_karaoke]] 。它以值得注意的方式会改变模板执行顺序，详见 [[模板执行顺序|Automation/Karaoke_Templater/Template_execution_rules_and_order]] 。
+使模板对每个高亮应用一次 ，见[[多次高亮|Furigana_karaoke]] 。它会改变模板执行顺序，详见 [[模板执行顺序|Automation/Karaoke_Templater/Template_execution_rules_and_order]] 。
 
 当它被用于 code行时，基本没什么卵用，具体可以参照执行顺序。
 
@@ -232,7 +232,7 @@ Furi(假名标注)类模板不能被命名。
 特殊情况
 4.音节的持续时间是0 (\k0)
 
-> _查看 _notext_ 修饰语的例子_
+> _ 查看 _notext_ 修饰语的例子_
 
 
 ### notext  ###
