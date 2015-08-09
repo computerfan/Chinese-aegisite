@@ -246,37 +246,49 @@ uses a more advanced algorithm that looks better at high strengths. Unlike
 disable the effect. Be careful, setting _strength_ too high can take a lot of
 CPU time to render.
 
-
+通常来说，这个标签和[[`\be`|ASS_Tags#bluredges]]标签的功能相似，但是它使用了一个更高级的算法让它在高强度上看起来更好。和`\be`不一样，这个 _强度_ 可以是非整数。设置 _强度_ 为0使模糊效果消失。小心点，把 _强度_ 设置的太高的话，渲染时会占用大量CPU时间。
 
 Be aware that this tag blurs the _edges_ of the text, not everything. This
 means that if the text has a border (set with [[`\bord`|ASS_Tags#borderwidth]]) the
 border will be blurred, but if there is no border, the main text will be
 blurred instead.
 
-{::template name="tag_def_box" title="Font name" id="\fn"}\fn<i>&lt;name&gt;</i>{:/}
+注意，这个标签会模糊文本的 _边框_ ，不是全部。也就是说，如果文本有边框（用[[`\bord`|ASS_Tags#borderwidth]]标签进行设置），那么边框会被模糊，但是如果没有边框，那么文本的主体就会被模糊。
+
+{::template name="tag_def_box" title="字体名称" id="\fn"}\fn<i>&lt;字体名称&gt;</i>{:/}
 Set the font face to use for the following text. There should be no space
 between `\fn` and the font name, and you should not put parentheses or similar
 around the font name either.
+
+设置标签后面的字体名称。在`\fn`和字体名称之间不能有空格，并且你也不能把圆括号或者类似的符号放在字体名称两边。
 
 {::template name="examplebox"}
 <pre>\fnArial</pre>
 
 The text following this tag will be in Arial font.
+
+该标签后面的文本将会被设置成Arial。
 {:/}
 {::template name="examplebox"}
 <pre>\fnTimes New Roman</pre>
 
 The text following this tag will be in Times New Roman font.
+
+该标签后面的文本将会被设置成Times New Roman。
 {:/}
 
-{::template name="tag_def_box" title="Font size" id="\fs"}\fs<i>&lt;size&gt;</i>{:/}
+{::template name="tag_def_box" title="字体大小" id="\fs"}\fs<i>&lt;大小&gt;</i>{:/}
 Set the size of the font. The size specified is the height in script pixels,
 so at font size 40 one line of text is 40 pixels tall. (Technical note: it's
 really typographic (desktop publishing) points, not script pixels, but since
 the rendering is always done at 72 DPI (as per the de facto standard), one
 point ends up being exactly equal to one script resolution pixel.)
 
+设置字体的大小。这个大小指的是在脚本像素的高度，所以字体大小为40的一行文本的高度是40像素。（技术性提示：这真的是打印出来（桌面印刷系统）的像素点，不是脚本的像素点，但是因为渲染器一直都是按照72DPI（事实如此），所以一个点最终就和一个脚本定义的像素点相等了）
+
 You can only specify integer font sizes.
+
+你只能设置字体大小为整数。
 
 {::template name="examplebox"}
 <pre>\fs10</pre>
