@@ -1,18 +1,13 @@
 {::options toc_levels="1..6" /}
 
-The Automation 4 `karaskel.lua` include file contains several functions
-intended to help the development of karaoke effects with Automation 4 Lua.
-It also defines several new data structures, and extensions to those
-defined by Automation 4 Lua itself.
+Automation 4的核心文件 `karaskel.lua` 内置了许多函数，用来协助Automation 4 Lua方面的卡拉OK特效制作
+它定义了几种新的数据结构，也拓展了Automation 4 本身定义的一些。
 
-`karaskel.lua` itself includes
-[[`utils.lua`|Automation/Lua/Modules/util]] and
-[[`unicode.lua`|Automation/Lua/Modules/unicode]] so you do not need to
-include those yourself when using `karaskel.lua`.
+`karaskel.lua` 包含
+[[`utils.lua`|Automation/Lua/Modules/util]] 和
+[[`unicode.lua`|Automation/Lua/Modules/unicode]] 所以你在使用`karaskel.lua`不必再单独include这两项。
 
-Using `karaskel.lua` is strongly recommended when creating karaoke effects,
-and it can also be useful for other tasks as it contains several text
-layouting functions.
+ `karaskel.lua` 的用武之地主要是卡拉OK特效，它也可以被用来进行一些简单的文字样式调整。
 
 ## Functions ##
 
