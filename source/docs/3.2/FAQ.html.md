@@ -4,41 +4,34 @@ title: FAQ
 
 {::options toc_levels="2,3" /}
 
-Aegisub常见问题解答 —— 不一定适合其他地方。
+Aegisub常见疑问解答小整合 —— 多半是在其他页面里找不到的问题。
 
 ### 卡拉OK特效？ ###
 
-参阅[[卡拉OK模版教程|Automation/Karaoke_Templater/Tutorial_1]]。
+请参阅 [[卡拉OK模版教程|Automation/Karaoke_Templater/Tutorial_1]]。
 
 ### 我能用Aegisub制作DVD字幕吗？ ###
 
-不能直接做，不过有个不错的程序
-[MaestroSBT](http://sourceforge.net/projects/maestrosbt/)，可以把SSA字幕转为VOBSubs。
-它确实有很多关于标签和其他方面的限制，所以建议先阅读它的说明。还要注意的是它不支持ASS——只支持SSA。您可以使用
-Aegisub的文件 -> 导出…对话框来保存成SSA文件。
+不可以直接做，不过有一款不错的软件叫作 [MaestroSBT](http://sourceforge.net/projects/maestrosbt/)，可以把SSA字幕转为VOBSubs。诚然，它在特效标签和其他应用层面也有着诸多限制，所以建议您首先阅读它的说明。还需要特别指出的是，它不支持ASS——只支持SSA。您可以通过Aegisub的“文件 -> 导出…”对话框来将字幕文件保存为SSA格式。
 
 ### Aegisub可以保存SRT文件吗？ ###
 
-可以的，但只意味着没有信息丢失。换句话说，如果有\1c, \b, 或 \i 之外的标签，
-Aegisub不允许直接保存到SRT。但是，您仍可导出成SRT文件通过文件 -> 导出…对话框。只需取消所有复选框（clean script info, VFR transform 等等。）。
+可以，但是这样说的前提是不会造成信息的丢失。换句话讲，如果文件中含有\1c、\b或\i之外的标签，Aegisub将不允许您直接将其保存为SRT格式。然而，您仍可通过“文件 -> 导出…”(强制性地)将其保存为SRT文件，只需取消勾选所有的复选框(clean script info&lt;清除脚本信息&gt;，VFR transform&lt;转换帧速率&gt;等项目)即可(不过这样做就可能导致部分信息的丢失)。
 
 ### 我发现了个Bug！？ ###
 
-把它报告到[bug跟踪系统](http://devel.aegisub.org/)。请在您的报告中描述尽可能多的细节。
-请记住，如果Bug不在Bug跟踪系统上，就我们而言它 _并不存在_ 。
+请将它报告至 [bug追踪器](http://devel.aegisub.org/)，并且请在您的报告中尽可能多地描述细节！
+请记住，如果Bug未被反馈在Bug追踪器上，对我们而言它就相当于 _不存在_ 。
 
-### 为什么Aegisub没有 &lt;X 功能&gt;？ &lt;Y 软件&gt; 却有！ ###
+### 为什么Aegisub没有&lt;X 功能&gt;？而&lt;Y 软件&gt; 却有！ ###
 
-很可能是我们不清楚您需要这个功能。
-请到[bug跟踪系统](http://devel.aegisub.org/)提出请求，并看看会发生什么。
+这很可能是因为我们不清楚您需要这个功能。
+请在 [bug追踪器](http://devel.aegisub.org/) 上提出您的要求，然后看看会发生什么。
 
 ### 我在哪里可以得到更多的信息和帮助？ ###
 
-对于Aegisub相关的东西，[论坛](http://forums.aegisub.org) 和
- [IRC 频道](irc://irc.rizon.net/aegisub) 是很好的提问的地方。
-Aegisub [devel wiki](http://devel.aegisub.org) 也包含了一些因各种原因没有收录在手册中的比较模糊的信息，
-论坛也是如此。对于一般的视频相关的问题，一般可以去[Doom9.org](http://www.doom9.org) 和 [它的论坛](http://forum.doom9.org)。
+对于Aegisub的相关内容，[论坛](http://forums.aegisub.org) 和 [IRC 频道](irc://irc.rizon.net/aegisub) 都是适合提问的好地方。另外，Aegisub的 [devel wiki](http://devel.aegisub.org) 也包含了一些出于各种原因而未能收录在此手册中(同时也比较晦涩难懂)的信息，论坛亦是如此。至于与视频相关的常见问题，[Doom9.org](http://www.doom9.org) 以及 [它的论坛](http://forum.doom9.org) 是您的首选去处。
 
-### 是否有一些我该知道的VSFliter的Bug？ ###
+### 是否有一些我应当了解的VSFliter的Bug？ ###
 
-一个字：[是](http://asa.diac24.net/VSFilter#BUGS)。
+用一个字回答您：[是](http://asa.diac24.net/VSFilter#BUGS)。

@@ -7,29 +7,29 @@ title: 贡献
 Aegisub最初是由Rodrigo Braz Monteiro所编写的，Niels Martin Hansen也为此做出了卓著的贡献。软件的开发工作在2008年及以前由Monteiro所领导，之后由Hansen接任至2010年底，自2011年起由Thomas Goyne担任。
 
 ## 主体程序 ##
-* 主要程序员：
+* 主要程序编写：
   * **Rodrigo Braz Monteiro** (ArchMage ZeratuL) - 首席开发者，视频系统，音频系统，字幕 I/O，工具
   * **Niels Martin Hansen** (jfs) - 自动化，自动化 Lua，音频系统，工具
   * **Thomas Goyne (Plorkyeran)** - 从版本3.0起的首席开发者
 
-* 职员贡献者：
-  * **Karl Blomster** (TheFluff) - 常规代码，FFmpegSource视频提供者
+* 参编贡献：
+  * **Karl Blomster** (TheFluff) - 常规代码，FFmpegSource视频来源方式
   * **Fredrik Mellbin** (Myrsloik) - FFmpegSource和Avisynth相关的代码
   * **Amar Takhar** (verm) - 新的Unix编译系统
   * **David Lamparter** (equinox) - Unix接口
   * **Alysson Souza e Silva** (demi_alucard) - 常规代码
 
-* 其他贡献者:
+* 其他贡献:
   * **Dan Donovan** (Dansolo) - 各种工具
   * **Patryk Pomykalski** (Pomyk) - 各种补丁
   * **ai-chan** - ASSDraw3
-  * **Evgeniy Stepanov** (Azzy) - 一些Linux修补程序，libass
-  * **Mike Matsnev** (Haali) - 一些DirectShow的代码和Matroska的解析器库
+  * **Evgeniy Stepanov** (Azzy) - 部分Linux修补程序，libass
+  * **Mike Matsnev** (Haali) - 部分DirectShow的代码和Matroska的解析器库
   * **2points** - Linux修补程序
   * **p-static** - Linux修补程序
   * **David Conrad** (Yuvi) - Mac补丁
   * **Daniel Moscoviter** (Mosc) - 常规补丁
-  * **Harukalover** - 可用性，各种补丁
+  * **Harukalover** - 可用性检定，各种补丁
   * **SAPikachu** - 常规补丁
   * **tophf** - 常规补丁
   * **nodame** - 常规补丁
@@ -46,24 +46,31 @@ Aegisub最初是由Rodrigo Braz Monteiro所编写的，Niels Martin Hansen也为
 ## 手册编写 ##
 * 3.x:
   * **Thomas Goyne (Plorkyeran)**
-  * **Vmoe字幕组的电脑迷、domo、Evalyn、奶茶、逆转の时空** - 手册中文翻译
 
 * 2.x:
   * **Karl Blomster** (TheFluff)
   * **Niels Martin Hansen** (jfs)
-  * **Rodrigo Braz Monteiro** (ArchMage ZeratuL)
-
+  * **Rodrigo Braz Monteiro** (ArchMage ZeratuL)  
+  
 * 早期版本:
   * Motoko-chan
   * Kobi
   * movax
   * Jcubed
+  
+* 3.2版本手册中文翻译(by Vmoe字幕组):
+  * 电脑迷
+  * domo
+  * Evalyn
+  * 奶茶
+  * 逆转の时空
+  * ∫xdxdy
 
 ## 网站托管 ##
 * 当前:
   * **DeathWolf**: 2.1.2+ 版本 SVN 信息库
   * **Sigurd Tao Lyngse** (Bot1): 论坛和主要的Wiki
-  * **Niels Martin Hansen** (jfs): Bug跟踪器
+  * **Niels Martin Hansen** (jfs): Bug追踪器
   * **Marcello Bastéa-Forte**: Wiki文档
   * **Rodrigo Braz Monteiro** (ArchMage ZeratuL): 域名管理
 
@@ -71,7 +78,7 @@ Aegisub最初是由Rodrigo Braz Monteiro所编写的，Niels Martin Hansen也为
   * **David Lamparter** (equinox): 2.00 - 2.1.2 版本 SVN 信息库
   * BerliOS: 1.10 版本 SVN 信息库
   * Mentar: 1.09 及之前版本 SVN 信息库
-  * Bot1: Bug跟踪器
+  * Bot1: Bug追踪器
 
 ## 本地化文件 ##
 * 2.00 翻译:
