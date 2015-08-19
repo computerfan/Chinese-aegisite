@@ -5,100 +5,70 @@ Automation 4的核心文件 `karaskel.lua` 内置了许多函数，用来协助A
 
 `karaskel.lua` 包含
 [[`utils.lua`|Automation/Lua/Modules/util]] 和
-[[`unicode.lua`|Automation/Lua/Modules/unicode]] 所以你在使用`karaskel.lua`不必再单独include这两项。
+[[`unicode.lua`|Automation/Lua/Modules/unicode]] 。所以你在使用`karaskel.lua`时不必再单独include这两项。
 
  `karaskel.lua` 的用武之地主要是卡拉OK特效，它也可以被用来进行一些简单的文字样式调整。
 
-## Functions ##
+## 函数 ##
 
 ### karaskel.collect_head  ###
 
-Synopsis: `meta, styles = karaskel.collect_head(subtitles, generate_furigana)`{:.language-lua}
+摘要: `meta, styles = karaskel.collect_head(subtitles, generate_furigana)`{:.language-lua}
 
-Reads the subtitle file to collect all header information and style
-definitions, and optionally also generates new styles for furigana layouts.
+读取字幕文件来获取所有的头部信息和样式定义,也可以为假名生成新的样式。
 
-* `subtitles` is the Subtitle File object defined by Automation 4 Lua.
-* `generate_furigana` is a boolean: if it is true a style for [[furigana
-  layout|Furigana_karaoke]] is generated for each style that does not have
-  one already. Generation of furigana styles will never overwrite existing
-  styles, create double style definitions or create meaningless furigana
-  styles for other furigana styles.
+* `subtitles` 指的是Automation 4 Lua定义的字幕文件对象。
+* `generate_furigana` 是在这种逻辑下进行的操作: 它会为没有对应 [[假名布局|Furigana_karaoke]] 的样式单独生成样式。生成的假名样式永远也不会覆盖存在的样式。
 
-Calling `collect_head` is usually one of the first things you do in your
-processing function.
+使用 `collect_head` 一般情况下是你在处理函数中做的第一步。
 
-The returned `meta` table contains a map of all `Name: Value` pairs in the
-`[Script Info]` section. It also always contains `meta.res_x` and
-`meta.res_y` calculated from the `PlayResX` and `PlayResY` fields,
-following VSFilter conventions for default values when one or both of the
-fields are missing.
+返回的 `meta` 表包含着以下全部， `Name: Value` 对应到 `[Script Info]` 部分。它也包含 `meta.res_x` 和 `meta.res_y` ,它们对应到 `PlayResX` and `PlayResY` 。
 
-The returned `styles` table contains a map of all defined styles, along
-with any generated furigana layout styles. The style structures stored in
-this table have one added field, `style.margin_v` which is an alias for
-`style.margin_t`, for convenience. `styles` can be indexed by style names
-(case sensitive, names not mangled) and by numbers. `styles.n` is the
-number of styles stored, and `styles[1]` is the first style defined.
 
-### karaskel.preproc_line  ###
-Synopsis: `karaskel.preproc_line(subtitles, meta, styles, line)`{:.language-lua}
+返回的 `styles` 表包含着全部已定义的样式, 也包含着自动生成的假名样式, 样式结构在style表中占有单独的位置,如`style.margin_v` (又称 `style.margin_t`), 为了方便, `styles` 可以通过样式名称
+(区分大小写,不可缺内容) 和数字来指定。 `styles.n` 是样式存储的编号, `styles[1]` 就是第一个被定义的样式。
 
-Calculate sizing, positioning and various other information for a single
-subtitle line. This function calls `karaskel.preproc_line_text`,
-`karaskel.preproc_line_size` and `karaskel.preproc_line_pos` in order.
+### karaskel.preproc_line(预处理行)  ###
+摘要: `karaskel.preproc_line(subtitles, meta, styles, line)`{:.language-lua}
 
-This function does not return a value, but rather modifies the `line`
-table. See below for more information.
+为单行字幕计算尺寸、位置和其它信息。这个函数按顺序调用 `karaskel.preproc_line_text`,
+`karaskel.preproc_line_size` 和 `karaskel.preproc_line_pos` 。
 
-### karaskel.preproc_line_text  ###
-Synopsis: `karaskel.preproc_line_text(meta, styles, line)`{:.language-lua}
+这个函数不会返回值，但是在修饰 `line` 表的时候例外。详见下。
 
-Preprocess the text of a single line. `meta` and `styles` are the tables
-returned by `[[karaskel.collect_head|karaskel.lua#karaskel.collect_head]]`.
+### karaskel.preproc_line_text(预处理行文本)  ###
+摘要: `karaskel.preproc_line_text(meta, styles, line)`{:.language-lua}
 
-This function does not return a value, but rather modifies the `line`
-table. The following fields are added:
+预处理单行的文本。 `meta` 和 `styles` 是由 `[[karaskel.collect_head|karaskel.lua#karaskel.collect_head]]` 返回的表。
 
-* `line.text_stripped` - Line text with all override tags and vector
-  drawings removed.
-* `line.duration` - Duration of the line in milliseconds
-* `line.kara` and `line.furi` - Extended [[karaoke and furigana
-  tables|karaskel.lua#karaoke-and-furigana-syllable-tables]], without sizing and
-  position data.
+这个函数不会返回值，但是在修饰 `line` 表的时候例外。返回值的函数有:
 
-This function does not calculate any text sizing or positioning
-information. (In fact it currently doesn't use the `meta` or `styles`
-arguments at all.)
+* `line.text_stripped` - 返回除去特效标签和绘图代码的原文本
+* `line.duration` - 返回行的持续时间(毫秒单位)
+* `line.kara` 和 `line.furi` - 扩展版的 [[卡拉OK和假名标注表|karaskel.lua#karaoke-and-furigana-syllable-tables]], 不含尺寸位置信息。
 
-### karaskel.preproc_line_size  ###
-Synopsis: `karaskel.preproc_line_size(meta, styles, line)`{:.language-lua}
+这个函数不计算任何尺寸和位置信息。 (事实上它根本不使用 `meta` 或者 `styles` 之前获取到的尺寸位置信息)
 
-Calculate sizing data for a line and all karaoke syllables and furigana
-parts. Also adds a reference to the line style.
+### karaskel.preproc_line_size(预处理行尺寸)  ###
+摘要: `karaskel.preproc_line_size(meta, styles, line)`{:.language-lua}
 
-This function does not return a value, but rather modifies the `line`
-table. The following fields are added:
+为整行、所有的音节和假名标注计算尺寸，参照行样式信息。
 
-* `line.styleref` - A reference to the Style table representing this line's
-  selected style.
-* `line.furistyle` - A reference to the Style table representing this
-  line's furigana layout style. If there is no style with the right name,
-  this field is `false` instead.
-* `line.width`, `line.height`, `line.descent` and `line.extlead` - Sizing
-* information for the stripped line text, as returned by
-* [[`aegisub.text_extents`|Automation/Lua/Miscellaneous_APIs#aegisub.text_extents]].
+这个函数不会返回值，但是在修饰 `line` 表的时候例外。返回值的函数有:
 
-Also, this function modifies the `line.kara` and `line.furi` tables, adding
-sizing information.
+* `line.styleref` - 参照样式表，返回当前被应用模板的行的样式表。
+* `line.furistyle` - 参照样式表，返回当前被应用模板的行对应假名标注的样式表。如果没有匹配的样式名称这个区域就为 `false` (假)
+* `line.width`, `line.height`, `line.descent` 和 `line.extlead` - 原文本的尺寸信息，由 [[`aegisub.text_extents`|Automation/Lua/Miscellaneous_APIs#aegisub.text_extents]]
+返回。
+这个函数也修饰 `line.kara` 和 `line.furi` 表, 增加尺寸信息。
 
-No position information is calculated here.
+这一部分不涉及位置信息的计算。
 
 If the `line` table does not seem to have been processed with
 `karaskel.preproc_line_text` yet, this will be done automatically.
 
-### karaskel.preproc_line_pos  ###
-Synopsis: `karaskel.preproc_line_pos(meta, styles, line)`{:.language-lua}
+### karaskel.preproc_line_pos(预处理行位置)  ###
+摘要: `karaskel.preproc_line_pos(meta, styles, line)`{:.language-lua}
 
 Calculate line, karaoke and furigana position information.
 
@@ -144,7 +114,7 @@ this page for more details on the various fields that are added.
 If no line sizing information is found, `karaskel.preproc_line_size` will
 be invoked, which might in turn also invoke `karaskel.preproc_line_text`.
 
-### karaskel.do_basic_layout  ###
+### karaskel.do_basic_layout(基本布局)  ###
 This function is not intended to be called directly, but is rather called
 as a helper function for `karaskel.preproc_line_pos`.
 
@@ -155,7 +125,7 @@ information is added to each karaoke syllable.
 
 The `line.furi` table is not touched.
 
-### karaskel.do_furigana_layout  ###
+### karaskel.do_furigana_layout(假名标注布局)  ###
 This function is not intended to be called directly, but is rather called
 as a helper function for `karaskel.preproc_line_pos`.
 
@@ -168,7 +138,7 @@ This function adds positioning information to both the `line.kara` and
 `line.furi` tables. It might also change the `line.width` field as the line
 base text is expanded to make room for furigana.
 
-## Karaoke skeletons  ##
+## Karaoke skeletons(卡拉OK框架) ##
 A karaoke skeleton is a framework for building karaoke effects in. It
 usually works by writing a couple of functions yourself for handling the
 actual effect work, and these are then called at various times. The actual
