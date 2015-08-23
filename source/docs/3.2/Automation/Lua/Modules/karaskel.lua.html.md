@@ -41,7 +41,7 @@ Automation 4的核心文件 `karaskel.lua` 内置了许多函数，用来协助A
 
 预处理单行的文本。 `meta` 和 `styles` 是由 `[[karaskel.collect_head|karaskel.lua#karaskel.collect_head]]` 返回的表。
 
-这个函数不会返回值，但是在修饰 `line` 表的时候例外。返回值的函数有:
+这个函数不会返回值，但是在修饰 `line` 表的时候例外:
 
 * `line.text_stripped` - 返回除去特效标签和绘图代码的原文本
 * `line.duration` - 返回行的持续时间(毫秒单位)
@@ -54,7 +54,7 @@ Automation 4的核心文件 `karaskel.lua` 内置了许多函数，用来协助A
 
 为整行、所有的音节和假名标注计算尺寸，参照行样式信息。
 
-这个函数不会返回值，但是在修饰 `line` 表的时候例外。返回值的函数有:
+这个函数不会返回值，但是在修饰 `line` 表的时候例外:
 
 * `line.styleref` - 参照样式表，返回当前被应用模板的行的样式表。
 * `line.furistyle` - 参照样式表，返回当前被应用模板的行对应假名标注的样式表。如果没有匹配的样式名称这个区域就为 `false` (假)
@@ -70,49 +70,29 @@ If the `line` table does not seem to have been processed with
 ### karaskel.preproc_line_pos(预处理行位置)  ###
 摘要: `karaskel.preproc_line_pos(meta, styles, line)`{:.language-lua}
 
-Calculate line, karaoke and furigana position information.
+计算行、卡拉OK和假名标注的位置信息。
 
-This function invokes `karaskel.do_basic_layout` when no furigana style is
-available, and `karaskel.do_furigana_layout` when a furigana style is
-defined for the line. The furigana layout algorithm might change the
-calculated width of the line.
+当没有可用的假名标注样式时，这个函数借助 `karaskel.do_basic_layout`, 当有可用的假名标注样式时借助 `karaskel.do_furigana_layout` 。假名布局算法可能改变行的计算宽度。
 
-This function does not return a value, but rather modifies the `line`
-table. The following fields are added:
+这个函数不会返回值，但是在修饰 `line` 表的时候例外:
 
-* `line.margin_v` - A convenience alias for `line.margin_t`.
-* `line.eff_margin_l`, `line.eff_margin_r`, `line.eff_margin_t`,
-  `line.eff_margin_b` and `line.eff_margin_v` - Effective margin values for
-  the line. If the corresponding margin override for the line is non-zero,
-  that value is used, otherwise the value defined in the style is used.
-* `line.halign` - One of `"left"`, `"center"` or `"right"`, the horizontal
-  alignment of the line, derived from `line.styleref.align`.
-* `line.valign` - One of `"top"`, `"middle"` or `"bottom"`, the vertical
-  alignment of the line, derived from `line.styleref.align`.
-* `line.left` - The left edge X coordinate for the line, assuming its given
-  alignment, effective margins and no collision detection.
-* `line.center` - The line centre X coordinate, assuming its given
-  alignment, effective margins and no collision detection.
-* `line.right` - The right edge X coordinate for the line, assuming its
-  given alignment, effective margins and no collision detection.
-* `line.top` - The top edge Y coordinate for the line, assuming its given
-  alignment, effective margins and no collision detection.
-* `line.middle` - The line vertical centre Y coordinate, assuming its given
-  alignment, effective margins and no collision detection. `line.vcenter` is
-  an alias for this.
-  `line.bottom` - The bottom edge Y coordinate for the line, assuming its
-  given alignment, effective margins and no collision detection.
-* `line.x` and `line.y` - X and Y coordinates for the line, suitable for
-  using in a `\pos` override tag to get the line's original position.
+* `line.margin_v` -  `line.margin_t` 的别名。
+* `line.eff_margin_l`, `line.eff_margin_r`, `line.eff_margin_t`, `line.eff_margin_b` 和 `line.eff_margin_v` - 该行的有效边距值。如果某一行对应的值非零，则使用这些值，否则会使用样式管理器中定义的值。
+* `line.halign` - 三种水平对齐方式 `"left"`, `"center"` 或 `"right"`中的一种，是由 `line.styleref.align`派生出来的。
+* `line.valign` - 三种竖直对齐方式 `"top"`, `"middle"` 或 `"bottom"中的一种, 是由 `line.styleref.align`派生出来的。
+* `line.left` - 行左边缘的X坐标，假设定义了对齐，有效边距，并且未检测到重叠。
+* `line.center` - 行水平中点的X坐标，假设定义了对齐，有效边距，并且未检测到重叠。
+* `line.right` - 行右边缘的X坐标，假设定义了对齐，有效边距，并且未检测到重叠。
+* `line.top` - 行上边缘的Y坐标，假设定义了对齐，有效边距，并且未检测到重叠。
+* `line.middle` - 行竖直中点的Y坐标，假设定义了对齐，有效边距，并且未检测到重叠。别名`line.vcenter`。
+  `line.bottom` - 行下边缘的Y坐标，假设定义了对齐，有效边距，并且未检测到重叠。
+* `line.x` 和 `line.y` - 行的X 和 Y 坐标，适合与 `\pos` 配合使用，保持行的原位置。
 
-Furthermore, the `line.kara` and `line.furi` tables are modified by the
-layout function called, adding positioning information.
+此外, `line.kara` 和 `line.furi` 表是被布局函数调用，然后加上位置信息。
 
-See the part on [[data structures|karaskel.lua#datastructures]] later on
-this page for more details on the various fields that are added.
+详见这部分 [[data structures|karaskel.lua#datastructures]] 。
 
-If no line sizing information is found, `karaskel.preproc_line_size` will
-be invoked, which might in turn also invoke `karaskel.preproc_line_text`.
+如果没有找到任何行的尺寸信息, `karaskel.preproc_line_size` 会被调用, 它可能会转而调用 `karaskel.preproc_line_text`。
 
 ### karaskel.do_basic_layout(基本布局)  ###
 This function is not intended to be called directly, but is rather called
@@ -329,7 +309,7 @@ Added fields for positioning, by `karaskel.preproc_line_pos`:
 
 * `line.margin_v` - A convenience alias for `line.margin_t`.
 * `line.eff_margin_l`, `line.eff_margin_r`, `line.eff_margin_t`,
-  `line.eff_margin_b` and `line.eff_margin_v` - Effective margin values for
+  `line.eff_margin_b` and `line.eff_margin_v` - 有效 margin values for
   the line. If the corresponding margin override for the line is non-zero,
   that value is used, otherwise the value defined in the style is used.
 * `line.halign` - One of `"left"`, `"center"` or `"right"`, the horizontal
@@ -337,18 +317,18 @@ Added fields for positioning, by `karaskel.preproc_line_pos`:
 * `line.valign` - One of `"top"`, `"middle"` or `"bottom"`, the vertical
   alignment of the line, derived from `line.styleref.align`.
 * `line.left` - The left edge X coordinate for the line, assuming its given
-  alignment, effective margins and no collision detection.
+  alignment, 有效 margins and no collision detection.
 * `line.center` - The line centre X coordinate, assuming its given
-  alignment, effective margins and no collision detection.
+  alignment, 有效 margins and no collision detection.
 * `line.right` - The right edge X coordinate for the line, assuming its
-  given alignment, effective margins and no collision detection.
+  given alignment, 有效 margins and no collision detection.
 * `line.top` - The top edge Y coordinate for the line, assuming its given
-  alignment, effective margins and no collision detection.
+  alignment, 有效 margins and no collision detection.
 * `line.middle` - The line vertical centre Y coordinate, assuming its given
-  alignment, effective margins and no collision detection `line.vcenter` is
+  alignment, 有效 margins and no collision detection `line.vcenter` is
   an alias for this.
 * `line.bottom` - The bottom edge Y coordinate for the line, assuming its
-  given alignment, effective margins and no collision detection.
+  given alignment, 有效 margins and no collision detection.
 * `line.x` and `line.y` - X and Y coordinates for the line, suitable for
   using in a `\pos` override tag to get the line's original position.
 
