@@ -64,8 +64,7 @@ Automation 4的核心文件 `karaskel.lua` 内置了许多函数，用来协助A
 
 这一部分不涉及位置信息的计算。
 
-If the `line` table does not seem to have been processed with
-`karaskel.preproc_line_text` yet, this will be done automatically.
+如果 `line` 看起来没被 `karaskel.preproc_line_text` 处理过，那么这个步骤会自动完成。
 
 ### karaskel.preproc_line_pos(预处理行位置)  ###
 摘要: `karaskel.preproc_line_pos(meta, styles, line)`{:.language-lua}
@@ -95,28 +94,19 @@ If the `line` table does not seem to have been processed with
 如果没有找到任何行的尺寸信息, `karaskel.preproc_line_size` 会被调用, 它可能会转而调用 `karaskel.preproc_line_text`。
 
 ### karaskel.do_basic_layout(基本布局)  ###
-This function is not intended to be called directly, but is rather called
-as a helper function for `karaskel.preproc_line_pos`.
+这个函数不是被直接调用的，它更像是一个 `karaskel.preproc_line_pos` 的辅助函数。
 
-It runs a very simple layout algorithm for the `line.kara` table, which
-simply calculates the positions of the syllables when placed in one
-straight line with no additional spacing in between. Positioning
-information is added to each karaoke syllable.
+它为 `line.kara` 表运行一个简单的布局算法，简单地计算一行中各个音节的位置。位置信息被添加到各个音节。
 
-The `line.furi` table is not touched.
+ `line.furi` 表在这个函数中不被处理。
 
 ### karaskel.do_furigana_layout(假名标注布局)  ###
-This function is not intended to be called directly, but is rather called
-as a helper function for `karaskel.preproc_line_pos`.
+这个函数也不是被直接调用的，它更像是一个 `karaskel.preproc_line_pos` 的辅助函数。
 
-It runs an advanced text layout algorithm to position karaoke syllables and
-furigana neatly, avoiding unwanted overlapping. People interested in the
-actual algorithm used should read the function source code. It should be
-well enough commented.
+它为运行一个高级的布局算法，来把卡拉OK音节和假名标注整齐地排布，还能防止重叠。对这部分使用的算法感兴趣的人可以读读源码。
 
-This function adds positioning information to both the `line.kara` and
-`line.furi` tables. It might also change the `line.width` field as the line
-base text is expanded to make room for furigana.
+
+这个函数为 `line.kara` 和 `line.furi` 表添加位置信息。它也有可能改变 `line.width` ，因为行宽度可能受假名标注影响而变化。
 
 ## Karaoke skeletons(卡拉OK框架) ##
 A karaoke skeleton is a framework for building karaoke effects in. It
