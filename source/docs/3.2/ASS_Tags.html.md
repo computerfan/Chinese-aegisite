@@ -101,7 +101,7 @@ text and `\i0` to disable italics again.
 
 打开或关闭 _斜体_ 选项。利用`\i1`对后面的字符应用斜体，并且可以用`\i0`使后面的字符取消斜体。
 
-{::template name="emplate name" title="粗体" id="\b"}
+{::template name="template name" title="粗体" id="\b"}
 \b1  
 \b0  
 \b<i>&lt;weight&gt;</i>
