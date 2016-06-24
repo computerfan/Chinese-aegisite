@@ -1,50 +1,50 @@
-This tutorial will teach you how to load a song into Aegisub, how to enter the words for the song and how to add time-codes to the words to synchronise them with the song.
+本篇教程将介绍如何用Aegisub读取一首歌, 将歌词划分成音节并添加时间码。
 
-You don't need to have used Aegisub before to follow this tutorial.
-
-
-## Before we begin  ##
+这篇教程基本是为零起点的人准备的。
 
 
-There's a few things you need to have ready before starting:
+## 开始之前  ##
 
 
-* The song itself. This can for example be as an MP3 file or inside a video. Aegisub can read the sound from video files, you don't need to create a separate sound file if the song is on a video.
-
-<div></div>
+开始之前我们要准备好一些东西:
 
 
-* The words for the song. It's easiest if you have them in a plain text file (.txt file) broken into verses and stanzas already.
+* 一首歌的音频文件。文件的格式可以是 MP3 或者 在视频文件中。Aegisub能从视频中读取音频，在不出意外的情况下，你无须从视频中提取音轨出来。
 
 <div></div>
 
-I am using an English song for demonstration here, but many of the more advanced functions in Aegisub are designed for use with songs in Japanese and other languages that often need transcription or transliteration into Latin script. I will show how to use those in a video tutorial.
+
+* 这首歌的歌词。如果是已经分好段的纯文本(.txt 文件)，后续工作会更简单。
+
+<div></div>
+
+这里使用一首英文歌作为例子。但是不得不提一下，Aegisub的大多数高级歌词功能都是为日语或者其它语言设计的，这些语言最终会被翻译成拉丁语系语言。具体用法见视频教程。
 
 
-## Loading the song  ##
+## 读取歌曲音频  ##
 
 
-We'll start by creating a new file. You already have that if you have just started Aegisub.
+首先，我们创建一个新文件。如果你是刚刚启动Aegisub，那么直接在当前窗口编辑即可。
 
 [[img/Karatiming-1.png]]
 
-Now open your song. Select **Open Audio** from the **Audio** menu...
+现在让我们打开歌曲音频。点击 **音频** 菜单中的 **打开音频文件** ...
 
 [[img/Karatiming-2.png]]
 
-...then select your song file.
+...然后选择歌曲音频文件。
 
 [[img/Karatiming-3.png]]
 
-Aegisub will now spend a short while reading the audio file.
+Aegisub会花费一点时间来载入音频。
 
 [[img/Karatiming-4.png]]
 
-When it's done, you should have a waveform display (the audio display) at the top of the Aegisub window. If you've used Aegisub before things might look a little different, it might be easier to follow the rest of this tutorial if you set things to look like on this picture.
+当载入完成，你应当会在Aegisub窗口上半部分看到波形模式下的音频显示。如果你之前用过Aegisub，它看起来可能有点不同，建议跟着教程图的设置走，后面可以更轻松。
 
 [[img/Karatiming-5.png]]
 
-We'll look at how to use the audio display for timing in a moment, but first let's get the lyrics for the song loaded.
+我们一会再看如何用音频打轴，先把歌词和载入的歌曲对应上。
 
 
 ### Tips  ###
