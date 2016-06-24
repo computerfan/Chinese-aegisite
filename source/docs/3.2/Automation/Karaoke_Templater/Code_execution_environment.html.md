@@ -5,10 +5,14 @@ The Lua code in code blocks and on code lines is run in a separate global
 environment such that it won't accidentally disturb the main script
 function.
 
+在code区和code行的Lua代码被运行在一个隔离的全局环境，这让它不会意外的影响到主脚本函数。
+
 You can store your own data in this environment for use later, for example
 pre-compute some values on code-lines and later insert them using code
 blocks, but it also contains several pre-defined variables and functions
 designed to make it easier writing effect templates.
+
+为了后期使用，你可以把你的数据存放到这个环境里，例如先在code行预算一下一些数值，然后后期再用code区把它们添加进去。但是它也可以包含许多预先定义的变量和函数，它们可以让特效模板书写起更加方便。
 
 It's important to understand that the contents of code execution
 environment and the
@@ -18,7 +22,12 @@ changing something in the code execution environment nor can you add new
 ones. However, you can create and re-define the contents of the code
 execution environment.
 
+要知道，代码执行环境的内容和[[内联变量|Automation/Karaoke_Templater/Inline_variables]]是没有什么关系的，这很重要。你不能通过改变代码执行环境里面的东西来改变一个内联变量，当然，也不能添加新的内联变量。然而，你可以创造并且重新定义代码执行环境里面的内容。
+
 ## Line and syllable information  ##
+
+## 行和音节的信息 ##
+
 The code execution environment contains a few variables pointing to the
 current line and syllable structure being processed, as well as some more
 supporting tables. These are just references to the structures produced by
