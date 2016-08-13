@@ -26,12 +26,12 @@ template行和code行都可以带上几种修饰语
 
 "code once" 行基本用来声明模板中使用的函数。
 
-{{Examplebox|
+{::template name="examplebox"} 
     Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>code once</u>,function setlayer(newlayer) line.layer = newlayer; return ""; end
 
 这个例子声明了一个新的函数，它用来控制输出行的 层次(Layer) 信息。
-}}
 
+{:/}
 
 ### line _[name]_  ###
 
@@ -46,21 +46,22 @@ Code行不能被命名。
 
 已命名模板行的顺序合并是在卡拉OK模板执行器解析模板时发生的，而不是在模板执行时。
 
-{{Examplebox|
+{::template name="examplebox"} 
     Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>code line</u>,fxgroup.funky = line.actor == "funky"
 
 这个 code 行对每个输入行运行一次。它开启/关闭一个特效群，依靠输入行的说话人信息进行判断。
-}}
-{{Examplebox|
+{:/}
+{::template name="examplebox"} 
+
     Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template line</u>,{\r\t($start,$end,\bord0)}
 
 这个模板行声明了一个无名称的行类模板。效果是在音节的持续时间内边框粗度由默认值变成0。
-}}
-{{Examplebox|
+{:/}
+{::template name="examplebox"} 
     Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template line jumper</u>,{\r\t($start,$mid,\frz-0.1)\t($mid,$end,\frz0}
 
 这个模板行声明了一个名称为"jumper"的行类模板，配合下面给出的行前(pre-line)模板，能产生 "跳跃" 的特效。
-}}
+{:/}
 
 
 ### pre-line _[name]_  ###
@@ -74,16 +75,16 @@ Code行不能被命名。
 
 有名称的 pre-line 模板行会按顺序把模板内容叠加。最后合成的一个模板再进行应用，所以这些模板内容是在解析模板时进行的，而不是执行时。
 
-{{Examplebox|
+{::template name="examplebox"} 
     Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template pre-line</u>,{\be1}
 
 这个模板行声明了一个无名称的行类模板，这个模板会给每个匹配到的行添加 <tt>{\be1}</tt> 标签。
-}}
-{{Examplebox|
+{:/}
+{::template name="examplebox"} 
     Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template pre-line jumper</u>,{\org(-10000,$y)}
 
 这个模板行会和名称为 "jumper" 的模板进行合成，如果不存在这样的模板行，它会自己创建。和上面的模板一起使用，会使每个音节产生 "跳跃" 效果。
-}}
+{:/}
 
 
 ### syl  ###
@@ -93,11 +94,11 @@ Code行不能被命名。
 
 Syl(音节)类的模板不能被命名。
 
-{{Examplebox|
+{::template name="examplebox"} 
     Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template syl</u>,{\pos($x,$y)}
 
 这个模板行声明了一个 syl 类模板，它的作用是拆分音节后保持音节字符原来的位置。
-}}
+{:/}
 
 
 ### furi  ###
@@ -107,11 +108,11 @@ Syl(音节)类的模板不能被命名。
 
 Furi(假名标注)类模板不能被命名。
 
-{{Examplebox|
+{::template name="examplebox"} 
     Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template furi</u>,{\pos($x,$y)}
 
 这个模板行声明了一个furi 类模板，它用来简单地修改音节字符的位置。你需要做的只是在输入行中写出标准的假名标注格式。
-}}
+{:/}
 
 
 ### syl furi  ###
@@ -133,11 +134,11 @@ Furi(假名标注)类模板不能被命名。
 
 对 code行和 template行都可用。
 
-{{Examplebox|
+{::template name="examplebox"} 
     Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template syl all</u>,{\pos($x,$y)}
 
 这个模板会被应用于字幕文件中多有单独的音节，无视样式。
-}}
+{:/}
 
 
 ### char  ###
@@ -147,7 +148,7 @@ Furi(假名标注)类模板不能被命名。
 
 它用于 code行时，一般没什么意义，在上面的链接中可以了解到。
 
-{{Examplebox|
+{::template name="examplebox"} 
     Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template syl char</u>,{\pos($x,$y)}
     Comment: 1,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template syl char</u>,{\pos($x,$y)\bord0}
 
@@ -163,7 +164,7 @@ Furi(假名标注)类模板不能被命名。
     {\pos($x,$y)}d
     {\pos($x,$y)\bord0}c
     {\pos($x,$y)\bord0}d
-}}
+{:/}
 
 
 ### fx _name_  ###
@@ -171,13 +172,13 @@ Furi(假名标注)类模板不能被命名。
 
 使模板只应用于含有内联特效 [[(inline-fx)|Karaoke_inline-fx]] 的音节。指定内联特效名称是必要的；内联特效名称也不建议和修饰语重复。
 
-{{Examplebox|
+{::template name="examplebox"} 
     Comment: 0,0:00:00.00,0:00:05.00,Default,,0000,0000,0000,<u>template syl fx drop</u>,{\move($x,$y,$x,!$y+30!,$start,$end)}
 
 使用这个模板，所有含有内联特效 "drop" 的音节会被模板处理，效果是音节会在持续时间向下移动30像素。
 
 其它的不含有内联特效的模板会照常被应用。
-}}
+{:/}
 
 
 ### fxgroup _name_  ###
@@ -185,7 +186,9 @@ Furi(假名标注)类模板不能被命名。
 
 声明这个模板属于一个有名称的特效组。指定特效组名称是必要的；该名称不建议和修饰语重复，也不建议和Lua保留词重复。
 
-{{Examplebox|有一个 _fxgroup_ 的例子，见 [[代码执行环境Code execution environment|Automation/Karaoke_Templater/Code_execution_environment#conditionaltemplateswithfxgroup]] }}
+{::template name="examplebox"} 
+有一个 _fxgroup_ 的例子，见 [[代码执行环境Code execution environment|Automation/Karaoke_Templater/Code_execution_environment#conditionaltemplateswithfxgroup]] 
+{:/}
 
 
 ### keeptags  ###
@@ -195,14 +198,15 @@ Furi(假名标注)类模板不能被命名。
 
 这个修饰语在 `char` 或 `multi`下没有效果。
 
-{{Examplebox|
+{::template name="examplebox"} 
     template line <u>keeptags</u>: {\r\t($start,!$start+1!,\frx40)\t(!$start+1!,$end,\frx0)}
     karaoke: {\k21}hi{\k10}gu{\k23}ra{\k22}shi {\k38}ga {\k37\1c&H0000FF&}na{\k37}ku
 
 音节 "沿X轴翻转"，并在高亮的时间内翻转回去。其中的一个音节 ("na") 和其它音节颜色不同。后面的音节不会受影响，因为存在 `\r` 标签。
 
  _notags_ 修饰语能确保应用模板后不再含有特殊音节的特殊颜色。
-}}
+
+{:/}
 
 
 ### multi  ###
@@ -212,14 +216,14 @@ Furi(假名标注)类模板不能被命名。
 
 当它被用于 code行时，基本没什么卵用，具体可以参照执行顺序。
 
-{{Examplebox|
+{::template name="examplebox"} 
     template syl <u>multi</u>: {\an5\pos($scenter,$smiddle)\1a&HFF&\t($start,$end,\bord5\3a&HFF&)}
     karaoke: {\k33}風<u>{\k36}#</u>{\k89}の{\k46}花<u>{\k28}#</u>{\k57}よ
 
 打好K的时间轴使用了多次高亮(multi-highlight)标记， <tt>#</tt> 被用来创建多次高亮音节。比如，風 (ka-ze) 和 花 (ha-na) 日文汉字实际上都对应两个音节，在这种情况下它们被存储成一个音节，但是会有两次高亮， <tt>#</tt> 字符在应用模板后不会显示 (当然，在应用模板前还是存在的.....)
 
 模板使用 _multi_ 修饰语来标识它会使一个音节多次高亮。这个效果是一种简单的 "边框扩张"，但是在唱到 風 和 花 时，会产生两次这个效果。如果没有 _multi_ 修饰语的话，一个汉字只会产生一次效果。
-}}
+{:/}
 
 
 ### noblank  ###
@@ -244,14 +248,14 @@ Furi(假名标注)类模板不能被命名。
 
 code行不可用。
 
-{{Examplebox|
+{::template name="examplebox"} 
     code once: sword_shape = "m 0 0 l 5 -5 l 5 -30 l 10 -30 l 10 -32 l 2 -32 l 2 -40 l -2 -40 l -2 -32 l -10 -32 l -10 -30 l -5 -30 l -5 -5 "
     template syl notext noblank: {\an5\move($scenter,!$smiddle-30!,$scenter,$smiddle,!$start-20!,$start)\p2}!sword_shape!
 
 第一个 code行为了方便定义了一个矢量绘图。这个图形是一个简单的剑尖朝下的剑形。这个效果是使用\move标签使剑的图形向下落到音节上。
 
 这个模板使用了 _notext_ 修饰语来防止生成的行中带有原文本，因为生成的行中我们只需要剑的形状，使用模板只是为了使用音节的时间和定位信息。_noblank_ 修饰语会保证剑形不会落空到 "不可见的" 音节上。如果那个不可见的音节恰好是个长时间的空格，不加 _noblank_ 修饰，那效果看起来会比较悲剧。
-}}
+{:/}
 
 
 ### repeat _n_, loop _n_  ###
@@ -263,13 +267,13 @@ code行不可用。
 
 注意 loop 修饰的行模板和 loop 修饰的 音节/假名标记(syl/furi)模板执行顺序不同。详见 [[模板执行顺序|Automation/Karaoke_Templater/Template_execution_rules_and_order]] 。
 
-{{Examplebox|
+{::template name="examplebox"} 
     template syl <u>loop 4</u>: {\move($x,$y,!$x+math.random(-30,30)!,!$y+math.random(-30,30)!,$start,$end)\alpha&HC0&\t($start,$end,\alpha&HFF&)}
 
 其中 _loop_ 修饰语用于创建4个音节的副本。这四个副本每个都沿随机方向移动，在X/Y方向上最大范围30像素，带有淡出。
 
 每个音节副本的初始透明度都是 `&HC0`，因为C0(HEX)=256-(256/4)=192，4由循环数确定。这样每个副本的不透明度实际上叠加到了256。 (更科学的数字应该是255，但是靠偶数次循环实现不了)
-}}
+{:/}
 > _可以在 [[代码执行环境|Automation/Karaoke_Templater/Code_execution_environment#loopingtemplates]] 页面看到更多高级用法。_
 
 {::template name="automation_navbox" /}
