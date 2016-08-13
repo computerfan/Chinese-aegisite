@@ -1,7 +1,7 @@
-The `unicode` module for Automation 4 Lua contains various helper functions for working with UTF-8 encoded text.
+ `unicode`模块包含一系列为Auto4设置的辅助函数，主要用来处理 UTF-8 编码的文本。
 
-## Usage ##
-Import this module with `unicode = require 'aegisub.unicode'`{:.language-lua}.
+## 用法 ##
+用 `unicode = require 'aegisub.unicode'`{:.language-lua}导入函数。
 
 ## unicode.charwidth  ##
 Synopsis: `width = unicode.charwidth(instring, index=1)`{:.language-lua}
