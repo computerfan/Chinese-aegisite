@@ -47,53 +47,53 @@ Aegisub会花费一点时间来载入音频。
 我们一会再看如何用音频打轴，先把歌词和载入的歌曲对应上。
 
 
-### Tips  ###
+### 提示  ###
 
 
-**Loading audio directly from video files:** You can select to choose from video files in the Open Audio file selector. This won't actually open the video in the file, it will just read the audio from the video file, the same as if it was just the audio in a separate file.
+**从视频中打开音频:** 你可以在音频文件选择窗口中选中含有音轨的视频文件，这样不会打开音频，而是打开视频文件的音轨。
 
-**Instant loading of WAV files:** If you have an uncompressed PCM WAV file, Aegisub can open it instantly without first loading it entirely into memory. This can be a great time-saver, but of course it requires a bit of extra disk space and probably also a bit of work beforehand to even create the WAV file. (Remember that this only works with _uncompressed PCM_ files, things like ADPCM or MP3 in WAV files won't work and will still trigger the pre-loading.)
-
-
-## Entering the words  ##
+**WAV文件秒读:** 如果你有未压缩的 WAV 格式音频文件，Aegisub可以秒读它到内存中。这会节省大量时间，但是相对的，也需要多占用一些硬盘空间，或者需要事先转换成WAV格式。(所以有现成的WAV就用WAV，没有就算啦，只对未压缩PCM有效，MP3之类的文件仍然要花时间预读取)
 
 
-Now, to get the text in, we could just start typing it in...
+## 输入歌词  ##
+
+
+现在，输入歌词，我们开始敲键盘...
 
 [[img/Karatiming-6.png]]
 
-**But don't do that!** You'll get much huger success if you have it all in a text file, copy it from there and paste it into Aegisub. (You can often also just copy-paste directly from your favourite lyrics website.)
+**但是不要这样做!** 如果你之前已经拥有了分行纯文本格式的歌词，能避免很多麻烦，因为你可以直接复制粘贴到Aegisub。(你也可以从信赖的歌词网站直接复制歌词粘贴。)
 
-I have the lyrics in a text file, so I open that, select the text and copy it to the clipboard.
+我拥有分行的歌词文本文件，我打开它，选中文本并复制。
 
 [[img/Karatiming-7.png]]
 
-Now things get a little complicated, but don't worry, it really isn't hard :-)
+现在事情开始变得有点复杂了，但是不要慌，其实并不难 :-)
 
-There are two different places you can paste into Aegisub: The subtitles grid and the subtitles edit box. When you paste into the subtitles grid, you create new lines in the subtitle file. When you paste into the subtitles edit box you change the currently selected subtitle line.
+有两种方式可以把刚复制的文本粘贴进 Aegisub:在字幕栏，或者在字幕编辑框。当你粘贴到字幕栏的时候，你在文件中创建了新的字幕行。当你粘贴到字幕编辑框，只会作用当前选中这行。
 
-We want to make sure we paste into the subtitles grid, so click once inside the grid area (at the bottom of the window) to set the input focus to that.
+我们要确认粘贴到了字幕栏，所以单击字幕栏然后在菜单中依次点击编辑、粘贴行(在字幕栏右键单击粘贴也可)。
 
 [[img/Karatiming-8.png]]
 
-And now we can paste in the lyrics.
+现在我们把歌词粘贴进来
 
 [[img/Karatiming-9.png]]
 
-They should appear immediately as lines in the grid. Notice that they all have start and end times set to zero. This makes it easier when we're going to time each line of the lyrics to the song.
+歌词会立刻以逐行的形式出现在字幕栏中。注意这时行的开始结束时间都是0。
 
 [[img/Karatiming-10.png]]
 
-It might be a good idea to save your file now, just so you can easily save it later on without having to give it a name.
+现在存个盘也许是个好主意。
 
-Remember that Aegisub automatically saves a copy of your file every minute, even if you haven't given it a name yet, so you rarely lose much work if something goes wrong.
+记住 Aegisub 每隔几分钟会自动保存文件，甚至你还没给文件命名，所以即使出了什么情况，你也很少有机会丢失工作文件。
 
 [[img/Karatiming-11.png]]
 
-Now we're ready to time the individual lines in the lyrics.
+现在我们已经准备好给每行歌词打时间轴了。
 
 
-## Rough timing, the lines first  ##
+## 粗略计时，行为单位  ##
 
 
 Before we start with timing, you should know that the way presented here is just one of many. There's several ways you can time to audio in Aegisub and this one might not be the best one for you. Try to also explore the program and see if you can find your own best way to do it. This is just the way I (jfs) usually do it.
