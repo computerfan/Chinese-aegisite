@@ -75,4 +75,5 @@ title: 制作时间轴
 因计算频谱数据是非常耗费CPU的，所以默认频谱质量设为了一般质量。你可以在[[音频选项|Options#section-11]]里改变频谱质量。如果你自己编译Aegisub且没有使用FFTW3，那么这很重要，FFTW3很快，能使默认质量提高一些。
 
 ## 卡拉OK计时 ##
-{::template name="todo"}here be dragons{:/}
+
+ [[卡拉OK计时|Karaoke_Timing_Tutorial]] 
