@@ -1,108 +1,73 @@
-Code lines and blocks in Karaoke Templater allows you to create advanced
-effects by incorporating small snippets of Lua code. This can range from simple
-mathematical expressions adding two numbers to complex functions that for
-example could generate various shapes in cycling colours.
+Code行和Code区是由卡拉OK模板执行器产生的概念，它们允许你使用小段的Lua代码来创作高级特效。
+代码可以是几个数字之间的简单运算，也可以是复杂的函数，例如生成各种各样的图形和颜色。
 
-Both code lines and code blocks are run in a separate semi-closed execution
-environment, meaning they are mostly undisturbed by the primary Lua environment
-the Karaoke Templater script itself runs in. For an overview of what variables
-are available in the code line/block execution environment see: [[Code
-execution environment|Automation/Karaoke_Templater/Code_execution_environment]].
+Code行和Code区的代码执行都是在一个半封闭的执行环境进行的，这意味着它们的执行几乎不会受自带的Lua运行环境影响。想知道什么样的变量可以应用在Code行/区，可以查看: [[代码执行环境|Automation/Karaoke_Templater/Code_execution_environment]]。
 
-## Code lines  ##
+## Code 行  ##
 
-A code line is a special kind of template line. Instead of using the `template`
-keyword in the Effect field it uses the `code` keyword. A code line contains
-only Lua code and does not by itself produce any lines in the resulting file.
+Code行是一种特殊的template行。它不使用`template`来声明，而是使用`code`。 
+一个Code行中只应该含有Lua代码，并且无法独立作用生成新的行。
 
-The two primary uses of code lines are:
+Code行的两种用途:
 
-* Defining/updating variables for use later in templates
-* Defining functions for use later in templates
+* 定义/更新变量，为变量在template行中的使用做准备
+* 定义函数，为函数在template行中的使用做准备
 
-For example, if you need a random number, but also need to use it twice in one
-template, you can use a code line to first generate the number and store it to
-a variable, then use that variable in your template line.
+例如，如果你需要一个随机数，但是需要在template行中两次用到同一个随机数，你可以采用code line来生成这个随机数，然后再在template行中使用它。
 
-Another example could be defining a function that produces a random colour.
+另一个例子是定义一个返回随机颜色的函数。
 
 
-### Classes of code lines  ###
+### Code行的类型  ###
 
-Like there's multiple classes of template lines there's also multiple classes
-of code lines. Some of them are the same, and some only exist for one or the
-other.
+就像template行一样，Code行也有很多种类。有一些和template是类似的，有一些只在code中独立存在或者只在template中独立存在。
 
-You specify the class of the code line in the Effect field after the `code`
-keyword. The possible classes are:
+你通过在特效栏的 `code` 后添加关键词(修饰语)来进行code行类型的指定。
+可用的类型(修饰语)有:
 
 once
-: Code lines in the `once` class are run exactly one time, before any templates
-are applied. This is usually the best place to define functions and general
-tables of values you need to look up later.  This is the default class, if you
-don't specify a class for a code line it's automatically in the `once` class.
+: `once` 类型的code行在模板执行器的整个运行过程中只执行一次。通常用来定义函数或者一个通用的表，以便你之后多次调用。它是默认类型，如果你不指定code行类型，那么它默认以 `once` 的规则执行。
 
 line
-: Code lines in the `line` class are run when a new line is encountered. They
-are run once per line. They are run interspersed with `line`/`pre-line`
-templates in the order they appear. (There are no "pre-line" code lines.)
+: `line` 类型的code行每检测到一行karaoke行便执行一次。这个类型的code行一般与 `line`/`pre-line` 类型的模板配合使用。
+(code行并没有"pre-line"这个类别)
 
 syl
-: Code lines in the `syl` class are run when a new syllable is encountered.
-They run once per syllable. They are run interspersed with `syl` templates.
+: `syl` 类型的code行每检测到一个音节便执行一次。它与 `syl` 类型的template行配合使用。
 
 furi
-: Code lines in the `furi` class are run when a new furigana syllable is
-encountered. They run once per furigana syllable.  They are run interspersed
-with `furi` templates.
+: `furi` 类型的code行每检测到一个注音音节便执行一次。它与 `furi` 类型的template行配合使用。
 
-You _cannot_ have templates with `char` or `multi` modifiers run
-per-character/per-highlight interspersed with code lines. This is a limitation
-of the execution model. This may or may not change in later versions of Karaoke
-Templater.
+你 _不能_ 用 `char` 或者 `multi` 修饰语来配合code行使用。这是执行模式带来的限制。这一点在未来的卡拉OK模板执行器中也不会改变。
 
-## Code blocks  ##
+## Code 区  ##
 
-A code block is a block of Lua code within a template line. Code blocks are
-used to insert more complex things than can be expressed with [[inline
-variables|Automation/Karaoke_Templater/Inline_variables]].
+Code区是在template行中使用Lua代码的一个区块。插入一个Code区，就可以在里面使用复杂的东西，这类东西可以表述为 [[内联变量|Automation/Karaoke_Templater/Inline_variables]]。
 
-Code blocks are required to be single Lua expressions, since a `return`
-statement is automatically prepended to the code. This means you (among other
-things) can't do assignments or use `if` statements within code blocks, you
-must use a code line if you want to do any of those things. (There is a way to
-do basic conditionals in code blocks though, see below.)
+Code区要求是一个单独的Lua表达式，因为 `return`这种步骤已经预先包含在了code区的规则中。
+这意味着你无法在code区中使用类似 `if` 这种表达式，如果你一定要使用，只能在code行中进行。(虽然有一种方式可以在code区基本实现if逻辑，请继续阅读)
 
-You create a code block by surrounding the code by exclamation marks, like
-this:
+code区的插入方式是使用一对半角感叹号(!)，两个感叹号中间的区域即code区，如下:
 
     {\t($start,**!syl.start_time+20!**,\bord0)}
 
-It is possible to use inline variables within code blocks. They are expanded
-before the code block is parsed, so to the Lua interpreter the inline variables
-look like regular constants.
+在code区中可以使用内联变量。它们在code区执行前就已经被赋值，所以对于Lua解释器来说，它们就是常量。
 
-### Hints for using code blocks  ###
+### code区使用的小提示  ###
 
-Most simple mathematical expressions work just like you'd expect them to.
-Operator precedence rules are those of regular arithmetic.
+大多数的简单数学表达式都像你所想的一样正常执行。
+因为执行顺序就和我们学习的算术顺序一致。
 
-A code block should always return a string or numeric value, if it returns a
-boolean, a table or something else it might cause a warning and the resulting
-line containing the wrong output.
+Code区总是返回一串字符或者数学数值，如果要求它返回一个布尔型(boolean)或者一个表(table)或者其它乱七八糟的东西，它就会报错或者在生成的行中包含一些错误的信息。
 
-To create simple conditionals within code blocks you can use the `and` and `or`
-operators to chain values and conditions. For example:
+想要在code区进行简单的逻辑判断需要使用 `and` 和 `or`，例如:
 
     {\k**!syl.duration > 100 and "f" or ""!**$kdur}
 
-If the syllable duration is longer than 100 ms the first sub-expression is
-true, and the code block returns <tt>"f"</tt>, otherwise the entire `and`
-expression is false, and the right-hand argument of the `or` expression is
-returned.
+如果音节持续时间大于 100 ms ，子表达式1为真，code区会返回 <tt>"f"</tt> 作为结果。否则整个 `and`
+表达为false，右边的参数 `or` 表达式会被执行并返回空。
 
-In Lua, `and` binds stronger than `or` meaning that `and` expressions are
-evaluated first. In the above expression the effective grouping is like this:
+在Lua中， `and` 的优先级高于 `or` ，这意味着 `and` 表达式会先被评估。如果用小括号分组表示优先级，就像这样:
 `((syl.duration > 100) and "f") or ""`
 
 {::template name="automation_navbox" /}
