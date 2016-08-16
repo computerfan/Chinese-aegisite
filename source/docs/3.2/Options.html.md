@@ -204,76 +204,72 @@ Aegisub将所有配置都以纯文本的形式储存在 _config.json_ 文件中�
 **播放游标**
 : 播放光标的颜色。
 
-**Line boundary start**
-**Line boundary end**
-**Line boundary inactive line**
-: The respective colors of the various line boundary markers.
-
-**Syllable boundary**
-: The color of a syllable boundary line in karaoke mode.
+**边线色 - 起始**
+：音频图中开始时间线的颜色。
+**边线色 - 结束**
+：音频图总结束时间线的颜色。
+**边线色 - 非活动行**
+: 音频图中非活动行的时间线颜色。
+**音节边线色**
+: 音频图中音节边缘时间线的颜色。
 
 ### 音频配色方案 ###
-Controls the color scheme used for the waveform/spectrum and some of the UI
-elements. Aegisub currently does not have a UI for editing the color schemes or
-creating new ones, but if you're feeling adventurous they can be found in
-config.json.
+为波形/频谱选择现有的颜色方案，并没有在Aegisub中直接添加本颜色方案的方法。如果你想试试更改，可以在config.json中修改。
 
 #### 语法高亮 ####
 
-**Normal**
-: The color of normal text.
+**正常**
+: 正常文字的颜色。
 
-**Brackets**
-: The color of brackets that start/end override blocks.
+**大括号**
+: ASS特效标签使用的闭合大括号的颜色。
 
-**Slashes and parentheses**
-: The color of backslashes and parentheses within override blocks.
+**斜杠和圆括号**
+: ASS特效标签中使用的斜杠和圆括号的颜色。
 
-**Tags**
-: The color of tag names within override blocks.
+**标签**
+: ASS特效标签本身的颜色。
 
-**Parameters**
-: The color of parameters to override tags.
+**参数**
+: ASS特效标签参数的颜色。
 
-**Error**
-: The error color for invalid syntax within an override block.
+**错误**
+: 指示无效表达式的颜色。
 
-**Error background**
-: Background color for errors.
+**错误背景**
+: 指示错误的背景色。
 
-**Line break**
-: Color for \N, \n and \h outside of override blocks.
+**换行符类**
+: \N, \n 和 \h 的颜色。
 
-**Karaoke templates**
-: Color for karaoke templater blocks on template lines.
+**卡拉OK模板**
+: 卡拉OK模板部分的颜色。
 
 #### 字幕栏 ####
 
-**Standard foreground**
-**Standard background**
-: The normal color of lines in the grid. "Foreground" is the text color, and
-"Background" is obviously the background color.
+**普通行前景色**
+**普通行背景色**
+: 在字幕栏中显示的颜色。前景色为文本颜色，背景色即为背景颜色。
 
-**Selection foreground**
-**Selection background**
-: The color of selected lines in the grid.
+**选取行前景色**
+**选取行背景色**
+: 在字幕栏中，已选择行的前景色和背景色。
 
-**Comment background**
-**Selected comment background**
-: The background color of commented-out lines and selected commented-out lines,
-respectively.
+**注释行背景色**
+**选中注释行背景色**
+: 文字表面含义。
 
-**Collision foreground**
-: The text color of lines whose timings overlap with the currently active line.
+**冲突行前景色**
+: 和活动行时间重叠的行的前景色。
 
-**Line in frame background**
-: The background color of lines currently visible in the video frame.
+**在当前帧显示的行背景色**
+: 文字表面含义。
 
-**Header**
-**Left column**
-**Active line border**
-**Lines**
-: The color of the grid lines and fixed columns/headers.
+**表头背景色**
+**左边栏颜色**
+**活动行边框颜色**
+**分隔线颜色**
+: 分隔字幕栏各个区块的分隔线颜色。
 
 ## 热键 ##
 
