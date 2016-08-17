@@ -11,6 +11,7 @@ div.navbar .nav > li > a
 footer
   border-top: 1px solid #EEE
   padding-top: 1em
+  width: 100% !important
 
 .changelog dd:not(:nth-child(2))
   border-top: 1px solid #CCC
@@ -254,3 +255,21 @@ img.center
     color: #268BD2
   .il
     color: #2AA198
+@media (max-width: 980px)
+  .span9
+    width: 60% 
+@media (max-width: 780px)
+  .pull-right
+    display: none !important
+@media (max-width: 650px)
+  .span3
+    width: 30%
+@media (max-width: 400px)
+  .span3
+    width: 90%
+  .span9
+    width: 90%
+  body
+    padding-top: 0
+  .navbar-fixed-top
+    position: initial
