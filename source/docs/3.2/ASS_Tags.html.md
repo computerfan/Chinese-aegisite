@@ -1420,7 +1420,7 @@ Moves the cursor to x,y. If you have an unclosed shape, it will automatically
 be closed, as the program assumes that you are now drawing a new, independent
 shape. All drawing routines must start with this command.
 
-移动光标到 (x, y)。如果你有一个还没画闭合的图形，它会自动闭合，因为程序认为你这是要去从头开始画一个新的独立的毒性。所有的绘图指令都要从这个命令开始。
+移动光标到 (x, y)。如果你有一个还没画闭合的图形，它会自动闭合，因为程序认为你这是要去从头开始画一个新的独立的图形。所有的绘图指令都要从这个命令开始。
 
 
 
