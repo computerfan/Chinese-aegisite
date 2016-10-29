@@ -4,167 +4,113 @@ Aegisub不是一个视频（或媒体）播放器，但它依然支持载入多�
 这一篇就是关于Aegisub是如何载入和处理视频文件的，如果你只是想做一个安静的美男子（萌妹子），
 建议您还是直接参考[[Typesetting_Tutorial]] 或 [[Visual_Typesetting]] .
 
-## Opening video ##
+## 打开视频 ##
 
-To load a video file, go to the _Video_ menu and press _Open video file_. What
-video files you can open depends on your [[video provider|Options#video]]. To
-use a dummy (mockup, blank) video, press _Use dummy video_.
+在_视频_菜单中选择_打开视频_。你所能打开的视频文件类型取决于你的[[视频提供器|Options#video]]。如果你要使用空白视频，则点击_打开空白视频_。
 
-### Supported formats ###
+### 支持格式 ###
+Aegisub通常使用[FFMS2](http://code.google.com/p/ffmpegsource/)来打开视频，它基本上支持所有常见的音频和视频格式和许多不常见的格式。如果你要查看完整的支持的编解码器的列表，请参阅[FFmpeg](http://ffmpeg.org/) 或者[Libav](http://libav.org/)的文档。注意：FFMS2当前无法正常处理交错的H.264编码的视频。
 
-Aegisub normally uses [FFMS2](http://code.google.com/p/ffmpegsource/) to open
-video, which supports opening nearly all common A/V formats, and many uncommon
-ones. For a full list of codecs supported, see [FFmpeg](http://ffmpeg.org/) or
-[Libav](http://libav.org/) documentation. Note that FFMS2 current has issues
-with interlaced H.264.
 
-On Windows, [Avisynth](http://avisynth.org/mediawiki/Main_Page) can be used
-instead of FFMS2. When opening via _Avisynth_, Aegisub will try several source
-functions to find the best choice:
+在Windows平台，您可以使用[Avisynth](http://avisynth.org/mediawiki/Main_Page)来取代FFMS2。
+当通过_Avisynth_打开视频时，Aegisub会尝试多个读取源的函数来寻找最佳选择：
 
 Import()
-: Avisynth builtin function. Used to load Avisynth scripts, never used
-for anything else.
+:
+Avisynth的內建函数。仅用于读取AVS脚本。
+
+
 
 AviSource()
-: Avisynth builtin function. AviSource uses the system's Video for
-Windows (VfW) decoder to open the video, which for some esoteric
-formats may be the best or only way to open a file. Only supports .avi
-files, for obvious reasons. If AviSource cannot open a file, DSS2 is
-tried, followed by DirectShowSource.
+:
+Avisynth的內建函数。AviSource使用系统的Video for Windows(VfW)解码器来打开视频，这对于一些迷之格式可能是最好的/唯一的选择。如果AviSource无法打开视频，那么Aegisub将会尝试DSS2，最后尝试DirectShowSource。
+
 
 MPEG2Source()
-: Only used to load .d2v files (DVD2AVI project files; otherwise known
-as indexed .VOB's ripped from DVD's). Tries to use neuron2's
-[DGDecode](http://neuron2.net/dgmpgdec/dgmpgdec.html) to open the file;
-if Aegisub can't find or load that it'll try the old mpeg2dec3.dll
-instead; if that too fails, returns an error. This is the most
-reliable way to open DVD video in Aegisub.
+:
+仅用于加载 .d2v 文件（DVD2AVI项目文件；从DVD抓取的VOB文件）。Aegisub尝试使用neuron2的[DGDecode](http://neuron2.net/dgmpgdec/dgmpgdec.html)来打开文件。如果Aegisub无法找到它或者无法载入，将会尝试旧的mpeg2dec3.dll来代替。如果俩都失败了，就会返回一个错误。这是读取DVD文件的最可靠方法。
+
 
 DSS2()
-: Tries to find, load and use Haali's DirectShowSource2 plugin (comes
-with the [Haali Media Splitter](http://haali.cs.msu.ru/mkv/) package
-and with the [CCCP](http://cccp-project.net); the Avisynth plugin is
-_avss.dll_, you need to manually put it somewhere where Aegisub or
-Avisynth can find it, see below). That will in turn try to use your
-computer's DirectShow environment to open the file. Theoretically any
-file renderable by DirectShow should be supported, but since you are at
-the mercy of third-party splitters and decoders, your mileage may vary.
-As a rule of thumb, if it's playable in Windows Media Player, Aegisub
-should be able to load it. Do note that DSS2 converts variable
-framerate files to constant.  Usually this is what you want and expect
-but if you're doing proper VFR subtitles, it isn't.
+: Aegisub尝试寻找并载入Haali的DirectShowSource2插件（由[Haali Media Splitter](http://haali.cs.msu.ru/mkv/)包和[CCCP](http://cccp-project.net)提供）。对应的Avisynth插件是_avss.dll_，你需要手工将其放在Aegisub或Avisynth能够找到的目录（见下文）。Aegisub将会尝试使用您系统的DirectShow环境来打开文件，理论上所有可以用DirectShow渲染的文件都是支持的，但是如果您使用了第三方的分离器和解码器，可能会得到不一样的结果。简而言之，如果您可以在Windows Media Player中打开这个文件，那么Aegisub也应该能够载入这个文件。注意，DSS2将会把可变帧率文件转换为固定帧率，一般来说这是您所期望的，除非您正在制作对应VFR的字幕。
+
+
 
 DirectShowSource()
-: Uses DirectShowSource() (which ships with Avisynth) to try to load
-the file. Basically the same as DSS2, but far less reliable and it
-doesn't convert VFR to CFR. Warning: DSS is known to have problems with
-frame-accurate seeking. Do not use it if you can avoid it.
-{: .horizontal-wide}
+:
+使用DirectShowSource()（由Avisynth提供）来尝试载入文件。总体上与DSS2是一样的，但是远不及其可靠，而且不会把VFR文件转换为CFR文件。警告：DSS无法正常进行frame-accurate seeking，请尽量避免使用DSS。
+注意，VFR视频不被Avisynth提供器支持，有时，载入[[外部时间编解码器|Video#timecodes]]可能管用，但是实际上它会瞎搞一通。
+Aegisub会在[[?data|Aegisub_path_specifiers#?data]]目录（Windows下通常在aegisub32.exe所在的文件夹）寻找Avisynth插件。你也可以直接把他们放在你的Avisynth插件文件夹来让它们自动载入。
 
-Note that [[VFR|Video#variableframeratevideo]] is not supported by the
-Avisynth provider. In some cases loading [[external timecodes|Video#timecodes]]
-may work, but in practice it will often result in a broken mess.
 
-Aegisub will look for Avisynth plugins in its
-[[?data|Aegisub_path_specifiers#?data]] directory (generally the folder where
-aegisub32.exe is, on Windows). You can also put them directly in your Avisynth
-plugins folder to get them autoloaded.
+### 空白视频 ###
+Aegisub也支持提供一个空白视频，来让你不需要任何实际的视频就可以测试字幕的渲染。空白视频生成器对话框如下图所示。
 
-### Dummy video ###
-
-Aegisub also supports providing a bogus video surface for you to render
-subtitles on without having any actual video loaded. The dummy video dialog box
-looks like this:
 
 [[img/Dummy_video.png]]{: class="center"}
 
-Resolution
-: The resolution of the dummy video in pixels. There are a few
-pre-defined choices in the dropdown menu; you can also specify the size
-yourself. Note that since the dummy video is RGB there are no
-particular restrictions with regards to odd widths/heights.
+分辨率
+:
+空白视频的分辨率。该选项的下拉菜单会有一些预设好的选择，你也可以自己指定。注意，由于空白视频是RGB颜色的，所以对于宽度高度并没有什么特定的限制。
 
-Colour
-: The colour of the video surface. The color is solid by default; tick
-the box "checkerboard pattern" if you want some more variation.
 
-Frame rate
-: Determines how long each frame is displayed by setting the number of
-frames per second (fps). Note that it is in fact possible to load VFR
+颜色
+:
+空白视频的颜色。默认是纯色，如果需要点花哨的变化，可以点上“棋盘样式”。
+
+
+
+帧率
+:
+通过指定FPS来设定每帧播放的时间。Note that it is in fact possible to load VFR
 timecodes with dummy video.
 
-Duration
-: The duration of the video in frames. Below this number is shown the
-resulting duration in hours/minutes/seconds.
-{: .horizontal-narrow}
+
+长度
+:
+空白视频的长度（以帧为单位）。下方会有计算好的以时分秒为格式的长度显示。
 
 
-## Playing video ##
 
-Aegisub does support playing back video, but it has been widely debated if it
-is a misfeature or not.
+## 播放视频 ##
 
-### Before you press the "play" button ###
+Aegisub 并不支持 playing back video, 但这一功能已经在讨论是否需要被加入。
 
-Think it through. Do you really **want** to play the video? (Hint: the answer
-is "no", you don't want to do that, at least not in Aegisub.) If you're trying
-to check if a subtitle matches up to something in the video, wouldn't it be
-easier to just step through the video frame-by-frame with the arrow keys? If
-you're proofwatching, it would be a better idea to watch it in a player your
-viewers might actually use.
+### 在按下“播放”按钮之前 ###
+想清楚。你是否真的想要播放视频？（提示：答案是否定的，你并不想这么做，至少不是在Aegisub里）如果你想要检查字幕是不是匹配画面中的东西，用方向键来逐帧播放不是更好么？如果你在最后检查你的字幕，用实际播放使用的播放器不是更好么？
 
-To conclude: in real world situations, you will never need to play the video
-from inside Aegisub. The mantra is: Aegisub isn't a media player; if you want a
-media player use a media player. Nonetheless, Aegisub does make a reasonable
-effort to support reliable video playback and in practice it will usually work
-fine.
+结论是：在真实的使用情境下，你永远不会需要在Aegisub内播放视频。Aegisub并不是一个视频播放器。尽管如此，Aegisub依然努力支持了可靠的视频播放功能，事实上也工作得不错。
 
-Note that audio has to be explicitly loaded for Aegisub to play it while
-playing video. If you find this bothersome, there is an option to automatically
-open audio whenever a video file is opened.
+注意，在播放视频时，音频需要特地加载，如果你觉得这很烦，你打开视频的时候会有一个“从视频中打开音频”的选项。
 
-## Keyframes ##
 
-A brief, highly simplified explanation of what a keyframe is, for the people
-who missed Video 101:
+## 关键帧 ##
+对关键帧的简要的、高度简化的解释是：
 
-Modern video codecs compress video by storing as little information as
-possible. Instead of storing all frames in full (like a large amount of JPG
-pictures), they take occasionally take a keyframe, which is stored fully, and
-for each frame after that until the next keyframe, they only store what changed
-in the picture since the last frame. Hence, to seek to a given frame the
-decoder needs to find the previous keyframe and decode all frames between that
-frame and the sought one, which means seeking to keyframes is faster than to
-other frames. Keyframes are interesting mostly for scene timing reasons,
-because they usually appear at scenechanges. The first frame in a scene is
-almost invariably a keyframe, but beware - far from every keyframe is a
-scenechange! Most encoders insert a keyframe at least once every 250-300
-frames, even if there hasn't been a scenechange.
+现代视频编解码器压缩视频，以用尽可能少的信息来存储视频。它们并不是完整存储视频的每一帧，而是时不时取一个关键帧完整存储。在两个关键帧之间的帧，只会存储画面自上个关键帧以来的变化。
+因此，为了定位特定的帧，解码器需要找到它前面的一个关键帧，然后解码这之间的所有帧，这意味着定位关键帧会比定位一般帧更快。Keyframes are interesting mostly for scene timing reasons,因为关键帧通常在场景切换的时候出现。每个场景的第一帧通常的安定的关键帧，但是，这并不意味着每一个关键帧都代表场景的切换。大多数编码器都会至少每250~300帧插入一个关键帧，即使并没有场景转换。
 
-Aegisub uses keyframe data at several places in the program. They are drawn as
-black lines on the video seek bar, and (by default) also displayed in the audio
-waveform/spectrum analyzer.
+Aegisub在程序的多处使用了关键帧数据。关键帧将会被绘制在视频进度条上方（黑条），也会在音频的波形/频谱图中显示。
 
-### Loading and saving of keyframe data ###
+### 载入并存储关键帧数据 ###
+当使用FFMS2打开视频时，Aegisub支持从大多数格式的文件中读取关键帧数据。然而使用Avisynth提供器时只支持从AVI文件中读取关键帧数据。如果你正在使用一种无法读取关键帧数据的视频格式，你仍然可以另外载入关键帧数据。Aegisub当前支持从几种文件中读取关键帧数据：Aegisub关键帧文件（见下方的格式说明）、XviD first-pass文件、DivX first-pass文件和x264 first-pass文件。
 
-When opening video through FFMS2, Aegisub supports reading keyframe data from
-most file formats, while the Avisynth provider only supports reading keyframes
-from AVI. If you are using a video format which keyframes can't be read from,
-you can still load keyframe data separately. Aegisub currently supports reading
-from several formats: its own keyframe file format (see specification below),
-XviD first-pass files, DivX first-pass files, and x264 first-pass files.
+即使可以从视频文件中读取到关键帧数据，有时候另外载入外部关键帧数据也是十分有用的。为音频计时而使用XviD first-pass的.stat文件是非常常见的，因为XviD的关键帧的关键帧选择往往在场景切换时更准确。
 
-Even if keyframes can be read from the file it is sometimes useful to override
-them with external keyframes. Using XviD first-pass .stat files for audio
-timing is fairly popular, as XviD's keyframe choices correlate unusually well
-with scene changes.
+Aegisub也可以把当前载入的关键帧数据写入一个关键帧数据文件夹，这可能在避免传递视频文件时十分有用（比如仅传递音频打轴）。
 
-Aegisub can also write the currently loaded keyframe data to a keyframes file,
-which can be useful to avoid passing video files around in certain situations
-(audio timing for example).
+### 关键帧文件格式 ###
+关键帧文件时ASCII编码的纯文本，\n和\r\n都被解析为换行。语法例子：
+    # keyframe format v1
+    fps 0
+    0
+    30
+    70
+    82
+    130
+    131
 
-### Keyframe file specification ###
+
 
 A keyframes file is a plain ASCII-encoded text file; both \n and \r\n is
 understood to mean a linebreak. Syntax example:
@@ -178,30 +124,18 @@ understood to mean a linebreak. Syntax example:
     130
     131
 
-The first line is the format specification: the string
-`# keyframe format v1`. The second line contains the FPS of the video used to
-generate the keyframe data; however no programs (Aegisub included) actually
-support this and so it is typically just `0`. Finally, after the fps line
-follows an arbitrary number of long integers (one per line), each representing
-the frame number of a keyframe. The frame numbers are zero-indexed; i.e. the
-first frame of the video is frame number 0.
+第一行是格式规范：字符串`# keyframe format v1`。 第二行包含了用于生成关键帧数据的视频的FPS。
+这实际上并没有什么用，因为没有程序支持这个玩意，所以就写0吧。在FPS行之后是一行一个的整数，代表了关键帧的位置。0代表第一帧。
 
-## Variable framerate video ##
 
-Aegisub supports loading and working with variable framerate video. The how's
-and why's of VFR is far outside the scope of this manual (see for example [the
-VFR thread on AnimeSuki](http://forums.animesuki.com/showthread.php?t=34738) or
-the [Avisynth manual page](http://avisynth.org/mediawiki/VFR) for more
-information about VFR), but we will cover what you need to know about how
-Aegisub handles it.
 
-### Timecodes ###
+## 可变帧率视频 ##
+Aegisub支持载入VFR视频。VFR的原理和应用远超出本手册的范围（参见 [the
+VFR thread on AnimeSuki](http://forums.animesuki.com/showthread.php?t=34738) 或
+ [Avisynth manual page](http://avisynth.org/mediawiki/VFR) 来获取VFR的更多信息）。但是我们会让你知道Aegisub是如何处理VFR视频的。
 
-Loading of Matroska timecode files (v1 and v2) is supported and useful if you
-have a VFRaC (Variable FrameRate assumed Constant; for example the frames of an
-VFR MKV stored in an AVI at a constant FPS, see the VFR thread linked above for
-details) video file but want the subs to sync to it. If you load a VFR file,
-Aegisub will automatically read the timecodes from it directly.
+### 时间码 ###
+Aegisub支持载入Matroska时间码文件（v1和v2），如果你有一个VFRaC视频文件，而且想制作与其同步的字幕，这会很有用。如果你载入一个VFR视频，Aegisub将从视频文件中直接自动读取时间码。
 
 ### VFR and hardsubbing ###
 
@@ -219,7 +153,8 @@ _Transform Framerate_ filter. Choose the _Variable_ output mode. It needs to
 know the FPS of the video you're going to hardsub the subtitles on; if you have
 video loaded Aegisub will assume that's it and insert it in the box for you.
 
-**Note:** if you have a Matroska or other VFR file loaded, remember that the
+**注意：** 
+if you have a Matroska or other VFR file loaded, remember that the
 FPS value Aegisub reports might not be the same as the one of the video you are
 going to hardsub the subtitles on.
 
@@ -311,80 +246,79 @@ may be of interest:
 * [Wikipedia: Aspect Ratio (image)](http://en.wikipedia.org/wiki/Aspect_ratio_(image))
 * [Wikipedia: Anamorphic Widescreen](http://en.wikipedia.org/wiki/Anamorphic_widescreen)
 
-## The video menu ##
+## 视频菜单 ##
 
-The following options are available from the video menu:
+以下设置在视频菜单中可用。
 
-### Sourcefile-related ###
+### 源文件相关 ###
 
-Open video
-: Opens video. Note that if you try to open another video with video
-already loaded, the original video will be closed first.
+打开视频
+: 打开视频，注意，如果你已经打开了载入了一个视频，打开新视频时会先关闭当前打开的视频。
 
-Close video
-: Unloads the currently open video.
 
-Recent
-: Shows list of recently opened videos.
 
-Use dummy video
-: Opens a dummy video (see above).
+关闭视频
+: 关闭当前载入的视频。
 
-Show video details
-: Shows some information about the currently open video. Details shown
-are filename, frames per second (for VFR files the average FPS is
-displayed), resolution and aspect ratio, length and decoder. Decoder
+最近
+: 显示最近打开的视频的列表。
+
+使用空白视频
+: 打开一个空白视频（参见前述）。
+
+显示视频属性
+:
+显示一些当前打开的视频的信息，包括：文件名、FPS（VFR视频显示平均FPS）、分辨率和比例、长度以及解码器。Decoder
 being what filter/method Aegisub used to open the file.
+
 {: .horizontal-wide}
 
-### Timecodes-related ###
-Open timecodes file
-: Loads a timecodes file and applies it to the video, changing the
-video/subtitle synchronization.
+### 时间码相关 ###
+打开时间码文件
+: 载入一个时间码文件并应用到当前视频，改变视频和字幕的同步。
 
-Save timecodes file
-: Saves the currently loaded timecodes as a new v2 timecodes file.
 
-Close timecodes file
-: Unloads the currently loaded timecodes.
+保存时间码文件
+: 以v2时间码文件格式保存当前载入的时间码文件。
 
-Recent
-: Shows list of recently opened timecodes files.
+关闭时间码文件
+:
+卸载当前载入的时间码文件。
+
+最近
+: 显示最近打开的时间码文件的列表。
+
 {: .horizontal-wide}
 
-### Keyframes-related ###
-Open keyframes
-: Loads keyframe data from the given file. If you already have keyframe
-data loaded, it will be replaced by the one read from the file.
+### 关键帧相关 ###
+打开关键帧
+: 从给定的文件中载入关键帧数据。如果你已经载入了关键帧数据，这会替换已经载入的关键帧数据。
 
-Save keyframes
-: Saves the currently loaded keyframes data to a keyframes file.
 
-Close keyframes
-: Unloads the currently loaded keyframe data, if any. Note that it is
-not possible to unload keyframe data that was directly loaded from the
-video file; if you want to get rid of that for some reason, load a
-keyframes file with only frame 0 being marked as a keyframe.
+保存关键帧
+: 把当前载入的关键帧数据保存为一个关键帧文件。
 
-Recent
-: Shows list of recently loaded keyframe files.
+关闭关键帧
+: 卸载当前载入的关键帧数据。注意：无法卸载直接从文件中载入的关键帧数据。如果你由于某些原因不想使用视频自带的关键帧数据，请载入一个只把第0帧标记为关键帧的关键帧数据文件。
+
+最近
+: 显示最近打开的关键帧数据文件列表。
+
 {: .horizontal-wide}
 
-### Display-related ###
-Detach video
-: Detaches the video display and related controls from the Aegisub main
-window and moves it into its own window. To reattach the video to the
-main window, close the detached window. This feature can be
-particularly useful on multi-monitor setups.
+### 显示相关 ###
+拆分视频
+: 将视频和相关控制在独立窗口显示。如要重新将视频在主窗口内显示，只需要关闭新打开的独立窗口。这一特性在多显示器工作环境下特有用。
 
-Set zoom
-: Sets the video zoom level.
+设置缩放
+: 设置视频的缩放比例。
 
-Override aspect ratio
-: Stretches the video to the specified aspect ratio by modifying the
-video width. Useful for anamorphic video (see above).
+更改横纵比
+: 通过改变视频宽度拉伸视频到特定的横纵比。对变形了的视频很有效。
 
-Show overscan mask
+显示过扫描遮盖
+: 在图像上绘制一个蓝色的“遮盖”，
+
 : Draws a blue "mask" over the image, indicating the edges of the
 action safe (dark blue) and title safe (light blue) areas. Useful if
 you plan on showing your subtitles on a TV without adjustable overscan
@@ -397,13 +331,13 @@ guidelines](http://www.bbc.co.uk/guidelines/dq/pdf/tv/tv_standards_london.pdf)
 on how big the safe areas should be.
 {: .horizontal-wide}
 
-### Seeking-related ###
-Jump to
-: Seeks the video to the given time or frame.
+### 定位相关 ###
+跳至
+: 跳转到给定的时间或帧数。
 
-Jump video to start
-: Seeks the video to the start time of the currently active line.
+视频跳至开始时间
+: 将视频跳转到当前行的开始时间。
 
-Jump video to end
-: Seeks the video to the end time of the currently active line.
+视频跳至结束时间
+: 将视频跳转到当前行的结束时间。
 {: .horizontal-wide}
