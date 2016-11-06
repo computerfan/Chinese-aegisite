@@ -2,18 +2,18 @@
 
 Aegisub不是一个视频（或媒体）播放器，但它依然支持载入多种视频文件。
 这一篇就是关于Aegisub是如何载入和处理视频文件的，如果你只是想做一个安静的美男子（萌妹子），
-建议您还是直接参考[[Typesetting_Tutorial]] 或 [[Visual_Typesetting]] .
+建议您还是直接参考[[排版教程|Typesetting_Tutorial]] 或 [[可视化排版|Visual_Typesetting]] .
 
 ## 打开视频 ##
 
-在_视频_菜单中选择_打开视频_。你所能打开的视频文件类型取决于你的[[视频提供器|Options#video]]。如果你要使用空白视频，则点击_打开空白视频_。
+在 _视频_菜单中选择 _打开视频_。你所能打开的视频文件类型取决于你的[[视频提供器|Options#section-23]]。如果你要使用空白视频，则点击  _打开空白视频_。
 
 ### 支持格式 ###
 Aegisub通常使用[FFMS2](http://code.google.com/p/ffmpegsource/)来打开视频，它基本上支持所有常见的音频和视频格式和许多不常见的格式。如果你要查看完整的支持的编解码器的列表，请参阅[FFmpeg](http://ffmpeg.org/) 或者[Libav](http://libav.org/)的文档。注意：FFMS2当前无法正常处理交错的H.264编码的视频。
 
 
 在Windows平台，您可以使用[Avisynth](http://avisynth.org/mediawiki/Main_Page)来取代FFMS2。
-当通过_Avisynth_打开视频时，Aegisub会尝试多个读取源的函数来寻找最佳选择：
+当通过 _Avisynth_打开视频时，Aegisub会尝试多个读取源的函数来寻找最佳选择：
 
 Import()
 :
@@ -32,14 +32,14 @@ MPEG2Source()
 
 
 DSS2()
-: Aegisub尝试寻找并载入Haali的DirectShowSource2插件（由[Haali Media Splitter](http://haali.cs.msu.ru/mkv/)包和[CCCP](http://cccp-project.net)提供）。对应的Avisynth插件是_avss.dll_，你需要手工将其放在Aegisub或Avisynth能够找到的目录（见下文）。Aegisub将会尝试使用您系统的DirectShow环境来打开文件，理论上所有可以用DirectShow渲染的文件都是支持的，但是如果您使用了第三方的分离器和解码器，可能会得到不一样的结果。简而言之，如果您可以在Windows Media Player中打开这个文件，那么Aegisub也应该能够载入这个文件。注意，DSS2将会把可变帧率文件转换为固定帧率，一般来说这是您所期望的，除非您正在制作对应VFR的字幕。
+: Aegisub尝试寻找并载入Haali的DirectShowSource2插件（由[Haali Media Splitter](http://haali.cs.msu.ru/mkv/)包和[CCCP](http://cccp-project.net)提供）。对应的Avisynth插件是 _avss.dll_，你需要手工将其放在Aegisub或Avisynth能够找到的目录（见下文）。Aegisub将会尝试使用您系统的DirectShow环境来打开文件，理论上所有可以用DirectShow渲染的文件都是支持的，但是如果您使用了第三方的分离器和解码器，可能会得到不一样的结果。简而言之，如果您可以在Windows Media Player中打开这个文件，那么Aegisub也应该能够载入这个文件。注意，DSS2将会把可变帧率文件转换为固定帧率，一般来说这是您所期望的，除非您正在制作对应VFR的字幕。
 
 
 
 DirectShowSource()
 :
 使用DirectShowSource()（由Avisynth提供）来尝试载入文件。总体上与DSS2是一样的，但是远不及其可靠，而且不会把VFR文件转换为CFR文件。警告：DSS无法正常进行frame-accurate seeking，请尽量避免使用DSS。
-注意，VFR视频不被Avisynth提供器支持，有时，载入[[外部时间编解码器|Video#timecodes]]可能管用，但是实际上它会瞎搞一通。
+注意，VFR视频不被Avisynth提供器支持，有时，载入[[外部时间码|Video#section-9]]可能管用，但是实际上它会瞎搞一通。
 Aegisub会在[[?data|Aegisub_path_specifiers#?data]]目录（Windows下通常在aegisub32.exe所在的文件夹）寻找Avisynth插件。你也可以直接把他们放在你的Avisynth插件文件夹来让它们自动载入。
 
 
@@ -51,7 +51,7 @@ Aegisub也支持提供一个空白视频，来让你不需要任何实际的视�
 
 分辨率
 :
-空白视频的分辨率。该选项的下拉菜单会有一些预设好的选择，你也可以自己指定。注意，由于空白视频是RGB颜色的，所以对于宽度高度并没有什么特定的限制。
+空白视频的分辨率。该选项的下拉菜单会有一些预设好的选择，你也可以自己指定。注意，由于空白视频是RGB颜色的，所以对于奇数的宽度高度并没有什么特定的限制。
 
 
 颜色
@@ -62,8 +62,7 @@ Aegisub也支持提供一个空白视频，来让你不需要任何实际的视�
 
 帧率
 :
-通过指定FPS来设定每帧播放的时间。Note that it is in fact possible to load VFR
-timecodes with dummy video.
+通过指定FPS来设定每帧播放的时间。值得一提的是空白视频也是可以载入VFR时间码的。
 
 
 长度
@@ -74,10 +73,10 @@ timecodes with dummy video.
 
 ## 播放视频 ##
 
-Aegisub 并不支持 playing back video, 但这一功能已经在讨论是否需要被加入。
+Aegisub 完全支持视频的播放，但经常有关于是否缺少某些功能的争论。
 
 ### 在按下“播放”按钮之前 ###
-想清楚。你是否真的想要播放视频？（提示：答案是否定的，你并不想这么做，至少不是在Aegisub里）如果你想要检查字幕是不是匹配画面中的东西，用方向键来逐帧播放不是更好么？如果你在最后检查你的字幕，用实际播放使用的播放器不是更好么？
+想清楚。你是否真的**想要**播放视频？（提示：答案是否定的，你并不想这么做，至少不是在Aegisub里）如果你想要检查字幕是不是匹配画面中的东西，用方向键来逐帧播放不是更好么？如果你在最后检查你的字幕，用实际播放使用的播放器不是更好么？
 
 结论是：在真实的使用情境下，你永远不会需要在Aegisub内播放视频。Aegisub并不是一个视频播放器。尽管如此，Aegisub依然努力支持了可靠的视频播放功能，事实上也工作得不错。
 
