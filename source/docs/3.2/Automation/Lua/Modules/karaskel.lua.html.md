@@ -109,21 +109,15 @@ Automation 4的核心文件 `karaskel.lua` 内置了许多函数，用来协助A
 这个函数为 `line.kara` 和 `line.furi` 表添加位置信息。它也有可能改变 `line.width` ，因为行宽度可能受假名标注影响而变化。
 
 ## Karaoke skeletons(卡拉OK框架) ##
-A karaoke skeleton is a framework for building karaoke effects in. It
-usually works by writing a couple of functions yourself for handling the
-actual effect work, and these are then called at various times. The actual
-details of what functions you need to write depends on the actual karaoke
-skeleton.
+卡拉OK框架是指帮助你构筑卡拉OK特效的一套框架。你可以在一些自定义函数中使用它，来解决特定的特效问题，框架中的内容会多次被调用。你具体需要写什么样的函数也取决于卡拉OK框架。
 
-### Effect Library  ###
-Main function: `karaskel.use_fx_library_furi(use_furigana, add_macro)`
+### Effect Library(特效库)  ###
+主函数: `karaskel.use_fx_library_furi(use_furigana, add_macro)`
 
-Call the `karaskel.use_fx_library_furi` function to install the Effect
-Library skeleton for this script file. The `script_name` and
-`script_description` globals are used to name the export filter produced.
-If `use_furigana` is true, furigana styles are created and added as needed.
-If `add_macro` is true, a macro is registered in addition to the export
-filter.
+调用 `karaskel.use_fx_library_furi` 函数为当前脚本安装 特效库 框架。`script_name` 和
+`script_description` 全局变量用来命名导出滤镜。 
+如果 `use_furigana` 为真, 则会生成专门的标注假名样式。
+如果 `add_macro` 为真, 则会在导出滤镜处添加宏。
 
 The basic premise of the Effect Library skeleton is that each timed karaoke
 line has a word in its Effect field that describes what effect to apply to
