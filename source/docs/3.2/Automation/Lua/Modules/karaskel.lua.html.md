@@ -119,22 +119,14 @@ Automation 4的核心文件 `karaskel.lua` 内置了许多函数，用来协助A
 如果 `use_furigana` 为真, 则会生成专门的标注假名样式。
 如果 `add_macro` 为真, 则会在导出滤镜处添加宏。
 
-The basic premise of the Effect Library skeleton is that each timed karaoke
-line has a word in its Effect field that describes what effect to apply to
-that line. This makes Effect Library a good choice if you want to use
-several different effects in a single karaoke.
+使用特效库功能的前提是在每一打好K值行的特效栏填写了你希望应用的特效类型（名称）。
+如果你想在一个文件里应用多种卡拉OK效果，这是一个很好的选择。
 
-When Effect Library is invoked, it calls a function named `fx_`_effect_ for
-each Dialogue line in the subtitle file. For example, if the Effect field
-of a dialogue line is _"jump"_, the function named `fx_jump` is called. For
-lines with empty Effect field, the function `fx_none` is called.
+当特效库函数被调用,它会首先为每个对话行调用 _"fx_特效"_ 。举个例子, 如果某个对话行的特效栏填写的是 _"jump"_, 则名为 `fx_jump` 的函数将会被调用。对于特效栏为空的对话行, 函数 `fx_none` 将会被调用。
 
-If an `fx` function does not exist, the original line is left in the subtitle
-file. Otherwise, whether the original line is left depends on the return
-value of the `fx` function, a true return value means the original line is
-kept, a false value means it is made into a Comment line.
+如果指明的 `fx` 函数并不存在，那么原始的行将会被保留。否则，原始行是否存在取决于 `fx` 函数在返回部分的写法。返回真值则意味着保留原始行，否则将会把原始行设置为注释行。
 
-Signature of `fx` functions: `keep = fx_effect(subtitles, meta, styles, line, fxdata)`
+`fx` 函数用法: `keep = fx_effect(subtitles, meta, styles, line, fxdata)`
 
 `fxdata` is the contents of the Effect field after the initial word
 defining the effect to be used. All output of an `fx` function should be
