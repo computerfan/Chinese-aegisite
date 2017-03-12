@@ -1,18 +1,18 @@
-The `clipboard` module supplies functions for reading from and writing to the clipboard.
+`clipboard`模块提供读取和写入剪贴板的函数。
 
-## Usage ##
-Import this module with `clipboard = require 'aegisub.clipboard'`{:.language-lua}.
-
-### clipboard.get() ###
-Synopsis: `text = clipboard.get()`{:.language-lua}
-
-Get the current contents of the clipboard as a string.
-Returns `nil` if the clipboard does not currently contain text or if an error occurs.
+## 使用 ##
+使用`clipboard = require 'aegisub.clipboard'`{:.language-lua}导入此模块。
 
 ### clipboard.get() ###
-Synopsis: `clipboard.set(new_text)`{:.language-lua}
+示例：`text = clipboard.get()`{:.language-lua}
 
-Set the clipboard contents to a string.
-Returns true if the clipboard could be set, and false if an error occurred.
+以字符串形式获取剪贴板的当前内容。
+如果剪贴板当前不包含文本或发生错误，则返回`nil`。
+
+### clipboard.set() ###
+示例：`clipboard.set(new_text)`{:.language-lua}
+
+将剪贴板内容设为指定字符串。
+设定成功将返回true，出错则返回false。
 
 {::template name="automation_navbox" /}

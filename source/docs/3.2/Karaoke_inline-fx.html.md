@@ -1,20 +1,15 @@
-Karaoke inline-fx (inline effects) is a way of marking up [[timed
-karaoke|Timing#karaoketiming]] to assign different effects to different
-parts of a line.
+卡拉OK inline-fx（内联特效）可以用来给[[打过k的时间轴|Timing#ok]]的不同部分分配不同的特效。
 
-By itself, inline-fx markup doesn't do anything, it only has an effect when
-a [[karaoke effect script|Automation]] that understands it is applied to
-the timed karaoke.
+inline-fx标记本身并不会有任何影响，只有当应用可以识别它的[[卡拉ok特效脚本|Automation]]时才会应用于打了k的轴。
 
-## The markup  ##
+## 标记  ##
 Inline-fx tags are (otherwise invalid) ASS override tags of the form
 `\-effectname`, where _effectname_ is the name of the inline-fx defined.
+内联特效标签是一个（无效的）ASS特效标签，格式是`\-特效名`，其中 _特效名_ 是内联特效所定义的。
 
-Like normal override tags, an inline-fx tag affects the syllable it is
-placed in and every following syllable, until the next syllable with an
-inline-fx tag in it.
+和普通特效标签一样，内联特效标签同样只会影响其后的音节，直到下一个内联标签为止。
 
-At the start of each line the inline-fx is reset to nothing.
+一行的开始会重设为无内联特效。
 
 {::template name="examplebox"}
 Here is a timed karaoke line with inline-fx markup:
