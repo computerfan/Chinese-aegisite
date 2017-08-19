@@ -4,6 +4,7 @@ title: ASS标签
 
 {::options toc_levels="2" /}
 
+
 The following is a list of every tag supported by the Advanced Substation Alpha format. This is basically a detailed version of ass-quickref.txt. See the tutorial for an introduction to typesetting, using some basic tags. 
 
 下面列出所有ASS格式支持的标签。这基本上算是ass-quickref.txt的一个详细版本。你可以在本教程手册的[[排版教程|Typesetting_Tutorial]]获取关于使用一些基本标签来排版文本的教程。
@@ -648,7 +649,7 @@ line when no [[position override|ASS_Tags#setposition]] or
 [[movement|ASS_Tags#movement]] is in effect, and otherwise specifies the
 anchor point of positioning and rotation.
 
-选择行的对齐方式。当没有设定 [[位置设定|ASS_Tags#setposition]] 和 [[移动设定|ASS_Tags#movement]] 时，对齐方式决定了行的位置。否则，对齐方式决定了位置设定和移动设定的参考点。
+选择行的对齐方式。如果没有设定 [[位置|ASS_Tags#setposition]] 或 [[移动|ASS_Tags#movement]] ，对齐方式决定了行的位置。如果设定了位置或移动，对齐方式决定了位置和移动的参考点。
 
 
 The `\an` tag uses "numpad" values for the _pos_, ie. the alignment values
