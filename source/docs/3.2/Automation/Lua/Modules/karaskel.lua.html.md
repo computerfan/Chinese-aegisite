@@ -78,7 +78,7 @@ Automation 4的核心文件 `karaskel.lua` 内置了许多函数，用来协助A
 * `line.margin_v` -  `line.margin_t` 的别名。
 * `line.eff_margin_l`, `line.eff_margin_r`, `line.eff_margin_t`, `line.eff_margin_b` 和 `line.eff_margin_v` - 该行的有效边距值。如果某一行对应的值非零，则使用这些值，否则会使用样式管理器中定义的值。
 * `line.halign` - 三种水平对齐方式 `"left"`, `"center"` 或 `"right"`中的一种，是由 `line.styleref.align`派生出来的。
-* `line.valign` - 三种竖直对齐方式 `"top"`, `"middle"` 或 `"bottom"中的一种, 是由 `line.styleref.align`派生出来的。
+* `line.valign` - 三种竖直对齐方式 `"top"`, `"middle"` 或 `"bottom"` 中的一种, 是由 `line.styleref.align`派生出来的。
 * `line.left` - 行左边缘的X坐标，假设定义了对齐，有效边距，并且未检测到重叠。
 * `line.center` - 行水平中点的X坐标，假设定义了对齐，有效边距，并且未检测到重叠。
 * `line.right` - 行右边缘的X坐标，假设定义了对齐，有效边距，并且未检测到重叠。
