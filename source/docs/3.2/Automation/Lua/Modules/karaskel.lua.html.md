@@ -128,14 +128,11 @@ Automation 4的核心文件 `karaskel.lua` 内置了许多函数，用来协助A
 
 `fx` 函数用法: `keep = fx_effect(subtitles, meta, styles, line, fxdata)`
 
-`fxdata` is the contents of the Effect field after the initial word
-defining the effect to be used. All output of an `fx` function should be
-appended to the subtitle file represented by `subtitles`.
+`fxdata` 指的是特效栏中声明特效类型后紧跟的特效名称。 `fx` 函数的所有输出都是 `subtitles` 被处理后添加到字幕文件中的行。
 
-Simplified main function: `karaskel.use_fx_library(add_macro)`
+简化的主函数: `karaskel.use_fx_library(add_macro)`
 
-Identical to the `_furi` variant above, except that the `use_furigana`
-parameter is removed; it is assumed to be false.
+与 `_furi` 变种相同，除了 `use_furigana` 被去除；它被假定为false。
 
 ### Classic Advanced  ###
 Main function: `karaskel.use_classic_adv(use_furigana, add_macro)`
