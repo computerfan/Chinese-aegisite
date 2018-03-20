@@ -76,34 +76,32 @@ r, g, b, a = extract_color("&H7F&")
 {:/}
 
 ### alpha_from_style  ###
-Synopsis: `alphastring = util.alpha_from_style(coloralphastring)`{:.language-lua}
+摘要: `alphastring = util.alpha_from_style(coloralphastring)`{:.language-lua}
 
-Returns the alpha part of a colour string, as an alpha override string, i.e. `&HAA&` format.
-This function is a composition of `extract_color` and `ass_alpha`.
+返回一个颜色字符串的透明度部分，作为一个透明度标签，`&HAA&` 格式。
+这个函数是 `extract_color` 和 `ass_alpha` 的组成部分。
 
 ### color_from_style  ###
-Synopsis: `colorstring = util.color_from_style(coloralphastring)`{:.language-lua}
+摘要: `colorstring = util.color_from_style(coloralphastring)`{:.language-lua}
 
-Returns the colour part of a colour string, as a colour override string, i.e. `&HBBGGRR&` format.
-This function is a composition of `extract_color` and `ass_color`.
+返回一个颜色字符串的颜色部分，作为一个颜色标签， `&HBBGGRR&` 格式。
+这个函数是 `extract_color` 和 `ass_color` 的组成部分。
 
 ### HSV_to_RGB  ###
-Synopsis: `r, g, b = util.HSV_to_RGB(h, s, v)`{:.language-lua}
+摘要: `r, g, b = util.HSV_to_RGB(h, s, v)`{:.language-lua}
 
-Transforms a colour given in Hue, Saturation, Value space into Red, Green, Blue space.
+将输入的色相，饱和度和明度转化为RGB值。
+`h` 是角度定义，范围 0..359，不在范围内的值会被转换回360以内
+ `s` 和 `v` 范围在 0..1 之间。
+无输入范围检查
+输出的 `r`, `g` , `b` 范围是 0..255。
 
-`h` is given in degrees.
-The nominal range is 0..359; values outside this range will be translated into it.
-Input range of `s` and `v` are 0..1.
-These are not range checked.
-Output range of `r`, `g` and `b` are 0..255.
-
-## String functions  ##
-Because the Lua standard `string` library is fairly limited, a few additional helper functions are provided.
-See also [[unicode]].
+## 字符串函数  ##
+因为lua标准的 `string` 库功能十分有限, 这里提供了一些额外的辅助函数。
+可以参见 [[unicode]] 。
 
 ### string.trim  ###
-Synopsis: `outstring = util.trim(instring)`{:.language-lua}
+摘要: `outstring = util.trim(instring)`{:.language-lua}
 
 Removes all space characters at the start and end of the input string, and returns the transformed string.
 
