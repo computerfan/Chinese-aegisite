@@ -9,70 +9,70 @@ Automation 4 Lua include的文件 `utils.lua` 包括了多种不同的辅助函�
 使用 `util = require 'aegisub.util'`{:.language-lua} 来导入这个模块。
 
 ## Table functions  ##
-Duplicating tables in various ways is a common task.
-`util` provides some functions to handle the most common cases.
+以多种方式复制一个table是经常要做的工作之一。
+`util` 提供了一些函数来解决这些问题。
 
 ### copy  ###
-Synopsis: `newtable = util.copy(oldtable)`{:.language-lua}
+摘要: `newtable = util.copy(oldtable)`{:.language-lua}
 
-Makes a shallow copy of the table passed as parameter.
-Shallow here means that it does not dive into contained tables and copy those as well.
-For example, if `oldtable.st` refers to a table, `newtable.st` will refer to the same table, and changes made to `newtable.st` will also be reflected in `oldtable.st` and vice versa.
+制作参数table的浅拷贝。
+浅拷贝意味着它不会访问和复制table中的table。
+举个例子, 如果 `oldtable.st` 指某table, `newtable.st` 指某相同table, 对 `newtable.st`的更改也会反映到 `oldtable.st` 中，反之亦然。
 
 ### deep_copy  ###
-Synopsis: `newtable = util.deep_copy(oldtable)`{:.language-lua}
+摘要: `newtable = util.deep_copy(oldtable)`{:.language-lua}
 
-Makes a deep copy of the table passed as parameter.
-While this function attempts to handle circular references and not do infinite recursion on them, it might not work in all cases.
-You will rarely need to use this function.
-If you think you need to do a deep copy, consider your task an extra time.
+制作参数table的深拷贝。
+虽然这个函数试图处理循环引用而不是对它们进行无限递归，但它可能不适用于所有情况。
+你基本用不到这个函数。
+如果你认为需要进行深拷贝，请考虑任务额外时间。
 
-## Colour functions  ##
-It is often useful to do various transformations on colour data. Several
-functions for this are included.
+## 颜色函数  ##
+这类函数对于不同类型的颜色数据转换来说是十分有用的。
+有以下这些函数
 
 ### ass_color  ###
-Synopsis: `colorstring = util.ass_color(r, g, b)`{:.language-lua}
+摘要: `colorstring = util.ass_color(r, g, b)`{:.language-lua}
 
-Makes an ASS colour string in the form `&HBBGGRR` from the given `r`, `g` and `b` arguments.
+给定 `r`, `g` , `b` 数值，返回ASS的 `&HBBGGRR` 颜色格式字符串。
 
-Warning: The arguments are not checked for range.
-Values outside the 0..255 range will produce garbage output.
+警告:本函数并不含有颜色输入范围检查功能。
+如果你用了0~255之外的数值，返回的是什么鬼就不一定了。
 
 ### ass_alpha  ###
-Synopsis: `alphastring = util.ass_alpha(a)`{:.language-lua}
+摘要: `alphastring = util.ass_alpha(a)`{:.language-lua}
 
-Makes an ASS alpha string in the form `&HAA&` from the given `a` argument.
+给定 `a` 数值，返回ASS的 `&HAA&` 透明度格式字符串。
 
-Does not check input range.
+不具有输入范围检查(0~255)
 
 ### ass_style_color  ###
-Synopsis: `colorstring = util.ass_style_color(r, g, b, a)`{:.language-lua}
+摘要: `colorstring = util.ass_style_color(r, g, b, a)`{:.language-lua}
 
-Makes an ASS colour string suitable for use in Style definitions, i.e. in format `&HAABBGGRR`.
+生成ASS样式使用的颜色格式字符串，也就是`&HAABBGGRR`。
 
-Does not check input range.
+不具有输入范围检查。
 
 ### extract_color  ###
-Synopsis: `r, g, b, a = util.extract_color(colorstring)`{:.language-lua}
+摘要: `r, g, b, a = util.extract_color(colorstring)`{:.language-lua}
 
-Extracts colour components from a colour string. Several formats of colour strings are recognised:
+从一个颜色字符串中导出色值。支持识别以下几种:
 
-* Style definition: `&HAABBGGRR`
-* Inline override: `&HBBGGRR&`
-* Alpha override: `&HAA&`
-* HTML with alpha: `#RRGGBBAA`
+* 样式定义: `&HAABBGGRR`
+* 行内颜色标签: `&HBBGGRR&`
+* 行内透明度标签: `&HAA&`
+* 带透明度的HTML: `#RRGGBBAA`
 
-Note that this function always returns four numbers when passed a valid colour string.
-Unused values (depends on the format of the colour string) are assigned 0 (zero).
-If an unrecognised colour string is passed, `nil` is returned.
+注意，当输入一个有效的颜色字符串，本函数一般会返回四个数值。
+无用的部分会被置0。
+无法是别的的颜色字符串会返回`nil`。
 
 {::template name="examplebox"}
 ~~~ lua
 r, g, b, a = extract_color("&H7F&")
 ~~~
 
-`r`, `g`, and `b` will be 0; `a` will be 127.
+`r`, `g`,  `b` 都是 0; `a` 是 127.
 {:/}
 
 ### alpha_from_style  ###
