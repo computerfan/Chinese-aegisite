@@ -472,14 +472,14 @@ The following screenshots illustrate the effect of rotating on the different axe
 [[img/Fr_sample03.jpg]]
 {:/}
 
-{::template name="tag_def_box" title="文本错切" id="\fax"}
+{::template name="tag_def_box" title="文本剪切变换" id="\fax"}
 \fax<i>&lt;factor&gt;</i>  
 \fay<i>&lt;factor&gt;</i>
 {:/}
 Perform a shearing (perspective distortion) transformation of the text. A
 _factor_ of 0 (zero) means no distortion.
 
-对文本应用一个错切变换。_factor_ 为0即意味着不做变换。
+对文本应用一个剪切变换。_factor_ 为0即意味着不做变换。
 
 Usually _factor_ will be a small number; values outside the range -2 to 2 are
 unlikely to have desireable results.
@@ -490,7 +490,7 @@ Shearing is performed after rotation, on the rotated coordinates. The
 coordinate system used for shearing is not affected by the [[rotation
 origin|ASS_Tags#rotationorigin]].
 
-错切是在旋转之后应用的，以旋转后的坐标系为基准。这个错切用的坐标系不受 [[旋转中心|ASS_Tags#rotationorigin]] 的影响。
+剪切是在旋转之后应用的，以旋转后的坐标系为基准。这个剪切用的坐标系不受 [[旋转中心|ASS_Tags#rotationorigin]] 的影响。
 
 {::template name="examplebox"}
 [[img/shearing.png]]
