@@ -35,48 +35,38 @@ title: 附带的宏
 {:/}
 
 ## Automatic karaoke lead-in  ##
-Automatically join several karaoke-timed lines up timing-wise and add
-appropriate `\k` tags in front of them.
+自动连接选中的卡拉OK行并添加适当的 `\k` 标签。
 
-This macro is designed to help creating karaoke effects, most importantly
-creating transitions and lead-ins for lines. It's well suited for using when
-the karaoke is timed but before applying effects, such as karaoke templates.
+设计这个宏的初衷是为了辅助制作卡拉OK特效，尤其是创作过渡或者入场效果。
+它很适合被用在应用特效之前。
 
-This macro requires at least two lines to be selected and it only works
-sensibly if the start-time of each selected line is larger than the
-start-time of the selected line that comes before it. It changes the timing
-of the selected lines and adds `\k` tags at the start of them except the
-first.
+运行这个宏至少需要选中两行，并且下一行的开始时间要晚于前一行的结束时间。
+它会改变除了第一行以外的开始时间，使得每行中间没有空隙，并且添加重新计算过的 `\k` 标签到第一个音节。
+
 
 {::template name="examplebox"}
-Here's two lines of "tightly" timed karaoke:
+这里是两行“紧密相连的” 卡拉OK行:
 
     Dialogue: 0,0:00:44.46,0:00:46.28,Default,,0000,0000,0000,,{\k15}Ne{\k14}ver {\k14}gon{\k13}na {\k37}give {\k40}you {\k49}up
     Dialogue: 0,0:00:46.57,0:00:48.56,Default,,0000,0000,0000,,{\k13}Ne{\k13}ver {\k13}gon{\k13}na {\k36}let {\k46}you {\k65}down
 
-Both lines start exactly when the first word starts being sung, and they end
-exactly when the last word ends.
+每一行都会随着第一个音节的开始而开始，随着最后一个音节的结束而结束。
 
-Now if the _Automatic karaoke lead-in_ macro is run on these two lines, they
-are changed into this:
+现在如果对这两行应用 _Automatic karaoke lead-in_ 宏，结果会变成这样：
+
 <pre><code>Dialogue: 0,0:00:44.46,<u>0:00:46.28</u>,Default,,0000,0000,0000,,{\k15}Ne{\k14}ver {\k14}gon{\k13}na {\k37}give {\k40}you {\k49}up
 Dialogue: 0,<u>0:00:46.28</u>,0:00:48.56,Default,,0000,0000,0000,,<u>{\k29}</u>{\k13}Ne{\k13}ver {\k13}gon{\k13}na {\k36}let {\k46}you {\k65}down
 </code></pre>
 
-The start-time of the second line is changed so it matches the end-time of
-the first line, and a `\k` tag  is added to the start of the line, to make
-up for the shift otherwise created by this. This effectively creates an
-empty syllable that can be used as a "spacer" to create fade-in and fade-out
-effects.
+第二行的开始时间变成了与第一行结束时间紧邻的情况，并且一个 `\k` 标签被添加到了第二行的开头。
+这个标签对应的空音节我们称之为“间隔”，利用这个部分的时间可以制作入场效果。
 
-The macro also shows this message:
+这个宏执行会显示这条信息:
 
     Smallest inter-line duration: 290 milliseconds
 
-This simply says that the smallest duration between two lines it found, was
-290 milliseconds, or 0.29 seconds, so that's as much time you have to make
-fade-in, fade-out and other transition effects, if you want every
-syllable-highlight to be fully visible.
+简而言之，这是说明相邻两行的间隔时间被确定为
+290 ms, 或 0.29s, 以便于你确定入场退场特效中使用的时间参数等，同时也可以改善字幕的可读性。
 {:/}
 
 ## 整理特效标签  ##
