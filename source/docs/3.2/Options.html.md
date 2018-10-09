@@ -337,7 +337,7 @@ as when editing them.
 
 [[img/preferences-automation.png]]{: class="center"}
 
-**跟路径**
+**根路径**
 : A base directory where you put non-autoloaded automation scripts. Used only
 for saving paths to script files in the subtitles.
 
