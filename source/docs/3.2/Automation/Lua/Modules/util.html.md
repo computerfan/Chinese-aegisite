@@ -141,7 +141,7 @@ r, g, b, a = extract_color("&H7F&")
 
 摘要: `outcolor = util.interpolate_color(t, color1, color2)`{:.language-lua}
 
-在 `color1` 和 `color2` 之间插值 `t` 含义与上文相同。
+在 `color1` 和 `color2` 之间插值， `t` 含义与上文相同。
 `color1`, `color2` 和 `outcolor` 是颜色字符串， `outcolour` 是ASS格式颜色字符串。
 
 ### interpolate_alpha  ###
