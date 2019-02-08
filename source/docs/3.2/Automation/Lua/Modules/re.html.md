@@ -1,43 +1,31 @@
 {::options toc_levels="2,3" /}
 
-The `re` module is a wrapper around boost::regex, intended as a full
-replacement for Lua's built in regular expressions. It has two main advantages
-over Lua's:
+ `re` 模块是封装过的 boost::regex，加入它的意图是为了取代Lua内置的正则表达式。相比Lua内置的正则，它有两个主要优点:
 
-1. Full Unicode support. Lua regular expressions operate on bytes rather than
-    characters, which frequently causes problems with multibyte characters.
-2. A more powerful and flexible syntax. Properly speaking, Lua does not support
-    regular expressions; rather it has a basic pattern matching language that
-    supports a small subset of what can be done with regular expressions.
-    boost::regex, on the other hand, supports perl-compatible regular
-    expressions.
+1. 完整的 Unicode 支持。Lua 正则对字节进行操作，而不是字符，这在我们处理多字节字符时时常引起问题。
+2. 更强大和灵活的表达式。严格地说，Lua 不支持正则表达式；它只是拥有一个较小的模式匹配语言，只能实现正则表达式的部分功能。
+    boost::regex 则完整兼容PRCE标准的正则表达式。
 
-## Usage ##
-Import this module with `re = require 'aegisub.re'`{:.language-lua}.
+## 用法 ##
+使用 `re = require 'aegisub.re'`{:.language-lua} 导入该模块。
 
-See [boost.regex's
+查阅 [boost.regex's
 documentation](http://www.boost.org/doc/libs/1_53_0/libs/regex/doc/html/boost_regex/syntax/perl_syntax.html)
-for information about the regular expression syntax. In general any resources
-on the web that refer to Perl regular expressions or PCRE will apply to
-this module's regular expressions.
+以获取更多有关正则表达式的信息。总地来说，你在互联网上能找到的任何有关PRCE正则表达式的教程都可以作为这个模块的使用参考。
 
 
-### Match Tables ###
-Several of the functions below return Match Tables, which are tables containing
-the following fields:
+### 匹配表 ###
+以下的几个函数会返回匹配表(以表的形式返回匹配)，表的结构如下：
 
 **`str`** (`string`)
-: The text matched by a pattern or capturing expression
+: 匹配到的文本。
 
 **`first`** (`number`)
-: The start index of `str` in the original string which had a regular
-expression applied to it. Note that this index is one-based and is in bytes,
-rather than characters, to match Lua's string indexing.
+: 匹配到的 `str` 在原字符串中首次出现的位置。
+这个位置是基于字节计算的，从1开始记，而不是按字符算，这是为了与Lua的字符串计数相匹配。
 
 **`last`** (`number`)
-: The end index of `str` in the original string which had a regular expression
-applied to it. Note that this index is one-based, inclusive, and is in bytes,
-rather than characters, to match Lua's string indexing.
+: 匹配到的 `str` 在原字符串中最后出现的位置。
 
 {::template name="luabox"}
 >>> re.match("b", "abc")
