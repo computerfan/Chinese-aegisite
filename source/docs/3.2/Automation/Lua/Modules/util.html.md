@@ -65,7 +65,7 @@ Automation 4 Lua include的文件 `utils.lua` 包括了多种不同的辅助函�
 
 注意，当输入一个有效的颜色字符串，本函数一般会返回四个数值。
 无用的部分会被置0。
-无法是别的的颜色字符串会返回`nil`。
+无法识别的的颜色字符串会返回`nil`。
 
 {::template name="examplebox"}
 ~~~ lua
@@ -103,49 +103,50 @@ r, g, b, a = extract_color("&H7F&")
 ### string.trim  ###
 摘要: `outstring = util.trim(instring)`{:.language-lua}
 
-Removes all space characters at the start and end of the input string, and returns the transformed string.
+移除输入字符串中首尾的空格。
 
-Warning: This function is not UTF-8 safe.
-It uses the Lua regex `%s` class to match spaces, which in some legacy encodings will result in it also matching some prefix bytes in UTF-8 encoded text.
+警告: 这个函数和 UTF-8 的兼容性并未完全确认。
+它使用 Lua 的正则 `%s` 类来匹配空格，当遇到一些传统的编码时可能会出现问题。
 
 ### string.headtail  ###
-Synopsis: `head, tail = util.headtail(instring)`{:.language-lua}
+摘要: `head, tail = util.headtail(instring)`{:.language-lua}
 
-Splits a string by first space-sequence into a "head" and a "tail", similar to the handling of linked lists in several functional languages.
+利用字符串中首个空格将其分割成 "头" 和 "尾" 两部分。
 
-If `instring` does not contain any space characters it returns `instring, ""`.
+如果 `instring` 中不含有空格，则会返回 `instring, ""`.
 
 ### string.words  ###
-Synopsis: `for word in util.words(instring) do ... end`{:.language-lua}
+摘要: `for word in util.words(instring) do ... end`{:.language-lua}
 
-Returns an iterator function for use in a `for` loop, to loop over all the words in the string using `string.headtail` semantics.
+返回一个迭代器函数，可以用于 for 循环中，本质是使用 `string.headtail` 多次。
 
-## Numeric functions  ##
-Functions to handle various operations on numbers.
+## 数学函数  ##
+一些用来对数字进行操作的函数。
+
 
 ### clamp  ###
-Synopsis: `outval = util.clamp(inval, min, max)`{:.language-lua}
+摘要: `outval = util.clamp(inval, min, max)`{:.language-lua}
 
-Clamps `inval` to be in range `min`..`max`.
+返回的outval介于min、max之间，若inval小于min，返回min，若大于max，返回max。
+
 
 ### interpolate  ###
-Synopsis: `outval = util.interpolate(t, a, b)`{:.language-lua}
+摘要: `outval = util.interpolate(t, a, b)`{:.language-lua}
 
-Interpolates between `a` and `b`.
-`t` is the time variable in range 0..1.
-Values outside this range are clamped.
+在 `a` 和 `b`之间插值
+`t` 代指倾向a还是b，取值范围0-1。
+如果取值到了[a,b]范围外，则会被clamp。
 
 ### interpolate_color  ###
 
-Synopsis: `outcolor = util.interpolate_color(t, color1, color2)`{:.language-lua}
+摘要: `outcolor = util.interpolate_color(t, color1, color2)`{:.language-lua}
 
-Interpolate between `color1` and `color2` with `t` as time variable in range 0..1.
-`color1`, `color2` and `outcolor` are colour strings, and `outcolour` will be in colour override format.
+在 `color1` 和 `color2` 之间插值 `t` 含义与上文相同。
+`color1`, `color2` 和 `outcolor` 是颜色字符串， `outcolour` 是ASS格式颜色字符串。
 
 ### interpolate_alpha  ###
-Synopsis: `outalpha = util.interpolate_alpha(t, alpha1, alpha2)`{:.language-lua}
+摘要: `outalpha = util.interpolate_alpha(t, alpha1, alpha2)`{:.language-lua}
 
-Similar to `interpolate_color`, but interpolates alpha values instead.
-Also works on colour strings, and will return an alpha override string.
+和 `interpolate_color` 相似，但是对象是透明度字符串。
 
 {::template name="automation_navbox" /}
