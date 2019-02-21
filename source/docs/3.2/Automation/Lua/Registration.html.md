@@ -1,96 +1,69 @@
-**Registration** covers presenting your [[Automation 4 Lua|Lua]]
-script to Aegisub, providing information about it and registering what
-_features_ it provides.
+**注册** 涵盖了以下内容：使你自己编写的Lua脚本[[Automation 4 Lua|Lua]]出现在Aegisub中、
+提供和脚本有关的信息、该脚本提供了什么样的 _特性_。
 
-## Features explained  ##
+## 有关特性(Feature)的解释  ##
 
-One of the primary concepts in Automation 4 is the _feature_. A feature is
-something a script makes available for Aegisub to call back in response to a
-user action.
+Automation 4 中的一个最基础的概念就是 _特性_ 。特性决定了Aegisub如何响应用户的动作去调用脚本。
 
-A feature is not a plain callback. Rather, it's usually a set of several
-callback functions as well as some information on how they should be
-presented to the user in the GUI.
+特性不是简单的回调。它通常是一组几个回调函数,以及如何在GUI中向用户呈现它们的一些信息。
 
-One feature is the **macro**. A macro is presented as an item in the
-Automation menu. A macro has a name (the title show in the menu), a
-description (the text shown on the status bar when hovering over the menu
-item), a processing function (the function called when the user selects the
-menu item) and an optional validation function (determines whether the macro
-can even do any work in the current state.)
+一种特性的类型是 **macro** (宏)，宏会被作为一个小项展示在自动化菜单中，它有一个名字(即菜单中显示的内容)，
+一段描述(当鼠标悬停在该项时，状态栏显示的说明文本)，一个处理函数(当用户点按该项时执行的函数)
+还有一个可选的有效性确认函数(决定这个宏在当前状态下是否可以运行，如：卡拉OK模板执行器就具有这个属性，如果检测不到template行，该项为灰色不可用)
 
-Another feature is the **export filter**. The export filter is presented in
-the [[Export|Exporting]] dialogue and can be applied during an export
-operation. Export filters also have a name, description, processing function
-and then an optional configuration panel provider. The configuration panel
-provider is a function that returns a configuration dialogue definition
-structure which will be displayed in the Export dialogue when the export
-filter is enabled. The settings filled into the configuration panel are
-passed to the processing function when it is run.
+另外一种特性是 **export filter**(导出滤镜)。导出滤镜会被展示在[[Export|Exporting]] 对话框中，在进行导出操作时被应用
+导出滤镜也有名字、描述、处理函数，同时提供了配置面板函数。使用配置面板函数可以返回一个配置面板对话框，
+在执行导出滤镜的时候会被展示给用户，在配置面板中输入的参数和配置可以传递给处理函数作为参数。
 
-## Script information globals  ##
+## 全局脚本信息变量  ##
 
-A script can set a few global variables to provide metadata about the script
-to Aegisub. The information given with these variables are displayed in the
-[[Automation Manager|Automation/Manager]] dialogue and the Script Info dialogue.
+一个脚本中，可以设置一些全局变量，来给Aegisub提供一些元数据。
+这些全局变量会被展示在[[Automation Manager|Automation/Manager]] 对话框中和脚本信息对话框中。
 
-* **script_name** (string) - Name of the script. This should be short.
-* **script_description** (string) - Description of the purpose of the
-  script. Shouldn't be too long either.
-* **script_version** (string or number) - Version number/name of the script.
-  This is freeform; no specific meaning is assigned to this.
-* **script_author** (string) - Author credits for the script.
+* **script_name** (脚本名，字符串) - 脚本的名称，应尽量简洁
+* **script_description** (脚本描述，字符串) - 描述该脚本可以达成什么目的，也不建议太长。
+* **script_version** (脚本版本号，字符串或数字) - 脚本的版本号
+* **script_author** (脚本作者，字符串) - 脚本作者信息
 
-All of these are optional; a script does not have to provide any of these.
-If no script name is given, the file name is used instead for display
-purposes.
+上述的变量均为可选项，即使一个脚本头部没有定义这些变量，Aegisub也会调取文件名来显示。
 
-## Registration functions  ##
+## 注册函数  ##
 
-The registration functions are the functions provided by Automation 4 Lua
-you can call to make a feature available to Aegisub. You will usually call
-these in the top level, at the very bottom of your script.
+注册函数是指一些Automation 4 提供的现成 Lua 函数，可以方便你把一项特性变为Aegisub可用的形式
+你经常会在顶部或者底部调用它。
 
 ### aegisub.register_macro  ###
 
-Synopsis: `aegisub.register_macro(name, description, processing_function, validation_function, is_active_function)`
+摘要: `aegisub.register_macro(name, description, processing_function, validation_function, is_active_function)`
 
-Register a macro feature.
+将脚本注册成为一个具有marco(宏)特性的项。
 
-* **name** (string) - The name displayed on the Automation menu. This should
-  be very short, try three words or less, and should be in command
-  tense.
+* **name** (名称，字符串) - 自动化 菜单中显示出来的名字。尽量简洁。
 
-  If forward slashes (/) are included in the name, the name will be
-  split on the slash, with the portion before the slash used as the name
-  of the submenu to place the macro in. For example, if you register a
-  macro named "Foo/Bar" and a macro named "Foo/Baz", the automation menu
-  will have a submenu named "Foo" with "Bar" and "Baz" entries.
+  如果名字中有向前斜杠(/)，名字会被斜杠分开，斜杠后的内容在自动化菜单中表现为子项。
+  例如，如果你注册了宏 "Foo/Bar" 和 "Foo/Baz"，自动化菜单中， "Foo" 下会有 "Bar" 和 "Baz" 两个子项。
 
-  Menus can be nested to whatever depth is supported by the OS, but
-  nesting more than one level deep is unlikely to be a good idea.
-* **description** (string) - The description displayed on the status bar
-  when the user hovers the mouse over the menu item. This should be a
-  concise description of what the macro does. Try to keep it at most 60
-  characters.
-* **processing_function** (function) - The function that is called when the
-  user selects the menu item. This must be a function with the [[macro
-  processing function API|Automation/Lua/Registration#macroprocessingfunction]].
-* **validation_function** (function, optional) - This function is called to
-  determine whether the menu item should be available to the user or not.
-  (Grayed out or not.) If no validation function is provided the macro is
-  always available. This function must follow the [[macro validation
-  function API|Automation/Lua/Registration#macrovalidationfunction]].
-* **is_active_function** (function, optional) - This function is called to
-  determine whether the menu item should be shown with a check mark next to it.
-  If no function is provided the macro is never checked. This function uses the
-  same API as validation functions, and all of the same caveats apply.
+  菜单可以支持多级的嵌套，不过多级嵌套不是什么好主意
+  
+* **description** (描述，字符串) - 当鼠标悬停在该项时，状态栏显示的说明文本。
+  建议这部分写的简明直接，描述清楚该脚本是做什么的。
+  
+* **processing_function** (处理函数，函数) - 当用户点击了这项时，调用的处理函数 [[macro
+  processing function API|Automation/Lua/Registration#macroprocessingfunction]].。
+  
+* **validation_function** (有效性检测函数，函数, 可选) - 这个函数被用来检测当前项是否可用。
+  (灰色还是正常)。如果不设置该函数，宏则一直处于可用状态。
+  这个函数遵循 [[macro validation
+  function API|Automation/Lua/Registration#macrovalidationfunction]] 中的说明。
+  
+* **is_active_function** (活动检测函数，函数, 可选) - 这个函数会在当前可用项的左侧显示一个对勾。
+规则同有效检测函数
 
 ### aegisub.register_filter  ###
 
-Synopsis: `aegisub.register_filter(name, description, priority, processing_function, configuration_panel_provider)`
+摘要: `aegisub.register_filter(name, description, priority, processing_function, configuration_panel_provider)`
 
-Register an export filter feature.
+将脚本注册成为一个具有fitler(滤镜)特性的项。
 
 * **name** (string) - The name displayed in the export filters list. The
   name should be rather short.
