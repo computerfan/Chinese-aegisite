@@ -65,30 +65,22 @@ Automation 4 中的一个最基础的概念就是 _特性_ 。特性决定了Aeg
 
 将脚本注册成为一个具有fitler(滤镜)特性的项。
 
-* **name** (string) - The name displayed in the export filters list. The
-  name should be rather short.
-* **description** (string) - The description displayed in the description
-  box when the user highlights the export filter in the Export dialogue.
-* **priority** (number) - Determines the initial ordering of export filter
-  application. Filters with higher priority are applied earlier than filters
-  with lower priority. The user can change the filter application order in
-  the Export dialogue. Priorities of the Aegisub built in export filters:
+* **name** (名称，字符串) - 在 导出滤镜 列表中呈现的名称，应尽可能简洁。
+* **description** (描述，字符串) - 当用户选中该导出滤镜时，在描述框中显示的描述文字。
+* **priority** (优先级，数字) - 决定导出滤镜的应用顺序。高优先级的滤镜会被优先应用。
+  用户可以在 导出 对话框中修改顺序。
+  Aegisub内置导出滤镜的优先级顺序:
 
-  * Transform Framerate = 1000 (karaoke effects should have higher priority
-    than this)
-  * Clean Script Info = 0 (your script might depend on the information
-    cleaned by this)
-  * Fix Styles = -5000 (should almost always run last)
+  * 帧率转换 = 1000 (卡拉OK效果应该比这个有更高的优先级)
+  * 清除脚本信息 = 0 (你的脚本可能依赖于这个脚本会清理掉的信息，所以它最后被应用)
+  * 修复样式 = -5000 (一般总是最后运行)
 
-* **processing_function** (function) - The function that is called when the
-  user initiates the export operation. This must be a function with the
-  [[export filter processing function
-  API|Automation/Lua/Registration#exportfilterprocessingfunction]].
-* **configuration_panel_provider** (function, optional) - A function that
-  provides a configuration panel for the export filter. If this function is
-  not provided the export filter will not have a configuration panel. This
-  function must follow the [[export filter configuration panel provider
-  API|Automation/Lua/Registration#exportfilterconfigurationpanelprovider]].
+* **processing_function** (处理函数，函数) - 当用户执行导出操作时调用的处理函数。
+  这个函数需要符合 [[export filter processing function
+  API|Automation/Lua/Registration#exportfilterprocessingfunction]]的要求。
+* **configuration_panel_provider** (配置面板函数，函数，可选) - 为导出滤镜提供了配置面板的函数
+  如果不写这个函数，导出滤镜不会具有配置面板。需要遵循 [[export filter configuration panel provider
+  API|Automation/Lua/Registration#exportfilterconfigurationpanelprovider]] 的要求。
 
 ## Feature callback functions  ##
 
