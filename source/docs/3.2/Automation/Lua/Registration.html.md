@@ -63,7 +63,7 @@ Automation 4 中的一个最基础的概念就是 _特性_ 。特性决定了Aeg
 
 摘要: `aegisub.register_filter(name, description, priority, processing_function, configuration_panel_provider)`
 
-将脚本注册成为一个具有fitler(滤镜)特性的项。
+将脚本注册成为一个具有filter(滤镜)特性的项。
 
 * **name** (名称，字符串) - 在 导出滤镜 列表中呈现的名称，应尽可能简洁。
 * **description** (描述，字符串) - 当用户选中该导出滤镜时，在描述框中显示的描述文字。
