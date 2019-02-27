@@ -1,3 +1,6 @@
+---
+title: 杂项API
+---
 {::options toc_levels="2,3" /}
 
 This page documents **miscellaneous APIs useful for working with

@@ -1,3 +1,6 @@
+---
+title: 对话框
+---
 {::options toc_levels="2,3" /}
 
 These functions are used to display dialogs for the user to interact with.

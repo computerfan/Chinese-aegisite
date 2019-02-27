@@ -1,3 +1,6 @@
+---
+title: 进度报告
+---
 There functions are used to report various status and progress back to the GUI
 while a script is running.
 

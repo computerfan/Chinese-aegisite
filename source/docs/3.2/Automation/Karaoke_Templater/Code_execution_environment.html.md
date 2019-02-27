@@ -1,3 +1,5 @@
+---
+---
 暂时未翻译，欲了解常用函数请先移步到几年菊苣的帖子：
 http://tcax.org/forum.php?mod=viewthread&tid=1131
 

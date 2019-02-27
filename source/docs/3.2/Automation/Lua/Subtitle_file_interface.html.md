@@ -1,3 +1,6 @@
+---
+title: 字幕文件接口
+---
 This page describes the **subtitle file interface** use in Automation 4 Lua
 scripts to manipulate subtitle files.
 
