@@ -11,7 +11,7 @@ module TocReader
     def warning(text)
     end
 
-    def handle_extension(name, opts, body, type)
+    def handle_extension(name, opts, body, type, line_no = nil)
       case name
       when 'type'
         @warnings[:types] << opts['name']

@@ -72,7 +72,7 @@ module MarkdownExtensions
       el
     end
 
-    def handle_extension(name, opts, body, type)
+    def handle_extension(name, opts, body, type, line_no = nil)
       case name
       when 'template'
         template_name = opts.delete 'name'

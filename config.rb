@@ -35,8 +35,6 @@ set :markdown_engine, :kramdown
 set :markdown,
   input: 'WikiKramdown',
   toc_levels: []
-set :haml,
-  ugly: true
 
 activate :syntax
 

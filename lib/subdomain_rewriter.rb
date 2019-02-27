@@ -13,7 +13,7 @@ class SubdomainRewriter < Middleman::Extension
     def call(env)
       status, headers, response = @rack_app.call(env)
 
-      if @middleman_app.full_path(env['PATH_INFO']) =~ /(^\/$)|(\.(html|css|js)$)/
+      if ::Middleman::Util.full_path(env['PATH_INFO'], @middleman_app) =~ /(^\/$)|(\.(html|css|js)$)/
         body = ::Middleman::Util.extract_response_text(response)
         if body
           body = body.gsub(/((?:href|src|link)=[\'\"])\/(static|docs|update)\//) do |match|
