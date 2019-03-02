@@ -16,8 +16,7 @@ Most Automation 4 Lua feature functions are passed a **subtitles object** when
 called. This object is used to obtain data from and manipulate the subtitles
 the feature is being applied on.
 
-**subtitles对象**会在多数基于 Automation 4 Lua 的函数在被调用时被传入。此对象用于
-在应用功能时获得相应数据并操作字幕文件。
+**subtitles对象**会在多数基于 Automation 4 Lua 的函数在被调用时被传入。此对象用于在应用功能时获得相应数据并操作字幕文件。
 
 A subtitles object can have two special properties depending on the context it
 is created for:
@@ -39,15 +38,13 @@ because this would be outside user expectations.
 functions|Automation/Lua/Registration#macroprocessingfunction]] can set undo
 points, as it makes no sense to do so at any other time.
 
-仅有[[宏处理函数|Automation/Lua/Registration#macro-processing-function]]可设置撤销点，
-因为在其他任何时候设置没有意义。
+仅有[[宏处理函数|Automation/Lua/Registration#macro-processing-function]]可设置撤销点，因为在其他任何时候设置没有意义。
 
 
 To allow the most flexibility, the subtitles object represents a complete ASS
 format file, line by line, including all meta-lines such as section headers.
 
-为提供最大的灵活性，subtitles 对象可表示完整的ASS格式文件的每一行，包括meta行的
-内容，例如每个section的标题。
+为提供最大的灵活性，subtitles 对象可表示完整的ASS格式文件的每一行，包括meta行的内容，例如每个section的标题。
 
 The subtitles object supports the following operations:
 
@@ -72,7 +69,7 @@ These operations are described in detail below. In all operation synopses and
 examples, `subtitles` is used for name of the subtitles object being operated
 on.
 
-下面会详细描述这些操作。在所有操作摘要及示例中，`subtitles`是正在操作的 subtitles 
+下面会详细描述这些操作。在所有操作摘要及示例中，`subtitles`是正在操作的 subtitles
 对象的名称。
 
 ### 获取总行数  ###
@@ -86,8 +83,7 @@ currently. This number only changes by using the other operations on the
 subtitle object. It cannot change spontaneously during the execution of a
 script.
 
-此操作可获取当前字幕文件中的总行数。此数字仅会在对 subtitle 对象使用其他操作时更改，
-它不会在执行脚本时自发更改。
+此操作可获取当前字幕文件中的总行数。此数字仅会在对 subtitle 对象使用其他操作时更改，它不会在执行脚本时自发更改。
 
 Note that this is not a constant-time lookup, but lua does cache the value if
 used in `for i = 1, #subs`.
@@ -129,9 +125,8 @@ used to optimise for sequential access. It is faster to access a line with an
 index close to the one you last accessed than to access one further away. It is
 always fast to access lines near the beginning or end of the file.
 
-Aegisub内部将字幕文件存储为一个链表，这意味着随机访问慢，但顺序访问快。虽然 Automation 4 Lua 
-将 subtitles 表示为数组，但它内部维护着一个用于优化顺序访问的指针。访问索引接近上次访问的行
-会比访问原离的行更快。访问文件开头或结尾附近的行时总会很快。
+Aegisub内部将字幕文件存储为一个链表，这意味着随机访问慢，但顺序访问快。虽然 Automation 4 Lua
+将 subtitles 表示为数组，但它内部维护着一个用于优化顺序访问的指针。访问索引接近上次访问的行会比访问远离的行更快。访问文件开头或结尾附近的行时总会很快。
 
 ### 附加行  ###
 摘要：
@@ -145,8 +140,7 @@ file. If the section does not exist, it will be created. In the first syntax, it
 is the number 0 (zero) used for index. (Setting index 0 causes an append
 operation.)
 
-附加一行或多行至字幕文件指定的section末尾。如果相应section不存在则会被创建。在第
-一种写法里，数字0（零）被用作索引。（设置索引为0即为附加操作。）
+附加一行或多行至字幕文件指定的section末尾。如果相应section不存在则会被创建。在第一种写法里，数字0（零）被用作索引。（设置索引为0即为附加操作。）
 
 The third syntax supports appending multiple lines with one single operation.
 
