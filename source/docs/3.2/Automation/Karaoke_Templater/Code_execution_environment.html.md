@@ -1,66 +1,32 @@
 ---
 ---
-暂时未翻译，欲了解常用函数请先移步到几年菊苣的帖子：
-http://tcax.org/forum.php?mod=viewthread&tid=1131
 
-The Lua code in code blocks and on code lines is run in a separate global
-environment such that it won't accidentally disturb the main script
-function.
 
-在code区和code行的Lua代码被运行在一个隔离的全局环境，这让它不会意外的影响到主脚本函数。
 
-You can store your own data in this environment for use later, for example
-pre-compute some values on code-lines and later insert them using code
-blocks, but it also contains several pre-defined variables and functions
-designed to make it easier writing effect templates.
+在code区和code行的Lua代码运行在一个隔离的全局环境，这让它们不会意外地影响到主脚本函数。
 
-为了后期使用，你可以把你的数据存放到这个环境里，例如先在code行预算一下一些数值，然后后期再用code区把它们添加进去。但是它也可以包含许多预先定义的变量和函数，它们可以让特效模板书写起更加方便。
+为了后期使用，你可以把你的数据存放到这个环境里，例如先在code行预先计算一些数值，然后后期再用code区把它们添加进模板。
+这个环境也可以包含许多预先定义的变量和函数，它们可以让特效模板书写起更加方便。
 
-It's important to understand that the contents of code execution
-environment and the
-[[inline-variables|Automation/Karaoke_Templater/Inline_variables]]
-($-variables) are not related. You cannot change an inline-variable by
-changing something in the code execution environment nor can you add new
-ones. However, you can create and re-define the contents of the code
-execution environment.
-
-要知道，代码执行环境的内容和[[内联变量|Automation/Karaoke_Templater/Inline_variables]]是没有什么关系的，这很重要。你不能通过改变代码执行环境里面的东西来改变一个内联变量，当然，也不能添加新的内联变量。然而，你可以创造并且重新定义代码执行环境里面的内容。
+要知道，代码执行环境的内容和[[内联变量|Automation/Karaoke_Templater/Inline_variables]]是没有什么关系的，这一点很重要。你不能通过改变代码执行环境里面的东西来改变一个内联变量的值；当然，你也不能添加新的内联变量。然而，你可以创造并且重新定义代码执行环境里面的内容。
 
 ## Line and syllable information  ##
 
 ## 行和音节的信息 ##
 
-The code execution environment contains a few variables pointing to the
-current line and syllable structure being processed, as well as some more
-supporting tables. These are just references to the structures produced by
-[[karaskel|Automation/Lua/Modules/karaskel.lua#datastructures]] and are not
-modified in any way.
+代码执行环境包含一些指向当正在处理的行和音节结构的变量，这些变量就是把 [[karaskel|Automation/Lua/Modules/karaskel.lua#datastructures]] 中的数据原封不动地拿了出来。.
 
-You should treat all of these except `line` as read-only. If you change the
-other ones, the kara-templater script might start misbehaving.
+你应该将除了 `line` 以外的部分作为只读的信息进行处理。如果你改变了其中某些变量的值，卡拉OK模板执行器脚本可能会无法正确工作。
 
-* **line** - The line currently being produced. Changing this will affect
-  the resulting line in the file. See the **[[reference for dialogue line
-  tables|Automation/Lua/Modules/karaskel.lua#dialoguelinetable]]**.
-* **orgline** - The original line. This is the source line the current
-  syllable is located on.
-* **syl** - The current syllable structure. If the current template is a
-  _furi_ template, it's the current furigana syllable. If the current
-  template has one or both of the _char_ or _multi_ modifiers, this is a
-  pseudo-syllable structure, a copy of the original syllable structure with
-  several values changed to look like the current part of the syllable
-  being processed. Also see the **[[reference for syllable
+* **line** - 当前正在处理的行。改变它会引起文件中的行变化。具体请查看 **[[reference for dialogue line
+  tables|Automation/Lua/Modules/karaskel.lua#dialoguelinetable]]**。
+* **orgline** - 原始行。当前处理的音节位于的原始行。
+* **syl** - 当前处理音节的结构。如果当前执行的模板是一个 _furi_ 类型的模板，那么获取到的则是注音假名音节。如果当前模板带有 _char_ 或者 _multi_ 修饰语，这是一个伪音节结构，具体可以查看 **[[reference for syllable
   tables|Automation/Lua/Modules/karaskel.lua#karaokeandfuriganasyllabletables]]**.
-* **basesyl** - Usually the same as `syl`, except when the template has the
-  _char_ or _multi_ modifier, then this is the original syllable. (If `syl
-  == basesyl` is true, then the current template is neither _char_ nor
-  _multi_.)
-* **meta** - Contains various metadata about the script, namely the
-  contents of the _Script Info_ section. Most importantly, it has the
-  `res_x` and `res_y` fields describing the script resolution.
+* **basesyl** - 一般情况下和 `syl` 相同，在模板含有 _char_ 或 _multi_ 修饰语时，它将会是原始音节 (如果 `syl == basesyl` 为真，那么当前模板行既不是 _char_ 也不是 _multi_)
+* **meta** - 包含着多种脚本相关的元数据，名义上是 _Script Info_ 的内容。最为重要的是它含有 `res_x` 和 `res_y` ，来表示脚本分辨率。
 
-All of these variables are reset to `nil` whenever processing starts for a
-new line, except `meta`. They are then set to the relevant value whenever
+在处理新一行之前，上述所有变量(除了 `meta` )都会被重设为 `nil` 。They are then set to the relevant value whenever
 processing hits a new stage. This means that, for example _pre-line_
 templates only has `line` and `orgline` set and both `syl` and `basesyl`
 are `nil`. In _code once_ templates, all of the variables except `meta` are
