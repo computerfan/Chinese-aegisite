@@ -26,43 +26,31 @@
 * **basesyl** - 一般情况下和 `syl` 相同，在模板含有 _char_ 或 _multi_ 修饰语时，它将会是原始音节 (如果 `syl == basesyl` 为真，那么当前模板行既不是 _char_ 也不是 _multi_)
 * **meta** - 包含着多种脚本相关的元数据，名义上是 _Script Info_ 的内容。最为重要的是它含有 `res_x` 和 `res_y` ，来表示脚本分辨率。
 
-在处理新一行之前，上述所有变量(除了 `meta` )都会被重设为 `nil` 。They are then set to the relevant value whenever
-processing hits a new stage. This means that, for example _pre-line_
-templates only has `line` and `orgline` set and both `syl` and `basesyl`
-are `nil`. In _code once_ templates, all of the variables except `meta` are
-`nil`.
+在处理新一行之前，上述所有变量(除了 `meta` )都会被重设为 `nil` 。当处理进入新的一个阶段，它们会被赋予相关的值。
+这意味着，在像 _pre-line_ 这样的模板中只存在 `line` 和 `orgline` ，而其中的 `syl` 和 `basesyl`
+都是 `nil`。在 _code once_ 模板中，除了 `meta` 之外的所有变量都是 `nil`。
 
-## Standard libraries and related things  ##
-Both the [**string**](http://www.lua.org/manual/5.1/manual.html#5.4) and
-[**math**](http://www.lua.org/manual/5.1/manual.html#5.6) Lua standard
-libraries are imported into the execution environment, as they are
-generally useful.
+## 标准库及其相关  ##
+ [**string库**](http://www.lua.org/manual/5.2/manual.html#6.4) 和
+[**math库**](http://www.lua.org/manual/5.2/manual.html#6.6) 这两个 Lua 标准库已经被导入到了执行环境中，因为它们十分常用。
 
-You can also access the main execution environment of the kara-templater
-script itself using the **`_G`** (underscore capital-G) variable and
-through that access the rest of the Lua standard library and any [[loaded
-modules|Automation/Lua/Modules]]. For example, `_G.table.sort` refers to
-the regular `table.sort` function. See the [Lua 5.1
-manual](http://www.lua.org/manual/5.1/manual.html#5) for details on the
-available libraries.
+通过使用 **`_G`** (下划线+大写G)，你也可以访问到 kara-templater 的主要执行环境，和其余的 Lua 标准库 [[loaded
+modules|Automation/Lua/Modules]]。比如， `_G.table.sort` 实际上调用的是 `table.sort` 函数。查看 [Lua 5.2
+手册](http://www.lua.org/manual/5.2/manual.html#6) 来获取更多有关 Lua 标准库的信息。
 
-For backwards compatibility, several of the included modules
+为了向后兼容，
 ([[karaskel.lua|Automation/Lua/Modules/karaskel.lua]],
-[[unicode.lua|Automation/Lua/Modules/unicode]] and
-[[utils.lua|Automation/Lua/Modules/util]]) are automatically loaded
-and will be accessible via `_G` by default. All others must be explicitly
-`require`d on a code line.
+[[unicode.lua|Automation/Lua/Modules/unicode]] 和
+[[utils.lua|Automation/Lua/Modules/util]]) 会被自动载入环境，且可通过 `_G` 访问。其余所有的模块/库需要通过单独在 code 行使用 `require` 来导入。
 
-There is also the self-reference **`tenv`** variable which refers to the
-code execution environment itself. This means that `tenv.tenv == tenv` is
-true.
+另有自指变量 **`tenv`** 来指向执行环境本身。这意味着 `tenv.tenv == tenv` 会得到 true 的值。
 
-## Utility functions  ##
-These functions help do more complex modifications of the output line (the
-`line` variable) and are unavoidable when creating complex effects.
+## 常用函数  ##
+这些函数可以帮助我们对输出的行做更复杂的修饰。 (
+`line` ) 也不可避免地使得结果变得复杂。
 
 ### retime  ###
-Synopsis: `retime(mode, startadjust, endadjust)`
+摘要: `retime(mode, startadjust, endadjust)`
 
 [[img/Auto4-kara-templater-retime-explanation.png]]
 
