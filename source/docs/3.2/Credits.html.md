@@ -7,19 +7,19 @@ title: 贡献者名单
 Aegisub 最初由 Rodrigo Braz Monteiro 所编写，Niels Martin Hansen 在此过程中也做出了重要贡献。开发工作在 2008 年由 Monteiro 主导，2010 年由 Hansen 接替，2011 年以后则由 Thomas Goyne 负责。
 
 ## 主程序 ##
-* Main Programmers:
+* 主要开发者：
   * **Rodrigo Braz Monteiro** (ArchMage ZeratuL) - Lead developer, video system, audio system, subtitles I/O, tools
   * **Niels Martin Hansen** (jfs) - Automation, Lua automation, audio system, tools
   * **Thomas Goyne (Plorkyeran)** - Lead developer for 3.0 onwards.
 
-* Staff Contributors:
+* 开发组成员：
   * **Karl Blomster** (TheFluff) - General code, FFmpegSource video provider
   * **Fredrik Mellbin** (Myrsloik) - FFmpegSource and Avisynth-related code
   * **Amar Takhar** (verm) - New unix build system
   * **David Lamparter** (equinox) - Unix port
   * **Alysson Souza e Silva** (demi_alucard) - General code
 
-* Other contributors:
+* 其他贡献者：
   * **Dan Donovan** (Dansolo) - Miscellaneous tools
   * **Patryk Pomykalski** (Pomyk) - Miscellaneous patching
   * **ai-chan** - ASSDraw3
@@ -35,58 +35,58 @@ Aegisub 最初由 Rodrigo Braz Monteiro 所编写，Niels Martin Hansen 在此�
   * **nodame** - General patches
 
 ## 安装程序 ##
-* 2.x:
+* 2.x：
   * **Niels Martin Hansen** (jfs)
   * **Fredrik Mellbin** (Myrsloik)
   * **Rodrigo Braz Monteiro** (ArchMage ZeratuL)
 
-* 早期:
+* 早期：
   * movax
 
 ## 用户手册 ##
-* 3.x:
+* 3.x：
   * **Thomas Goyne (Plorkyeran)**
 
-* 2.x:
+* 2.x：
   * **Karl Blomster** (TheFluff)
   * **Niels Martin Hansen** (jfs)
   * **Rodrigo Braz Monteiro** (ArchMage ZeratuL)  
   
-* 早期:
+* 早期：
   * Motoko-chan
   * Kobi
   * movax
   * Jcubed
   
-* 3.2 手册中文翻译:
+* 3.2 手册中文翻译：
   * Vmoe字幕组
 
 ## 内容托管 ##
-* 当前:
+* 当前：
   * **DeathWolf**: SVN repository for versions 2.1.2+
   * **Sigurd Tao Lyngse** (Bot1): Forums and Main Wiki
   * **Niels Martin Hansen** (jfs): Bug Tracker
   * **Marcello Bastéa-Forte**: Documentation Wiki
   * **Rodrigo Braz Monteiro** (ArchMage ZeratuL): Domain administration
 
-* 早期:
+* 早期：
   * **David Lamparter** (equinox): SVN repository for versions 2.00 - 2.1.2
   * BerliOS: SVN repository for version 1.10
   * Mentar: SVN repository up to version 1.09
   * Bot1: Bug Tracker
 
 ## 本地化 ##
-* 2.00 翻译:
+* 2.00 翻译：
   * ArchMage ZeratuL: Brazilian Portuguese
   * Ereza: Catalan
   * Yuri: Hungarian
   * Hiroshi: Japanese
   * Jeroi: Finnish
 
-* 1.11 翻译:
+* 1.11 翻译：
   * Karasu: Traditional Chinese
 
-* 1.10 翻译:
+* 1.10 翻译：
   * TechNiko: French
   * Crysral: French
   * thrash-sensei: Russian

@@ -36,5 +36,5 @@ title: 教程
 * 链接：[malakith.net](http://www.malakith.net/amz/blah/screencast/%5bAegisub%5d_Visual_Typesetting_Tutorial_%5b8B24834E%5d.mkv)
 
 ## 文字教程 ##
-* [[卡拉OK计时|Karaoke_Timing_Tutorial]] — 输入歌曲的歌词并为其添加时间码（K值）
+* [[卡拉OK计时|Karaoke_Timing_Tutorial]] — 输入歌曲的歌词并为其添加时间码（K值）。
 * [[卡拉OK模版|Automation/Karaoke_Templater]]（待完善）— 通过简单的方式为卡拉OK添加特效，从最基础的效果到非常高级的效果均有涉及。
