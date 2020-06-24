@@ -13,7 +13,7 @@ title: 主页
 **常见任务：**
 
 * [[用已翻译的文本制作音频时间轴|Audio]]
-* [[对字幕进行简单的排版|Visual_Typesetting]]
+* [[对字幕进行简单的排版|Tutorials#section-3]]
 * [[将完成的字幕附到视频上|Attaching_subtitles_to_video]]（用于观看或发布）
 
 ^
@@ -23,5 +23,5 @@ title: 主页
 
 ^
 
-* [[为歌曲制作卡拉OK时间轴|Tutorials#karaoketiming]]
+* [[为歌曲制作卡拉OK时间轴|Tutorials#ok]]
 * [[创作华丽的卡拉OK特效字幕|Automation/Karaoke_Templater/Tutorial_1]]

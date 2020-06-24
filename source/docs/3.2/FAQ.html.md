@@ -28,8 +28,8 @@ Aegisub 的常见疑问小整合——大多是其他页面没有涉及的问题
 
 ### 哪里可以获取更多的信息与帮助？ ###
 
-对于 Aegisub 相关的问题，[论坛](http://forums.aegisub.org) 和 [IRC 频道](irc://irc.rizon.net/aegisub) 都是适合提问的地方。此外，Aegisub 的 [开发 wiki](http://devel.aegisub.org) 与论坛中还会有一些未收录在手册中的、比较生僻冷门的内容。至于与视频相关的一般问题，可以到 [Doom9.org](http://www.doom9.org) 以及 [它的论坛](http://forum.doom9.org) 上看看。
+对于 Aegisub 相关的问题，[论坛](http://forums.aegisub.org) 和 [IRC 频道](irc://irc.rizon.net/aegisub) 都是适合提问的地方。此外，Aegisub 的 [开发 wiki](http://devel.aegisub.org) 与论坛中还会有一些未收录在手册中的、比较生僻冷门的内容。至于与视频相关的一般问题，可以到 [Doom9.org](http://www.doom9.org) 以及 [它的论坛](https://forum.doom9.org) 上看看。
 
 ### 是否有我应当了解的 VSFliter 的 bug？ ###
 
-一个字：[是](http://asa.diac24.net/VSFilter#BUGS)。
+一个字：[是](https://web.archive.org/web/20110811220802/http://asa.diac24.net/VSFilter#BUGS)。

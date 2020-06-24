@@ -4,13 +4,13 @@
       url: Main_Page
  - name: 介绍
    entries:
-    - name: 什么是Aegisub？
+    - name: Aegisub 是什么？
       url: About
     - name: 亮点
       url: Highlights
-    - name: 贡献
+    - name: 贡献者
       url: Credits
-    - name: 支持Aegisub
+    - name: 支持 Aegisub
       url: Support
     - name: FAQ
       url: FAQ

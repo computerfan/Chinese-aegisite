@@ -11,11 +11,11 @@ title: 教程
 ### 对白计时 ###
 * 简介：讲解如何使用 Aegisub 制作时间轴。
 * 作者：Karl Blomster
-* 链接：<http://mod16.org/aegisub/timingtutorialimprovisation.mkv>
+* 链接：<https://mod16.org/aegisub/timingtutorialimprovisation.mkv>
 
 * 简介：展示一位经验丰富的用户使用 Aegisub 全速打轴。
 * 作者：Karl Blomster
-* 链接：<http://mod16.org/aegisub/timing-fullspeed.mkv>
+* 链接：<https://mod16.org/aegisub/timing-fullspeed.mkv>
 
 ### 汉字计时器 ###
 * 简介：演示如何使用汉字计时器将汉字时间轴与罗马字时间轴进行同步。
