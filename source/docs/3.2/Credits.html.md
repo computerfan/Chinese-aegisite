@@ -57,9 +57,6 @@ Aegisub 最初由 Rodrigo Braz Monteiro 所编写，Niels Martin Hansen 在此�
   * Kobi
   * movax
   * Jcubed
-  
-* 3.2 手册中文翻译：
-  * Vmoe字幕组
 
 ## 内容托管 ##
 * 当前：

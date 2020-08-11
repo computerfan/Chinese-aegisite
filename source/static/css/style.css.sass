@@ -36,12 +36,14 @@ dl.horizontal-wide
   .dl-horizontal, .horizontal-narrow, .horizontal-wide
     dt, dd
       margin-bottom: 10px
+      text-align: justify
   // dd
   //   margin-left: 2em
   .page-header
     float: left
   p
     clear: left
+    text-align: justify
 
 #manual-sidebar
   @extend .nav
@@ -257,15 +259,30 @@ img.center
     color: #268BD2
   .il
     color: #2AA198
+
+kbd
+  display: inline-block
+  padding: 2px 5px
+  border: 1px solid #d1d5da
+  border-radius: 5px
+  background-color: #fff
+  box-shadow: inset 0 -1px 0 #d1d5da
+  color: #333
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace
+  line-height: 1
+
 @media (max-width: 980px)
   .span9
     width: 60% 
+
 @media (max-width: 780px)
   .pull-right
     display: none !important
+
 @media (max-width: 650px)
   .span3
     width: 30%
+
 @media (max-width: 400px)
   .span3
     width: 90%

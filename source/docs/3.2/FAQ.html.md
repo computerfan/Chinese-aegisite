@@ -12,7 +12,7 @@ Aegisub 的常见疑问小整合——大多是其他页面没有涉及的问题
 
 ### 我能用 Aegisub 制作 DVD 字幕吗？ ###
 
-不能直接做，不过有一款实用的软件叫作 [MaestroSBT](https://sourceforge.net/projects/maestrosbt/)，它可以将 SSA 转换为 VOBsub。由于这款软件在特效标签以及其他方面有着诸多限制，所以建议您先阅读一下它的说明。还需特别注意，它不支持 ASS——只支持 SSA。您可以在 Aegisub 的“*文件 -> 导出字幕…*”对话框中将字幕另存为 SSA 格式。
+不能直接做，不过有一款实用的软件叫作 [MaestroSBT](https://sourceforge.net/projects/maestrosbt/)，它可以将 SSA 转换为 VOBsub。由于这款软件在特效标签以及其他方面有着诸多限制，所以建议您先阅读一下它的使用说明。还需特别注意，它不支持 ASS——只支持 SSA。您可以在 Aegisub 的“*文件 -> 导出字幕…*”对话框中将字幕另存为 SSA 格式。
 
 ### Aegisub 可以将字幕保存为 SRT 文件吗？ ###
 
